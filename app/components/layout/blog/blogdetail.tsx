@@ -4,32 +4,33 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Heart, Quote, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
-import type {
-  NgoData,
-  NgoBlogPageSection,
-  NgoBlogCardItem,
-} from '@/app/type/ngo';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
+import type { NgoData, NgoBlogPost } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface BlogDetailProps {
   blogId: string | number;
 }
 
 export default function BlogDetail({ blogId }: BlogDetailProps) {
-  const blogPageData = data.blogPageSection as NgoBlogPageSection | undefined;
+  const blogPageData = data.blogPageSection as any;
 
   if (!blogPageData) return null;
 
   const { sidebar, blogs } = blogPageData;
 
   const currentBlog = blogs.find(
-    (b: NgoBlogCardItem) => String(b.id) === String(blogId)
+    (b: any) => String(b.id) === String(blogId)
   ) || blogs[0];
 
   const moreBlogs = blogs.filter(
-    (b: NgoBlogCardItem) => String(b.id) !== String(currentBlog.id)
+    (b: any) => String(b.id) !== String(currentBlog.id)
   );
 
   return (
@@ -77,14 +78,14 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
               </p>
 
               {/* Paragraphs */}
-              {currentBlog.paragraphs && currentBlog.paragraphs.map((paragraph, idx) => (
+              {currentBlog.paragraphs && currentBlog.paragraphs.map((paragraph: any, idx: any) => (
                 <p key={idx} className="mt-4 text-xs leading-relaxed text-[#59665b] sm:text-sm">
                   {paragraph}
                 </p>
               ))}
 
               {/* Structured Heading Sections */}
-              {currentBlog.sections && currentBlog.sections.map((section, idx) => (
+              {currentBlog.sections && currentBlog.sections.map((section: any, idx: any) => (
                 <div key={idx} className="mt-8 sm:mt-10">
                   <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
                     {section.heading}
@@ -129,7 +130,7 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
 
               {/* More Blogs List */}
               <div className="flex flex-col divide-y divide-[#f0f4ef]">
-                {moreBlogs.map((b: NgoBlogCardItem) => (
+                {moreBlogs.map((b: any) => (
                   <Link
                     key={b.id}
                     href={b.href}

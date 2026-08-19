@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import { Home, Users, Sparkles, Newspaper, ImageIcon, Hand, HelpCircle, Phone, ChevronRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
-import type { NgoData, NgoSitemapCategory } from '@/app/type/ngo';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
+import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 const iconMap: Record<string, React.ElementType> = {
   home: Home,
@@ -44,7 +49,7 @@ export default function SitemapSection() {
 
         {/* Categories Grid (Mapped Directly from JSON) */}
         <div className="mt-10 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {sitemapSection.categories.map((category: NgoSitemapCategory) => {
+          {sitemapSection.categories.map((category: any) => {
             const Icon = iconMap[category.icon] || Home;
 
             return (
@@ -64,7 +69,7 @@ export default function SitemapSection() {
 
                 {/* Category Links List (Dividers like SS) */}
                 <div className="divide-y divide-gray-100/80">
-                  {category.links.map((link) => (
+                  {category.links.map((link: any) => (
                     <Link
                       key={link.id}
                       href={link.href}

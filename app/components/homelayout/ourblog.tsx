@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BookOpen, Leaf, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function OurBlog() {
   const { blogsSection } = data;
@@ -35,7 +40,7 @@ export default function OurBlog() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {blogsSection.posts.map((post) => (
+          {blogsSection.posts.map((post: any) => (
             <div
               key={post.id}
               className="group bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"

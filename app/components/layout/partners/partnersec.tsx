@@ -2,13 +2,18 @@
 
 import React from 'react';
 import Image from 'next/image';
-import ngoDataJson from '@/app/data/ngoData.json';
-import type { NgoData, NgoPartnersSection, NgoPartnerItem } from '@/app/type/ngo';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
+import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function PartnerSec() {
-  const partnersData = data.partnersSection as NgoPartnersSection | undefined;
+  const partnersData = data.partnersSection as any;
 
   if (!partnersData) return null;
 
@@ -25,7 +30,7 @@ export default function PartnerSec() {
         {/* Header Section */}
         <div className="text-center">
           <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
-            {headingParts.map((part, index) =>
+            {headingParts.map((part: any, index: any) =>
               part.toLowerCase() === highlightWord.toLowerCase() ? (
                 <span key={index} className="text-[#2c7a3f]">
                   {part}
@@ -48,7 +53,7 @@ export default function PartnerSec() {
 
         {/* 5-Column Logo Cards Grid */}
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:mt-16 lg:gap-5">
-          {partnersData.partners.map((partner: NgoPartnerItem) => (
+          {partnersData.partners.map((partner: any) => (
             <a
               key={partner.id}
               href={partner.href || '#'}

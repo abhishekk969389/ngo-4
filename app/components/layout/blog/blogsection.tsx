@@ -2,14 +2,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Heart } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type {
   NgoData,
   NgoBlogPageSection,
   NgoBlogCardItem,
 } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function BlogSection() {
   const blogData = data.blogPageSection as NgoBlogPageSection | undefined;

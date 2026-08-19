@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, Users } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = { banner: (ngoDataJson as any).NGO.sections.banner?.variants?.Legacy_banner };
 
 export default function Banner() {
   const { banner } = data;
@@ -130,7 +130,7 @@ export default function Banner() {
 
            
           <div className="mt-10 pt-2 grid grid-cols-3 gap-0 max-w-lg">
-  {banner.stats.map((stat, index) => {
+  {banner.stats.map((stat: any, index: any) => {
     const StatIcon = getStatIcon(stat.icon);
     return (
       <div

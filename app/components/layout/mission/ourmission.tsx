@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { BookOpen, HeartPulse, Users, Sprout } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, MissionPageSection } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function OurMission() {
   const missionData: MissionPageSection = data.missionPageSection || {

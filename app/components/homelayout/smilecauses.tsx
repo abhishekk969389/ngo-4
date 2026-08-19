@@ -14,10 +14,15 @@ import {
   ArrowRight,
   Activity
 } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function SmileCauses() {
   const { smileCauses } = data;
@@ -126,7 +131,7 @@ export default function SmileCauses() {
             ref={scrollRef}
             className="flex gap-4 lg:gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-4 pt-2 justify-start lg:justify-between"
           >
-            {smileCauses.cards.map((card) => {
+            {smileCauses.cards.map((card: any) => {
               const CategoryIcon = getCategoryIcon(card.categoryIcon);
               const CenterIcon = getCenterIcon(card.centerIcon);
               return (

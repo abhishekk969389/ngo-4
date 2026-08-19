@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, NgoBranchesSection, NgoBranchItem } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface BranchSectionProps {
   sectionData?: NgoBranchesSection;

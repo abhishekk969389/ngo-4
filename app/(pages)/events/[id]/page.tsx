@@ -4,10 +4,15 @@ import HomeCta from '@/app/components/ui/homecta';
 import EventHeader from '@/app/components/layout/eventdetails/eventheader';
 import EventContent from '@/app/components/layout/eventdetails/eventcontent';
 import EventSidebar from '@/app/components/layout/eventdetails/eventsidebar';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, EventDetailItem, PageBannerData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface EventDetailPageProps {
   params: Promise<{
@@ -34,7 +39,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
   const detailItem: EventDetailItem | undefined =
     detailsMap[idKey] ||
     Object.values(detailsMap).find(
-      (item) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
+      (item: any) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
     ) ||
     detailsMap['community-cleanup'] ||
     detailsMap['1'];
@@ -53,7 +58,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
     backgroundImage: eventsBannerConfig?.backgroundImage || '/banner_bg.png',
     altText: detailItem.title || eventsBannerConfig?.altText || '',
     breadcrumbs: [
-      ...baseBreadcrumbs.map((item) => ({
+      ...baseBreadcrumbs.map((item: any) => ({
         ...item,
         isCurrent: false,
       })),

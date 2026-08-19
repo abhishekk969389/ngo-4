@@ -3,11 +3,16 @@ import ServiceHeader from "@/app/components/layout/servicedetails/serviceheader"
 import ServiceFeaturesApproach from "@/app/components/layout/servicedetails/servicefeaturesapproach";
 import ServiceImpactCta from "@/app/components/layout/servicedetails/serviceimpactcta";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from "@/app/data/ngoData.json";
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, PageBannerData, ServiceDetailItem } from "@/app/type/ngo";
 import { notFound } from "next/navigation";
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface ServiceDetailsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -20,7 +25,7 @@ export default async function ServiceDetailsPage({ searchParams }: ServiceDetail
   const serviceDetail: ServiceDetailItem | undefined =
     (data.serviceDetails && data.serviceDetails[idKey]) ||
     Object.values(data.serviceDetails || {}).find(
-      (s) => String(s.numericId) === idKey || s.id.toLowerCase() === idKey
+      (s: any) => String(s.numericId) === idKey || s.id.toLowerCase() === idKey
     ) ||
     data.serviceDetails?.["education"];
   if (!serviceDetail) {
@@ -41,7 +46,7 @@ export default async function ServiceDetailsPage({ searchParams }: ServiceDetail
     backgroundImage: bannerConfig?.backgroundImage || '/banner_bg.png',
     altText: serviceDetail.header?.title || bannerConfig?.altText || '',
     breadcrumbs: [
-      ...baseBreadcrumbs.map((item) => ({
+      ...baseBreadcrumbs.map((item: any) => ({
         ...item,
         isCurrent: false,
       })),

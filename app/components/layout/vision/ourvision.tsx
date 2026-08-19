@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { Globe, BookOpen, HandHeart, Mountain, Heart, Eye, Sprout } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function OurVision() {
   const visionData = data.visionPageSection;
@@ -67,7 +72,7 @@ export default function OurVision() {
 
             {/* 4 Pillars Grid (Responsive 1/2/4 Columns) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 mt-6 sm:mt-8 pt-2">
-              {visionData.pillars.map((pillar, index) => (
+              {visionData.pillars.map((pillar: any, index: any) => (
                 <div 
                   key={pillar.id} 
                   className={`lg:border-r lg:border-gray-200/80 lg:last:border-r-0 lg:px-3 xl:px-4 first:lg:pl-0 last:lg:pr-0 flex flex-col items-center text-center ${

@@ -13,10 +13,15 @@ import {
   Sprout,
   Orbit,
 } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, NgoServiceItem } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 const serviceIconMap = {
   education: BookOpen,
@@ -91,7 +96,7 @@ export default function ServiceSection() {
           
           {/* Left Items */}
           <div className="space-y-6 sm:space-y-8 lg:space-y-6 lg:col-span-4 order-1">
-            {leftItems.map((item, idx) => (
+            {leftItems.map((item: any, idx: any) => (
               <React.Fragment key={item.id}>
                 <Link
                   href={item.href || `/servicedetails?id=${item.slug || item.id}`}
@@ -136,7 +141,7 @@ export default function ServiceSection() {
 
           {/* Right Items */}
           <div className="space-y-6 sm:space-y-8 lg:space-y-6 lg:col-span-4 order-3">
-            {rightItems.map((item, idx) => (
+            {rightItems.map((item: any, idx: any) => (
               <React.Fragment key={item.id}>
                 <Link
                   href={item.href || `/servicedetails?id=${item.slug || item.id}`}
@@ -169,7 +174,7 @@ export default function ServiceSection() {
         {/* Bottom Banner Section */}
         <div className="relative mt-8 sm:mt-10 lg:mt-12 overflow-hidden rounded-2xl bg-[#f2f7f2] border border-[#e2ede2] p-5 sm:p-6 lg:p-8">
           <div className="relative z-10 grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {bottomItems.map((item) => (
+            {bottomItems.map((item: any) => (
               <Link
                 key={item.id}
                 href={item.href || `/servicedetails?id=${item.slug || item.id}`}

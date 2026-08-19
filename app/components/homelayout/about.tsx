@@ -1,11 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, HandHeart, Users, Sprout, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 import { IconQuote } from '@tabler/icons-react';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function About() {
   const { aboutSection } = data;
@@ -93,7 +98,7 @@ export default function About() {
 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-              {aboutSection.features.map((feature) => {
+              {aboutSection.features.map((feature: any) => {
                 const IconComponent = getFeatureIcon(feature.icon);
                 return (
                   <div key={feature.id} className="flex items-center gap-2.5">

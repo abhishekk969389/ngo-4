@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { Handshake, Target, Users, Leaf, Sprout } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
-import type { NgoData, NgoPartnerCardsSection, NgoPartnerCardItem } from '@/app/type/ngo';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
+import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   handshake: Handshake,
@@ -16,7 +21,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 export default function PartnerCard() {
-  const cardsData = data.partnerCardsSection as NgoPartnerCardsSection | undefined;
+  const cardsData = data.partnerCardsSection as any;
 
   if (!cardsData || !cardsData.items) return null;
 
@@ -27,7 +32,7 @@ export default function PartnerCard() {
         {/* Soft Green Pillar Banner Box */}
         <div className="rounded-2xl border border-[#e2ece0] bg-[#f0f6ef] p-6 sm:p-8 lg:p-10 shadow-sm sm:rounded-3xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-[#d3e2d1]">
-            {cardsData.items.map((item: NgoPartnerCardItem) => {
+            {cardsData.items.map((item: any) => {
               const IconComponent = iconMap[item.icon] || Handshake;
 
               return (

@@ -1,8 +1,13 @@
 import Image from 'next/image';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function CertificateSection() {
   const { certificateSection } = data;
@@ -15,7 +20,7 @@ export default function CertificateSection() {
 
         {/* Grid for Certificates Cards */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {certificateSection.certificates.map((certificate) => {
+          {certificateSection.certificates.map((certificate: any) => {
             const certificateImage = (certificate as { image?: string }).image || certificateSection.cardImage;
 
             return (

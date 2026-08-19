@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { Sprout, HandHeart } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function AboutSection() {
   const storyData = data.aboutStorySection;
@@ -107,7 +112,7 @@ export default function AboutSection() {
 
             {/* Paragraphs */}
             <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed font-sans max-w-xl">
-              {storyData.paragraphs.map((paragraph, index) => (
+              {storyData.paragraphs.map((paragraph: any, index: any) => (
                 <p key={index} className="text-left sm:text-justify">
                   {paragraph}
                 </p>

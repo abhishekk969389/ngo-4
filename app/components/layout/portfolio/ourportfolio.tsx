@@ -10,10 +10,15 @@ import {
   Users,
   Building2,
 } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
-import type { NgoData, NgoPortfolioCard, NgoPortfolioSection } from '@/app/type/ngo';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
+import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 const iconMap = {
   school: GraduationCap,
@@ -36,7 +41,7 @@ const themeStyles = [
 ];
 
 export default function OurPortfolio() {
-  const portfolioData = data.portfolioSection as NgoPortfolioSection | undefined;
+  const portfolioData = data.portfolioSection as any;
 
   if (!portfolioData) return null;
 
@@ -70,7 +75,7 @@ export default function OurPortfolio() {
 
         {/* 2-Column Responsive Portfolio Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {portfolioData.cards.map((card: NgoPortfolioCard, index: number) => {
+          {portfolioData.cards.map((card: any, index: number) => {
             // Alternates layout direction per column
             const isRightColumn = index % 2 !== 0;
             const theme = themeStyles[index % themeStyles.length];

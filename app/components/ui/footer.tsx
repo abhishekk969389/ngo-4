@@ -8,13 +8,20 @@ import {
   Clock,
   HandHeart,
 } from 'lucide-react';
-import footerDataJson from '@/app/data/ngoData.json';
-import type { FooterData, NgoData } from '@/app/type/ngo';
+import footerDataJson from '@/app/data/ngoData_structured.json';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
 
-
-const data = footerDataJson as FooterData & NgoData;
-const footerData = data;
+const brand = (footerDataJson as any).NGO.sections.brand.variants.Legacy_brand;
+const footerData = {
+  about: (footerDataJson as any).NGO.sections.about.variants.Legacy_about,
+  socialLinks: (footerDataJson as any).NGO.sections.socialLinks.variants.Legacy_socialLinks,
+  footerHeadings: (footerDataJson as any).NGO.sections.footerHeadings.variants.Legacy_footerHeadings,
+  quickLinks: (footerDataJson as any).NGO.sections.quickLinks.variants.Legacy_quickLinks,
+  ourCauses: (footerDataJson as any).NGO.sections.ourCauses.variants.Legacy_ourCauses,
+  usefulLinks: (footerDataJson as any).NGO.sections.usefulLinks.variants.Legacy_usefulLinks,
+  contactInfo: (footerDataJson as any).NGO.sections.contactInfo.variants.Legacy_contactInfo,
+  copyrightText: (footerDataJson as any).NGO.sections.copyrightText.variants.Legacy_copyrightText
+};
 
 export default function Footer() {
   const getSocialIcon = (platform: string) => {
@@ -84,18 +91,18 @@ export default function Footer() {
               <Link href="/" className="flex items-center gap-3 flex-shrink-0">
                 <div className="relative h-12 w-12 lg:h-18 lg:w-18 flex-shrink-0">
                   <Image
-                    src={data.brand.logo}
-                    alt={`${data.brand.name} logo`}
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
                     fill
                     className="object-contain"
                   />
                 </div>
                 <div className="flex flex-col justify-center whitespace-nowrap">
                   <span className="text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
-                    {data.brand.name}
+                    {brand.name}
                   </span>
                   <span className="text-[11px] font-bold  text-[#0c4d1e] ">
-                    {data.brand.tagline}
+                    {brand.tagline}
                   </span>
                 </div>
               </Link>
@@ -105,9 +112,9 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-3 mt-6">
-              {footerData.socialLinks.map((item) => (
+              {footerData.socialLinks.map((item: any, idx: number) => (
                 <a
-                  key={item.id}
+                  key={idx}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -123,8 +130,8 @@ export default function Footer() {
               <h3 className="text-lg font-bold text-gray-900 tracking-tight font-serif">{section.title}</h3>
               <div className="w-6 h-[2px] bg-[#2c7a3f] mt-1 mb-5"></div>
               <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.id}>
+                {section.links.map((link: any, idx: number) => (
+                  <li key={idx}>
                     <Link href={link.href} className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-[#2c7a3f] transition-colors">
                       <ChevronRight className="w-3.5 h-3.5 text-[#2c7a3f] flex-shrink-0" />
                       <span>{link.label}</span>

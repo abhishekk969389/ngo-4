@@ -3,10 +3,15 @@ import Banner from '@/app/components/ui/banner';
 import CaseStudyOverviewSection from '@/app/components/layout/casestudy/casestudyoverview';
 import CaseStudyImpactStory from '@/app/components/layout/casestudy/casestudyimpactstory';
 import CaseStudyGallerySection from '@/app/components/layout/casestudy/casestudygallery';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, CaseStudyDetailItem, PageBannerData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface CaseStudyDetailPageProps {
   params: Promise<{
@@ -33,7 +38,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPag
   const detailItem: CaseStudyDetailItem | undefined =
     detailsMap[idKey] ||
     Object.values(detailsMap).find(
-      (item) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
+      (item: any) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
     ) ||
     detailsMap['education'] ||
     detailsMap['1'];
@@ -52,7 +57,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPag
     backgroundImage: casestudyBannerConfig?.backgroundImage || '/banner_bg.png',
     altText: detailItem.title || casestudyBannerConfig?.altText || '',
     breadcrumbs: [
-      ...baseBreadcrumbs.map((item) => ({
+      ...baseBreadcrumbs.map((item: any) => ({
         ...item,
         isCurrent: false,
       })),

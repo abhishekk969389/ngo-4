@@ -2,10 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Heart, Sprout, ArrowRight } from 'lucide-react';
 import { IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function TeamSection() {
   const teamData = data.teamSection;
@@ -63,7 +68,7 @@ export default function TeamSection() {
 
         {/* 6 Team Members Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-8 sm:mt-12">
-          {teamData.members.map((member) => (
+          {teamData.members.map((member: any) => (
             <div
               key={member.id}
               className="group relative flex flex-col justify-between rounded-2xl border border-gray-100/90 bg-white p-5 sm:p-6 shadow-xs transition-shadow hover:shadow-md"
@@ -108,7 +113,7 @@ export default function TeamSection() {
 
               {/* Social Media Links */}
               <div className="relative z-10 flex items-center gap-2 mt-4">
-                {member.socials.map((social, index) => (
+                {member.socials.map((social: any, index: any) => (
                   <a
                     key={index}
                     href={social.href}

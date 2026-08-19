@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { HandHeart, Heart, Users, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = { homeCta: (ngoDataJson as any).NGO.sections.homeCta?.variants?.Legacy_homeCta };
 
 export default function HomeCta() {
   const { homeCta } = data;

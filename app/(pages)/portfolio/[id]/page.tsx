@@ -4,10 +4,15 @@ import PortfolioDetailHeader from '@/app/components/layout/portfolio/portfoliode
 import PortfolioDetailContent from '@/app/components/layout/portfolio/portfoliodetailcontent';
 import PortfolioDetailSidebar from '@/app/components/layout/portfolio/portfoliodetailsidebar';
 import PortfolioDetailCta from '@/app/components/layout/portfolio/portfoliodetailcta';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, PortfolioDetailItem, PageBannerData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 interface PortfolioDetailPageProps {
   params: Promise<{
@@ -34,7 +39,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   const projectDetail: PortfolioDetailItem | undefined =
     detailsMap[idKey] ||
     Object.values(detailsMap).find(
-      (item) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
+      (item: any) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
     ) ||
     detailsMap['bright-future-schools'] ||
     detailsMap['1'];
@@ -53,7 +58,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
     backgroundImage: portfolioBannerConfig?.backgroundImage || '/banner_bg.png',
     altText: projectDetail.header?.title || portfolioBannerConfig?.altText || '',
     breadcrumbs: [
-      ...baseBreadcrumbs.map((item) => ({
+      ...baseBreadcrumbs.map((item: any) => ({
         ...item,
         isCurrent: false,
       })),

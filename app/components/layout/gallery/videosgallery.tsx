@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Video as VideoIcon, Play, X } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type {
   NgoData,
   NgoVideoGallerySection,
@@ -11,7 +11,12 @@ import type {
   NgoVideoItem,
 } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function VideosGallery() {
   const videoGalleryData = data.videoGallerySection as NgoVideoGallerySection | undefined;

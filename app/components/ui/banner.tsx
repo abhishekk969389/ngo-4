@@ -1,16 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, PageBannerData, BannerProps } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const pageBanners = (ngoDataJson as any).NGO.sections.pageBanners?.variants?.Legacy_pageBanners;
 
 export default function Banner({ pageKey = 'about', bannerData, className = '' }: BannerProps) {
   // Extract active banner data from props, pageKey lookup in JSON, or default JSON configuration
   const activeData: PageBannerData = 
     bannerData || 
-    (data.pageBanners && data.pageBanners[pageKey]) ||  
+    (pageBanners && pageBanners[pageKey]) ||  
     {
       title: '',
       backgroundImage: '',

@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import { Sprout, Heart, Home, BookOpen, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 export default function OurMission() {
   const { ourMission } = data;
@@ -103,7 +108,7 @@ export default function OurMission() {
 
     
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
-          {ourMission.cards.map((card, index) => {
+          {ourMission.cards.map((card: any, index: any) => {
             const CardIcon = getCardIcon(card.icon);
             const isLast = index === ourMission.cards.length - 1;
 

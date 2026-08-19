@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { BookOpenText, HeartPulse, Users, Leaf, Sparkles } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData.json';
+import ngoDataJson from '@/app/data/ngoData_structured.json';
 import type { NgoData, NgoImpactStat } from '@/app/type/ngo';
 
-const data = ngoDataJson as NgoData;
+const data = new Proxy(ngoDataJson as any, {
+  get(target, prop: string) {
+    if (prop === '$$typeof') return undefined;
+    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
+  }
+});
 
 const statIconMap = {
   users: Users,
@@ -157,7 +162,7 @@ export default function OurImpact() {
               <div className="relative z-10 -mt-16 sm:-mt-20">
                 {/* 3 Circle Overlays */}
                 <div className="relative z-20 -mb-10 flex items-center justify-center gap-2 px-2 sm:-mb-12 sm:gap-3">
-                  {impactData.showcase.secondaryImages.slice(0, 3).map((imgSrc, index) => (
+                  {impactData.showcase.secondaryImages.slice(0, 3).map((imgSrc: any, index: any) => (
                     <div
                       key={index}
                       className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-4 border-white bg-white shadow-md sm:h-24 sm:w-24 sm:border-[5px]"
