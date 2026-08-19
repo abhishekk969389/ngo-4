@@ -1,13 +1,23 @@
-import Link from 'next/link';
-import { Home, Users, Sparkles, Newspaper, ImageIcon, Hand, HelpCircle, Phone, ChevronRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData } from '@/app/type/ngo';
+import Link from "next/link";
+import {
+  Home,
+  Users,
+  Sparkles,
+  Newspaper,
+  ImageIcon,
+  Hand,
+  HelpCircle,
+  Phone,
+  ChevronRight,
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const iconMap: Record<string, React.ElementType> = {
@@ -17,7 +27,7 @@ const iconMap: Record<string, React.ElementType> = {
   newspaper: Newspaper,
   image: ImageIcon,
   hands: Hand,
-  'help-circle': HelpCircle,
+  "help-circle": HelpCircle,
   phone: Phone,
 };
 
@@ -29,32 +39,26 @@ export default function SitemapSection() {
   return (
     <section className=" mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12">
-        
         {/* Header Block from JSON */}
         <div className="mx-auto max-w-2xl text-center flex flex-col items-center">
-          
-          {/* Dynamic Heading with Accent Underlines */}
           <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3319] font-serif leading-[1.2] sm:leading-[1.18] tracking-tight">
             {sitemapSection.heading}
           </h1>
 
-          {/* Underline Accent Bar */}
           <div className="w-12 h-[2.5px] bg-[#2c7a3f] rounded-full mt-2.5 mb-3.5" />
 
-          {/* Dynamic Description */}
           <p className="text-xs sm:text-sm md:text-base text-gray-600 font-sans leading-relaxed max-w-xl">
             {sitemapSection.description}
           </p>
         </div>
 
-        {/* Categories Grid (Mapped Directly from JSON) */}
         <div className="mt-10 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {sitemapSection.categories.map((category: any) => {
             const Icon = iconMap[category.icon] || Home;
 
             return (
-              <div 
-                key={category.id} 
+              <div
+                key={category.id}
                 className="rounded-2xl border border-gray-100/90 bg-white shadow-xs overflow-hidden flex flex-col justify-between"
               >
                 {/* Category Header (Light Green Container) */}
@@ -67,7 +71,6 @@ export default function SitemapSection() {
                   </h2>
                 </div>
 
-                {/* Category Links List (Dividers like SS) */}
                 <div className="divide-y divide-gray-100/80">
                   {category.links.map((link: any) => (
                     <Link
@@ -84,7 +87,6 @@ export default function SitemapSection() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

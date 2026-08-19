@@ -1,14 +1,14 @@
 import Banner from "@/app/components/ui/banner";
 import TeamDetails from "@/app/components/layout/ourteam/teamdetails";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type { NgoData, TeamMember, PageBannerData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$typeof') return undefined;
+    if (prop === "$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface TeamDetailPageProps {
@@ -29,7 +29,7 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
   const { id } = resolvedParams;
 
   const currentMember = data.teamSection?.members.find(
-    (m: TeamMember) => String(m.id) === String(id)
+    (m: TeamMember) => String(m.id) === String(id),
   );
 
   const teamBannerConfig = data.pageBanners?.ourteam;
@@ -37,7 +37,8 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
   const dynamicBannerData: PageBannerData = {
     title: teamBannerConfig?.title || "Our Team",
     backgroundImage: teamBannerConfig?.backgroundImage || "/banner_bg.png",
-    altText: currentMember?.name || teamBannerConfig?.altText || "Team member banner",
+    altText:
+      currentMember?.name || teamBannerConfig?.altText || "Team member banner",
     breadcrumbs: [
       {
         id: 1,

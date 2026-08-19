@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BookOpenText,
@@ -9,15 +9,15 @@ import {
   Droplets,
   Users,
   Building2,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData } from '@/app/type/ngo';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const iconMap = {
@@ -32,12 +32,12 @@ const iconMap = {
 
 // Pastel card color themes matched to the screenshot
 const themeStyles = [
-  { bg: 'bg-[#f3f7ee]', iconBg: 'bg-[#e3edd9]', text: 'text-[#234b2c]' }, // Green
-  { bg: 'bg-[#f0f4fa]', iconBg: 'bg-[#dae4f5]', text: 'text-[#1e3a8a]' }, // Blue
-  { bg: 'bg-[#fcf8ec]', iconBg: 'bg-[#f7edce]', text: 'text-[#855314]' }, // Gold/Yellow
-  { bg: 'bg-[#f5f2fa]', iconBg: 'bg-[#e8e0f5]', text: 'text-[#4c1d95]' }, // Purple
-  { bg: 'bg-[#f4f7f1]', iconBg: 'bg-[#e2ebd9]', text: 'text-[#234b2c]' }, // Soft Green
-  { bg: 'bg-[#faf2f0]', iconBg: 'bg-[#f5e3de]', text: 'text-[#9f1239]' }, // Rose/Coral
+  { bg: "bg-[#f3f7ee]", iconBg: "bg-[#e3edd9]", text: "text-[#234b2c]" }, // Green
+  { bg: "bg-[#f0f4fa]", iconBg: "bg-[#dae4f5]", text: "text-[#1e3a8a]" }, // Blue
+  { bg: "bg-[#fcf8ec]", iconBg: "bg-[#f7edce]", text: "text-[#855314]" }, // Gold/Yellow
+  { bg: "bg-[#f5f2fa]", iconBg: "bg-[#e8e0f5]", text: "text-[#4c1d95]" }, // Purple
+  { bg: "bg-[#f4f7f1]", iconBg: "bg-[#e2ebd9]", text: "text-[#234b2c]" }, // Soft Green
+  { bg: "bg-[#faf2f0]", iconBg: "bg-[#f5e3de]", text: "text-[#9f1239]" }, // Rose/Coral
 ];
 
 export default function OurPortfolio() {
@@ -46,25 +46,25 @@ export default function OurPortfolio() {
   if (!portfolioData) return null;
 
   const getIcon = (iconName: string, textClass: string) => {
-    const IconComponent = iconMap[iconName as keyof typeof iconMap] ?? iconMap.default;
+    const IconComponent =
+      iconMap[iconName as keyof typeof iconMap] ?? iconMap.default;
     return <IconComponent className={`h-5 w-5 ${textClass} stroke-[1.8]`} />;
   };
 
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
         {/* Header Section */}
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#0d3319] font-sans">
             <Sprout className="h-4 w-4 fill-[#2c7a3f] text-[#2c7a3f]" />
-            <span>{portfolioData.badge || 'OUR PORTFOLIO'}</span>
+            <span>{portfolioData.badge || "OUR PORTFOLIO"}</span>
           </div>
 
           <h2 className="mt-3 font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
-            {portfolioData.heading?.line1 || 'Stories of Change,'}
+            {portfolioData.heading?.line1 || "Stories of Change,"}
             <span className="block font-serif italic font-normal text-[#2c7a3f] mt-1">
-              {portfolioData.heading?.line2 || 'Built Together.'}
+              {portfolioData.heading?.line2 || "Built Together."}
             </span>
           </h2>
 
@@ -85,12 +85,11 @@ export default function OurPortfolio() {
                 key={card.id}
                 className={`group relative flex flex-col overflow-hidden rounded-2xl ${theme.bg} transition-all duration-300 hover:shadow-sm sm:flex-row`}
               >
-                {/* Image Container with Diagonal Cut */}
                 <div
                   className={`relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[44%] ${
                     isRightColumn
-                      ? 'sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]'
-                      : 'sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]'
+                      ? "sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]"
+                      : "sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]"
                   }`}
                 >
                   <Image
@@ -105,7 +104,7 @@ export default function OurPortfolio() {
                 {/* Content Box - Icon Side-by-side with Content */}
                 <div
                   className={`flex flex-1 items-start gap-3.5 p-5 sm:gap-4 sm:p-6 ${
-                    isRightColumn ? 'sm:order-1' : 'sm:order-2'
+                    isRightColumn ? "sm:order-1" : "sm:order-2"
                   }`}
                 >
                   {/* Left Side: Icon Circle */}
@@ -127,20 +126,19 @@ export default function OurPortfolio() {
                       </p>
                     </div>
 
-                      <Link
-                        href={card.href || `/portfolio/${card.id}`}
-                        className={`inline-flex items-center gap-1.5 text-xs font-bold ${theme.text} transition hover:opacity-80`}
-                      >
-                        <span>{card.buttonLabel || 'View Project'}</span>
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
+                    <Link
+                      href={card.href || `/portfolio/${card.id}`}
+                      className={`inline-flex items-center gap-1.5 text-xs font-bold ${theme.text} transition hover:opacity-80`}
+                    >
+                      <span>{card.buttonLabel || "View Project"}</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
                 </div>
               </article>
             );
           })}
         </div>
-
       </div>
     </section>
   );

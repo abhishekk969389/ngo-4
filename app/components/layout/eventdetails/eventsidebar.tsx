@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 import {
   Calendar,
   Sprout,
@@ -9,13 +9,13 @@ import {
   Phone,
   Mail,
   MessageCircle,
-} from 'lucide-react';
+} from "lucide-react";
 import {
   IconBrandFacebook,
   IconBrandTwitter,
   IconBrandLinkedin,
-} from '@tabler/icons-react';
-import type { EventDetailItem } from '@/app/type/ngo';
+} from "@tabler/icons-react";
+import type { EventDetailItem } from "@/app/type/ngo";
 
 interface EventSidebarProps {
   data: EventDetailItem;
@@ -30,8 +30,6 @@ export default function EventSidebar({ data }: EventSidebarProps) {
 
   return (
     <aside className="space-y-6 font-sans">
-      
-      {/* 1. Event Registration Card */}
       {regCard && (
         <div className="bg-[#f7faf6] border border-[#e2ebd9] rounded-2xl p-6 space-y-4 text-center">
           <h3 className="text-lg font-bold font-serif text-[#0d3319]">
@@ -41,7 +39,7 @@ export default function EventSidebar({ data }: EventSidebarProps) {
             {regCard.description}
           </p>
           <Link
-            href={regCard.buttonHref || '/contactus'}
+            href={regCard.buttonHref || "/contactus"}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1b4d25] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-[#153e1e]"
           >
             <Calendar className="w-4 h-4" />
@@ -50,7 +48,10 @@ export default function EventSidebar({ data }: EventSidebarProps) {
 
           {regCard.loginText && (
             <div className="pt-1 text-xs text-[#59665b]">
-              <Link href={regCard.loginHref || '/contactus'} className="hover:underline font-bold text-[#1b4d25]">
+              <Link
+                href={regCard.loginHref || "/contactus"}
+                className="hover:underline font-bold text-[#1b4d25]"
+              >
                 {regCard.loginText}
               </Link>
             </div>
@@ -58,7 +59,6 @@ export default function EventSidebar({ data }: EventSidebarProps) {
         </div>
       )}
 
-      {/* 2. Organizer Card */}
       {organizer && (
         <div className="bg-[#f7faf6] border border-[#e2ebd9] rounded-2xl p-6 space-y-4">
           <h3 className="text-lg font-bold font-serif text-[#0d3319]">
@@ -90,29 +90,36 @@ export default function EventSidebar({ data }: EventSidebarProps) {
         </div>
       )}
 
-      {/* 3. Share this Event Card */}
       {data.shareCard && (
         <div className="bg-[#f7faf6] border border-[#e2ebd9] rounded-2xl p-6 space-y-4">
           <h3 className="text-lg font-bold font-serif text-[#0d3319]">
             {data.shareCard.title}
           </h3>
-          <p className="text-xs text-[#4b584d]">
-            {data.shareCard.description}
-          </p>
+          <p className="text-xs text-[#4b584d]">{data.shareCard.description}</p>
 
           <div className="flex items-center gap-2 pt-1">
             <button
               type="button"
-              onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
+              onClick={() =>
+                window.open(
+                  `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`,
+                  "_blank",
+                )
+              }
               className="w-9 h-9 rounded-full bg-white border border-[#e2ebd9] flex items-center justify-center text-[#1b4d25] hover:bg-[#1b4d25] hover:text-white transition-colors"
               aria-label="Share on Facebook"
             >
               <IconBrandFacebook className="w-4 h-4" />
             </button>
-            
+
             <button
               type="button"
-              onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(data.title)}`, '_blank')}
+              onClick={() =>
+                window.open(
+                  `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(data.title)}`,
+                  "_blank",
+                )
+              }
               className="w-9 h-9 rounded-full bg-white border border-[#e2ebd9] flex items-center justify-center text-[#1b4d25] hover:bg-[#1b4d25] hover:text-white transition-colors"
               aria-label="Share on Twitter"
             >
@@ -121,7 +128,12 @@ export default function EventSidebar({ data }: EventSidebarProps) {
 
             <button
               type="button"
-              onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
+              onClick={() =>
+                window.open(
+                  `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`,
+                  "_blank",
+                )
+              }
               className="w-9 h-9 rounded-full bg-white border border-[#e2ebd9] flex items-center justify-center text-[#1b4d25] hover:bg-[#1b4d25] hover:text-white transition-colors"
               aria-label="Share on LinkedIn"
             >
@@ -130,7 +142,12 @@ export default function EventSidebar({ data }: EventSidebarProps) {
 
             <button
               type="button"
-              onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(data.title + ' ' + window.location.href)}`, '_blank')}
+              onClick={() =>
+                window.open(
+                  `https://api.whatsapp.com/send?text=${encodeURIComponent(data.title + " " + window.location.href)}`,
+                  "_blank",
+                )
+              }
               className="w-9 h-9 rounded-full bg-white border border-[#e2ebd9] flex items-center justify-center text-[#1b4d25] hover:bg-[#1b4d25] hover:text-white transition-colors"
               aria-label="Share on WhatsApp"
             >
@@ -139,7 +156,12 @@ export default function EventSidebar({ data }: EventSidebarProps) {
 
             <button
               type="button"
-              onClick={() => window.open(`mailto:?subject=${encodeURIComponent(data.title)}&body=${encodeURIComponent(window.location.href)}`, '_blank')}
+              onClick={() =>
+                window.open(
+                  `mailto:?subject=${encodeURIComponent(data.title)}&body=${encodeURIComponent(window.location.href)}`,
+                  "_blank",
+                )
+              }
               className="w-9 h-9 rounded-full bg-white border border-[#e2ebd9] flex items-center justify-center text-[#1b4d25] hover:bg-[#1b4d25] hover:text-white transition-colors"
               aria-label="Share via Email"
             >
@@ -149,7 +171,6 @@ export default function EventSidebar({ data }: EventSidebarProps) {
         </div>
       )}
 
-      {/* 4. Need Help? Card */}
       {support && (
         <div className="bg-[#f7faf6] border border-[#e2ebd9] rounded-2xl p-6 space-y-4">
           <div className="flex items-center gap-3">
@@ -187,7 +208,6 @@ export default function EventSidebar({ data }: EventSidebarProps) {
           </div>
         </div>
       )}
-
     </aside>
   );
 }

@@ -1,17 +1,17 @@
-import Banner from '@/app/components/ui/banner';
-import Articles from '@/app/components/layout/support/articles';
-import Contact from '@/app/components/layout/support/contact';
-import Help from '@/app/components/layout/support/help';
-import HomeCta from '@/app/components/ui/homecta';
+import Banner from "@/app/components/ui/banner";
+import Articles from "@/app/components/layout/support/articles";
+import Contact from "@/app/components/layout/support/contact";
+import Help from "@/app/components/layout/support/help";
+import HomeCta from "@/app/components/ui/homecta";
 
 export default function SupportPage() {
   return (
     <>
       <Banner pageKey="support" />
       <Help />
-         <Articles />
-        <Contact />
-        <HomeCta />
+      <Articles />
+      <Contact />
+      <HomeCta />
     </>
   );
 }

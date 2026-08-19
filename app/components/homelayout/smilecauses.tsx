@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useRef, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Heart,
   GraduationCap,
@@ -12,16 +12,16 @@ import {
   Sprout,
   ArrowLeft,
   ArrowRight,
-  Activity
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData } from '@/app/type/ngo';
+  Activity,
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$typeof') return undefined;
+    if (prop === "$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function SmileCauses() {
@@ -30,16 +30,19 @@ export default function SmileCauses() {
 
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
-      case 'health':
+      case "health":
         return <Activity className="w-3.5 h-3.5 stroke-[2.5]" />;
-      case 'graduation':
-      case 'education':
+      case "graduation":
+      case "education":
         return <GraduationCap className="w-3.5 h-3.5 fill-current" />;
-      case 'book':
+      case "book":
         return <BookOpen className="w-3.5 h-3.5 fill-current" />;
-      case 'food':
+      case "food":
         return (
-          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current stroke-none">
+          <svg
+            viewBox="0 0 24 24"
+            className="w-3.5 h-3.5 fill-current stroke-none"
+          >
             <path d="M2 12h20a1 1 0 0 1 1 1 8 8 0 0 1-8 8H9a8 8 0 0 1-8-8 1 1 0 0 1 1-1z" />
             <path d="M6 7c0-2 1.5-3 1.5-3s1.5 1 1.5 3S7.5 9 7.5 9 6 8 6 7z" />
             <path d="M10.5 7c0-2 1.5-3 1.5-3s1.5 1 1.5 3S12 9 12 9s-1.5-1-1.5-3z" />
@@ -53,22 +56,28 @@ export default function SmileCauses() {
 
   const getCenterIcon = (iconName: string) => {
     switch (iconName) {
-      case 'heart-hand':
-      case 'hand-heart':
-      case 'health':
-      case 'heart':
+      case "heart-hand":
+      case "hand-heart":
+      case "health":
+      case "heart":
         return <HandHeart className="w-6 h-6 text-[#31a813]" />;
-      case 'book':
-      case 'education':
+      case "book":
+      case "education":
         return <BookOpen className="w-6 h-6 text-[#31a813]" />;
-      case 'users':
-      case 'group':
+      case "users":
+      case "group":
         return <Users className="w-6 h-6 text-[#31a813]" />;
-      case 'food-bowl':
-      case 'food':
+      case "food-bowl":
+      case "food":
         return (
-          <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#31a813] fill-none stroke-current stroke-2">
-            <path d="M3 12h18a1 1 0 0 1 1 1c0 4.4-3.6 8-8 8H10c-4.4 0-8-3.6-8-8a1 1 0 0 1 1-1z" className="fill-[#1f5e2e]/10" />
+          <svg
+            viewBox="0 0 24 24"
+            className="w-6 h-6 text-[#31a813] fill-none stroke-current stroke-2"
+          >
+            <path
+              d="M3 12h18a1 1 0 0 1 1 1c0 4.4-3.6 8-8 8H10c-4.4 0-8-3.6-8-8a1 1 0 0 1 1-1z"
+              className="fill-[#1f5e2e]/10"
+            />
             <path d="M7 8c0-1.5 1-2.5 1-2.5s1 1 1 2.5" />
             <path d="M11 8c0-1.5 1-2.5 1-2.5s1 1 1 2.5" />
             <path d="M15 8c0-1.5 1-2.5 1-2.5s1 1 1 2.5" />
@@ -79,10 +88,10 @@ export default function SmileCauses() {
     }
   };
 
-  const handleScroll = (direction: 'left' | 'right') => {
+  const handleScroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const scrollAmount = direction === "left" ? -300 : 300;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -91,10 +100,10 @@ export default function SmileCauses() {
       if (window.innerWidth < 640 && scrollRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
         if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
           // Scroll to the next card
-          scrollRef.current.scrollBy({ left: 260, behavior: 'smooth' });
+          scrollRef.current.scrollBy({ left: 260, behavior: "smooth" });
         }
       }
     }, 3500);
@@ -105,9 +114,7 @@ export default function SmileCauses() {
   return (
     <section className="bg-[#fafcfb] py-10 border-t border-gray-100 overflow-hidden">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-
         <div className="flex flex-col items-center">
-
           <h2 className="text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
             {smileCauses.heading.replace("Smiles Causes", "")}
             <br />
@@ -123,13 +130,11 @@ export default function SmileCauses() {
           <p className="text-center text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl font-sans mt-2">
             {smileCauses.description}
           </p>
-
         </div>
 
         <div className="relative mt-4 px-2 sm:px-6">
-
           <button
-            onClick={() => handleScroll('left')}
+            onClick={() => handleScroll("left")}
             className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll left"
           >
@@ -137,7 +142,7 @@ export default function SmileCauses() {
           </button>
 
           <button
-            onClick={() => handleScroll('right')}
+            onClick={() => handleScroll("right")}
             className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll right"
           >
@@ -155,7 +160,6 @@ export default function SmileCauses() {
                   key={card.id}
                   className="group flex-shrink-0 w-full sm:w-[260px] lg:w-[270px] bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all snap-start flex flex-col justify-between"
                 >
-
                   <div className="relative h-48 w-full">
                     <div className="relative w-full h-full rounded-t-2xl overflow-hidden">
                       <Image
@@ -171,7 +175,6 @@ export default function SmileCauses() {
                       <span>{card.category}</span>
                     </div>
                   </div>
-
 
                   <div className="relative pt-8 pb-5 px-4 flex flex-col items-center text-center flex-grow justify-between bg-white">
                     <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-30 w-14 h-14 rounded-full bg-[#e8f3e8] flex items-center justify-center shadow-md">
@@ -192,19 +195,17 @@ export default function SmileCauses() {
                       href={card.href}
                       className="inline-flex items-center gap-1.5 rounded-full border border-[#1f5e2e] bg-white px-4 py-1.5 text-xs font-semibold text-[#0c3b18] hover:bg-[#1f5e2e] hover:text-white transition-all font-sans cursor-pointer mt-5"
                     >
-                      <span>{card.ctaText || smileCauses.ctaText || "Learn More"}</span>
+                      <span>
+                        {card.ctaText || smileCauses.ctaText || "Learn More"}
+                      </span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
-
                   </div>
-
                 </div>
               );
             })}
           </div>
-
         </div>
-
       </div>
     </section>
   );

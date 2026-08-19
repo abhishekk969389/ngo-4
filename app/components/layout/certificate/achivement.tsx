@@ -1,13 +1,13 @@
-import { ArrowRight, Trophy } from 'lucide-react';
-import Link from 'next/link';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData } from '@/app/type/ngo';
+import { ArrowRight, Trophy } from "lucide-react";
+import Link from "next/link";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function AchievementSection() {
@@ -18,18 +18,12 @@ export default function AchievementSection() {
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12 mb-6">
-        {/* Main Card Container */}
         <div className="rounded-2xl sm:rounded-3xl bg-[#f6f9f5] p-5 sm:p-7 lg:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          
-          {/* Left Block: Icon + Text Details */}
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-6 flex-1">
-            
-            {/* Circular Trophy Icon Wrapper */}
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[#d6e5d8] bg-[#edf4ee] text-[#1f5e2e] flex items-center justify-center shrink-0">
               <Trophy className="w-7 h-7 text-[#1f5e2e] stroke-[1.8]" />
             </div>
 
-            {/* Title & Description */}
             <div className="flex flex-col justify-center">
               <h2 className="text-base sm:text-lg lg:text-xl font-bold text-[#0d3319] font-sans tracking-tight">
                 {certificateAchievementSection.title}
@@ -38,7 +32,6 @@ export default function AchievementSection() {
                 {certificateAchievementSection.description}
               </p>
             </div>
-
           </div>
 
           {/* Right Action Block: Outlined White Button */}
@@ -51,7 +44,6 @@ export default function AchievementSection() {
               <ArrowRight className="h-4 w-4 stroke-[2]" />
             </Link>
           </div>
-
         </div>
       </div>
     </section>

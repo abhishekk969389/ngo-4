@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import {
   Briefcase,
   Building2,
@@ -15,30 +15,33 @@ import {
   Users,
   Scale,
   Sprout,
-} from 'lucide-react';
+} from "lucide-react";
 import {
   IconBrandLinkedin,
   IconBrandFacebook,
   IconBrandTwitter,
   IconBrandWhatsapp,
-} from '@tabler/icons-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+} from "@tabler/icons-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoCareersSection,
   NgoCareerOfferItem,
   NgoCareerJobDetailItem,
   NgoCareerShareLink,
-} from '@/app/type/ngo';
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
-const offerIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const offerIconMap: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   heart: Heart,
   growth: TrendingUp,
   users: Users,
@@ -46,16 +49,22 @@ const offerIconMap: Record<string, React.ComponentType<{ className?: string }>> 
   balance: Scale,
 };
 
-const detailIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const detailIconMap: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   briefcase: Briefcase,
   building: Building2,
-  'map-pin': MapPin,
+  "map-pin": MapPin,
   clock: Clock,
   shield: ShieldCheck,
-  'user-check': UserCheck,
+  "user-check": UserCheck,
 };
 
-const shareIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const shareIconMap: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   linkedin: IconBrandLinkedin,
   facebook: IconBrandFacebook,
   twitter: IconBrandTwitter,
@@ -80,12 +89,8 @@ export default function CareerSec() {
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          
-          {/* Main Left Column (Job Details Card) */}
           <div className="lg:col-span-8">
             <div className="rounded-2xl border border-[#e6ebe5] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
-              
-              {/* About the Role */}
               <div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0d3319]">
                   {aboutRole.title}
@@ -97,14 +102,16 @@ export default function CareerSec() {
 
               <hr className="my-8 border-[#eef2ed]" />
 
-              {/* Key Responsibilities */}
               <div>
                 <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
                   {keyResponsibilities.title}
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {keyResponsibilities.items.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm leading-relaxed text-[#48564a] sm:text-base">
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-[#48564a] sm:text-base"
+                    >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1d5e2d]" />
                       <span>{item}</span>
                     </li>
@@ -114,14 +121,16 @@ export default function CareerSec() {
 
               <hr className="my-8 border-[#eef2ed]" />
 
-              {/* Qualifications */}
               <div>
                 <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
                   {qualifications.title}
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {qualifications.items.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm leading-relaxed text-[#48564a] sm:text-base">
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-[#48564a] sm:text-base"
+                    >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1d5e2d]" />
                       <span>{item}</span>
                     </li>
@@ -131,34 +140,34 @@ export default function CareerSec() {
 
               <hr className="my-8 border-[#eef2ed]" />
 
-              {/* What We Offer */}
               <div>
                 <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
                   {whatWeOffer.title}
                 </h3>
                 <div className="mt-6 grid grid-cols-2 gap-4 text-center sm:grid-cols-5 sm:gap-2">
-                  {whatWeOffer.items.map((offer: NgoCareerOfferItem, index: number) => {
-                    const IconComponent = offerIconMap[offer.icon] || Heart;
-                    return (
-                      <div
-                        key={offer.id}
-                        className={`flex flex-col items-center px-2 ${
-                          index > 0 ? 'sm:border-l sm:border-[#e6ebe5]' : ''
-                        }`}
-                      >
-                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f7f3] text-[#1d5e2d]">
-                          <IconComponent className="h-6 w-6 text-[#1d5e2d]" />
+                  {whatWeOffer.items.map(
+                    (offer: NgoCareerOfferItem, index: number) => {
+                      const IconComponent = offerIconMap[offer.icon] || Heart;
+                      return (
+                        <div
+                          key={offer.id}
+                          className={`flex flex-col items-center px-2 ${
+                            index > 0 ? "sm:border-l sm:border-[#e6ebe5]" : ""
+                          }`}
+                        >
+                          <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f7f3] text-[#1d5e2d]">
+                            <IconComponent className="h-6 w-6 text-[#1d5e2d]" />
+                          </div>
+                          <span className="font-serif text-xs font-bold leading-tight text-[#16351d] sm:text-sm">
+                            {offer.title}
+                          </span>
                         </div>
-                        <span className="font-serif text-xs font-bold leading-tight text-[#16351d] sm:text-sm">
-                          {offer.title}
-                        </span>
-                      </div>
-                    );
-                  })}
+                      );
+                    },
+                  )}
                 </div>
               </div>
 
-              {/* Bottom Callout Banner */}
               <div className="mt-10 flex flex-col items-center gap-4 rounded-xl border border-[#e0e8de] bg-[#f2f6f1] p-5 sm:flex-row sm:gap-6">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white/80 text-[#1d5e2d] shadow-sm">
                   <Sprout className="h-8 w-8 text-[#1d5e2d]" />
@@ -172,15 +181,11 @@ export default function CareerSec() {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
 
-          {/* Right Sidebar (Apply Card) */}
           <div className="lg:col-span-4">
             <div className="sticky top-8 space-y-6 rounded-2xl border border-[#e6ebe5] bg-white p-6 shadow-sm sm:p-8">
-              
-              {/* Title & Subtitle */}
               <div>
                 <h3 className="font-serif text-2xl font-bold text-[#16351d]">
                   {sidebar.title}
@@ -190,7 +195,6 @@ export default function CareerSec() {
                 </p>
               </div>
 
-              {/* Apply Button */}
               <Link
                 href={sidebar.applyButton.href}
                 className="block w-full rounded-xl bg-[#0d4019] py-3.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-[#16351d]"
@@ -198,14 +202,12 @@ export default function CareerSec() {
                 {sidebar.applyButton.label}
               </Link>
 
-              {/* Divider line with OR */}
               <div className="flex items-center gap-4 text-xs font-semibold text-[#8a998c]">
                 <span className="h-px grow bg-[#e2e8e0]" />
                 <span>{sidebar.dividerText}</span>
                 <span className="h-px grow bg-[#e2e8e0]" />
               </div>
 
-              {/* Save Job Button */}
               <button
                 type="button"
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#0d4019] py-3 text-sm font-semibold text-[#0d4019] transition hover:bg-[#f4f7f3]"
@@ -216,7 +218,6 @@ export default function CareerSec() {
 
               <hr className="border-[#eef2ed]" />
 
-              {/* Job Specifications List */}
               <div className="space-y-4">
                 {sidebar.jobDetails.map((detail: NgoCareerJobDetailItem) => {
                   const DetailIcon = detailIconMap[detail.icon] || Briefcase;
@@ -238,33 +239,33 @@ export default function CareerSec() {
                 })}
               </div>
 
-              {/* Share Box */}
               <div className="mt-6 rounded-xl bg-[#f4f7f3] p-4 text-center">
                 <p className="font-serif text-xs font-bold text-[#16351d] sm:text-sm">
                   {sidebar.share.title}
                 </p>
                 <div className="mt-3 flex items-center justify-center gap-3">
-                  {sidebar.share.links.map((shareLink: NgoCareerShareLink, idx: number) => {
-                    const ShareIcon = shareIconMap[shareLink.icon] || IconBrandLinkedin;
-                    return (
-                      <a
-                        key={idx}
-                        href={shareLink.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1d5e2d]/40 text-[#1d5e2d] transition hover:bg-[#1d5e2d] hover:text-white"
-                        aria-label={shareLink.platform}
-                      >
-                        <ShareIcon className="h-4 w-4" />
-                      </a>
-                    );
-                  })}
+                  {sidebar.share.links.map(
+                    (shareLink: NgoCareerShareLink, idx: number) => {
+                      const ShareIcon =
+                        shareIconMap[shareLink.icon] || IconBrandLinkedin;
+                      return (
+                        <a
+                          key={idx}
+                          href={shareLink.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1d5e2d]/40 text-[#1d5e2d] transition hover:bg-[#1d5e2d] hover:text-white"
+                          aria-label={shareLink.platform}
+                        >
+                          <ShareIcon className="h-4 w-4" />
+                        </a>
+                      );
+                    },
+                  )}
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

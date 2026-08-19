@@ -7,17 +7,15 @@ import OurCommitment from "@/app/components/layout/csr/ourcommitment";
 import HomeCta from "@/app/components/ui/homecta";
 
 export default function CSRPage() {
-    return (
-        <>
-            <Banner pageKey="csr" />
-            <ImpactGlance />
-            <FocusArea />
-            <CsrInitiatives />
-            <Goals />
-            <OurCommitment />
-            <HomeCta/>
-        </>
-    );
+  return (
+    <>
+      <Banner pageKey="csr" />
+      <ImpactGlance />
+      <FocusArea />
+      <CsrInitiatives />
+      <Goals />
+      <OurCommitment />
+      <HomeCta />
+    </>
+  );
 }
-
-

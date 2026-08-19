@@ -1,16 +1,20 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Clock3, MapPin } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoEventSection, NgoUpcomingEventCard } from '@/app/type/ngo';
+import Image from "next/image";
+import Link from "next/link";
+import { Clock3, MapPin } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type {
+  NgoData,
+  NgoEventSection,
+  NgoUpcomingEventCard,
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function UpcomingEvent() {
@@ -19,19 +23,23 @@ export default function UpcomingEvent() {
   if (!eventData) return null;
 
   // Dynamically split heading to highlight the last word in green (e.g., "All Upcoming Events")
-  const titleWords = eventData.upcomingTitle ? eventData.upcomingTitle.split(' ') : [];
-  const primaryTitle = titleWords.slice(0, -1).join(' ');
-  const highlightedWord = titleWords.length > 1 ? titleWords[titleWords.length - 1] : '';
+  const titleWords = eventData.upcomingTitle
+    ? eventData.upcomingTitle.split(" ")
+    : [];
+  const primaryTitle = titleWords.slice(0, -1).join(" ");
+  const highlightedWord =
+    titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
 
   return (
     <section className="bg-[#fafbf9] py-12 ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="mb-8">
           <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
-            {primaryTitle}{' '}
-            {highlightedWord && <span className="text-[#234b2c]">{highlightedWord}</span>}
+            {primaryTitle}{" "}
+            {highlightedWord && (
+              <span className="text-[#234b2c]">{highlightedWord}</span>
+            )}
           </h2>
           <div className="mt-2.5 h-[3px] w-10 rounded-full bg-[#3b6043]" />
         </div>
@@ -45,8 +53,6 @@ export default function UpcomingEvent() {
             >
               {/* Left Group: Date + Image + Title & Description */}
               <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:items-center">
-                
-                {/* 1. Date Box */}
                 <div className="flex h-20 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-[#f2f6f1] text-center sm:h-22 sm:w-20">
                   <span className=" text-xl font-bold text-[#16351d] sm:text-2xl">
                     {card.date.day}
@@ -56,10 +62,9 @@ export default function UpcomingEvent() {
                   </span>
                 </div>
 
-                {/* 2. Image Thumbnail */}
                 <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-xl sm:h-22 sm:w-36">
                   <Image
-                    src={card.image || '/banner_bg.png'}
+                    src={card.image || "/banner_bg.png"}
                     alt={card.title}
                     fill
                     className="object-cover object-center"
@@ -67,7 +72,6 @@ export default function UpcomingEvent() {
                   />
                 </div>
 
-                {/* 3. Title & Description */}
                 <div className="min-w-0 flex-1">
                   <h3 className=" text-base font-bold text-[#16351d] sm:text-lg">
                     {card.title}
@@ -78,16 +82,12 @@ export default function UpcomingEvent() {
                 </div>
               </div>
 
-              {/* Middle Group: Location & Time */}
               <div className="flex flex-col gap-3 border-t border-[#edf1ea] pt-3 sm:flex-row sm:items-center sm:gap-6 lg:border-t-0 lg:pt-0">
-                
-                {/* Location */}
                 <div className="flex items-start gap-2 text-xs text-[#59665b] sm:text-sm lg:w-48">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#234b2c] stroke-[1.8]" />
                   <span className="leading-tight">{card.location}</span>
                 </div>
 
-                {/* Time */}
                 <div className="flex items-center gap-2 text-xs text-[#59665b] sm:text-sm lg:w-44">
                   <Clock3 className="h-4 w-4 shrink-0 text-[#234b2c] stroke-[1.8]" />
                   <span>{card.time}</span>
@@ -100,7 +100,7 @@ export default function UpcomingEvent() {
                   href={`/events/${card.id}`}
                   className="inline-flex w-full items-center justify-center rounded-lg border border-[#234b2c] bg-transparent px-5 py-2.5 text-xs font-semibold text-[#234b2c] transition duration-200 hover:bg-[#234b2c] hover:text-white sm:text-sm lg:w-auto"
                 >
-                  {card.buttonLabel || 'View Details'}
+                  {card.buttonLabel || "View Details"}
                 </Link>
               </div>
             </article>
@@ -113,10 +113,9 @@ export default function UpcomingEvent() {
             type="button"
             className="inline-flex items-center justify-center rounded-lg border border-[#234b2c] bg-white px-8 py-3 text-xs font-semibold text-[#234b2c] transition duration-200 hover:bg-[#234b2c] hover:text-white sm:text-sm"
           >
-            {eventData.viewMoreLabel || 'View More Events'}
+            {eventData.viewMoreLabel || "View More Events"}
           </button>
         </div>
-
       </div>
     </section>
   );

@@ -31,7 +31,7 @@ export interface NgoBannerStat {
   id: number;
   value: string;
   label: string;
-  icon: 'smiley' | 'heart' | 'projects';
+  icon: "smiley" | "heart" | "projects";
 }
 
 export interface NgoBanner {
@@ -78,7 +78,7 @@ export interface NgoMissionCard {
   id: number;
   title: string;
   description: string;
-  icon: 'child' | 'shelter' | 'education' | 'food';
+  icon: "child" | "shelter" | "education" | "food";
   href: string;
 }
 
@@ -297,7 +297,7 @@ export interface MissionPagePillar {
   id: number;
   title: string;
   description: string;
-  icon: 'educate' | 'heal' | 'support' | 'empower' | string;
+  icon: "educate" | "heal" | "support" | "empower" | string;
   themeColor: string;
   bgColor: string;
 }
@@ -564,7 +564,7 @@ export interface NgoSupportContactFieldOption {
 export interface NgoSupportContactField {
   id: number;
   name: string;
-  type: 'text' | 'email' | 'select' | 'textarea';
+  type: "text" | "email" | "select" | "textarea";
   placeholder: string;
   icon?: string;
   options?: NgoSupportContactFieldOption[];
@@ -814,10 +814,10 @@ export interface NgoCareerFormField {
   name: string;
   label: string;
   placeholder: string;
-  type: 'text' | 'email' | 'tel' | 'select';
+  type: "text" | "email" | "tel" | "select";
   required?: boolean;
   options?: string[];
-  colSpan?: 'full' | 'half';
+  colSpan?: "full" | "half";
 }
 
 export interface NgoCareerApplyForm {
@@ -1376,7 +1376,7 @@ export interface VisionPagePillar {
   id: number;
   title: string;
   description: string;
-  icon: 'inclusive' | 'opportunities' | 'healthy' | 'stronger' | string;
+  icon: "inclusive" | "opportunities" | "healthy" | "stronger" | string;
 }
 
 export interface VisionPageQuote {
@@ -1406,7 +1406,7 @@ export interface VisionPageSection {
 }
 
 export interface TeamMemberSocial {
-  platform: 'linkedin' | 'twitter' | 'email' | string;
+  platform: "linkedin" | "twitter" | "email" | string;
   href: string;
 }
 
@@ -1539,8 +1539,6 @@ export interface NgoBranchesSection {
   branches: NgoBranchItem[];
 }
 
-
-
 export interface LinkItem {
   id: number;
   label: string;
@@ -1549,7 +1547,7 @@ export interface LinkItem {
 
 export interface SocialLink {
   id: number;
-  platform: 'facebook' | 'instagram' | 'twitter' | 'youtube' | 'linkedin';
+  platform: "facebook" | "instagram" | "twitter" | "youtube" | "linkedin";
   href: string;
 }
 

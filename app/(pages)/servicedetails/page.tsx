@@ -3,29 +3,38 @@ import ServiceHeader from "@/app/components/layout/servicedetails/serviceheader"
 import ServiceFeaturesApproach from "@/app/components/layout/servicedetails/servicefeaturesapproach";
 import ServiceImpactCta from "@/app/components/layout/servicedetails/serviceimpactcta";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, PageBannerData, ServiceDetailItem } from "@/app/type/ngo";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type {
+  NgoData,
+  PageBannerData,
+  ServiceDetailItem,
+} from "@/app/type/ngo";
 import { notFound } from "next/navigation";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$typeof') return undefined;
+    if (prop === "$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface ServiceDetailsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function ServiceDetailsPage({ searchParams }: ServiceDetailsPageProps) {
+export default async function ServiceDetailsPage({
+  searchParams,
+}: ServiceDetailsPageProps) {
   const resolvedSearchParams = await searchParams;
-  const rawId = typeof resolvedSearchParams.id === "string" ? resolvedSearchParams.id : "education";
+  const rawId =
+    typeof resolvedSearchParams.id === "string"
+      ? resolvedSearchParams.id
+      : "education";
   const idKey = rawId.toLowerCase().trim();
   const serviceDetail: ServiceDetailItem | undefined =
     (data.serviceDetails && data.serviceDetails[idKey]) ||
     Object.values(data.serviceDetails || {}).find(
-      (s: any) => String(s.numericId) === idKey || s.id.toLowerCase() === idKey
+      (s: any) => String(s.numericId) === idKey || s.id.toLowerCase() === idKey,
     ) ||
     data.serviceDetails?.["education"];
   if (!serviceDetail) {
@@ -40,11 +49,11 @@ export default async function ServiceDetailsPage({ searchParams }: ServiceDetail
 
   const baseBreadcrumbs = bannerConfig?.breadcrumbs || [];
   const hasSpecificBanner = !!serviceDetail.banner;
-  const currentTitle = serviceDetail.header?.title || bannerConfig?.title || '';
+  const currentTitle = serviceDetail.header?.title || bannerConfig?.title || "";
 
   const dynamicBannerData: PageBannerData = {
     title: currentTitle,
-    backgroundImage: bannerConfig?.backgroundImage || '/banner_bg.png',
+    backgroundImage: bannerConfig?.backgroundImage || "/banner_bg.png",
     altText: currentTitle,
     breadcrumbs: hasSpecificBanner
       ? baseBreadcrumbs

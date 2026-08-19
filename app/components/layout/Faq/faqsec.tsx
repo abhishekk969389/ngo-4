@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
 import {
   HelpCircle,
   Mail,
@@ -11,23 +11,26 @@ import {
   ChevronDown,
   ChevronUp,
   Heart,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoFaqSection,
   NgoFaqItem,
   NgoFaqSidebarItem,
-} from '@/app/type/ngo';
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
-const sidebarIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const sidebarIconMap: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   mail: Mail,
   phone: Phone,
   clock: Clock,
@@ -50,14 +53,12 @@ export default function FaqSec() {
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-        
         {/* Header Section */}
         <div className="text-center">
           <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
             {heading}
           </h2>
 
-          {/* Heart Divider */}
           <div className="my-4 flex items-center justify-center gap-3">
             <span className="h-px w-12 bg-[#d3e0d1]" />
             <Heart className="h-3.5 w-3.5 fill-[#2c7a3f] text-[#2c7a3f]" />
@@ -71,17 +72,14 @@ export default function FaqSec() {
 
         {/* 2-Column Grid Layout */}
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 sm:mt-16">
-          
           {/* Left Column (Sidebar Support Box) */}
           <div className="lg:col-span-4">
             <div className="rounded-3xl border border-[#e5eae2] bg-[#f5f8f4] p-6 text-center shadow-sm sm:p-8">
-              
               {/* Top Badge Icon */}
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e2ede0] text-[#1d5e2d]">
                 <HelpCircle className="h-7 w-7 stroke-[1.75]" />
               </div>
 
-              {/* Title & Subtitle */}
               <h3 className="font-serif text-2xl font-bold text-[#16351d]">
                 {sidebar.title}
               </h3>
@@ -91,7 +89,6 @@ export default function FaqSec() {
 
               <hr className="my-6 border-[#e2e8e0]" />
 
-              {/* Support Details List */}
               <div className="space-y-4 text-left">
                 {sidebar.items.map((item: NgoFaqSidebarItem) => {
                   const ItemIcon = sidebarIconMap[item.icon] || Mail;
@@ -106,7 +103,10 @@ export default function FaqSec() {
                           {item.label}
                         </p>
                         {item.href ? (
-                          <a href={item.href} className="text-xs font-bold text-[#16351d] hover:underline sm:text-sm">
+                          <a
+                            href={item.href}
+                            className="text-xs font-bold text-[#16351d] hover:underline sm:text-sm"
+                          >
                             {item.value}
                           </a>
                         ) : (
@@ -120,17 +120,15 @@ export default function FaqSec() {
                 })}
               </div>
 
-              {/* Contact Us Button */}
               <div className="mt-8">
                 <Link
-                  href={sidebar.button.href || '/contactus'}
+                  href={sidebar.button.href || "/contactus"}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0c401a] px-6 py-3.5 text-xs font-semibold text-white shadow-sm transition hover:bg-[#16351d] sm:text-sm"
                 >
                   <span>{sidebar.button.label}</span>
                   <ArrowRight className="h-4 w-4 text-white" />
                 </Link>
               </div>
-
             </div>
           </div>
 
@@ -161,7 +159,6 @@ export default function FaqSec() {
                       )}
                     </button>
 
-                    {/* Expandable Body */}
                     {isOpen && (
                       <div className="border-t border-[#f0f4ef] px-6 pt-2 pb-5 text-xs leading-relaxed text-[#59665b] sm:text-sm">
                         {faq.answer}
@@ -172,9 +169,7 @@ export default function FaqSec() {
               })}
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

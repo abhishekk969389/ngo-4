@@ -4,17 +4,17 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: "http",
+        hostname: "**",
       },
     ],
   },
   // @ts-ignore - To prevent potential TS errors if types are slightly outdated
-  allowedDevOrigins: ['192.168.1.160'],
+  allowedDevOrigins: ["192.168.1.160"],
 };
 
 export default nextConfig;

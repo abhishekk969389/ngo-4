@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Calendar, Heart, Quote, ArrowRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoBlogPost } from '@/app/type/ngo';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, Heart, Quote, ArrowRight } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoBlogPost } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface BlogDetailProps {
@@ -25,24 +25,20 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
 
   const { sidebar, blogs } = blogPageData;
 
-  const currentBlog = blogs.find(
-    (b: any) => String(b.id) === String(blogId)
-  ) || blogs[0];
+  const currentBlog =
+    blogs.find((b: any) => String(b.id) === String(blogId)) || blogs[0];
 
   const moreBlogs = blogs.filter(
-    (b: any) => String(b.id) !== String(currentBlog.id)
+    (b: any) => String(b.id) !== String(currentBlog.id),
   );
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-          
           {/* Main Blog Article (Left Column) */}
           <div className="lg:col-span-8">
             <article className="rounded-2xl border border-[#e8eee7] bg-white p-5 shadow-xs sm:p-8 lg:p-10">
-              
-              {/* Featured Image */}
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#f0f4ef]">
                 <Image
                   src={currentBlog.image}
@@ -54,49 +50,47 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
                 />
               </div>
 
-              {/* Date */}
               <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#1d5e2d]">
                 <Calendar className="h-3.5 w-3.5 stroke-[2.2]" />
                 <span>{currentBlog.date}</span>
               </div>
 
-              {/* Title */}
               <h1 className="mt-3 font-serif text-2xl font-bold tracking-tight text-[#16351d] sm:text-3xl lg:text-4xl leading-tight">
                 {currentBlog.title}
               </h1>
 
-              {/* Heart Decorative Divider */}
               <div className="my-4 flex items-center gap-3">
                 <span className="h-[1.5px] w-12 rounded-full bg-[#1d5e2d]/60" />
                 <Heart className="h-3.5 w-3.5 fill-[#1d5e2d] text-[#1d5e2d]" />
                 <span className="h-[1.5px] w-12 rounded-full bg-[#1d5e2d]/60" />
               </div>
 
-              {/* Intro Summary */}
               <p className="mt-4 text-sm leading-relaxed text-[#2d4a34] sm:text-base font-medium">
                 {currentBlog.description}
               </p>
 
-              {/* Paragraphs */}
-              {currentBlog.paragraphs && currentBlog.paragraphs.map((paragraph: any, idx: any) => (
-                <p key={idx} className="mt-4 text-xs leading-relaxed text-[#59665b] sm:text-sm">
-                  {paragraph}
-                </p>
-              ))}
-
-              {/* Structured Heading Sections */}
-              {currentBlog.sections && currentBlog.sections.map((section: any, idx: any) => (
-                <div key={idx} className="mt-8 sm:mt-10">
-                  <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
-                    {section.heading}
-                  </h2>
-                  <p className="mt-2.5 text-xs leading-relaxed text-[#59665b] sm:text-sm">
-                    {section.content}
+              {currentBlog.paragraphs &&
+                currentBlog.paragraphs.map((paragraph: any, idx: any) => (
+                  <p
+                    key={idx}
+                    className="mt-4 text-xs leading-relaxed text-[#59665b] sm:text-sm"
+                  >
+                    {paragraph}
                   </p>
-                </div>
-              ))}
+                ))}
 
-              {/* Bottom Quote Callout */}
+              {currentBlog.sections &&
+                currentBlog.sections.map((section: any, idx: any) => (
+                  <div key={idx} className="mt-8 sm:mt-10">
+                    <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
+                      {section.heading}
+                    </h2>
+                    <p className="mt-2.5 text-xs leading-relaxed text-[#59665b] sm:text-sm">
+                      {section.content}
+                    </p>
+                  </div>
+                ))}
+
               {currentBlog.quote && (
                 <div className="mt-10 rounded-2xl border-l-4 border-[#1d5e2d] bg-[#f4f7f3] p-5 sm:p-6">
                   <div className="flex items-start gap-3.5">
@@ -114,21 +108,16 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
                   </div>
                 </div>
               )}
-
             </article>
           </div>
 
-          {/* Sidebar - More Blogs (Right Column) */}
           <aside className="lg:col-span-4">
             <div className="sticky top-24 rounded-2xl border border-[#e8eee7] bg-white p-6 shadow-xs">
-              
-              {/* Sidebar Header */}
               <h3 className="font-serif text-xl font-bold tracking-tight text-[#16351d]">
-                {sidebar?.title || 'More Blogs'}
+                {sidebar?.title || "More Blogs"}
               </h3>
               <div className="mt-1.5 mb-6 h-[2px] w-8 rounded-full bg-[#1d5e2d]" />
 
-              {/* More Blogs List */}
               <div className="flex flex-col divide-y divide-[#f0f4ef]">
                 {moreBlogs.map((b: any) => (
                   <Link
@@ -146,7 +135,9 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-[11px] font-medium text-[#59665b]">{b.date}</span>
+                      <span className="text-[11px] font-medium text-[#59665b]">
+                        {b.date}
+                      </span>
                       <h4 className="font-serif text-xs font-bold leading-snug text-[#16351d] line-clamp-2 transition-colors group-hover:text-[#1d5e2d] sm:text-sm">
                         {b.title}
                       </h4>
@@ -155,7 +146,6 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
                 ))}
               </div>
 
-              {/* View All Button */}
               {sidebar?.viewAllButton && (
                 <div className="mt-8 pt-2">
                   <Link
@@ -167,10 +157,8 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
                   </Link>
                 </div>
               )}
-
             </div>
           </aside>
-
         </div>
       </div>
     </section>

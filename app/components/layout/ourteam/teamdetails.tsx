@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import {
   Calendar,
   GraduationCap,
@@ -11,25 +11,21 @@ import {
   HandHeart,
   UserCheck,
   Award,
-} from 'lucide-react';
+} from "lucide-react";
 import {
   IconBrandLinkedin,
   IconBrandTwitter,
   IconBrandFacebook,
   IconQuote,
-} from '@tabler/icons-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type {
-  NgoData,
-  TeamSectionData,
-  TeamMember,
-} from '@/app/type/ngo';
+} from "@tabler/icons-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, TeamSectionData, TeamMember } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface TeamDetailsProps {
@@ -43,20 +39,20 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
 
   const { detailLabels, members } = teamData;
 
-  const currentMember = members.find(
-    (m: TeamMember) => String(m.id) === String(memberId)
-  ) || members[0];
+  const currentMember =
+    members.find((m: TeamMember) => String(m.id) === String(memberId)) ||
+    members[0];
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
-      case 'linkedin':
+      case "linkedin":
         return <IconBrandLinkedin className="h-4 w-4" />;
-      case 'twitter':
+      case "twitter":
         return <IconBrandTwitter className="h-4 w-4" />;
-      case 'facebook':
+      case "facebook":
         return <IconBrandFacebook className="h-4 w-4" />;
-      case 'email':
-      case 'mail':
+      case "email":
+      case "mail":
         return <Mail className="h-4 w-4" />;
       default:
         return <Mail className="h-4 w-4" />;
@@ -66,15 +62,12 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
-        
         {/* Top Profile Card */}
         <div className="rounded-3xl border border-[#e8eee7] bg-white p-6 shadow-xs sm:p-8 lg:p-10">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8 xl:gap-10 items-center">
-            
             {/* Left Column: Avatar & Socials */}
             <div className="flex flex-col items-center justify-center lg:col-span-4">
               <div className="relative">
-                {/* Decorative background leaf/shape accent */}
                 <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-white bg-[#e8f2ea] shadow-md sm:h-56 sm:w-56">
                   <Image
                     src={currentMember.image}
@@ -121,10 +114,7 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                 {currentMember.bio}
               </p>
 
-              {/* Key Details List */}
               <div className="mt-6 flex flex-col space-y-2.5">
-                
-                {/* Experience */}
                 <div className="flex items-center gap-3 text-xs sm:text-sm">
                   <Calendar className="h-4 w-4 shrink-0 text-[#1d5e2d]" />
                   <span className="w-24 shrink-0 font-bold text-[#16351d]">
@@ -136,7 +126,6 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   </span>
                 </div>
 
-                {/* Education */}
                 <div className="flex items-center gap-3 text-xs sm:text-sm">
                   <GraduationCap className="h-4 w-4 shrink-0 text-[#1d5e2d]" />
                   <span className="w-24 shrink-0 font-bold text-[#16351d]">
@@ -148,7 +137,6 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   </span>
                 </div>
 
-                {/* Email */}
                 <div className="flex items-center gap-3 text-xs sm:text-sm">
                   <Mail className="h-4 w-4 shrink-0 text-[#1d5e2d]" />
                   <span className="w-24 shrink-0 font-bold text-[#16351d]">
@@ -163,7 +151,6 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   </a>
                 </div>
 
-                {/* Phone */}
                 <div className="flex items-center gap-3 text-xs sm:text-sm">
                   <Phone className="h-4 w-4 shrink-0 text-[#1d5e2d]" />
                   <span className="w-24 shrink-0 font-bold text-[#16351d]">
@@ -178,7 +165,6 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   </a>
                 </div>
 
-                {/* Location */}
                 <div className="flex items-center gap-3 text-xs sm:text-sm">
                   <MapPin className="h-4 w-4 shrink-0 text-[#1d5e2d]" />
                   <span className="w-24 shrink-0 font-bold text-[#16351d]">
@@ -189,7 +175,6 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                     {currentMember.location}
                   </span>
                 </div>
-
               </div>
             </div>
 
@@ -210,7 +195,7 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                     </div>
                     <div>
                       <p className="text-[11px] font-medium text-[#59665b]">
-                        {detailLabels.joinedTitle || 'Joined Bless Foundation'}
+                        {detailLabels.joinedTitle || "Joined Bless Foundation"}
                       </p>
                       <p className="text-xs font-bold text-[#16351d] sm:text-sm">
                         {currentMember.joined}
@@ -218,18 +203,14 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
 
         {/* Bottom 3 Feature Detail Cards */}
         <div className="mt-6 rounded-3xl border border-[#e8eee7] bg-white p-6 shadow-xs sm:mt-8 sm:p-8">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3 md:divide-x md:divide-[#e8eee7]">
-            
-            {/* Expertise */}
             <div className="flex items-start gap-4 md:pr-6">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f0f6ef] text-[#1d5e2d]">
                 <UserCheck className="h-7 w-7 stroke-[1.8]" />
@@ -239,12 +220,11 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   {detailLabels.expertise}
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed text-[#59665b] sm:text-sm">
-                  {currentMember.expertise.join(', ')}
+                  {currentMember.expertise.join(", ")}
                 </p>
               </div>
             </div>
 
-            {/* Core Values */}
             <div className="flex items-start gap-4 md:px-6">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f0f6ef] text-[#1d5e2d]">
                 <HandHeart className="h-7 w-7 stroke-[1.8]" />
@@ -254,12 +234,11 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                   {detailLabels.coreValues}
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed text-[#59665b] sm:text-sm">
-                  {currentMember.coreValues.join(', ')}
+                  {currentMember.coreValues.join(", ")}
                 </p>
               </div>
             </div>
 
-            {/* Key Achievements */}
             <div className="flex items-start gap-4 md:pl-6">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f0f6ef] text-[#1d5e2d]">
                 <Award className="h-7 w-7 stroke-[1.8]" />
@@ -273,10 +252,8 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
                 </p>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

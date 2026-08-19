@@ -7431,12 +7431,7 @@
                   }
                 ],
                 "recurringLabel": "This is a recurring donation",
-                "frequencies": [
-                  "Monthly",
-                  "One-time",
-                  "Quarterly",
-                  "Annually"
-                ]
+                "frequencies": ["Monthly", "One-time", "Quarterly", "Annually"]
               },
               "step2": {
                 "title": "2. Your Details",

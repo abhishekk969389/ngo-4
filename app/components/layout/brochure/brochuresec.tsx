@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Building2,
   TrendingUp,
@@ -9,24 +9,28 @@ import {
   Users,
   HandHeart,
   Download,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoBrochureSection, NgoBrochureItem } from '@/app/type/ngo';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type {
+  NgoData,
+  NgoBrochureSection,
+  NgoBrochureItem,
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   building: Building2,
   chart: TrendingUp,
-  'graduation-cap': GraduationCap,
+  "graduation-cap": GraduationCap,
   leaf: Leaf,
   users: Users,
-  'heart-hand': HandHeart,
+  "heart-hand": HandHeart,
 };
 
 export default function BrochureSec() {
@@ -35,14 +39,14 @@ export default function BrochureSec() {
   if (!brochureData) return null;
 
   const headingText = brochureData.heading;
-  const highlightWord = brochureData.highlightedText || 'Brochures';
-  const headingParts = headingText.split(new RegExp(`(${highlightWord})`, 'gi'));
+  const highlightWord = brochureData.highlightedText || "Brochures";
+  const headingParts = headingText.split(
+    new RegExp(`(${highlightWord})`, "gi"),
+  );
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Section */}
         <div className="text-center">
           <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
             {headingParts.map((part, index) =>
@@ -52,11 +56,10 @@ export default function BrochureSec() {
                 </span>
               ) : (
                 <span key={index}>{part}</span>
-              )
+              ),
             )}
           </h2>
 
-          {/* Underline Bar */}
           <div className="my-4 flex justify-center">
             <span className="h-[2.5px] w-12 rounded-full bg-[#2c7a3f]" />
           </div>
@@ -66,7 +69,6 @@ export default function BrochureSec() {
           </p>
         </div>
 
-        {/* Brochure Cards List */}
         <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-16">
           {brochureData.items.map((item: NgoBrochureItem) => {
             const IconComponent = iconMap[item.icon] || Building2;
@@ -76,7 +78,6 @@ export default function BrochureSec() {
                 key={item.id}
                 className="group flex flex-col justify-between gap-4 rounded-2xl border border-[#e5eae2] bg-white p-5 shadow-sm transition-all duration-300 hover:border-[#1d5e2d]/40 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
               >
-                {/* Left Side: Icon & Details */}
                 <div className="flex items-start gap-4 sm:items-center">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#f0f6ef] text-[#1d5e2d]">
                     <IconComponent className="h-7 w-7 stroke-[1.75]" />
@@ -91,7 +92,6 @@ export default function BrochureSec() {
                   </div>
                 </div>
 
-                {/* Right Side: Download Button & File Info */}
                 <div className="flex shrink-0 flex-col items-start gap-1.5 sm:items-end">
                   <a
                     href={item.downloadUrl}
@@ -99,18 +99,16 @@ export default function BrochureSec() {
                     className="inline-flex items-center gap-2 rounded-xl border border-[#1d5e2d] px-5 py-2.5 text-xs font-bold text-[#1d5e2d] shadow-sm transition-all hover:bg-[#1d5e2d] hover:text-white sm:text-sm"
                   >
                     <Download className="h-4 w-4 stroke-[2.2]" />
-                    <span>{item.buttonLabel || 'Download'}</span>
+                    <span>{item.buttonLabel || "Download"}</span>
                   </a>
                   <span className="text-[11px] font-semibold tracking-wider text-[#8a998c] uppercase">
                     {item.fileType} • {item.fileSize}
                   </span>
                 </div>
-
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import {
   BookOpen,
   HeartPulse,
@@ -12,15 +12,15 @@ import {
   HandHelping,
   Sprout,
   Orbit,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoServiceItem } from '@/app/type/ngo';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoServiceItem } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const serviceIconMap = {
@@ -31,7 +31,7 @@ const serviceIconMap = {
   child: Baby,
   disaster: ShieldAlert,
   support: HeartHandshake,
-  'community-first': HandHelping,
+  "community-first": HandHelping,
   sustainability: Sprout,
   impact: Orbit,
 };
@@ -46,42 +46,46 @@ export default function ServiceSection() {
   const bottomItems = services.items.slice(6, 10);
 
   const renderIcon = (item: NgoServiceItem) => {
-    const Icon = serviceIconMap[item.icon as keyof typeof serviceIconMap] ?? BookOpen;
-    return <Icon className="h-5 w-5 sm:h-6 sm:w-6" style={{ color: item.accent }} />;
+    const Icon =
+      serviceIconMap[item.icon as keyof typeof serviceIconMap] ?? BookOpen;
+    return (
+      <Icon className="h-5 w-5 sm:h-6 sm:w-6" style={{ color: item.accent }} />
+    );
   };
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 font-sans px-2 sm:px-0">
       <div className="mx-auto max-w-[1348px] px-4 sm:px-6 lg:px-8">
-        
         {/* Header Section */}
         <div className="text-center flex flex-col items-center">
-          
-          {/* OUR SERVICES Badge + Underline Line */}
           <div className="inline-flex flex-col items-center">
             <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.2em] text-[#2c7a3f]">
               {services.badge}
             </span>
-            {/* Line under OUR SERVICES */}
+
             <div className="mt-1 h-[2.5px] w-8 sm:w-10 rounded-full bg-[#2c7a3f]" />
           </div>
 
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3319] font-serif leading-[1.2] sm:leading-[1.18] tracking-tight mt-2 sm:mt-1">
             <span className="block">{services.heading.line1}</span>
-            
-            {/* Lasting Impact + Curved Brush Line */}
+
             <span className="relative inline-block mt-1 sm:mt-0">
               <span className="inline-block relative text-[#2c7a3f] italic font-serif">
                 {services.heading.line2}
               </span>
-              {/* Hand-drawn style Underline under Lasting Impact */}
-              <svg 
-                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2.5 sm:h-3 text-[#2c7a3f]/75" 
-                viewBox="0 0 300 12" 
+
+              <svg
+                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2.5 sm:h-3 text-[#2c7a3f]/75"
+                viewBox="0 0 300 12"
                 fill="none"
                 aria-hidden="true"
               >
-                <path d="M 5 8 Q 150 2, 295 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                <path
+                  d="M 5 8 Q 150 2, 295 7"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
               </svg>
             </span>
           </h2>
@@ -93,13 +97,14 @@ export default function ServiceSection() {
 
         {/* Main 3-Column Grid */}
         <div className="mt-8 sm:mt-10 lg:mt-12 grid items-center gap-6 sm:gap-8 lg:grid-cols-12">
-          
           {/* Left Items */}
           <div className="space-y-6 sm:space-y-8 lg:space-y-6 lg:col-span-4 order-1">
             {leftItems.map((item: any, idx: any) => (
               <React.Fragment key={item.id}>
                 <Link
-                  href={item.href || `/servicedetails?id=${item.slug || item.id}`}
+                  href={
+                    item.href || `/servicedetails?id=${item.slug || item.id}`
+                  }
                   className="group flex items-start gap-3.5 sm:gap-4 p-2 -mx-2 rounded-xl transition-all hover:bg-gray-50/80 cursor-pointer"
                 >
                   <div
@@ -109,7 +114,10 @@ export default function ServiceSection() {
                     {renderIcon(item)}
                   </div>
                   <div>
-                    <h3 className="text-base font-bold sm:text-lg transition-colors group-hover:underline" style={{ color: item.accent }}>
+                    <h3
+                      className="text-base font-bold sm:text-lg transition-colors group-hover:underline"
+                      style={{ color: item.accent }}
+                    >
                       {item.title}
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm leading-relaxed text-gray-600">
@@ -124,7 +132,6 @@ export default function ServiceSection() {
             ))}
           </div>
 
-          {/* Center Circular Image */}
           <div className="flex justify-center py-2 sm:py-4 lg:col-span-4 lg:py-0 order-2">
             <div className="relative h-56 w-56 sm:h-80 sm:w-80 lg:h-96 lg:w-96 rounded-full bg-[#edf4ee] p-2 border-2 border-[#d6ebd9] shadow-sm shrink-0">
               <div className="relative h-full w-full overflow-hidden rounded-full">
@@ -144,7 +151,9 @@ export default function ServiceSection() {
             {rightItems.map((item: any, idx: any) => (
               <React.Fragment key={item.id}>
                 <Link
-                  href={item.href || `/servicedetails?id=${item.slug || item.id}`}
+                  href={
+                    item.href || `/servicedetails?id=${item.slug || item.id}`
+                  }
                   className="group flex items-start gap-3.5 sm:gap-4 p-2 -mx-2 rounded-xl transition-all hover:bg-gray-50/80 cursor-pointer"
                 >
                   <div
@@ -154,7 +163,10 @@ export default function ServiceSection() {
                     {renderIcon(item)}
                   </div>
                   <div>
-                    <h3 className="text-base font-bold sm:text-lg transition-colors group-hover:underline" style={{ color: item.accent }}>
+                    <h3
+                      className="text-base font-bold sm:text-lg transition-colors group-hover:underline"
+                      style={{ color: item.accent }}
+                    >
                       {item.title}
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm leading-relaxed text-gray-600">
@@ -168,7 +180,6 @@ export default function ServiceSection() {
               </React.Fragment>
             ))}
           </div>
-
         </div>
 
         {/* Bottom Banner Section */}
@@ -211,7 +222,6 @@ export default function ServiceSection() {
             />
           </svg>
         </div>
-
       </div>
     </section>
   );

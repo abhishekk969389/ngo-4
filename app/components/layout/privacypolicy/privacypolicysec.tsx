@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { ShieldCheck, FileCheck } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoPrivacyPolicySection } from '@/app/type/ngo';
+import React from "react";
+import { ShieldCheck, FileCheck } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoPrivacyPolicySection } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function PrivacyPolicySec() {
-  const policyData = data.privacyPolicySection as NgoPrivacyPolicySection | undefined;
+  const policyData = data.privacyPolicySection as
+    NgoPrivacyPolicySection | undefined;
 
   if (!policyData) return null;
 
@@ -22,11 +23,9 @@ export default function PrivacyPolicySec() {
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        
-        {/* Sections List */}
         <div className="divide-y divide-[#eef2ed] space-y-8">
           {sections.map((item: any, idx: number) => (
-            <div key={item.id} className={`${idx > 0 ? 'pt-8' : ''}`}>
+            <div key={item.id} className={`${idx > 0 ? "pt-8" : ""}`}>
               <h3 className="font-serif text-xl font-bold text-[#0d3319] sm:text-2xl mb-3">
                 {item.title}
               </h3>
@@ -51,7 +50,6 @@ export default function PrivacyPolicySec() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
