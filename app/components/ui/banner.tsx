@@ -25,7 +25,7 @@ export default function Banner({
       case "home":
         return (
           <Home
-            className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1b4d25] stroke-[2]"
+            className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0f3c1d] stroke-[2]"
             aria-hidden="true"
           />
         );
@@ -36,31 +36,36 @@ export default function Banner({
 
   return (
     <div
-      className={`relative w-full h-[360px] sm:h-[420px] lg:h-[400px] bg-[#f7f8f2] overflow-hidden flex items-center ${className}`}
+      className={`relative w-full h-[280px] sm:h-[340px] lg:h-[380px] bg-[#fbf9f4] overflow-hidden flex items-center ${className}`}
     >
+      {/* Background Image Layer */}
       <div className="absolute inset-0 w-full h-full">
         {activeData.backgroundImage && (
           <Image
             src={activeData.backgroundImage}
             alt={activeData.altText || activeData.title}
             fill
-            className="object-cover object-right sm:object-center lg:object-[center_38%]"
+            className="object-cover object-right sm:object-center lg:object-[center_35%]"
             priority
           />
         )}
-      
-        <div className="absolute inset-0 bg-[#f7f8f2]/40" />
-        {/* Stronger gradient from the left where the text is placed */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8f2]/40 via-[#f7f8f2]/40 to-transparent w-full sm:w-[85%] md:w-[75%] lg:w-[60%] xl:w-[50%]" />
+
+        {/* Soft Warm Left Gradient for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#fbf9f4] via-[#fbf9f4]/85 sm:via-[#fbf9f4]/70 to-transparent w-full sm:w-[65%] md:w-[55%] lg:w-[48%]" />
       </div>
-      <div className="relative mx-auto max-w-[1350px] w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 z-10">
-        <div className="flex flex-col justify-center max-w-2xl lg:max-w-3xl xl:max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-6xl font-bold tracking-tight text-[#1b4d25] font-serif leading-tight whitespace-normal sm:whitespace-nowrap">
+
+      {/* Content Layer */}
+      <div className="relative mx-auto max-w-[1350px] w-full px-4 sm:px-6 lg:px-8 z-10">
+        <div className="flex flex-col justify-center max-w-xl">
+          {/* Main Title */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0f3c1d] font-serif leading-tight">
             {activeData.title}
-          </h1> 
+          </h1>
+
+          {/* Breadcrumb Navigation */}
           {activeData.breadcrumbs && activeData.breadcrumbs.length > 0 && (
             <nav aria-label="Breadcrumb" className="mt-3 sm:mt-4">
-              <ol className="flex flex-wrap items-center gap-2 text-sm sm:text-base font-semibold font-sans">
+              <ol className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-sm sm:text-base font-sans">
                 {activeData.breadcrumbs.map((item, index) => {
                   const isLast = index === activeData.breadcrumbs.length - 1;
                   const itemIcon = getBreadcrumbIcon(item.icon);
@@ -68,11 +73,11 @@ export default function Banner({
                   return (
                     <li
                       key={item.id ?? index}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-1.5 sm:gap-2"
                     >
                       {index > 0 && (
                         <ChevronRight
-                          className="w-4 h-4 text-[#2c7a3f] shrink-0 stroke-[2.5]"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0f3c1d] shrink-0 stroke-[2.5]"
                           aria-hidden="true"
                         />
                       )}
@@ -80,7 +85,7 @@ export default function Banner({
                       {item.href && !item.isCurrent ? (
                         <Link
                           href={item.href}
-                          className="inline-flex items-center gap-1.5 text-[#1b4d25] hover:text-[#2c7a3f] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-[#0f3c1d] font-medium hover:text-[#2d6a38] transition-colors"
                         >
                           {itemIcon}
                           <span>{item.label}</span>
@@ -89,8 +94,8 @@ export default function Banner({
                         <span
                           className={`inline-flex items-center gap-1.5 ${
                             item.isCurrent || isLast
-                              ? "text-[#2c7a3f]"
-                              : "text-[#1b4d25]"
+                              ? "text-[#2d6a38] font-semibold"
+                              : "text-[#0f3c1d] font-medium"
                           }`}
                           aria-current={
                             item.isCurrent || isLast ? "page" : undefined

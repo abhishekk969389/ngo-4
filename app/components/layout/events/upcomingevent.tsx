@@ -32,7 +32,7 @@ export default function UpcomingEvent() {
 
   return (
     <section className="bg-[#fafbf9] py-12 ">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-8">
           <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">

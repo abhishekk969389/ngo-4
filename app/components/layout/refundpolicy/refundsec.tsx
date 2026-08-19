@@ -22,7 +22,7 @@ export default function RefundSec() {
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="divide-y divide-[#eef2ed] space-y-8">
           {sections.map((item: any, idx: number) => (
             <div key={item.id} className={`${idx > 0 ? "pt-8" : ""}`}>

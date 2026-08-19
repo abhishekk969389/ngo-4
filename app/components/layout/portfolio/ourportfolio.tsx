@@ -53,7 +53,7 @@ export default function OurPortfolio() {
 
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#0d3319] font-sans">
@@ -86,11 +86,10 @@ export default function OurPortfolio() {
                 className={`group relative flex flex-col overflow-hidden rounded-2xl ${theme.bg} transition-all duration-300 hover:shadow-sm sm:flex-row`}
               >
                 <div
-                  className={`relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[44%] ${
-                    isRightColumn
-                      ? "sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]"
-                      : "sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]"
-                  }`}
+                  className={`relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[44%] ${isRightColumn
+                    ? "sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]"
+                    : "sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]"
+                    }`}
                 >
                   <Image
                     src={card.image}
@@ -103,9 +102,8 @@ export default function OurPortfolio() {
 
                 {/* Content Box - Icon Side-by-side with Content */}
                 <div
-                  className={`flex flex-1 items-start gap-3.5 p-5 sm:gap-4 sm:p-6 ${
-                    isRightColumn ? "sm:order-1" : "sm:order-2"
-                  }`}
+                  className={`flex flex-1 items-start gap-3.5 p-5 sm:gap-4 sm:p-6 ${isRightColumn ? "sm:order-1" : "sm:order-2"
+                    }`}
                 >
                   {/* Left Side: Icon Circle */}
                   <div
@@ -128,7 +126,7 @@ export default function OurPortfolio() {
 
                     <Link
                       href={card.href || `/portfolio/${card.id}`}
-                      className={`inline-flex items-center gap-1.5 text-xs font-bold ${theme.text} transition hover:opacity-80`}
+                      className={`inline-flex items-center gap-1.5 mt-4 text-xs font-bold ${theme.text} transition hover:opacity-80`}
                     >
                       <span>{card.buttonLabel || "View Project"}</span>
                       <ArrowRight className="h-3.5 w-3.5" />
