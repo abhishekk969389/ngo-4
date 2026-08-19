@@ -24,7 +24,7 @@ export default function HomeCta() {
   return (
     <section className="my-6 overflow-hidden">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-[#102719] rounded-2xl py-8 px-6 sm:px-10 lg:px-12 shadow-2xl overflow-hidden">
+        <div className="relative bg-[#102719] rounded-2xl py-8 px-6 sm:px-10 lg:px-8 shadow-2xl overflow-hidden">
           <div className="absolute right-0 top-0 bottom-0 opacity-20 pointer-events-none hidden lg:block">
             <svg
               className="h-full w-auto text-[#2d7d3e]"

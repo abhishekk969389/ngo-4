@@ -298,7 +298,7 @@ export default function MediaSection() {
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center">
           <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-[#0d3319] font-sans">

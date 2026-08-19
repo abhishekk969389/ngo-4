@@ -34,7 +34,7 @@ export default function CaseStudyOverviewSection({
 
   return (
     <section className="py-8 sm:py-12 bg-white font-sans">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           {/* Left Column: Overview Box */}
           <div className="lg:col-span-6 bg-[#f7faf6] border border-[#e2ebd9] rounded-3xl p-6 sm:p-8 flex flex-col justify-between">

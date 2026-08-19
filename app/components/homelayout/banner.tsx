@@ -64,7 +64,7 @@ export default function Banner() {
 
   return (
     <div className="relative bg-[#f7f8f2] overflow-hidden">
-      <div className="relative h-80 sm:h-[380px] w-full lg:hidden">
+      <div className="relative h-80 sm:h-[380px] mx-auto max-w-[1350px] lg:hidden">
         <Image
           src={banner.backgroundImage}
           alt="People planting sapling"
@@ -90,13 +90,22 @@ export default function Banner() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-[1340px] px-4 sm:px-6 lg:px-12 py-10 sm:py-16 lg:py-16">
+      <div className="relative mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-center z-10">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider text-[#256131] uppercase font-sans">
-              <svg className="w-5 h-5 fill-[#37b350]" viewBox="0 0 24 24">
-                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 15v-3.1c-1.9-.4-3.4-1.8-3.8-3.6-.2-.7.3-1.3 1-1.3.5 0 1 .4 1.1.9.3 1.4 1.5 2.5 2.9 2.6V7.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v3.2c2-.4 3.5-2.2 3.5-4.3 0-.3.2-.5.5-.5s.5.2.5.5c0 2.9-2.1 5.3-4.9 5.8v4.4c0 .5-.4 1-1 1s-1-.5-1-1z" />
-              </svg>
+              {banner.taglineIcon === "three-leaves" ? (
+                <svg className="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.5 15.5C7 15.5 3.5 11.5 3.5 6.5C3.5 6.5 6.5 6.5 9 9C11.5 11.5 11.5 15.5 11.5 15.5Z" fill="#9CCC65"/>
+                  <path d="M12.5 15.5C17 15.5 20.5 11.5 20.5 6.5C20.5 6.5 17.5 6.5 15 9C12.5 11.5 12.5 15.5 12.5 15.5Z" fill="#7CB342"/>
+                  <path d="M12 13C9 13 8 8.5 8 4.5C8 4.5 12 3.5 14 5.5C16 7.5 15.5 11 14 12C13.5 12.5 12 13 12 13Z" fill="#558B2F"/>
+                  <path d="M12 14.5V21" stroke="#9CCC65" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              ) : (
+                <svg className="w-5 h-5 fill-[#37b350]" viewBox="0 0 24 24">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 15v-3.1c-1.9-.4-3.4-1.8-3.8-3.6-.2-.7.3-1.3 1-1.3.5 0 1 .4 1.1.9.3 1.4 1.5 2.5 2.9 2.6V7.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v3.2c2-.4 3.5-2.2 3.5-4.3 0-.3.2-.5.5-.5s.5.2.5.5c0 2.9-2.1 5.3-4.9 5.8v4.4c0 .5-.4 1-1 1s-1-.5-1-1z" />
+                </svg>
+              )}
               <span>{banner.tagline}</span>
             </div>
 
@@ -134,7 +143,7 @@ export default function Banner() {
                 return (
                   <div
                     key={stat.id}
-                    className={`flex flex-col items-center text-center px-3 sm:px-6 ${index > 0 ? "border-l border-[#2c7a3f]/50" : ""
+                    className={`flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 ${index > 0 ? "border-l border-[#2c7a3f]/50" : ""
                       }`}
                   >
                     <div className="mb-3 flex items-center justify-center h-6 w-6">

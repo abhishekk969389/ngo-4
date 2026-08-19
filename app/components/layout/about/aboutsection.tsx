@@ -16,7 +16,7 @@ export default function AboutSection() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden pb-8 sm:pb-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
           <div className="relative flex justify-center lg:justify-start lg:col-span-5 pb-6 sm:pb-8 lg:pb-0">
             <div className="absolute top-6 sm:top-9 -right-2 sm:-right-6 md:-right-8 lg:-right-10 z-0 grid grid-cols-4 gap-1.5 sm:gap-2 opacity-35 hidden sm:grid">

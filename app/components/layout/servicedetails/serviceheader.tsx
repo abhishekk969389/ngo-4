@@ -40,7 +40,7 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
 
   return (
     <section className="relative overflow-hidden mx-auto  mt-10 sm:mt-14 lg:mt-16">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Column - Content */}
           <div className="lg:col-span-6 xl:col-span-6 space-y-6 z-10">

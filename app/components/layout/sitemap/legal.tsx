@@ -17,7 +17,7 @@ export default function LegalSection() {
 
   return (
     <section className="bg-white py-6 sm:py-8 overflow-hidden">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl sm:rounded-3xl border border-gray-100/90 bg-[#fafcf9] p-3.5 sm:p-4 lg:p-5 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Side: Legal Heading & Icon */}
           <div className="flex items-center gap-3 shrink-0">

@@ -106,7 +106,7 @@ export default function OurMission() {
 
   return (
     <section className="overflow-hidden mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12 mb-10 sm:mb-14 ">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 ">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-10 xl:gap-14 items-center">
           {/* Left Column: Text Content & 4 Pillars */}
           <div className="lg:col-span-7 flex flex-col justify-center">

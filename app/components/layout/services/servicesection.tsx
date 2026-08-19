@@ -55,7 +55,7 @@ export default function ServiceSection() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 font-sans px-2 sm:px-0">
-      <div className="mx-auto max-w-[1348px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center flex flex-col items-center">
           <div className="inline-flex flex-col items-center">

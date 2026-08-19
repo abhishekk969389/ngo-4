@@ -16,8 +16,8 @@ export default function OurCommitment() {
 
   return (
     <section className="bg-white mt-10">
-      <div className="mx-auto max-w-[1380PX] px-4 sm:px-6 lg:px-8 mb-14">
-        <div className="relative overflow-hidden rounded-2xl bg-[#f2f5ee] px-6 py-6 sm:px-10 sm:py-8 lg:px-12 lg:py-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-14">
+        <div className="relative overflow-hidden rounded-2xl bg-[#f2f5ee] px-6 py-6 sm:px-10 sm:py-8 lg:px-8 lg:py-8">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div className="relative flex items-center gap-4 sm:gap-6">
               <div className="shrink-0 text-[#9bb3a1] opacity-70">

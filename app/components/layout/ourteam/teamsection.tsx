@@ -32,7 +32,7 @@ export default function TeamSection() {
 
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
-      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-12 mb-10 sm:mb-14">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
         {/* Header Block */}
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-2 mb-1">

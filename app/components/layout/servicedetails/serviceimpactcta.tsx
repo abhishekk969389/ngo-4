@@ -37,7 +37,7 @@ export default function ServiceImpactCta({ data }: ServiceImpactCtaProps) {
     : HeartHandshake;
 
   return (
-    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1348px] mx-auto mt-10 sm:mt-14 lg:mt-16 mb-12 sm:mb-16">
+    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1350px] mx-auto mt-10 sm:mt-14 lg:mt-16 mb-12 sm:mb-16">
       {data.impact && (
         <div className="rounded-3xl bg-[#1c4d25] text-white p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden relative">
           {/* Header */}

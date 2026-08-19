@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="mx-auto flex max-w-[1380px] items-center justify-between px-3 sm:px-6 py-3">
+      <div className="mx-auto flex max-w-[1350px] items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
         <Link
           href="/"
           className="flex items-center gap-2 xl:gap-3 flex-shrink-0"
@@ -39,16 +39,16 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col justify-center whitespace-nowrap">
-            <span className="text-lg xl:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
+            <span className="text-xl lg:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
               {brand.name}
             </span>
-            <span className="text-[9px] xl:text-[11px] font-bold tracking-wider text-[#0c4d1e]">
+            <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-[#0c4d1e]">
               {brand.tagline}
             </span>
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-2.5 xl:gap-6">
+        <nav className="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-6">
           {header.menu.map((link: any) => {
             const hasChildren = link.children && link.children.length > 0;
             const isActive =
@@ -60,7 +60,7 @@ export default function Navbar() {
               <div key={link.label} className="relative group py-2">
                 {hasChildren ? (
                   <div
-                    className={`flex items-center gap-0.5 text-xs xl:text-sm font-semibold whitespace-nowrap transition-colors py-1 cursor-pointer select-none border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
+                    className={`flex items-center gap-0.5 text-sm lg:text-[15px] xl:text-base font-semibold whitespace-nowrap transition-colors py-1 cursor-pointer select-none border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
                   >
                     <span>{link.label}</span>
                     <ChevronDown
@@ -70,14 +70,14 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={link.href}
-                    className={`flex items-center gap-0.5 text-xs xl:text-sm font-semibold whitespace-nowrap transition-colors py-1 border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
+                    className={`flex items-center gap-0.5 text-sm lg:text-[15px] xl:text-base font-semibold whitespace-nowrap transition-colors py-1 border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
                   >
                     <span>{link.label}</span>
                   </Link>
                 )}
 
                 {hasChildren && (
-                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto min-w-[220px]">
+                  <div className="absolute left-0 top-full pt-2 opacity-0    invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto min-w-[220px]">
                     <div className="bg-white text-gray-800 rounded-xl p-2 shadow-xl border border-gray-100">
                       <ul className="flex flex-col gap-0.5">
                         {link.children?.map((child: any) => {
@@ -86,7 +86,7 @@ export default function Navbar() {
                             <li key={child.label}>
                               <Link
                                 href={child.href}
-                                className={`block py-2 px-3.5 rounded-lg text-xs xl:text-sm font-medium transition-all whitespace-nowrap ${isChildActive ? "text-[#0c4d1e] bg-[#0c4d1e]/10 font-bold" : "text-gray-700 hover:text-[#0c4d1e] hover:bg-[#0c4d1e]/5"}`}
+                                className={`block py-2 px-4 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${isChildActive ? "text-[#0c4d1e] bg-[#0c4d1e]/10 font-bold" : "text-gray-700 hover:text-[#0c4d1e] hover:bg-[#0c4d1e]/5"}`}
                               >
                                 {child.label}
                               </Link>
@@ -105,17 +105,17 @@ export default function Navbar() {
         <div className="flex items-center gap-1.5 xl:gap-3 flex-shrink-0">
           <Link
             href={header.cta.href || "/donate"}
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-[#2c7a3f] px-2.5 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white whitespace-nowrap transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-[#2c7a3f] px-4 py-1.5 text-sm font-semibold text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white whitespace-nowrap transition-all"
           >
-            <Heart className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
+            <Heart className="h-4 w-4" />
             <span>{header.cta.label || "Donate"}</span>
           </Link>
 
           <Link
             href={"/careers"}
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#0c4d1e] px-2.5 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-white hover:bg-[#083815] whitespace-nowrap transition-all"
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#0c4d1e] px-4 py-1.5 text-sm font-semibold text-white hover:bg-[#083815] whitespace-nowrap transition-all"
           >
-            <Users className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
+            <Users className="h-4 w-4" />
             <span>{"Join as Volunteer"}</span>
           </Link>
 

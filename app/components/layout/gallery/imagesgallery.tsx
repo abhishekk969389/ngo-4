@@ -37,7 +37,7 @@ export default function ImagesGallery() {
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-8 flex items-center gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f0f6ef] text-[#2c7a3f]">

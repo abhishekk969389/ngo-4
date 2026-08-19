@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Heart } from "lucide-react";
 import { IconQuote, IconStarFilled } from "@tabler/icons-react";
+import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type { NgoData } from "@/app/type/ngo";
 
@@ -30,14 +30,22 @@ export default function Testinomial() {
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % cards.length);
-    }, 1000);
+    }, 3000); // 3 seconds for better reading time
 
     return () => clearInterval(timer);
   }, [isPaused, cards.length]);
 
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % cards.length);
+  };
+
   return (
     <section className="bg-white overflow-hidden">
-      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <h2 className="text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
             {testimonials.heading.prefix}{" "}
@@ -55,18 +63,38 @@ export default function Testinomial() {
           </div>
         </div>
         <div
-          className="mt-6 overflow-hidden py-8 px-2"
+          className="relative mt-8"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div
-            className="flex gap-6 transition-transform duration-700 ease-in-out"
-            style={{
-              transform: `translateX(-${activeIndex * 364}px)`,
-            }}
+          {/* Left Button */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-[#0c4d1e] hover:bg-[#0c4d1e] hover:text-white transition-all duration-300 hidden md:flex"
+            aria-label="Previous testimonial"
           >
-            {allCards.map((card, idx) => {
-              // The card in the center position among the 3 visible cards is (activeIndex + 1)
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          {/* Right Button */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-[#0c4d1e] hover:bg-[#0c4d1e] hover:text-white transition-all duration-300 hidden md:flex"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          {/* Carousel Wrapper */}
+          <div className="mx-auto max-w-[1068px] overflow-hidden py-8">
+            <div
+              className="flex gap-6 transition-transform duration-700 ease-in-out"
+              style={{
+                transform: `translateX(-${activeIndex * 364}px)`,
+              }}
+            >
+              {allCards.map((card, idx) => {
+                // The card in the center position among the 3 visible cards is (activeIndex + 1)
               const isCenter = idx === activeIndex + 1;
               const activeThemeColor = isCenter ? "#f59e0b" : "#0c4d1e";
 
@@ -74,8 +102,8 @@ export default function Testinomial() {
                 <div
                   key={`${card.id}-${idx}`}
                   className={`flex-shrink-0 w-[340px] bg-white rounded-[1.75rem] p-6 pt-0 flex flex-col justify-between transition-all duration-500 ease-in-out border ${isCenter
-                      ? "shadow-xl scale-105 border-amber-300 z-10"
-                      : "shadow-sm scale-95 border-gray-100 opacity-85"
+                    ? "shadow-xl scale-105 border-amber-300 z-10"
+                    : "shadow-sm scale-95 border-gray-100 opacity-85"
                     }`}
                   style={{
                     borderBottomWidth: "4px",
@@ -134,6 +162,7 @@ export default function Testinomial() {
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
       </div>

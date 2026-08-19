@@ -25,7 +25,7 @@ export default function EventHeader({ data }: EventHeaderProps) {
   const highlightedTitle = titleWords.slice(-2).join(" ");
 
   return (
-    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1380px] mx-auto mt-6 sm:mt-10">
+    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1350px] mx-auto mt-6 sm:mt-10">
       <div className="bg-white border border-[#e2ebd9] rounded-3xl p-6 sm:p-8 shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
           {/* Left Column: Image with Date Badge & Tag */}

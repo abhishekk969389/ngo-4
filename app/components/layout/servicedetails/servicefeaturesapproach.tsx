@@ -38,7 +38,7 @@ export default function ServiceFeaturesApproach({
   if (!data) return null;
 
   return (
-    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1348px] mx-auto mt-10 sm:mt-14 lg:mt-16">
+    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1350px] mx-auto mt-10 sm:mt-14 lg:mt-16">
       <div className="rounded-3xl bg-[#f4f8f4] border border-[#e2ede2] p-4 sm:p-6 lg:p-8">
         <div className="text-center flex items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
           {data.topBannerIcon && (

@@ -105,7 +105,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0">
           <div className="lg:col-span-3 pr-0 lg:pr-8 flex flex-col justify-between border-b border-gray-200/60 pb-8 lg:pb-0 lg:border-b-0">
             <div>
-              <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+              <Link href="/" className="flex items-center gap-2 xl:gap-3 flex-shrink-0">
                 <div className="relative h-12 w-12 lg:h-18 lg:w-18 flex-shrink-0">
                   <Image
                     src={brand.logo}
@@ -115,10 +115,10 @@ export default function Footer() {
                   />
                 </div>
                 <div className="flex flex-col justify-center whitespace-nowrap">
-                  <span className="text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
+                  <span className="text-xl lg:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
                     {brand.name}
                   </span>
-                  <span className="text-[11px] font-bold  text-[#0c4d1e] ">
+                  <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-[#0c4d1e]">
                     {brand.tagline}
                   </span>
                 </div>

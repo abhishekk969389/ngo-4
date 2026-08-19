@@ -34,7 +34,7 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Main Blog Article (Left Column) */}
           <div className="lg:col-span-8">

@@ -113,12 +113,13 @@ export default function SmileCauses() {
 
   return (
     <section className="bg-[#fafcfb] py-10 border-t border-gray-100 overflow-hidden">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <h2 className="text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
-            {smileCauses.heading.replace("Smiles Causes", "")}
+            {smileCauses.heading.prefix}
             <br />
-            <span className="text-[#2c7a3f]">Smiles Causes</span>
+            <span className="text-[#04240d]">{smileCauses.heading.highlight}</span>
+            {smileCauses.heading.suffix}
           </h2>
 
           <div className="flex items-center justify-center gap-3 text-xs sm:text-sm font-extrabold tracking-widest text-[#2c7a3f] uppercase font-sans mt-4">
@@ -132,10 +133,10 @@ export default function SmileCauses() {
           </p>
         </div>
 
-        <div className="relative mt-4 px-2 sm:px-6">
+        <div className="relative mt-6 px-0 sm:px-12 lg:px-14">
           <button
             onClick={() => handleScroll("left")}
-            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
+            className="absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll left"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -143,14 +144,14 @@ export default function SmileCauses() {
 
           <button
             onClick={() => handleScroll("right")}
-            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
+            className="absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll right"
           >
             <ArrowRight className="w-4 h-4" />
           </button>
           <div
             ref={scrollRef}
-            className="flex gap-4 lg:gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-4 pt-2 justify-start lg:justify-between"
+            className="flex gap-4 lg:gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-4 pt-2 justify-start"
           >
             {smileCauses.cards.map((card: any) => {
               const CategoryIcon = getCategoryIcon(card.categoryIcon);
@@ -158,7 +159,7 @@ export default function SmileCauses() {
               return (
                 <div
                   key={card.id}
-                  className="group flex-shrink-0 w-full sm:w-[260px] lg:w-[270px] bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all snap-start flex flex-col justify-between"
+                  className="group flex-shrink-0 w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all snap-start flex flex-col justify-between"
                 >
                   <div className="relative h-48 w-full">
                     <div className="relative w-full h-full rounded-t-2xl overflow-hidden">

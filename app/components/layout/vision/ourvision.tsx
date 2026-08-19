@@ -50,7 +50,7 @@ export default function OurVision() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
-      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-12 mb-10 sm:mb-14">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column: Content & 4 Pillars Grid & Quote Box */}
           <div className="lg:col-span-7 flex flex-col justify-center">
