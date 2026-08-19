@@ -32,7 +32,6 @@ export default async function ServiceDetailsPage({ searchParams }: ServiceDetail
     notFound();
   }
 
-  
   const bannerConfig =
     serviceDetail.banner ||
     data.pageBanners?.servicesDetail ||
@@ -40,22 +39,26 @@ export default async function ServiceDetailsPage({ searchParams }: ServiceDetail
     data.pageBanners?.default;
 
   const baseBreadcrumbs = bannerConfig?.breadcrumbs || [];
+  const hasSpecificBanner = !!serviceDetail.banner;
+  const currentTitle = serviceDetail.header?.title || bannerConfig?.title || '';
 
   const dynamicBannerData: PageBannerData = {
-    title: serviceDetail.header?.title || bannerConfig?.title || '',
+    title: currentTitle,
     backgroundImage: bannerConfig?.backgroundImage || '/banner_bg.png',
-    altText: serviceDetail.header?.title || bannerConfig?.altText || '',
-    breadcrumbs: [
-      ...baseBreadcrumbs.map((item: any) => ({
-        ...item,
-        isCurrent: false,
-      })),
-      {
-        id: baseBreadcrumbs.length + 1,
-        label: serviceDetail.header?.title || bannerConfig?.title || '',
-        isCurrent: true,
-      },
-    ],
+    altText: currentTitle,
+    breadcrumbs: hasSpecificBanner
+      ? baseBreadcrumbs
+      : [
+          ...baseBreadcrumbs.map((item: any) => ({
+            ...item,
+            isCurrent: false,
+          })),
+          {
+            id: baseBreadcrumbs.length + 1,
+            label: currentTitle,
+            isCurrent: true,
+          },
+        ],
   };
 
   return (

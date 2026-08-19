@@ -1,16 +1,16 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Heart, 
-  GraduationCap, 
-  BookOpen, 
-  Users, 
-  HandHeart, 
-  Sprout, 
-  ArrowLeft, 
+import {
+  Heart,
+  GraduationCap,
+  BookOpen,
+  Users,
+  HandHeart,
+  Sprout,
+  ArrowLeft,
   ArrowRight,
   Activity
 } from 'lucide-react';
@@ -86,12 +86,28 @@ export default function SmileCauses() {
     }
   };
 
+  useEffect(() => {
+    const autoScrollInterval = setInterval(() => {
+      if (window.innerWidth < 640 && scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll to the next card
+          scrollRef.current.scrollBy({ left: 260, behavior: 'smooth' });
+        }
+      }
+    }, 3500);
+
+    return () => clearInterval(autoScrollInterval);
+  }, []);
+
   return (
     <section className="bg-[#fafcfb] py-10 border-t border-gray-100 overflow-hidden">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        
+
         <div className="flex flex-col items-center">
-          
+
           <h2 className="text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
             {smileCauses.heading.replace("Smiles Causes", "")}
             <br />
@@ -111,10 +127,10 @@ export default function SmileCauses() {
         </div>
 
         <div className="relative mt-4 px-2 sm:px-6">
-          
+
           <button
             onClick={() => handleScroll('left')}
-            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
+            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll left"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -122,12 +138,12 @@ export default function SmileCauses() {
 
           <button
             onClick={() => handleScroll('right')}
-            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
+            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-[#15421d] text-white hidden sm:flex items-center justify-center shadow-md hover:bg-[#1f5e2e] transition-all cursor-pointer"
             aria-label="Scroll right"
           >
             <ArrowRight className="w-4 h-4" />
           </button>
-          <div 
+          <div
             ref={scrollRef}
             className="flex gap-4 lg:gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-4 pt-2 justify-start lg:justify-between"
           >
@@ -139,7 +155,7 @@ export default function SmileCauses() {
                   key={card.id}
                   className="group flex-shrink-0 w-full sm:w-[260px] lg:w-[270px] bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all snap-start flex flex-col justify-between"
                 >
-                  
+
                   <div className="relative h-48 w-full">
                     <div className="relative w-full h-full rounded-t-2xl overflow-hidden">
                       <Image
@@ -149,14 +165,14 @@ export default function SmileCauses() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    
+
                     <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-[#15421d] text-white text-[10px] font-semibold px-2.5 py-1 rounded-full shadow-sm font-sans">
                       {CategoryIcon}
                       <span>{card.category}</span>
                     </div>
                   </div>
 
-            
+
                   <div className="relative pt-8 pb-5 px-4 flex flex-col items-center text-center flex-grow justify-between bg-white">
                     <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-30 w-14 h-14 rounded-full bg-[#e8f3e8] flex items-center justify-center shadow-md">
                       {CenterIcon}
@@ -176,7 +192,7 @@ export default function SmileCauses() {
                       href={card.href}
                       className="inline-flex items-center gap-1.5 rounded-full border border-[#1f5e2e] bg-white px-4 py-1.5 text-xs font-semibold text-[#0c3b18] hover:bg-[#1f5e2e] hover:text-white transition-all font-sans cursor-pointer mt-5"
                     >
-                      <span>Learn More</span>
+                      <span>{card.ctaText || smileCauses.ctaText || "Learn More"}</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
 

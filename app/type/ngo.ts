@@ -98,11 +98,13 @@ export interface NgoCauseCard {
   centerIcon: string;
   image: string;
   href: string;
+  ctaText?: string;
 }
 
 export interface NgoSmileCauses {
   heading: string;
   description: string;
+  ctaText?: string;
   cards: NgoCauseCard[];
 }
 

@@ -286,16 +286,24 @@
                     "href": "/ourteam"
                   },
                   {
-                    "label": "Mission & Vision",
+                    "label": "Mission",
                     "href": "/mission"
+                  },
+                  {
+                    "label": "Vision",
+                    "href": "/vision"
                   },
                   {
                     "label": "Case Study",
                     "href": "/casestudy"
                   },
-                     {
+                  {
                     "label": "Portfolio",
                     "href": "/portfolio"
+                  },
+                  {
+                    "label": "Certificates & Award",
+                    "href": "/certificateaward"
                   }
                 ]
               },
@@ -6131,6 +6139,7 @@
           "Legacy_smileCauses": {
             "heading": "Be The Reason Of Someone Smiles Causes",
             "description": "Your support can brighten lives and create a better tomorrow for those who need it most.",
+            "ctaText": "Learn More",
             "cards": [
               {
                 "id": 1,
@@ -6140,7 +6149,8 @@
                 "categoryIcon": "heart",
                 "centerIcon": "heart-hand",
                 "image": "/causes1.jpg",
-                "href": "/causes/health"
+                "href": "/causes/health",
+                "ctaText": "Learn More"
               },
               {
                 "id": 2,
@@ -6150,7 +6160,8 @@
                 "categoryIcon": "graduation",
                 "centerIcon": "book",
                 "image": "/causes2.jpg",
-                "href": "/causes/children"
+                "href": "/causes/children",
+                "ctaText": "Learn More"
               },
               {
                 "id": 3,
@@ -6160,7 +6171,8 @@
                 "categoryIcon": "book",
                 "centerIcon": "users",
                 "image": "/causes.jpg",
-                "href": "/causes/education"
+                "href": "/causes/education",
+                "ctaText": "Learn More"
               },
               {
                 "id": 4,
@@ -6170,7 +6182,8 @@
                 "categoryIcon": "food",
                 "centerIcon": "food-bowl",
                 "image": "/causes4.jpg",
-                "href": "/causes/food"
+                "href": "/causes/food",
+                "ctaText": "Learn More"
               }
             ]
           }
@@ -8271,8 +8284,8 @@
             },
             {
               "id": 6,
-              "label": "Gallery",
-              "href": "/gallery"
+              "label": "Support",
+              "href": "/support"
             }
           ]
         }
@@ -8363,7 +8376,7 @@
       },
       "copyrightText": {
         "variants": {
-          "Legacy_copyrightText": "© 2026 Start Donating Poor People. All Rights Reserved."
+          "Legacy_copyrightText": "Copyright © 2026 . All Rights Reserved."
         }
       },
       "portfolioDetails": {
