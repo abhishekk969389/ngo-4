@@ -126,11 +126,10 @@ export default function OurMission() {
             return (
               <div
                 key={card.id}
-                className={`relative group flex flex-col items-center text-center px-6 py-4 transition-all duration-300 ${
-                  !isLast
+                className={`relative group flex flex-col items-center text-center px-6 py-4 transition-all duration-300 ${!isLast
                     ? "after:hidden lg:after:block after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[60%] after:w-[2px] after:bg-gray-300/80 after:rounded-full"
                     : ""
-                }`}
+                  }`}
               >
                 <div className="relative mb-6 flex items-center justify-center">
                   <div className="w-20 h-20 rounded-full bg-[#e8f2e8] flex items-center justify-center z-10">

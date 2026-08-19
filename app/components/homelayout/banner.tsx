@@ -134,9 +134,8 @@ export default function Banner() {
                 return (
                   <div
                     key={stat.id}
-                    className={`flex flex-col items-center text-center px-3 sm:px-6 ${
-                      index > 0 ? "border-l border-[#2c7a3f]/50" : ""
-                    }`}
+                    className={`flex flex-col items-center text-center px-3 sm:px-6 ${index > 0 ? "border-l border-[#2c7a3f]/50" : ""
+                      }`}
                   >
                     <div className="mb-3 flex items-center justify-center h-6 w-6">
                       {StatIcon}

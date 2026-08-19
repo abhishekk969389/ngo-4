@@ -73,11 +73,10 @@ export default function Testinomial() {
               return (
                 <div
                   key={`${card.id}-${idx}`}
-                  className={`flex-shrink-0 w-[340px] bg-white rounded-[1.75rem] p-6 pt-0 flex flex-col justify-between transition-all duration-500 ease-in-out border ${
-                    isCenter
+                  className={`flex-shrink-0 w-[340px] bg-white rounded-[1.75rem] p-6 pt-0 flex flex-col justify-between transition-all duration-500 ease-in-out border ${isCenter
                       ? "shadow-xl scale-105 border-amber-300 z-10"
                       : "shadow-sm scale-95 border-gray-100 opacity-85"
-                  }`}
+                    }`}
                   style={{
                     borderBottomWidth: "4px",
                     borderBottomColor: activeThemeColor,

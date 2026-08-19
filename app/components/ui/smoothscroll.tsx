@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 
+
 function ScrollToTopOnNavigate() {
   const pathname = usePathname();
   const lenis = useLenis();
@@ -12,6 +13,79 @@ function ScrollToTopOnNavigate() {
   useEffect(() => {
     lenis?.scrollTo(0, { immediate: true });
   }, [pathname, lenis]);
+
+  return null;
+}
+
+function GlobalScrollEffects() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+
+    const elements = document.querySelectorAll(
+      "section, article, .scroll-reveal"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.1, 
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    elements.forEach((el) => {
+      el.classList.add("reveal-init");
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return null;
+}
+
+
+export function AnchorOffsetHandler() {
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!lenis) return;
+
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const anchor = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const hash = anchor.getAttribute("href") || "";
+      if (!hash || hash === "#") return;
+
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      e.preventDefault();
+
+      const header = document.querySelector("header.sticky");
+      const offset = header ? (header as HTMLElement).offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset - 8;
+      
+      lenis.scrollTo(top, { immediate: false });
+    };
+
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [lenis]);
 
   return null;
 }
@@ -35,47 +109,9 @@ export default function SmoothScroll({
       }}
     >
       <ScrollToTopOnNavigate />
+      <GlobalScrollEffects />
       <AnchorOffsetHandler />
       {children}
     </ReactLenis>
   );
-}
-
-// Enhance anchor behavior to account for the sticky navbar height
-export function AnchorOffsetHandler() {
-  const lenis = useLenis();
-
-  useEffect(() => {
-    if (!lenis) return;
-
-    const onClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-
-      const anchor = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
-      if (!anchor) return;
-
-      const hash = anchor.getAttribute("href") || "";
-      if (!hash || hash === "#") return;
-
-      const id = hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      e.preventDefault();
-
-      // Measure sticky header height (assumes header is sticky top-0)
-      const header = document.querySelector("header.sticky");
-      const offset = header ? (header as HTMLElement).offsetHeight : 0;
-
-      // Use lenis to scroll to element top minus header height
-      const top = el.getBoundingClientRect().top + window.scrollY - offset - 8; // small gap
-      lenis.scrollTo(top, { immediate: false });
-    };
-
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, [lenis]);
-
-  return null;
 }
