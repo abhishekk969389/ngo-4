@@ -1,15 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Sprout, ChevronLeft, ChevronRight } from 'lucide-react';
-import type { CaseStudyGallery } from '@/app/type/ngo';
+import { useState } from "react";
+import Image from "next/image";
+import { Sprout, ChevronLeft, ChevronRight } from "lucide-react";
+import type { CaseStudyGallery } from "@/app/type/ngo";
 
 interface CaseStudyGalleryProps {
   gallery: CaseStudyGallery;
 }
 
-export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryProps) {
+export default function CaseStudyGallerySection({
+  gallery,
+}: CaseStudyGalleryProps) {
   const [startIndex, setStartIndex] = useState<number>(0);
 
   if (!gallery || !gallery.items || gallery.items.length === 0) return null;
@@ -17,7 +19,9 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
   const items = gallery.items;
 
   const handlePrev = () => {
-    setStartIndex((prev) => (prev === 0 ? Math.max(0, items.length - 4) : prev - 1));
+    setStartIndex((prev) =>
+      prev === 0 ? Math.max(0, items.length - 4) : prev - 1,
+    );
   };
 
   const handleNext = () => {
@@ -27,7 +31,6 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
   return (
     <section className="py-10 sm:py-14 bg-[#f9faf7] font-sans border-t border-[#e2ebd9]">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-        
         {/* Badge & Header */}
         <div className="text-center">
           <div className="inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#0d3319] font-sans">
@@ -48,9 +51,7 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
           </div>
         </div>
 
-        {/* Gallery Carousel Container */}
         <div className="relative mt-10">
-          
           {/* Navigation Arrows */}
           <button
             type="button"
@@ -70,7 +71,6 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Images Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-2">
             {items.slice(startIndex, startIndex + 4).map((item) => (
               <div
@@ -79,7 +79,7 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
               >
                 <Image
                   src={item.image}
-                  alt={item.alt || 'Gallery photo'}
+                  alt={item.alt || "Gallery photo"}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -94,9 +94,7 @@ export default function CaseStudyGallerySection({ gallery }: CaseStudyGalleryPro
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );

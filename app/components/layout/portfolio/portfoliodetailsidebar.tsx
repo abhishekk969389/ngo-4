@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 import {
   Sprout,
   Users,
@@ -7,8 +7,8 @@ import {
   Shield,
   Quote,
   CheckCircle2,
-} from 'lucide-react';
-import type { PortfolioDetailSidebarData } from '@/app/type/ngo';
+} from "lucide-react";
+import type { PortfolioDetailSidebarData } from "@/app/type/ngo";
 
 const iconMap = {
   users: Users,
@@ -22,34 +22,40 @@ interface PortfolioDetailSidebarProps {
   data: PortfolioDetailSidebarData;
 }
 
-export default function PortfolioDetailSidebar({ data }: PortfolioDetailSidebarProps) {
+export default function PortfolioDetailSidebar({
+  data,
+}: PortfolioDetailSidebarProps) {
   if (!data) return null;
 
   const getIcon = (iconName?: string) => {
     if (!iconName) return null;
-    const IconComponent = iconMap[iconName as keyof typeof iconMap] || iconMap.default;
-    return <IconComponent className="w-4 h-4 text-white shrink-0 stroke-[2]" aria-hidden="true" />;
+    const IconComponent =
+      iconMap[iconName as keyof typeof iconMap] || iconMap.default;
+    return (
+      <IconComponent
+        className="w-4 h-4 text-white shrink-0 stroke-[2]"
+        aria-hidden="true"
+      />
+    );
   };
 
-  const { highlightsTitle, highlights, galleryTitle, gallery, sidebarQuote } = data;
+  const { highlightsTitle, highlights, galleryTitle, gallery, sidebarQuote } =
+    data;
 
   return (
     <aside className="space-y-8">
-      
-      {/* 1. Project Highlights */}
       {highlights && highlights.length > 0 && (
         <div className="p-5 sm:p-6 rounded-3xl bg-white border border-gray-100 shadow-xs space-y-5">
           <div className="flex items-center gap-2 border-b border-gray-100 pb-3">
             <div className="w-1.5 h-5 bg-[#2c7a3f] rounded-full" />
             <h3 className="text-lg font-bold font-serif text-[#0d3319]">
-              {highlightsTitle || 'Project Highlights'}
+              {highlightsTitle || "Project Highlights"}
             </h3>
           </div>
 
           <div className="space-y-4">
             {highlights.map((item) => (
               <div key={item.id} className="flex items-start gap-3.5 group">
-                {/* Circle Number or Icon */}
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1b4d25] text-white font-extrabold text-xs shadow-2xs group-hover:scale-105 transition-transform">
                   {item.badgeNumber ? (
                     <span>{item.badgeNumber}</span>
@@ -72,12 +78,11 @@ export default function PortfolioDetailSidebar({ data }: PortfolioDetailSidebarP
         </div>
       )}
 
-      {/* 2. Project Gallery */}
       {gallery && gallery.length > 0 && (
         <div className="p-5 sm:p-6 rounded-3xl bg-[#f4f8f3] border border-[#e2ebd9] space-y-4">
           <div className="flex items-center gap-2">
             <h3 className="text-base sm:text-lg font-bold font-serif text-[#0d3319]">
-              {galleryTitle || 'Project Gallery'}
+              {galleryTitle || "Project Gallery"}
             </h3>
             <Sprout className="w-4 h-4 text-[#2c7a3f] fill-[#2c7a3f]" />
           </div>
@@ -90,7 +95,7 @@ export default function PortfolioDetailSidebar({ data }: PortfolioDetailSidebarP
               >
                 <Image
                   src={item.image}
-                  alt={item.alt || 'Gallery photo'}
+                  alt={item.alt || "Gallery photo"}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 20vw"
@@ -113,7 +118,6 @@ export default function PortfolioDetailSidebar({ data }: PortfolioDetailSidebarP
           </p>
         </div>
       )}
-
     </aside>
   );
 }

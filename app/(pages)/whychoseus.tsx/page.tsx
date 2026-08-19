@@ -4,7 +4,6 @@ import WhatWeDo from "@/app/components/layout/about/whatwedo";
 import OurMission from "@/app/components/homelayout/ourmission";
 import HomeCta from "../../components/ui/homecta";
 
-
 export default function AboutPage() {
   return (
     <>

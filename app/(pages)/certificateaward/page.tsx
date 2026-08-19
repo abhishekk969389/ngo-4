@@ -8,8 +8,8 @@ export default function CertificateAwardPage() {
     <>
       <Banner pageKey="certificateaward" />
       <CertificateSection />
-        <AchievementSection />
-        <HomeCta/>
+      <AchievementSection />
+      <HomeCta />
     </>
   );
 }

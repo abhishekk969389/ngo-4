@@ -4,14 +4,12 @@ import TogetherDonate from "@/app/components/layout/donate/togetherdonate";
 import HomeCta from "@/app/components/ui/homecta";
 
 export default function DonatePage() {
-    return (
-        <>
-            <Banner pageKey="donatenow" />
-            <DonateSec />
-            <TogetherDonate />
-            <HomeCta />
-        </>
-    );
+  return (
+    <>
+      <Banner pageKey="donatenow" />
+      <DonateSec />
+      <TogetherDonate />
+      <HomeCta />
+    </>
+  );
 }
-
-

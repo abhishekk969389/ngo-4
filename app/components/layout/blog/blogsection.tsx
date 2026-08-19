@@ -1,19 +1,19 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Calendar, ArrowRight, Heart } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, ArrowRight, Heart } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoBlogPageSection,
   NgoBlogCardItem,
-} from '@/app/type/ngo';
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function BlogSection() {
@@ -26,14 +26,12 @@ export default function BlogSection() {
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
             {header.title}
           </h2>
 
-          {/* Heart Decorative Divider */}
           <div className="my-3 flex items-center justify-center gap-3">
             <span className="h-[1.5px] w-12 rounded-full bg-[#2c7a3f]/60" />
             <Heart className="h-3.5 w-3.5 fill-[#2c7a3f] text-[#2c7a3f]" />
@@ -45,15 +43,16 @@ export default function BlogSection() {
           </p>
         </div>
 
-        {/* Blogs Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {blogs.map((blog: NgoBlogCardItem) => (
             <article
               key={blog.id}
               className="group flex flex-col overflow-hidden rounded-2xl border border-[#e8eee7] bg-white shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#d7e5d5]"
             >
-              {/* Blog Image */}
-              <Link href={blog.href} className="relative aspect-[16/10] w-full overflow-hidden bg-[#f0f4ef] block">
+              <Link
+                href={blog.href}
+                className="relative aspect-[16/10] w-full overflow-hidden bg-[#f0f4ef] block"
+              >
                 <Image
                   src={blog.image}
                   alt={blog.alt || blog.title}
@@ -63,33 +62,26 @@ export default function BlogSection() {
                 />
               </Link>
 
-              {/* Blog Content */}
               <div className="flex flex-1 flex-col p-5 sm:p-6">
-                {/* Date */}
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-[#1d5e2d]">
                   <Calendar className="h-3.5 w-3.5 stroke-[2.2]" />
                   <span>{blog.date}</span>
                 </div>
 
-                {/* Title */}
                 <h3 className="mt-2.5 font-serif text-lg font-bold leading-snug tracking-tight text-[#16351d] transition-colors duration-200 group-hover:text-[#1d5e2d] sm:text-xl">
-                  <Link href={blog.href}>
-                    {blog.title}
-                  </Link>
+                  <Link href={blog.href}>{blog.title}</Link>
                 </h3>
 
-                {/* Description */}
                 <p className="mt-2 flex-1 text-xs leading-relaxed text-[#59665b] sm:text-sm line-clamp-3">
                   {blog.description}
                 </p>
 
-                {/* Read More Link */}
                 <div className="mt-4 flex justify-end pt-2">
                   <Link
                     href={blog.href}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1d5e2d] transition-all duration-200 hover:text-[#0c401a] group-hover:gap-2 sm:text-sm"
                   >
-                    <span>{blog.readMoreText || 'Read More'}</span>
+                    <span>{blog.readMoreText || "Read More"}</span>
                     <ArrowRight className="h-3.5 w-3.5 stroke-[2.2]" />
                   </Link>
                 </div>
@@ -97,7 +89,6 @@ export default function BlogSection() {
             </article>
           ))}
         </div>
-
       </div>
     </section>
   );

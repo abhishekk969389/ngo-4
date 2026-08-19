@@ -1,33 +1,43 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Home, ChevronRight } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, PageBannerData, BannerProps } from '@/app/type/ngo';
+import Image from "next/image";
+import Link from "next/link";
+import { Home, ChevronRight } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, PageBannerData, BannerProps } from "@/app/type/ngo";
 
-const pageBanners = (ngoDataJson as any).NGO.sections.pageBanners?.variants?.Legacy_pageBanners;
+const pageBanners = (ngoDataJson as any).NGO.sections.pageBanners?.variants
+  ?.Legacy_pageBanners;
 
-export default function Banner({ pageKey = 'about', bannerData, className = '' }: BannerProps) {
+export default function Banner({
+  pageKey = "about",
+  bannerData,
+  className = "",
+}: BannerProps) {
   // Extract active banner data from props, pageKey lookup in JSON, or default JSON configuration
-  const activeData: PageBannerData = 
-    bannerData || 
-    (pageBanners && pageBanners[pageKey]) ||  
-    {
-      title: '',
-      backgroundImage: '',
-      breadcrumbs: []
+  const activeData: PageBannerData = bannerData ||
+    (pageBanners && pageBanners[pageKey]) || {
+      title: "",
+      backgroundImage: "",
+      breadcrumbs: [],
     };
 
   const getBreadcrumbIcon = (iconName?: string) => {
     switch (iconName) {
-      case 'home':
-        return <Home className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1b4d25] stroke-[2]" aria-hidden="true" />;
+      case "home":
+        return (
+          <Home
+            className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1b4d25] stroke-[2]"
+            aria-hidden="true"
+          />
+        );
       default:
         return null;
     }
   };
 
   return (
-    <div className={`relative w-full h-[360px] sm:h-[420px] lg:h-[490px] bg-[#f7f8f2] overflow-hidden flex items-center ${className}`}>
+    <div
+      className={`relative w-full h-[360px] sm:h-[420px] lg:h-[490px] bg-[#f7f8f2] overflow-hidden flex items-center ${className}`}
+    >
       <div className="absolute inset-0 w-full h-full">
         {activeData.backgroundImage && (
           <Image
@@ -54,11 +64,14 @@ export default function Banner({ pageKey = 'about', bannerData, className = '' }
                   const itemIcon = getBreadcrumbIcon(item.icon);
 
                   return (
-                    <li key={item.id ?? index} className="flex items-center gap-2">
+                    <li
+                      key={item.id ?? index}
+                      className="flex items-center gap-2"
+                    >
                       {index > 0 && (
-                        <ChevronRight 
-                          className="w-4 h-4 text-[#2c7a3f] shrink-0 stroke-[2.5]" 
-                          aria-hidden="true" 
+                        <ChevronRight
+                          className="w-4 h-4 text-[#2c7a3f] shrink-0 stroke-[2.5]"
+                          aria-hidden="true"
                         />
                       )}
 
@@ -74,10 +87,12 @@ export default function Banner({ pageKey = 'about', bannerData, className = '' }
                         <span
                           className={`inline-flex items-center gap-1.5 ${
                             item.isCurrent || isLast
-                              ? 'text-[#2c7a3f]'
-                              : 'text-[#1b4d25]'
+                              ? "text-[#2c7a3f]"
+                              : "text-[#1b4d25]"
                           }`}
-                          aria-current={item.isCurrent || isLast ? 'page' : undefined}
+                          aria-current={
+                            item.isCurrent || isLast ? "page" : undefined
+                          }
                         >
                           {itemIcon}
                           <span>{item.label}</span>

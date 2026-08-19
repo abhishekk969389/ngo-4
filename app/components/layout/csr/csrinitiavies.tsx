@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import { BookOpenText, HeartPulse, Users, Leaf, Heart } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoCsrInitiativeItem } from '@/app/type/ngo';
+import Image from "next/image";
+import { BookOpenText, HeartPulse, Users, Leaf, Heart } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoCsrInitiativeItem } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const iconMap = {
@@ -45,7 +45,6 @@ export default function CsrInitiatives() {
           </div>
         </div>
 
-        {/* 2x2 Grid */}
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {initiatives.items.map((item: NgoCsrInitiativeItem) => (
             <div

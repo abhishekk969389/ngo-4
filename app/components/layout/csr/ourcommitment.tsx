@@ -1,12 +1,12 @@
-import { Leaf, Trees } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData } from '@/app/type/ngo';
+import { Leaf, Trees } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function OurCommitment() {
@@ -17,13 +17,9 @@ export default function OurCommitment() {
   return (
     <section className="bg-white mt-10">
       <div className="mx-auto max-w-[1380PX] px-4 sm:px-6 lg:px-8 mb-14">
-        {/* Main Banner Container - Slim, wide aspect ratio */}
         <div className="relative overflow-hidden rounded-2xl bg-[#f2f5ee] px-6 py-6 sm:px-10 sm:py-8 lg:px-12 lg:py-8">
           <div className="grid items-center gap-8 lg:grid-cols-2">
-            
-            {/* Left Section: Leaf Graphic + Heading & Description */}
             <div className="relative flex items-center gap-4 sm:gap-6">
-              {/* Left Leaf Illustration */}
               <div className="shrink-0 text-[#9bb3a1] opacity-70">
                 <Leaf className="h-14 w-14 sm:h-18 sm:w-18 -rotate-12 stroke-[1.5]" />
               </div>
@@ -54,7 +50,6 @@ export default function OurCommitment() {
                 <Trees className="h-16 w-16 sm:h-20 sm:w-20 stroke-[1.2]" />
               </div>
             </div>
-
           </div>
         </div>
       </div>

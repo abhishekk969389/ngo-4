@@ -1,4 +1,4 @@
-import ImageComponent from 'next/image';
+import ImageComponent from "next/image";
 import {
   BookOpen,
   GraduationCap,
@@ -11,8 +11,8 @@ import {
   Briefcase,
   UserCheck,
   LucideIcon,
-} from 'lucide-react';
-import type { ServiceHeaderData } from '@/app/type/ngo';
+} from "lucide-react";
+import type { ServiceHeaderData } from "@/app/type/ngo";
 
 const iconMap: Record<string, LucideIcon> = {
   book: BookOpen,
@@ -34,17 +34,16 @@ interface ServiceHeaderProps {
 export default function ServiceHeader({ data }: ServiceHeaderProps) {
   if (!data) return null;
 
-  const BadgeIcon = data.badgeIcon ? iconMap[data.badgeIcon] || BookOpen : BookOpen;
+  const BadgeIcon = data.badgeIcon
+    ? iconMap[data.badgeIcon] || BookOpen
+    : BookOpen;
 
   return (
     <section className="relative overflow-hidden mx-auto  mt-10 sm:mt-14 lg:mt-16">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-          
           {/* Left Column - Content */}
           <div className="lg:col-span-6 xl:col-span-6 space-y-6 z-10">
-            
-            {/* Badge */}
             <div className="inline-flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28] shrink-0">
                 <BadgeIcon className="w-6 h-6 stroke-[1.75]" />
@@ -54,7 +53,6 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
               </span>
             </div>
 
-            {/* Title & Handwritten Subtitle */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#0d3319] tracking-tight">
                 {data.title}
@@ -63,19 +61,23 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
                 <p className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-[#2c7a3f] leading-snug">
                   {data.subtitle}
                 </p>
-                {/* Decorative underline */}
-               <svg 
-                  className="absolute -bottom-2 left-0 w-full h-3 text-[#2c7a3f]/75" 
-                  viewBox="0 0 300 12" 
+
+                <svg
+                  className="absolute -bottom-2 left-0 w-full h-3 text-[#2c7a3f]/75"
+                  viewBox="0 0 300 12"
                   fill="none"
                   aria-hidden="true"
                 >
-                  <path d="M 5 8 Q 150 2, 295 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <path
+                    d="M 5 8 Q 150 2, 295 7"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </div>
             </div>
 
-            {/* Description */}
             <p className="text-sm sm:text-base leading-relaxed text-gray-600 font-sans max-w-xl">
               {data.description}
             </p>
@@ -102,15 +104,16 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
 
           {/* Right Column - Curved Arch Image Container */}
           <div className="lg:col-span-6 xl:col-span-6 relative flex justify-end items-center mt-6 lg:mt-0">
-            
-            {/* Background Leaf Accent (Decorative) */}
             <div className="absolute -left-6 top-1/4 pointer-events-none hidden sm:block z-20">
-              <svg className="w-12 h-12 text-[#2c7a3f]/70" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                className="w-12 h-12 text-[#2c7a3f]/70"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M17.8 2.8C11.4 3 6.3 8.1 6.1 14.5c-.1 2.9 1 5.7 3 7.8l.9.9 2-2c3.9-3.9 4.8-9.8 2.2-14.7.7.7 1.4 1.5 2 2.4.9 1.4 1.4 3 1.5 4.6l2-.3c-.2-2.1-.9-4.1-2-5.9 1.1-1.3 2.1-2.9 2.1-4.5h-2z" />
               </svg>
             </div>
 
-            {/* Dot Pattern Accent (Decorative) */}
             <div className="absolute -left-4 bottom-12 pointer-events-none hidden sm:block opacity-40 z-20">
               <div className="grid grid-cols-4 gap-1.5 w-16">
                 {Array.from({ length: 16 }).map((_, i) => (
@@ -119,7 +122,6 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
               </div>
             </div>
 
-            {/* Curved Frame for Image */}
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.35/1] rounded-l-[180px] sm:rounded-l-[260px] lg:rounded-l-[320px] rounded-r-2xl overflow-hidden border-l-4 border-t-2 border-b-2 border-[#1c4d28]/30 shadow-2xl bg-stone-100">
               <ImageComponent
                 src={data.heroImage}
@@ -129,9 +131,7 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
                 priority
               />
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

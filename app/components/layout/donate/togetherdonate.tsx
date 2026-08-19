@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import {
   Heart,
   Users,
@@ -10,30 +10,34 @@ import {
   Calendar,
   ArrowRight,
   ShieldCheck,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoTogetherDonateSection,
   NgoTogetherDonateStat,
-} from '@/app/type/ngo';
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
-const statIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const statIconMap: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   heart: Heart,
   users: Users,
-  'heart-hand': HandHeart,
+  "heart-hand": HandHeart,
   globe: Globe,
 };
 
 export default function TogetherDonate() {
-  const togetherData = data.togetherDonateSection as NgoTogetherDonateSection | undefined;
+  const togetherData = data.togetherDonateSection as
+    NgoTogetherDonateSection | undefined;
 
   if (!togetherData) return null;
 
@@ -42,7 +46,6 @@ export default function TogetherDonate() {
   return (
     <section className="bg-[#fcfdfc] mt-12 mb-12">
       <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-        
         {/* Top Card (Stats / Impact Grid) */}
         <div className="mx-auto max-w-[1280px] rounded-3xl border border-[#e5eae2] bg-[#f8faf7] p-8 text-center shadow-sm sm:p-10">
           <h2 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl lg:text-4xl">
@@ -76,7 +79,6 @@ export default function TogetherDonate() {
           </div>
         </div>
 
-        {/* Middle Banner (Generosity Banner) */}
         <div className="mx-auto mt-12 flex max-w-[1280px] flex-col items-start justify-between gap-6 rounded-3xl border border-[#f0e8e0] bg-[#fbf7f4] p-6 shadow-sm sm:flex-row sm:items-center sm:p-8">
           <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#eae3dc] text-[#1d5e2d]">
@@ -106,7 +108,6 @@ export default function TogetherDonate() {
           <ShieldCheck className="h-4 w-4 stroke-[2] text-[#1d5e2d]" />
           <span>{securityFooter.text}</span>
         </div>
-
       </div>
     </section>
   );

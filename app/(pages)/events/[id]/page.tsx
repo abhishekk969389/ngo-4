@@ -1,17 +1,17 @@
-import { notFound } from 'next/navigation';
-import Banner from '@/app/components/ui/banner';
-import HomeCta from '@/app/components/ui/homecta';
-import EventHeader from '@/app/components/layout/eventdetails/eventheader';
-import EventContent from '@/app/components/layout/eventdetails/eventcontent';
-import EventSidebar from '@/app/components/layout/eventdetails/eventsidebar';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, EventDetailItem, PageBannerData } from '@/app/type/ngo';
+import { notFound } from "next/navigation";
+import Banner from "@/app/components/ui/banner";
+import HomeCta from "@/app/components/ui/homecta";
+import EventHeader from "@/app/components/layout/eventdetails/eventheader";
+import EventContent from "@/app/components/layout/eventdetails/eventcontent";
+import EventSidebar from "@/app/components/layout/eventdetails/eventsidebar";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, EventDetailItem, PageBannerData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$typeof') return undefined;
+    if (prop === "$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface EventDetailPageProps {
@@ -28,35 +28,40 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function EventDetailPage({ params }: EventDetailPageProps) {
+export default async function EventDetailPage({
+  params,
+}: EventDetailPageProps) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  const idKey = (id || '').toLowerCase().trim();
+  const idKey = (id || "").toLowerCase().trim();
 
   const detailsMap = data.eventDetails || {};
 
   const detailItem: EventDetailItem | undefined =
     detailsMap[idKey] ||
     Object.values(detailsMap).find(
-      (item: any) => String(item.numericId) === idKey || item.id.toLowerCase() === idKey
+      (item: any) =>
+        String(item.numericId) === idKey || item.id.toLowerCase() === idKey,
     ) ||
-    detailsMap['community-cleanup'] ||
-    detailsMap['1'];
+    detailsMap["community-cleanup"] ||
+    detailsMap["1"];
 
   if (!detailItem) {
     notFound();
   }
 
   const eventsBannerConfig =
-    data.pageBanners?.eventsDetail || data.pageBanners?.events || data.pageBanners?.default;
+    data.pageBanners?.eventsDetail ||
+    data.pageBanners?.events ||
+    data.pageBanners?.default;
 
   const baseBreadcrumbs = eventsBannerConfig?.breadcrumbs || [];
 
   const dynamicBannerData: PageBannerData = {
-    title: detailItem.title || eventsBannerConfig?.title || '',
-    backgroundImage: eventsBannerConfig?.backgroundImage || '/banner_bg.png',
-    altText: detailItem.title || eventsBannerConfig?.altText || '',
+    title: detailItem.title || eventsBannerConfig?.title || "",
+    backgroundImage: eventsBannerConfig?.backgroundImage || "/banner_bg.png",
+    altText: detailItem.title || eventsBannerConfig?.altText || "",
     breadcrumbs: [
       ...baseBreadcrumbs.map((item: any) => ({
         ...item,
@@ -64,7 +69,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
       })),
       {
         id: baseBreadcrumbs.length + 1,
-        label: detailItem.title || eventsBannerConfig?.title || '',
+        label: detailItem.title || eventsBannerConfig?.title || "",
         isCurrent: true,
       },
     ],
@@ -80,7 +85,6 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
       {/* Main Grid Layout: Left Content Column & Right Sidebar Column */}
       <main className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1380px] mx-auto my-10 sm:my-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          
           {/* Component 2: Event Main Content Left Column */}
           <div className="lg:col-span-8">
             <EventContent data={detailItem} />
@@ -90,7 +94,6 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
           <div className="lg:col-span-4">
             <EventSidebar data={detailItem} />
           </div>
-
         </div>
       </main>
 

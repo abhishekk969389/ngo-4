@@ -22,25 +22,28 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Bless Foundation - Building a Better Tomorrow",
-  description: "At Bless Foundation, we are committed to uplifting lives, empowering communities, and creating lasting change.",
+  description:
+    "At Bless Foundation, we are committed to uplifting lives, empowering communities, and creating lasting change.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col">
-           <SmoothScroll>
-        <Navbar />
+        <SmoothScroll>
+          <Navbar />
 
-        {/* main tag me flex-1 add kiya jisse ye extra space fill karke Footer ko bilkul niche push kar dega */}
-        <main className="flex-1">
-          {children}
-        </main>
+          {/* main tag me flex-1 add kiya jisse ye extra space fill karke Footer ko bilkul niche push kar dega */}
+          <main className="flex-1">{children}</main>
 
-        <Footer />
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

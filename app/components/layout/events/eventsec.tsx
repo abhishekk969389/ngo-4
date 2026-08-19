@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowLeft, ArrowRight, MapPin, Clock3 } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoEventCard, NgoEventSection } from '@/app/type/ngo';
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, MapPin, Clock3 } from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoEventCard, NgoEventSection } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function EventSection() {
@@ -19,27 +19,33 @@ export default function EventSection() {
   if (!eventData) return null;
 
   // Splits heading to highlight the last word in green (e.g., "Events")
-  const headingWords = eventData.heading ? eventData.heading.split(' ') : [];
-  const primaryHeading = headingWords.slice(0, -1).join(' ');
-  const highlightedHeading = headingWords.length > 0 ? headingWords[headingWords.length - 1] : '';
+  const headingWords = eventData.heading ? eventData.heading.split(" ") : [];
+  const primaryHeading = headingWords.slice(0, -1).join(" ");
+  const highlightedHeading =
+    headingWords.length > 0 ? headingWords[headingWords.length - 1] : "";
 
   // Splits featured title to highlight "Events" in green
-  const featuredWords = eventData.featuredTitle ? eventData.featuredTitle.split(' ') : [];
-  const primaryFeatured = featuredWords.slice(0, -1).join(' ');
-  const highlightedFeatured = featuredWords.length > 0 ? featuredWords[featuredWords.length - 1] : '';
+  const featuredWords = eventData.featuredTitle
+    ? eventData.featuredTitle.split(" ")
+    : [];
+  const primaryFeatured = featuredWords.slice(0, -1).join(" ");
+  const highlightedFeatured =
+    featuredWords.length > 0 ? featuredWords[featuredWords.length - 1] : "";
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
         {/* Main Section Header */}
         <div className="text-center">
           <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3319] font-serif leading-[1.2] sm:leading-[1.18] tracking-tight mt-2 sm:mt-1">
             {primaryHeading && <span>{primaryHeading} </span>}
-            {highlightedHeading && <span className="mt-2 font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">{highlightedHeading}</span>}
+            {highlightedHeading && (
+              <span className="mt-2 font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
+                {highlightedHeading}
+              </span>
+            )}
           </h1>
 
-          {/* Underline Bar */}
           <div className="mt-3 flex justify-center">
             <span className="h-[2.5px] w-10 rounded-full bg-[#2c7a3f]" />
           </div>
@@ -53,21 +59,23 @@ export default function EventSection() {
         <div className="mt-6 flex items-center justify-between gap-4">
           <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
             {primaryFeatured && <span>{primaryFeatured} </span>}
-            {highlightedFeatured && <span className="text-[#1d5e2d]">{highlightedFeatured}</span>}
+            {highlightedFeatured && (
+              <span className="text-[#1d5e2d]">{highlightedFeatured}</span>
+            )}
           </h2>
 
           {/* Slider Arrow Buttons */}
           <div className="flex items-center gap-2">
             <button
               type="button"
-              aria-label={eventData.arrowButtons?.prev || 'Previous'}
+              aria-label={eventData.arrowButtons?.prev || "Previous"}
               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:border-gray-400 hover:text-black"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
-              aria-label={eventData.arrowButtons?.next || 'Next'}
+              aria-label={eventData.arrowButtons?.next || "Next"}
               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:border-gray-400 hover:text-black"
             >
               <ArrowRight className="h-3.5 w-3.5" />
@@ -83,12 +91,10 @@ export default function EventSection() {
               className="group flex flex-col justify-between rounded-2xl border border-[#edf1ea] bg-white transition-all duration-300 hover:shadow-md"
             >
               <div>
-                {/* Image Relative Container (without overflow-hidden) */}
                 <div className="relative">
-                  {/* Inner Image Wrapper with overflow-hidden for rounded corners */}
-                  <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">    
+                  <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
                     <Image
-                      src={card.image || '/banner_bg.png'}
+                      src={card.image || "/banner_bg.png"}
                       alt={card.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -96,7 +102,6 @@ export default function EventSection() {
                     />
                   </div>
 
-                  {/* Dark Green Overlapping Date Badge (Uncut & Fully Visible) */}
                   <div className="absolute -bottom-4 left-4 z-20 flex min-w-[52px] flex-col items-center justify-center rounded-lg bg-[#1a4325] px-3 py-1.5 text-center text-white shadow-md">
                     <span className="font-serif text-base font-bold leading-none">
                       {card.date.day}
@@ -107,13 +112,11 @@ export default function EventSection() {
                   </div>
                 </div>
 
-                {/* Card Body Content */}
                 <div className="p-5 pt-7">
                   <h3 className="font-serif text-base font-bold text-[#16351d] sm:text-lg">
                     {card.title}
                   </h3>
 
-                  {/* Location & Time Info */}
                   <div className="mt-3 space-y-2 text-xs text-[#59665b]">
                     <div className="flex items-start gap-2">
                       <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gray-500 stroke-[1.8]" />
@@ -125,26 +128,23 @@ export default function EventSection() {
                     </div>
                   </div>
 
-                  {/* Description */}
                   <p className="mt-3.5 text-xs leading-relaxed text-[#59665b]">
                     {card.description}
                   </p>
                 </div>
               </div>
 
-              {/* Action Button */}
               <div className="p-5 pt-0">
                 <Link
                   href={`/events/${card.id}`}
                   className="inline-flex rounded-lg bg-[#1a4325] cursor-pointer px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-[#13351d]"
                 >
-                  {card.buttonLabel || 'Register Now'}
+                  {card.buttonLabel || "Register Now"}
                 </Link>
               </div>
             </article>
           ))}
         </div>
-
       </div>
     </section>
   );

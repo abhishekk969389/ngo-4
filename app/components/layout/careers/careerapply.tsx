@@ -1,27 +1,37 @@
-'use client';
+"use client";
 
-import React, { useState, useRef } from 'react';
-import { UploadCloud, Send, Lock, CheckCircle2, ChevronDown, FileText, X } from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+import React, { useState, useRef } from "react";
+import {
+  UploadCloud,
+  Send,
+  Lock,
+  CheckCircle2,
+  ChevronDown,
+  FileText,
+  X,
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoCareersSection,
   NgoCareerApplyForm,
   NgoCareerFormField,
-} from '@/app/type/ngo';
+} from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 export default function CareerApply() {
   const careersData = data.careersSection as NgoCareersSection | undefined;
   const applyForm = careersData?.applyForm as NgoCareerApplyForm | undefined;
 
-  const [formValues, setFormValues] = useState<Record<string, string | boolean>>({});
+  const [formValues, setFormValues] = useState<
+    Record<string, string | boolean>
+  >({});
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -41,10 +51,12 @@ export default function CareerApply() {
   } = applyForm;
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     const { name, value, type } = e.target;
-    if (type === 'checkbox') {
+    if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
       setFormValues((prev) => ({ ...prev, [name]: checked }));
     } else {
@@ -85,7 +97,6 @@ export default function CareerApply() {
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-[#e8eee7] bg-white p-6 shadow-xs sm:p-10 lg:p-12">
-          
           {submitted ? (
             <div className="py-12 text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#f0f6ef] text-[#1d5e2d]">
@@ -111,8 +122,6 @@ export default function CareerApply() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
-              
-              {/* Section 1: Applicant Information */}
               <div>
                 <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
                   {applicantInfo.title}
@@ -120,20 +129,25 @@ export default function CareerApply() {
 
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {applicantInfo.fields.map((field: NgoCareerFormField) => {
-                    const isFullWidth = field.colSpan === 'full';
-                    const currentValue = (formValues[field.name] as string) || '';
+                    const isFullWidth = field.colSpan === "full";
+                    const currentValue =
+                      (formValues[field.name] as string) || "";
 
                     return (
                       <div
                         key={field.id}
-                        className={isFullWidth ? 'sm:col-span-2' : 'sm:col-span-1'}
+                        className={
+                          isFullWidth ? "sm:col-span-2" : "sm:col-span-1"
+                        }
                       >
                         <label className="block text-xs font-bold text-[#16351d] sm:text-sm">
-                          {field.label}{' '}
-                          {field.required && <span className="text-red-500">*</span>}
+                          {field.label}{" "}
+                          {field.required && (
+                            <span className="text-red-500">*</span>
+                          )}
                         </label>
 
-                        {field.type === 'select' ? (
+                        {field.type === "select" ? (
                           <div className="relative mt-2">
                             <select
                               name={field.name}
@@ -142,7 +156,11 @@ export default function CareerApply() {
                               onChange={handleInputChange}
                               className="w-full appearance-none rounded-xl border border-[#dce4db] bg-white px-4 py-3 text-xs text-[#16351d] outline-none transition-colors focus:border-[#1d5e2d] focus:ring-1 focus:ring-[#1d5e2d] sm:text-sm"
                             >
-                              <option value="" disabled className="text-[#8a998c]">
+                              <option
+                                value=""
+                                disabled
+                                className="text-[#8a998c]"
+                              >
                                 {field.placeholder}
                               </option>
                               {field.options?.map((opt: string) => (
@@ -170,7 +188,6 @@ export default function CareerApply() {
                 </div>
               </div>
 
-              {/* Section 2: Resume / CV */}
               <div>
                 <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
                   {resumeSection.title}
@@ -194,15 +211,17 @@ export default function CareerApply() {
                   onClick={() => fileInputRef.current?.click()}
                   className={`mt-3 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 text-center cursor-pointer transition-all ${
                     isDragging
-                      ? 'border-[#1d5e2d] bg-[#f0f6ef]'
-                      : 'border-[#d5e0d3] bg-[#fcfdfc] hover:bg-[#f6f9f5]'
+                      ? "border-[#1d5e2d] bg-[#f0f6ef]"
+                      : "border-[#d5e0d3] bg-[#fcfdfc] hover:bg-[#f6f9f5]"
                   }`}
                 >
                   {file ? (
                     <div className="flex items-center gap-3">
                       <FileText className="h-8 w-8 text-[#1d5e2d]" />
                       <div className="text-left">
-                        <p className="text-sm font-bold text-[#16351d]">{file.name}</p>
+                        <p className="text-sm font-bold text-[#16351d]">
+                          {file.name}
+                        </p>
                         <p className="text-xs text-[#59665b]">
                           {(file.size / (1024 * 1024)).toFixed(2)} MB
                         </p>
@@ -226,7 +245,9 @@ export default function CareerApply() {
                       <p className="text-xs font-semibold text-[#16351d] sm:text-sm">
                         {resumeSection.dragDropText}
                       </p>
-                      <p className="my-1 text-xs text-[#8a998c]">{resumeSection.orText}</p>
+                      <p className="my-1 text-xs text-[#8a998c]">
+                        {resumeSection.orText}
+                      </p>
                       <span className="text-xs font-bold text-[#1d5e2d] underline sm:text-sm">
                         {resumeSection.browseFileText}
                       </span>
@@ -238,7 +259,6 @@ export default function CareerApply() {
                 </p>
               </div>
 
-              {/* Section 3: Cover Letter */}
               <div>
                 <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
                   {coverLetterSection.title}
@@ -250,7 +270,7 @@ export default function CareerApply() {
                   name="coverLetter"
                   rows={4}
                   placeholder={coverLetterSection.placeholder}
-                  value={(formValues.coverLetter as string) || ''}
+                  value={(formValues.coverLetter as string) || ""}
                   onChange={handleInputChange}
                   className="mt-3 w-full rounded-xl border border-[#dce4db] bg-white p-4 text-xs text-[#16351d] placeholder-[#8a998c] outline-none transition-colors focus:border-[#1d5e2d] focus:ring-1 focus:ring-[#1d5e2d] sm:text-sm"
                 />
@@ -259,7 +279,6 @@ export default function CareerApply() {
                 </p>
               </div>
 
-              {/* Section 4: Additional Information */}
               <div>
                 <h2 className="font-serif text-xl font-bold tracking-tight text-[#16351d] sm:text-2xl">
                   {additionalInfoSection.title}
@@ -270,7 +289,7 @@ export default function CareerApply() {
                 <div className="relative mt-3">
                   <select
                     name="heardAbout"
-                    value={(formValues.heardAbout as string) || ''}
+                    value={(formValues.heardAbout as string) || ""}
                     onChange={handleInputChange}
                     className="w-full appearance-none rounded-xl border border-[#dce4db] bg-white px-4 py-3 text-xs text-[#16351d] outline-none transition-colors focus:border-[#1d5e2d] focus:ring-1 focus:ring-[#1d5e2d] sm:text-sm"
                   >
@@ -287,7 +306,6 @@ export default function CareerApply() {
                 </div>
               </div>
 
-              {/* Confirmation Checkbox */}
               <div className="flex items-start gap-3 pt-2">
                 <input
                   type="checkbox"
@@ -298,12 +316,14 @@ export default function CareerApply() {
                   onChange={handleInputChange}
                   className="mt-0.5 h-4 w-4 rounded-sm border-[#dce4db] text-[#0d4019] accent-[#0d4019] focus:ring-[#1d5e2d]"
                 />
-                <label htmlFor="confirmed" className="text-xs text-[#59665b] sm:text-sm cursor-pointer select-none leading-relaxed">
+                <label
+                  htmlFor="confirmed"
+                  className="text-xs text-[#59665b] sm:text-sm cursor-pointer select-none leading-relaxed"
+                >
                   {confirmation.text}
                 </label>
               </div>
 
-              {/* Submit Button */}
               <div>
                 <button
                   type="submit"
@@ -313,16 +333,13 @@ export default function CareerApply() {
                   <Send className="h-4 w-4 stroke-[2]" />
                 </button>
 
-                {/* Security Footnote */}
                 <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-[#59665b]">
                   <Lock className="h-3.5 w-3.5 stroke-[2] text-[#1d5e2d]" />
                   <span>{securityFooter.text}</span>
                 </div>
               </div>
-
             </form>
           )}
-
         </div>
       </div>
     </section>

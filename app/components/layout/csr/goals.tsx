@@ -9,15 +9,15 @@ import {
   Handshake,
   Users,
   Heart,
-} from 'lucide-react';
-import ngoDataJson from '@/app/data/ngoData_structured.json';
-import type { NgoData, NgoGoalItem } from '@/app/type/ngo';
+} from "lucide-react";
+import ngoDataJson from "@/app/data/ngoData_structured.json";
+import type { NgoData, NgoGoalItem } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$$typeof') return undefined;
+    if (prop === "$$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 const iconMap = {
@@ -38,7 +38,9 @@ export default function Goals() {
 
   const getIcon = (icon: string) => {
     const IconComponent = iconMap[icon as keyof typeof iconMap] ?? Globe2;
-    return <IconComponent className="h-10 w-10 text-white sm:h-12 sm:w-12 stroke-[1.8]" />;
+    return (
+      <IconComponent className="h-10 w-10 text-white sm:h-12 sm:w-12 stroke-[1.8]" />
+    );
   };
 
   return (
@@ -57,7 +59,6 @@ export default function Goals() {
           </div>
         </div>
 
-        {/* SDG Card Grid */}
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-8">
           {goalsData.items.map((goal: NgoGoalItem) => (
             <div
@@ -65,7 +66,6 @@ export default function Goals() {
               className="flex aspect-square flex-col justify-between rounded-xl p-3 sm:p-3.5 text-white shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-md"
               style={{ backgroundColor: goal.accent }}
             >
-              {/* Header: Goal Code (Left) & Title (Right) */}
               <div className="flex items-start gap-1.5 text-left">
                 <span className="text-2xl font-black leading-none tracking-tight sm:text-3xl">
                   {goal.code}
@@ -75,7 +75,6 @@ export default function Goals() {
                 </span>
               </div>
 
-              {/* Icon Container */}
               <div className="flex flex-1 items-center justify-center pt-2">
                 {getIcon(goal.icon)}
               </div>

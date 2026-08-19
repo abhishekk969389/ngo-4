@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "app/(pages)/ourteam"  ],
+    "**/*.mts",
+    "app/(pages)/ourteam"
+  ],
   "exclude": ["node_modules"]
 }

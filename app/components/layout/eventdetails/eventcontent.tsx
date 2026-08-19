@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 import {
   CheckCircle2,
   Calendar,
@@ -14,8 +14,8 @@ import {
   Smile,
   Heart,
   ExternalLink,
-} from 'lucide-react';
-import type { EventDetailItem } from '@/app/type/ngo';
+} from "lucide-react";
+import type { EventDetailItem } from "@/app/type/ngo";
 
 const detailIconMap = {
   calendar: Calendar,
@@ -41,19 +41,20 @@ interface EventContentProps {
 export default function EventContent({ data }: EventContentProps) {
   if (!data) return null;
 
-  const aboutWords = (data.aboutTitle || '').split(' ');
-  const primaryAbout = aboutWords.slice(0, -1).join(' ');
-  const highlightAbout = aboutWords.length > 0 ? aboutWords[aboutWords.length - 1] : '';
+  const aboutWords = (data.aboutTitle || "").split(" ");
+  const primaryAbout = aboutWords.slice(0, -1).join(" ");
+  const highlightAbout =
+    aboutWords.length > 0 ? aboutWords[aboutWords.length - 1] : "";
 
   return (
     <div className="space-y-8 font-sans">
-      
-      {/* 1. About the Event */}
       {data.aboutContent && (
         <div className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
             {primaryAbout && <span>{primaryAbout} </span>}
-            {highlightAbout && <span className="text-[#2c7a3f]">{highlightAbout}</span>}
+            {highlightAbout && (
+              <span className="text-[#2c7a3f]">{highlightAbout}</span>
+            )}
           </h2>
           <p className="text-xs sm:text-sm md:text-base leading-relaxed text-[#4b584d]">
             {data.aboutContent}
@@ -61,7 +62,6 @@ export default function EventContent({ data }: EventContentProps) {
         </div>
       )}
 
-      {/* 2. What to Expect */}
       {data.expectations && data.expectations.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
@@ -69,7 +69,10 @@ export default function EventContent({ data }: EventContentProps) {
           </h2>
           <ul className="space-y-3">
             {data.expectations.map((item) => (
-              <li key={item.id} className="flex items-center gap-3 text-xs sm:text-sm text-[#0d3319]">
+              <li
+                key={item.id}
+                className="flex items-center gap-3 text-xs sm:text-sm text-[#0d3319]"
+              >
                 <CheckCircle2 className="w-4.5 h-4.5 text-[#2c7a3f] shrink-0" />
                 <span>{item.text}</span>
               </li>
@@ -78,17 +81,17 @@ export default function EventContent({ data }: EventContentProps) {
         </div>
       )}
 
-      {/* 3. Event Details Table / List */}
       {data.detailsRows && data.detailsRows.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
             {data.detailsTitle}
           </h2>
-          
+
           <div className="bg-[#f7faf6] border border-[#e2ebd9] rounded-2xl overflow-hidden divide-y divide-[#e2ebd9]">
             {data.detailsRows.map((row) => {
               const IconComponent =
-                detailIconMap[row.icon as keyof typeof detailIconMap] || detailIconMap.default;
+                detailIconMap[row.icon as keyof typeof detailIconMap] ||
+                detailIconMap.default;
 
               return (
                 <div
@@ -121,7 +124,6 @@ export default function EventContent({ data }: EventContentProps) {
         </div>
       )}
 
-      {/* 4. What to Bring */}
       {data.bringItems && data.bringItems.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
@@ -131,7 +133,8 @@ export default function EventContent({ data }: EventContentProps) {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
             {data.bringItems.map((item) => {
               const IconComponent =
-                bringIconMap[item.icon as keyof typeof bringIconMap] || bringIconMap.default;
+                bringIconMap[item.icon as keyof typeof bringIconMap] ||
+                bringIconMap.default;
 
               return (
                 <div
@@ -151,7 +154,6 @@ export default function EventContent({ data }: EventContentProps) {
         </div>
       )}
 
-      {/* 5. Gallery */}
       {data.gallery && data.gallery.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
@@ -166,7 +168,7 @@ export default function EventContent({ data }: EventContentProps) {
               >
                 <Image
                   src={img.image}
-                  alt={img.alt || ''}
+                  alt={img.alt || ""}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 640px) 50vw, 20vw"
@@ -177,7 +179,6 @@ export default function EventContent({ data }: EventContentProps) {
         </div>
       )}
 
-      {/* 6. Impact Callout Banner */}
       {data.impactCallout && (
         <div className="bg-[#f4f8f4] border border-[#e2ebd9] rounded-2xl p-5 flex items-center gap-4">
           <div className="w-11 h-11 rounded-full bg-[#e2ebd9] flex-shrink-0 flex items-center justify-center text-[#1b4d25]">
@@ -193,7 +194,6 @@ export default function EventContent({ data }: EventContentProps) {
           </div>
         </div>
       )}
-
     </div>
   );
 }

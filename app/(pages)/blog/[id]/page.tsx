@@ -1,14 +1,14 @@
 import Banner from "@/app/components/ui/banner";
 import BlogDetail from "@/app/components/layout/blog/blogdetail";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from '@/app/data/ngoData_structured.json';
+import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type { NgoData, NgoBlogCardItem, PageBannerData } from "@/app/type/ngo";
 
 const data = new Proxy(ngoDataJson as any, {
   get(target, prop: string) {
-    if (prop === '$typeof') return undefined;
+    if (prop === "$typeof") return undefined;
     return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  }
+  },
 });
 
 interface BlogDetailPageProps {
@@ -29,7 +29,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { id } = resolvedParams;
 
   const currentBlog = data.blogPageSection?.blogs.find(
-    (b: NgoBlogCardItem) => String(b.id) === String(id)
+    (b: NgoBlogCardItem) => String(b.id) === String(id),
   );
 
   const blogBannerConfig = data.pageBanners?.blog;
