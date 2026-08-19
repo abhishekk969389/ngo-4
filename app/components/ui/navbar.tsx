@@ -48,7 +48,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-6">
+        <nav className="hidden lg:flex items-center gap-3 lg:gap-5 xl:gap-7">
           {header.menu.map((link: any) => {
             const hasChildren = link.children && link.children.length > 0;
             const isActive =

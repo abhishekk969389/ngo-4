@@ -34,7 +34,7 @@ export default function EventSection() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Main Section Header */}
         <div className="text-center">
           <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3319] font-serif leading-[1.2] sm:leading-[1.18] tracking-tight mt-2 sm:mt-1">
