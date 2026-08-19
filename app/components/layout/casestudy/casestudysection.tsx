@@ -67,7 +67,7 @@ export default function CaseStudySection() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8 pb-6">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 pb-6">
         <div className="text-center">
           <div className="inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#0d3319] font-sans">
             <span className="h-px w-10 bg-[#2c7a3f]/30" />

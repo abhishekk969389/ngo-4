@@ -36,7 +36,7 @@ export default function BecomePartner() {
 
   return (
     <section className="bg-white py-8 sm:py-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="relative flex min-h-[260px] items-center overflow-hidden rounded-[2rem] bg-[#f8faf7] sm:min-h-[300px] lg:min-h-[340px]">
           {/* Background Image (Aligned Right) */}
           <div className="absolute inset-y-0 right-0 w-full md:w-3/5 lg:w-1/2">

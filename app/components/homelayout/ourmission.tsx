@@ -106,9 +106,10 @@ export default function OurMission() {
           </div>
 
           <h2 className="mt-2 text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
-            {ourMission.heading.replace("Change Lives", "")}
+            {ourMission.heading.prefix}
             <br />
-            <span className="text-[#2c7a3f]">Change Lives</span>
+            <span className="text-[#2c7a3f]">{ourMission.heading.highlight}</span>
+            {ourMission.heading.suffix}
           </h2>
 
           <div className="w-14 h-[3px] bg-[#2c7a3f] mt-4 mb-6"></div>

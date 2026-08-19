@@ -16,7 +16,7 @@ export default function CertificateSection() {
 
   return (
     <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {certificateSection.certificates.map((certificate: any) => {
             const certificateImage =

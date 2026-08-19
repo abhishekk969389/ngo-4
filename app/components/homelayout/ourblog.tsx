@@ -16,7 +16,7 @@ export default function OurBlog() {
 
   return (
     <section className="py-12 overflow-hidden border-t border-gray-100">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#2c7a3f] font-sans">
             <BookOpen className="h-4 w-4 text-[#2c7a3f]" />
@@ -25,15 +25,16 @@ export default function OurBlog() {
           </div>
 
           <h2 className="mt-2 text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight tracking-tight">
-            {blogsSection.heading.replace("Blog", "")}
-            <span className="text-[#2c7a3f]">Blog</span>
-          </h2>
+            {blogsSection.heading.prefix}
+            <span className="text-[#2c7a3f]">{blogsSection.heading.highlight}</span>
+            {blogsSection.heading.suffix}
+          </h2>  
 
           <div className="flex items-center justify-center gap-3 mt-3">
             <div className="w-10 h-[1.5px] bg-[#2c7a3f]/40"></div>
             <Leaf className="h-4 w-4 text-[#2c7a3f] fill-current" />
             <div className="w-10 h-[1.5px] bg-[#2c7a3f]/40"></div>
-          </div>
+          </div>  
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">

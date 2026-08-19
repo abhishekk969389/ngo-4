@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 
-
 function ScrollToTopOnNavigate() {
   const pathname = usePathname();
   const lenis = useLenis();
@@ -21,7 +20,7 @@ function GlobalScrollEffects() {
   const pathname = usePathname();
 
   useEffect(() => {
-
+    // Sirf un elements ko select karein jo animate hone chahiye
     const elements = document.querySelectorAll(
       "section, article, .scroll-reveal"
     );
@@ -31,20 +30,27 @@ function GlobalScrollEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
+            // Ek baar visible hone ke baad unobserve kar dein taaki bar-bar hide/show flicker na ho
+            observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1, 
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.05,
+        rootMargin: "0px 0px 80px 0px", // Scroll aane se thoda pehle hi trigger hoga
       }
     );
 
     elements.forEach((el) => {
-      el.classList.add("reveal-init");
-      observer.observe(el);
+      const rect = el.getBoundingClientRect();
+      
+      // Agar element already screen (above the fold) me hai toh use turant visible karein
+      if (rect.top < window.innerHeight) {
+        el.classList.add("is-visible");
+      } else {
+        el.classList.add("reveal-init");
+        observer.observe(el);
+      }
     });
 
     return () => observer.disconnect();
@@ -52,7 +58,6 @@ function GlobalScrollEffects() {
 
   return null;
 }
-
 
 export function AnchorOffsetHandler() {
   const lenis = useLenis();
@@ -79,7 +84,7 @@ export function AnchorOffsetHandler() {
       const header = document.querySelector("header.sticky");
       const offset = header ? (header as HTMLElement).offsetHeight : 0;
       const top = el.getBoundingClientRect().top + window.scrollY - offset - 8;
-      
+
       lenis.scrollTo(top, { immediate: false });
     };
 

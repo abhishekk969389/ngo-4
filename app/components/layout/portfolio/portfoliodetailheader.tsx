@@ -48,7 +48,7 @@ export default function PortfolioDetailHeader({
   };
 
   return (
-    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1348px] mx-auto mt-6 sm:mt-10 lg:mt-12">
+    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1350px] mx-auto mt-6 sm:mt-10 lg:mt-12">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Column - Header Details */}
         <div className="lg:col-span-6 xl:col-span-7 space-y-6">

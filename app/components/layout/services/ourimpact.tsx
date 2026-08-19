@@ -52,7 +52,7 @@ export default function OurImpact() {
         </defs>
       </svg>
 
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2rem] p-6 sm:p-8 lg:p-12 mb-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
             {/* Left Content Column */}

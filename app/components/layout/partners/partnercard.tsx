@@ -27,7 +27,7 @@ export default function PartnerCard() {
 
   return (
     <section className="bg-[#fcfdfc] pt-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl border border-[#e2ece0] bg-[#f0f6ef] p-6 sm:p-8 lg:p-10 shadow-sm sm:rounded-3xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-[#d3e2d1]">
             {cardsData.items.map((item: any) => {

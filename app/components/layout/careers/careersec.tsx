@@ -87,7 +87,7 @@ export default function CareerSec() {
 
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14 pb-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <div className="rounded-2xl border border-[#e6ebe5] bg-white p-6 shadow-sm sm:p-8 lg:p-10">

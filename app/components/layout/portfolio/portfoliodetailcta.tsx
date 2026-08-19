@@ -10,7 +10,7 @@ export default function PortfolioDetailCta({ data }: PortfolioDetailCtaProps) {
   if (!data) return null;
 
   return (
-    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1348px] mx-auto my-12 sm:my-16">
+    <section className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1350px] mx-auto my-12 sm:my-16">
       <div className="relative overflow-hidden rounded-3xl bg-[#f4f8f3] border border-[#e2ebd9] p-6 sm:p-8 lg:p-10 shadow-xs">
         {/* Subtle decorative leaf in top right */}
         <div className="absolute top-4 right-4 text-[#2c7a3f]/10 pointer-events-none">

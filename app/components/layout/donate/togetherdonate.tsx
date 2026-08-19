@@ -45,7 +45,7 @@ export default function TogetherDonate() {
 
   return (
     <section className="bg-[#fcfdfc] mt-12 mb-12">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Top Card (Stats / Impact Grid) */}
         <div className="mx-auto max-w-[1280px] rounded-3xl border border-[#e5eae2] bg-[#f8faf7] p-8 text-center shadow-sm sm:p-10">
           <h2 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl lg:text-4xl">

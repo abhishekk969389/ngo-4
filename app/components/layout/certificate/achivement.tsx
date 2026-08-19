@@ -17,7 +17,7 @@ export default function AchievementSection() {
 
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-12 mb-6">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-6">
         <div className="rounded-2xl sm:rounded-3xl bg-[#f6f9f5] p-5 sm:p-7 lg:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-6 flex-1">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[#d6e5d8] bg-[#edf4ee] text-[#1f5e2e] flex items-center justify-center shrink-0">
