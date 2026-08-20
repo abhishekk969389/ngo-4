@@ -160,19 +160,19 @@ export default function VideosGallery({ data: propData, className }: SectionProp
 
             {/* Main Video / Content */}
             <div
-              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden flex items-center justify-center"
+              className="relative w-[90vw] max-w-5xl aspect-video max-h-[85vh] overflow-hidden flex items-center justify-center rounded-xl bg-black shadow-2xl border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               {filteredVideos[selectedIndex].videoUrl ? (
                 <iframe
-                  src={filteredVideos[selectedIndex].videoUrl}
+                  src={filteredVideos[selectedIndex].videoUrl.includes('autoplay') ? filteredVideos[selectedIndex].videoUrl : `${filteredVideos[selectedIndex].videoUrl}?autoplay=1`}
                   title={filteredVideos[selectedIndex].title}
-                  className="h-full w-full border-0 rounded-lg shadow-2xl"
+                  className="w-full h-full border-0 rounded-xl"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               ) : (
-                <div className="relative h-full w-full flex items-center justify-center">
+                <div className="relative w-full h-full flex items-center justify-center">
                   <Image
                     src={filteredVideos[selectedIndex].thumbnail}
                     alt={filteredVideos[selectedIndex].title}
@@ -182,7 +182,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                     priority
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-black/60 text-white shadow-2xl backdrop-blur-sm border border-white/20 transition-transform duration-300">
+                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-black/60 text-white shadow-2xl backdrop-blur-sm border border-white/20">
                       <Play className="h-8 w-8 sm:h-10 sm:w-10 fill-white translate-x-0.5" />
                     </div>
                   </div>
