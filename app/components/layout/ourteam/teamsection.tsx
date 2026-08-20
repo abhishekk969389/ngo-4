@@ -15,7 +15,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
       case "linkedin":
         return (
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
           </svg>
         );
       case "twitter":
@@ -28,7 +28,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
       default:
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M0 7.33l12 7.33 12-7.33v-1.33c0-.552-.448-1-1-1h-22c-.552 0-1 .448-1 1v1.33zm24 2.67l-12 7.33-12-7.33v8.33c0 .552.448 1 1 1h22c.552 0 1-.448 1-1v-8.33z"/>
+            <path d="M0 7.33l12 7.33 12-7.33v-1.33c0-.552-.448-1-1-1h-22c-.552 0-1 .448-1 1v1.33zm24 2.67l-12 7.33-12-7.33v8.33c0 .552.448 1 1 1h22c.552 0 1-.448 1-1v-8.33z" />
           </svg>
         );
     }
@@ -37,7 +37,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
   return (
     <section className={`bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden ${className || ""}`}>
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
-        
+
         {/* Header Block */}
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
@@ -94,17 +94,17 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
                 <h3 className="text-lg sm:text-[21px] font-bold text-[#093517] font-sans tracking-tight leading-tight group-hover:text-[#2c7a3f] transition-colors">
                   {member.name}
                 </h3>
-                
+
                 <p className="text-[13px] sm:text-[14.5px] font-bold text-[#34783c] font-sans mt-1">
                   {member.role}
                 </p>
-                
+
                 <div className="w-8 sm:w-10 h-[2px] bg-[#34783c] rounded-full mt-2.5 mb-3" />
-                
+
                 <p className="text-[13px] sm:text-[14px] text-gray-600 font-sans leading-[1.6] line-clamp-3 sm:line-clamp-4">
                   {member.bio}
                 </p>
-                
+
                 {/* Socials */}
                 <div className="flex items-center gap-2.5 mt-4">
                   {member.socials.slice(0, 3).map((social: any, index: any) => (
@@ -130,7 +130,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
         {/* Bottom CTA Banner */}
         {teamData.ctaBanner && (
           <div className="mt-8 sm:mt-12 py-5 px-5 sm:px-8 lg:px-10 rounded-[20px] bg-[#f4f7f2] border border-[#e5eee4] flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
-            
+
             {/* Right Background Leaf Watermark */}
             <div className="absolute right-0 top-0 bottom-0 h-full w-44 sm:w-56 pointer-events-none select-none opacity-40 text-[#427a4e] flex items-center justify-end z-0">
               <svg
@@ -154,7 +154,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
             </div>
 
             <div className="flex flex-col lg:flex-row items-center w-full relative z-10 gap-6 sm:gap-8 lg:gap-0">
-              
+
               {/* 1. Left Content Block */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 flex-1">
                 {/* Icon */}
@@ -191,7 +191,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
 
               {/* 2. Middle & Right Groups */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 lg:gap-10 shrink-0 w-full lg:w-auto md:mx-30 lg:mx-40">
-                
+
                 {/* Divider & Plant */}
                 <div className="hidden lg:flex items-center gap-6 h-16">
                   <div className="h-full border-l border-dashed border-[#c2d3c2]"></div>

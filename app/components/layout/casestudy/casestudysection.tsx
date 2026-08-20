@@ -45,9 +45,9 @@ export default function CaseStudySection({ data: propData, className }: SectionP
     activeFilter === "all"
       ? caseStudyData.cards
       : caseStudyData.cards.filter(
-          (card: NgoCaseStudyCard) =>
-            card.category.toLowerCase() === activeFilter.toLowerCase(),
-        );
+        (card: NgoCaseStudyCard) =>
+          card.category.toLowerCase() === activeFilter.toLowerCase(),
+      );
 
   const getIcon = (iconName: string, className = "h-4 w-4 text-[#1d5e2d]") => {
     const IconComponent =
@@ -101,11 +101,10 @@ export default function CaseStudySection({ data: propData, className }: SectionP
                 key={category.id}
                 type="button"
                 onClick={() => setActiveFilter(category.value)}
-                className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-xs font-semibold transition sm:text-sm ${
-                  isActive
+                className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-xs font-semibold transition sm:text-sm ${isActive
                     ? "border-[#1a4325] bg-[#1a4325] text-white shadow-sm"
                     : "border-[#e2e8e0] bg-white text-[#234b2c] hover:border-[#1a4325] hover:bg-[#f4f7f2]"
-                }`}
+                  }`}
               >
                 <CategoryIcon
                   className={`h-4 w-4 ${isActive ? "text-white" : "text-[#234b2c]"}`}

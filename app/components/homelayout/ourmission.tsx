@@ -54,7 +54,7 @@ export default function OurMission({ data, className }: SectionProps<NGOourMissi
   };
 
   return (
-    <section className="relative bg-[#f7f9f5] py-8 mt-16 overflow-hidden border-t border-gray-100">
+    <section className="relative bg-[#f7f9f5] py-6 sm:py-10 lg:py-12 overflow-hidden border-t border-gray-100">
       <div className="absolute top-5 right-6 sm:top-8 sm:right-12 md:right-20 lg:right-28 hidden md:block pointer-events-none">
         <svg
           width="240"
@@ -122,8 +122,8 @@ export default function OurMission({ data, className }: SectionProps<NGOourMissi
               <div
                 key={card.id}
                 className={`relative group flex flex-col items-center text-center px-6 py-4 transition-all duration-300 ${!isLast
-                    ? "after:hidden lg:after:block after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[60%] after:w-[2px] after:bg-gray-300/80 after:rounded-full"
-                    : ""
+                  ? "after:hidden lg:after:block after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[60%] after:w-[2px] after:bg-gray-300/80 after:rounded-full"
+                  : ""
                   }`}
               >
                 <div className="relative mb-6 flex items-center justify-center">

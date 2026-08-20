@@ -76,12 +76,12 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
               </svg>
             </span>
           </h2>
-        
+
           <p className="mx-auto mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
             {portfolioData.description}
           </p>
         </div>
-          
+
         {/* 2-Column Responsive Portfolio Grid */}
         <div className="grid gap-6 md:grid-cols-2">
           {portfolioData.cards.map((card: any, index: number) => {
@@ -90,15 +90,17 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
             const theme = themeStyles[index % themeStyles.length];
 
             return (
-              <article
+              <Link
                 key={card.id}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl ${theme.bg} transition-all duration-300 hover:shadow-sm sm:flex-row`}
+                href={card.href || `/portfolio/${card.id}`}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl ${theme.bg} transition-all duration-300 hover:shadow-md sm:flex-row cursor-pointer`}
               >
                 <div
-                  className={`relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[44%] ${isRightColumn
-                    ? "sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]"
-                    : "sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]"
-                    }`}
+                  className={`relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[44%] ${
+                    isRightColumn
+                      ? "sm:order-2 [clip-path:none] sm:[clip-path:polygon(12%_0,100%_0,100%_100%,0%_100%)]"
+                      : "sm:order-1 [clip-path:none] sm:[clip-path:polygon(0_0,100%_0,88%_100%,0_100%)]"
+                  }`}
                 >
                   <Image
                     src={card.image}
@@ -111,8 +113,9 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
 
                 {/* Content Box - Icon Side-by-side with Content */}
                 <div
-                  className={`flex flex-1 items-start gap-3.5 p-5 sm:gap-4 sm:p-6 ${isRightColumn ? "sm:order-1" : "sm:order-2"
-                    }`}
+                  className={`flex flex-1 items-start gap-3.5 p-5 sm:gap-4 sm:p-6 ${
+                    isRightColumn ? "sm:order-1" : "sm:order-2"
+                  }`}
                 >
                   {/* Left Side: Icon Circle */}
                   <div
@@ -132,18 +135,16 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
                         {card.description}
                       </p>
                     </div>
-                    
 
-                    <Link
-                      href={card.href || `/portfolio/${card.id}`}
-                      className={`inline-flex items-center gap-1.5 mt-4 text-xs font-bold ${theme.text} transition hover:opacity-80`}
+                    <div
+                      className={`inline-flex items-center gap-1.5 mt-4 text-xs font-bold ${theme.text} transition group-hover:gap-2`}
                     >
                       <span>{card.buttonLabel || "View Project"}</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>

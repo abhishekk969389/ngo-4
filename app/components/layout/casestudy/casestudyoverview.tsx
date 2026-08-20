@@ -33,7 +33,7 @@ export default function CaseStudyOverviewSection({
   if (!data) return null;
 
   return (
-    <section className="py-8 sm:py-12 bg-white font-sans">
+    <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 bg-white font-sans">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           {/* Left Column: Overview Box */}

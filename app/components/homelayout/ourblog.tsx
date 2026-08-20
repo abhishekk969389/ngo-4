@@ -22,13 +22,13 @@ export default function OurBlog({ data, className }: SectionProps<NGOblogsSectio
             {blogsSection.heading.prefix}
             <span className="text-[#2c7a3f]">{blogsSection.heading.highlight}</span>
             {blogsSection.heading.suffix}
-          </h2>  
+          </h2>
 
           <div className="flex items-center justify-center gap-3 mt-3">
             <div className="w-10 h-[1.5px] bg-[#2c7a3f]/40"></div>
             <Leaf className="h-4 w-4 text-[#2c7a3f] fill-current" />
             <div className="w-10 h-[1.5px] bg-[#2c7a3f]/40"></div>
-          </div>  
+          </div>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -45,7 +45,7 @@ export default function OurBlog({ data, className }: SectionProps<NGOblogsSectio
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
 
                   <div className="absolute top-4 left-4 z-10 flex flex-col items-center justify-center bg-[#28602c] text-white text-center rounded-xl px-3 py-2 shadow-sm font-sans min-w-[60px]">
                     <span className="text-xl font-bold leading-none">

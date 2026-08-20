@@ -147,9 +147,8 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
                       return (
                         <div
                           key={offer.id}
-                          className={`flex flex-col items-center px-2 ${
-                            index > 0 ? "sm:border-l sm:border-[#e6ebe5]" : ""
-                          }`}
+                          className={`flex flex-col items-center px-2 ${index > 0 ? "sm:border-l sm:border-[#e6ebe5]" : ""
+                            }`}
                         >
                           <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f7f3] text-[#1d5e2d]">
                             <IconComponent className="h-6 w-6 text-[#1d5e2d]" />

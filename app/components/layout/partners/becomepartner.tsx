@@ -42,7 +42,7 @@ export default function BecomePartner({ data: propData, className }: SectionProp
               fill
               className="object-cover object-center"
               priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-[#f8faf7] via-[#f8faf7]/95 via-35% to-transparent sm:via-45% lg:via-50%" />

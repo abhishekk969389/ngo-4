@@ -45,9 +45,8 @@ export default function ImpactGlance({ data, className }: SectionProps<NGOimpact
               (stat: NgoImpactGlanceStat, index: number) => (
                 <div
                   key={stat.id}
-                  className={`flex items-center gap-4 sm:gap-5 ${
-                    index !== 0 ? "pt-6 sm:pt-0 lg:pl-6 lg:pt-0" : ""
-                  }`}
+                  className={`flex items-center gap-4 sm:gap-5 ${index !== 0 ? "pt-6 sm:pt-0 lg:pl-6 lg:pt-0" : ""
+                    }`}
                 >
                   <div className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full bg-[#eef5ef]">
                     {getIcon(stat.icon)}

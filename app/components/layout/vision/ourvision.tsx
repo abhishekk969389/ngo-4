@@ -43,7 +43,7 @@ export default function OurVision({ data, className }: SectionProps<NGOvisionPag
   };
 
   return (
-    <section className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden">
+    <section className={`mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden ${className || ""}`}>
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column: Content & 4 Pillars Grid & Quote Box */}
@@ -88,11 +88,10 @@ export default function OurVision({ data, className }: SectionProps<NGOvisionPag
               {visionData.pillars.map((pillar: any, index: any) => (
                 <div
                   key={pillar.id}
-                  className={`lg:border-r lg:border-gray-200/80 lg:last:border-r-0 lg:px-3 xl:px-4 first:lg:pl-0 last:lg:pr-0 flex flex-col items-center text-center ${
-                    index < 3
+                  className={`lg:border-r lg:border-gray-200/80 lg:last:border-r-0 lg:px-3 xl:px-4 first:lg:pl-0 last:lg:pr-0 flex flex-col items-center text-center ${index < 3
                       ? "pb-4 sm:pb-0 border-b sm:border-b-0 border-gray-100"
                       : ""
-                  }`}
+                    }`}
                 >
                   <div className="w-12 h-12 sm:w-13 sm:h-13 lg:w-15 lg:h-15 rounded-full bg-[#e6f4ea] text-[#1F5E2E] flex items-center justify-center mb-2.5 sm:mb-3 shadow-2xs shrink-0">
                     {getPillarIcon(pillar.icon)}
