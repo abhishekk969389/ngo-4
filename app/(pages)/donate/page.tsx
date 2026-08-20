@@ -1,9 +1,11 @@
+import { site, SectionProps } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import DonateSec from "@/app/components/layout/donate/donatesec";
 import TogetherDonate from "@/app/components/layout/donate/togetherdonate";
 import HomeCta from "@/app/components/ui/homecta";
 
-export default function DonatePage() {
+export default function DonatePage({ data: propData, className }: SectionProps<any> = {}) {
+  const data = propData || site;
   return (
     <>
       <Banner pageKey="donatenow" />

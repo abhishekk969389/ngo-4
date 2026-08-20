@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -7,12 +8,13 @@ import { usePathname } from "next/navigation";
 import { Search, Heart, Users, Menu, X, ChevronDown } from "lucide-react";
 import ngoData from "@/app/data/ngoData_structured.json";
 
-const topbar = (ngoData as any).NGO.sections.Topbar.variants.NGOTopbar1;
-const header = (ngoData as any).NGO.sections.Header.variants.NGOHeader1;
-const footer = (ngoData as any).NGO.sections.Footer.variants.NGOFooter1;
-const brand = (ngoData as any).NGO.sections.brand.variants.Legacy_brand;
+const topbar = site.topbar;
+const header = site.header;
+const footer = site.footer;
+const brand = site.brand;
 
-export default function Navbar() {
+export default function Navbar({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const [isOpen, setIsOpen] = useState(false);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
@@ -36,7 +38,7 @@ export default function Navbar() {
               alt={`${brand.name} logo`}
               fill
               className="object-contain"
-            />
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
           <div className="flex flex-col justify-center whitespace-nowrap">
             <span className="text-xl lg:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">

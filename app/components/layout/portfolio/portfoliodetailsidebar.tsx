@@ -8,7 +8,7 @@ import {
   Quote,
   CheckCircle2,
 } from "lucide-react";
-import type { PortfolioDetailSidebarData } from "@/app/type/ngo";
+import type { PortfolioDetailSidebarData } from "@/app/data";
 
 const iconMap = {
   users: Users,

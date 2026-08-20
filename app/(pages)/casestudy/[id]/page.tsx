@@ -1,21 +1,16 @@
+import { site, SectionProps } from "@/app/data";
 import { notFound } from "next/navigation";
 import Banner from "@/app/components/ui/banner";
 import CaseStudyOverviewSection from "@/app/components/layout/casestudy/casestudyoverview";
 import CaseStudyImpactStory from "@/app/components/layout/casestudy/casestudyimpactstory";
 import CaseStudyGallerySection from "@/app/components/layout/casestudy/casestudygallery";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   CaseStudyDetailItem,
   PageBannerData,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface CaseStudyDetailPageProps {
   params: Promise<{
@@ -24,7 +19,7 @@ interface CaseStudyDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const details = data.caseStudyDetails || {};
+  const details = site.caseStudyDetails || {};
   const keys = Object.keys(details);
   return keys.map((key) => ({
     id: key,
@@ -39,7 +34,7 @@ export default async function CaseStudyDetailPage({
 
   const idKey = (id || "").toLowerCase().trim();
 
-  const detailsMap = data.caseStudyDetails || {};
+  const detailsMap = (site.caseStudyDetails as any) || {};
 
   const detailItem: CaseStudyDetailItem | undefined =
     detailsMap[idKey] ||
@@ -55,9 +50,9 @@ export default async function CaseStudyDetailPage({
   }
 
   const casestudyBannerConfig =
-    data.pageBanners?.casestudyDetail ||
-    data.pageBanners?.casestudy ||
-    data.pageBanners?.default;
+    site.pageBanners?.casestudyDetail ||
+    site.pageBanners?.casestudy ||
+    site.pageBanners?.default;
 
   const baseBreadcrumbs = casestudyBannerConfig?.breadcrumbs || [];
 

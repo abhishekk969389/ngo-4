@@ -1,16 +1,10 @@
+import { site, SectionProps, NGOcommitmentSectionData } from "@/app/data";
 import { Leaf, Trees } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function OurCommitment() {
-  const commitment = data.commitmentSection;
+
+export default function OurCommitment({ data, className }: SectionProps<NGOcommitmentSectionData> = {}) {
+  const commitment = data || site.commitmentsection;
 
   if (!commitment) return null;
 

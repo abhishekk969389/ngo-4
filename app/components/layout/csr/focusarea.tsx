@@ -1,14 +1,9 @@
+import type { NgoFocusAreaCard } from "@/app/data";
+import { site, SectionProps, NGOfocusAreaSectionData } from "@/app/data";
 import Image from "next/image";
 import { BookOpenText, HeartPulse, Leaf, Users, Heart } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoFocusAreaCard } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   book: BookOpenText,
@@ -18,8 +13,8 @@ const iconMap = {
   heart: Heart,
 };
 
-export default function FocusArea() {
-  const focusData = data.focusAreaSection;
+export default function FocusArea({ data, className }: SectionProps<NGOfocusAreaSectionData> = {}) {
+  const focusData = data || site.focusareasection;
 
   if (!focusData) return null;
 
@@ -60,7 +55,7 @@ export default function FocusArea() {
                   alt={card.title}
                   fill
                   className="object-cover"
-                />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
 
               <div className="flex flex-1 flex-col p-5 pt-4 text-left">

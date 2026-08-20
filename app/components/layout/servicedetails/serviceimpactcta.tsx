@@ -12,7 +12,7 @@ import {
   Sprout,
   LucideIcon,
 } from "lucide-react";
-import type { ServiceImpactCtaData } from "@/app/type/ngo";
+import type { ServiceImpactCtaData } from "@/app/data";
 
 const iconMap: Record<string, LucideIcon> = {
   users: Users,

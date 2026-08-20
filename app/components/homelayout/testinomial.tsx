@@ -1,21 +1,15 @@
 "use client";
+import { site, SectionProps, NGOtestimonialsData } from "@/app/data";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IconQuote, IconStarFilled } from "@tabler/icons-react";
 import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function Testinomial() {
-  const { testimonials } = data;
+
+export default function Testinomial({ data, className }: SectionProps<NGOtestimonialsData> = {}) {
+  const testimonials = data || site.testimonials;
   const cards = testimonials.cards;
 
   // Tripled list for continuous smooth sliding
@@ -148,7 +142,7 @@ export default function Testinomial() {
                         alt={card.name}
                         fill
                         className="object-cover"
-                      />
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                     <div className="flex flex-col text-left">
                       <span className="text-sm font-bold text-gray-900 font-sans leading-tight">

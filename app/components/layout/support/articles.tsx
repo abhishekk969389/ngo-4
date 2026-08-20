@@ -1,3 +1,4 @@
+import { site, SectionProps, SiteData } from "@/app/data";
 import {
   ArrowRight,
   BookOpenText,
@@ -9,19 +10,13 @@ import {
   Wrench,
   ChevronRight,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoArticleCard,
   NgoArticlesSection,
   NgoData,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   rocket: Rocket,
@@ -33,7 +28,8 @@ const iconMap = {
   default: BookOpenText,
 };
 
-export default function Articles() {
+export default function Articles({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const articlesData = data.articlesSection as NgoArticlesSection | undefined;
 
   if (!articlesData) return null;

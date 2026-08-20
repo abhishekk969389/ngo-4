@@ -1,17 +1,11 @@
+import { site, SectionProps, NGOcertificateAchievementSectionData } from "@/app/data";
 import { ArrowRight, Trophy } from "lucide-react";
 import Link from "next/link";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function AchievementSection() {
-  const { certificateAchievementSection } = data;
+
+export default function AchievementSection({ data, className }: SectionProps<NGOcertificateAchievementSectionData> = {}) {
+  const certificateAchievementSection = data || site.certificateachievementsection;
 
   if (!certificateAchievementSection) return null;
 

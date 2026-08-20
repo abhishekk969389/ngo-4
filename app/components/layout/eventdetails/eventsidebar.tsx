@@ -15,7 +15,7 @@ import {
   IconBrandTwitter,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
-import type { EventDetailItem } from "@/app/type/ngo";
+import type { EventDetailItem } from "@/app/data";
 
 interface EventSidebarProps {
   data: EventDetailItem;

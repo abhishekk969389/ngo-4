@@ -1,17 +1,13 @@
+import type { PageBannerData } from "@/app/data";
+import { site, SectionProps } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import CareerApply from "@/app/components/layout/careers/careerapply";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, PageBannerData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function CareerApplyPage() {
+
+export default function CareerApplyPage({ data: propData, className }: SectionProps<any> = {}) {
+  const data = propData || site;
   const careersBannerConfig = data.pageBanners?.careers;
 
   const dynamicBannerData: PageBannerData = {

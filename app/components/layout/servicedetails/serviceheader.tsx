@@ -12,7 +12,7 @@ import {
   UserCheck,
   LucideIcon,
 } from "lucide-react";
-import type { ServiceHeaderData } from "@/app/type/ngo";
+import type { ServiceHeaderData } from "@/app/data";
 
 const iconMap: Record<string, LucideIcon> = {
   book: BookOpen,
@@ -129,7 +129,7 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
                 fill
                 className="object-cover object-center"
                 priority
-              />
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
           </div>
         </div>

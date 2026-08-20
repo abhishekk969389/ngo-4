@@ -1,28 +1,25 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Image as ImageIcon } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
+import { Image as ImageIcon, X, ChevronLeft, ChevronRight } from "lucide-react";
 import type {
   NgoData,
   NgoGallerySection,
   NgoGalleryCategory,
   NgoGalleryImageItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function ImagesGallery() {
+
+export default function ImagesGallery({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const galleryData = data.gallerySection as NgoGallerySection | undefined;
 
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [visibleCount, setVisibleCount] = useState<number>(7);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (!galleryData) return null;
 
@@ -85,7 +82,8 @@ export default function ImagesGallery() {
             return (
               <div
                 key={img.id}
-                className={`group relative overflow-hidden rounded-2xl bg-[#f0f4ef] shadow-sm transition-all duration-300 hover:shadow-lg ${
+                onClick={() => setSelectedIndex(idx)}
+                className={`cursor-pointer group relative overflow-hidden rounded-2xl bg-[#f0f4ef] shadow-sm transition-all duration-300 hover:shadow-lg ${
                   isFeatured
                     ? "lg:col-span-1 lg:row-span-2 min-h-[380px]"
                     : "min-h-[220px]"
@@ -123,6 +121,69 @@ export default function ImagesGallery() {
             <span>{loadMoreButton.label}</span>
           </button>
         </div>
+
+        {selectedIndex !== null && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md"
+            onClick={() => setSelectedIndex(null)}
+          >
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex(null);
+              }}
+              className="fixed top-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Close modal"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Left arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex(
+                  (selectedIndex - 1 + displayedImages.length) % displayedImages.length
+                );
+              }}
+              className="fixed left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Right arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex((selectedIndex + 1) % displayedImages.length);
+              }}
+              className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Main Image */}
+            <div
+              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden rounded-lg shadow-2xl flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={displayedImages[selectedIndex].image}
+                alt={displayedImages[selectedIndex].alt || displayedImages[selectedIndex].title || "Gallery image"}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                priority
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

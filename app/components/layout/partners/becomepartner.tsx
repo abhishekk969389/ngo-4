@@ -1,18 +1,13 @@
 "use client";
+import type { NgoBecomePartnerSection } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Handshake, Sprout } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoBecomePartnerSection } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   users: Users,
@@ -20,7 +15,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   sprout: Sprout,
 };
 
-export default function BecomePartner() {
+export default function BecomePartner({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const becomeData = data.becomePartnerSection as
     NgoBecomePartnerSection | undefined;
 
@@ -46,7 +42,7 @@ export default function BecomePartner() {
               fill
               className="object-cover object-center"
               priority
-            />
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-[#f8faf7] via-[#f8faf7]/95 via-35% to-transparent sm:via-45% lg:via-50%" />

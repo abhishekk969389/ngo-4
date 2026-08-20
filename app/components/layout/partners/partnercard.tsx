@@ -1,16 +1,10 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import { Handshake, Target, Users, Leaf, Sprout } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   handshake: Handshake,
@@ -20,7 +14,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   sprout: Sprout,
 };
 
-export default function PartnerCard() {
+export default function PartnerCard({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const cardsData = data.partnerCardsSection as any;
 
   if (!cardsData || !cardsData.items) return null;

@@ -14,7 +14,7 @@ import {
   Heart,
   Sparkles,
 } from "lucide-react";
-import type { PortfolioDetailContentData } from "@/app/type/ngo";
+import type { PortfolioDetailContentData } from "@/app/data";
 
 const iconMap = {
   classroom: BookOpen,
@@ -149,7 +149,7 @@ export default function PortfolioDetailContent({
                           alt={story.author}
                           fill
                           className="object-cover"
-                        />
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                       </div>
                     )}
                     <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">

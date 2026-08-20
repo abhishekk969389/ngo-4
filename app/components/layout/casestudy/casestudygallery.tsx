@@ -1,9 +1,10 @@
 "use client";
+import { site, SectionProps } from "@/app/data";
 
 import { useState } from "react";
 import Image from "next/image";
 import { Sprout, ChevronLeft, ChevronRight } from "lucide-react";
-import type { CaseStudyGallery } from "@/app/type/ngo";
+import type { CaseStudyGallery } from "@/app/data";
 
 interface CaseStudyGalleryProps {
   gallery: CaseStudyGallery;

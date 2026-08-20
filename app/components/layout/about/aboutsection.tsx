@@ -1,16 +1,11 @@
+import { site, SectionProps, NGOaboutStorySectionData } from "@/app/data";
 import Image from "next/image";
 import { Sprout, HandHeart } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function AboutSection() {
-  const storyData = data.aboutStorySection;
+
+export default function AboutSection({ data, className }: SectionProps<NGOaboutStorySectionData> = {}) {
+  const storyData = data || site.aboutstorysection;
 
   if (!storyData) return null;
 

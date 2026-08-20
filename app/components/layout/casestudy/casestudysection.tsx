@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -13,19 +14,13 @@ import {
   GraduationCap,
   LayoutGrid,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoCaseStudySection,
   NgoCaseStudyCard,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   all: LayoutGrid,
@@ -36,7 +31,8 @@ const iconMap = {
   default: BookOpenText,
 };
 
-export default function CaseStudySection() {
+export default function CaseStudySection({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const caseStudyData = data.caseStudySection as
     NgoCaseStudySection | undefined;
 

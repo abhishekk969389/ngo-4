@@ -1,19 +1,13 @@
+import { site, SectionProps, NGOteamSectionData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Heart, Sprout, ArrowRight } from "lucide-react";
 import { IconBrandLinkedin, IconBrandTwitter } from "@tabler/icons-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function TeamSection() {
-  const teamData = data.teamSection;
+
+export default function TeamSection({ data, className }: SectionProps<NGOteamSectionData> = {}) {
+  const teamData = data || site.teamsection;
 
   if (!teamData) return null;
 

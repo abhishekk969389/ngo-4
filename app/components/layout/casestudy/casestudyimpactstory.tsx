@@ -9,7 +9,7 @@ import {
   Clock,
   Quote,
 } from "lucide-react";
-import type { CaseStudyImpact, CaseStudyStory } from "@/app/type/ngo";
+import type { CaseStudyImpact, CaseStudyStory } from "@/app/data";
 
 const statIconMap = {
   users: Users,

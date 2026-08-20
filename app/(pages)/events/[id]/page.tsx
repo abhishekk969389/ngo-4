@@ -1,18 +1,13 @@
+import type { PageBannerData, EventDetailItem } from "@/app/data";
+import { site } from "@/app/data";
 import { notFound } from "next/navigation";
 import Banner from "@/app/components/ui/banner";
 import HomeCta from "@/app/components/ui/homecta";
 import EventHeader from "@/app/components/layout/eventdetails/eventheader";
 import EventContent from "@/app/components/layout/eventdetails/eventcontent";
 import EventSidebar from "@/app/components/layout/eventdetails/eventsidebar";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, EventDetailItem, PageBannerData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface EventDetailPageProps {
   params: Promise<{
@@ -21,7 +16,7 @@ interface EventDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const details = data.eventDetails || {};
+  const details = site.eventDetails || {};
   const keys = Object.keys(details);
   return keys.map((key) => ({
     id: key,
@@ -36,7 +31,7 @@ export default async function EventDetailPage({
 
   const idKey = (id || "").toLowerCase().trim();
 
-  const detailsMap = data.eventDetails || {};
+  const detailsMap = (site.eventDetails as any) || {};
 
   const detailItem: EventDetailItem | undefined =
     detailsMap[idKey] ||
@@ -52,9 +47,9 @@ export default async function EventDetailPage({
   }
 
   const eventsBannerConfig =
-    data.pageBanners?.eventsDetail ||
-    data.pageBanners?.events ||
-    data.pageBanners?.default;
+    site.pageBanners?.eventsDetail ||
+    site.pageBanners?.events ||
+    site.pageBanners?.default;
 
   const baseBreadcrumbs = eventsBannerConfig?.breadcrumbs || [];
 

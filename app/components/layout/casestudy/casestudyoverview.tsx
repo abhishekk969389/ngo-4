@@ -10,7 +10,7 @@ import {
   Building2,
   Clock,
 } from "lucide-react";
-import type { CaseStudyOverview } from "@/app/type/ngo";
+import type { CaseStudyOverview } from "@/app/data";
 
 const iconMap = {
   graduationCap: GraduationCap,

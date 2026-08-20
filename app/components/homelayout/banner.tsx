@@ -1,15 +1,10 @@
+import { site, SectionProps, NGObannerData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, Users } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = {
-  banner: (ngoDataJson as any).NGO.sections.banner?.variants?.Legacy_banner,
-};
-
-export default function Banner() {
-  const { banner } = data;
+export default function Banner({ data, className }: SectionProps<NGObannerData> = {}) {
+  const banner = data || site.banner;
 
   const getStatIcon = (iconName: string) => {
     switch (iconName) {
@@ -71,7 +66,7 @@ export default function Banner() {
           fill
           className="object-cover object-center"
           priority
-        />
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f7f8f2] to-transparent pointer-events-none" />
       </div>
 
@@ -84,7 +79,7 @@ export default function Banner() {
             fill
             className="object-cover object-center"
             priority
-          />
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
 
           <div className="absolute inset-y-0 left-0 w-28 lg:w-35 xl:w-50 bg-gradient-to-r from-[#f7f8f2] via-[#f7f8f2]/60 to-transparent pointer-events-none" />
         </div>

@@ -1,16 +1,12 @@
+import type { MissionPageSection } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 import Image from "next/image";
 import { BookOpen, HeartPulse, Users, Sprout } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, MissionPageSection } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function OurMission() {
+
+export default function OurMission({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const missionData: MissionPageSection = data.missionPageSection || {
     badge: "OUR MISSION",
     heading: {

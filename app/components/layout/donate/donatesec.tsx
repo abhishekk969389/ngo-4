@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState } from "react";
 import {
@@ -10,20 +11,14 @@ import {
   ShieldCheck,
   ChevronDown,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoDonateSection,
   NgoDonateTier,
   NgoDonateImpactItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const impactIconMap: Record<
   string,
@@ -35,7 +30,8 @@ const impactIconMap: Record<
   users: Users,
 };
 
-export default function DonateSec() {
+export default function DonateSec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const donateData = data.donateSection as NgoDonateSection | undefined;
 
   const [selectedTierId, setSelectedTierId] = useState<number>(2); // Default to Medium tier (id 2)

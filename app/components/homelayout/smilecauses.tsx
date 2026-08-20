@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, NGOsmileCausesData } from "@/app/data";
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
@@ -14,18 +15,11 @@ import {
   ArrowRight,
   Activity,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function SmileCauses() {
-  const { smileCauses } = data;
+
+export default function SmileCauses({ data, className }: SectionProps<NGOsmileCausesData> = {}) {
+  const smileCauses = data || site.smilecauses;
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const getCategoryIcon = (iconName: string) => {
@@ -168,7 +162,7 @@ export default function SmileCauses() {
                         alt={card.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
 
                     <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-[#15421d] text-white text-[10px] font-semibold px-2.5 py-1 rounded-full shadow-sm font-sans">

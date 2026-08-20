@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState, useRef } from "react";
 import {
@@ -10,22 +11,17 @@ import {
   FileText,
   X,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoCareersSection,
   NgoCareerApplyForm,
   NgoCareerFormField,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function CareerApply() {
+
+export default function CareerApply({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const careersData = data.careersSection as NgoCareersSection | undefined;
   const applyForm = careersData?.applyForm as NgoCareerApplyForm | undefined;
 

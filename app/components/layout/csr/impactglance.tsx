@@ -1,14 +1,9 @@
+import type { NgoImpactGlanceStat } from "@/app/data";
+import { site, SectionProps, NGOimpactGlanceSectionData } from "@/app/data";
 import React from "react";
 import { Users, Leaf, Handshake, Globe2, Heart } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoImpactGlanceStat } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const statIconMap = {
   users: Users,
@@ -17,8 +12,8 @@ const statIconMap = {
   globe: Globe2,
 };
 
-export default function ImpactGlance() {
-  const impactData = data.impactGlanceSection;
+export default function ImpactGlance({ data, className }: SectionProps<NGOimpactGlanceSectionData> = {}) {
+  const impactData = data || site.impactglancesection;
 
   if (!impactData) return null;
 

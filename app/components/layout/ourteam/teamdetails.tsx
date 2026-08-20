@@ -1,4 +1,6 @@
 "use client";
+import type { TeamSectionData, TeamMember } from "@/app/data";
+import { site, SectionProps } from "@/app/data";
 
 import React from "react";
 import Image from "next/image";
@@ -18,22 +20,15 @@ import {
   IconBrandFacebook,
   IconQuote,
 } from "@tabler/icons-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, TeamSectionData, TeamMember } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface TeamDetailsProps {
   memberId: string | number;
 }
 
 export default function TeamDetails({ memberId }: TeamDetailsProps) {
-  const teamData = data.teamSection as TeamSectionData | undefined;
+  const teamData = site.teamSection as TeamSectionData | undefined;
 
   if (!teamData) return null;
 

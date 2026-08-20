@@ -1,3 +1,4 @@
+import { site, SectionProps, SiteData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,15 +11,8 @@ import {
   Users,
   Building2,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   school: GraduationCap,
@@ -40,7 +34,8 @@ const themeStyles = [
   { bg: "bg-[#faf2f0]", iconBg: "bg-[#f5e3de]", text: "text-[#9f1239]" }, // Rose/Coral
 ];
 
-export default function OurPortfolio() {
+export default function OurPortfolio({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const portfolioData = data.portfolioSection as any;
 
   if (!portfolioData) return null;

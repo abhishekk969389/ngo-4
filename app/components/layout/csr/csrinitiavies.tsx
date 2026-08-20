@@ -1,14 +1,9 @@
+import type { NgoCsrInitiativeItem } from "@/app/data";
+import { site, SectionProps, NGOcsrInitiativesSectionData } from "@/app/data";
 import Image from "next/image";
 import { BookOpenText, HeartPulse, Users, Leaf, Heart } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoCsrInitiativeItem } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   book: BookOpenText,
@@ -19,8 +14,8 @@ const iconMap = {
   heart: Heart,
 };
 
-export default function CsrInitiatives() {
-  const initiatives = data.csrInitiativesSection;
+export default function CsrInitiatives({ data, className }: SectionProps<NGOcsrInitiativesSectionData> = {}) {
+  const initiatives = data || site.csrinitiativessection;
 
   if (!initiatives) return null;
 
@@ -74,7 +69,7 @@ export default function CsrInitiatives() {
                   alt={item.title}
                   fill
                   className="object-cover object-center"
-                />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 {/* Smooth left blend into card background */}
                 <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-white via-white/20 to-transparent sm:block" />
               </div>

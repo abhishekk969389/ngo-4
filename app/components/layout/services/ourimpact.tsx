@@ -1,14 +1,9 @@
+import type { NgoImpactStat } from "@/app/data";
+import { site, SectionProps, NGOimpactSectionData } from "@/app/data";
 import Image from "next/image";
 import { BookOpenText, HeartPulse, Users, Leaf, Sparkles } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoImpactStat } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const statIconMap = {
   users: Users,
@@ -17,8 +12,8 @@ const statIconMap = {
   leaf: Leaf,
 };
 
-export default function OurImpact() {
-  const impactData = data.impactSection;
+export default function OurImpact({ data, className }: SectionProps<NGOimpactSectionData> = {}) {
+  const impactData = data || site.impactsection;
 
   if (!impactData) return null;
 
@@ -168,7 +163,7 @@ export default function OurImpact() {
                     fill
                     priority
                     className="object-cover object-center"
-                  />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 </div>
               </div>
 
@@ -187,7 +182,7 @@ export default function OurImpact() {
                           alt={`Thumbnail ${index + 1}`}
                           fill
                           className="object-cover"
-                        />
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                       </div>
                     ))}
                 </div>

@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState } from "react";
 import {
@@ -16,19 +17,13 @@ import {
   Info,
   Send,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoEnquirySection,
   NgoEnquiryFeature,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const featureIconMap: Record<
   string,
@@ -39,7 +34,8 @@ const featureIconMap: Record<
   shield: ShieldCheck,
 };
 
-export default function EnquirySec() {
+export default function EnquirySec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const enquiryData = data.enquirySection as NgoEnquirySection | undefined;
 
   const [message, setMessage] = useState("");

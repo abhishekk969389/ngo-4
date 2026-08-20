@@ -1,11 +1,11 @@
+import type { BannerProps, PageBannerData } from "@/app/data";
+import { site, SectionProps } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Home, ChevronRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, PageBannerData, BannerProps } from "@/app/type/ngo";
 
-const pageBanners = (ngoDataJson as any).NGO.sections.pageBanners?.variants
-  ?.Legacy_pageBanners;
+const pageBanners = site.pageBanners; //
+  
 
 export default function Banner({
   pageKey = "about",
@@ -14,7 +14,7 @@ export default function Banner({
 }: BannerProps) {
   // Extract active banner data from props, pageKey lookup in JSON, or default JSON configuration
   const activeData: PageBannerData = bannerData ||
-    (pageBanners && pageBanners[pageKey]) || {
+    (pageBanners && (pageBanners as any)[pageKey]) || {
       title: "",
       backgroundImage: "",
       breadcrumbs: [],
@@ -47,7 +47,7 @@ export default function Banner({
             fill
             className="object-cover object-right sm:object-center lg:object-[center_35%]"
             priority
-          />
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         )}
 
         {/* Soft Warm Left Gradient for Text Readability */}
