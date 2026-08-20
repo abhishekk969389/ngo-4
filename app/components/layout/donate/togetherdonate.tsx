@@ -63,7 +63,7 @@ export default function TogetherDonate({ data: propData, className }: SectionPro
                   <div className="mx-auto mb-3.5 flex h-14 w-14 items-center justify-center rounded-full bg-[#e2ede0] text-[#1d5e2d]">
                     <StatIcon className="h-6 w-6 stroke-[1.75]" />
                   </div>
-                  <p className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
+                  <p className="text-2xl font-bold text-[#16351d] sm:text-3xl">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-xs text-[#59665b] sm:text-sm">
@@ -75,8 +75,8 @@ export default function TogetherDonate({ data: propData, className }: SectionPro
           </div>
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-[1280px] flex-col items-start justify-between gap-6 rounded-3xl border border-[#f0e8e0] bg-[#fbf7f4] p-6 shadow-sm sm:flex-row sm:items-center sm:p-8">
-          <div className="flex items-center gap-4">
+        <div className="mx-auto  mt-12 flex max-w-[1280px] flex-col items-start justify-between gap-6 rounded-3xl border border-[#f0e8e0] bg-[#fbf7f4] p-6 shadow-sm sm:flex-row sm:items-center sm:p-8">
+          <div className=" mx-10 flex items-center gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#eae3dc] text-[#1d5e2d]">
               <HandHeart className="h-7 w-7 stroke-[1.75]" />
             </div>
@@ -92,7 +92,7 @@ export default function TogetherDonate({ data: propData, className }: SectionPro
 
           <Link
             href={generosityBanner.button.href}
-            className="inline-flex shrink-0 items-center gap-2 rounded-2xl border border-[#1d5e2d] bg-white px-6 py-3 text-xs font-semibold text-[#1d5e2d] shadow-sm transition hover:bg-[#1d5e2d] hover:text-white sm:text-sm"
+            className="inline-flex shrink-0  mx-10 items-center gap-2 rounded-2xl border border-[#1d5e2d] bg-white px-6 py-3 text-xs font-semibold text-[#1d5e2d] shadow-sm transition hover:bg-[#1d5e2d] hover:text-white sm:text-sm"
           >
             <span>{generosityBanner.button.label}</span>
             <ArrowRight className="h-4 w-4" />

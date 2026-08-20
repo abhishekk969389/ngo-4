@@ -30,7 +30,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const blogBannerConfig = site.pageBanners?.blog;
 
   const dynamicBannerData: PageBannerData = {
-    title: blogBannerConfig?.title || "Blog",
+    title: currentBlog?.title || blogBannerConfig?.title || "Blog",
     backgroundImage: blogBannerConfig?.backgroundImage || "/banner_bg.png",
     altText: currentBlog?.title || blogBannerConfig?.altText || "Blog details",
     breadcrumbs: [

@@ -62,7 +62,7 @@ export default function Banner({ data, className }: SectionProps<NGObannerData> 
       <div className="relative h-80 sm:h-[380px] mx-auto max-w-[1350px] lg:hidden">
         <Image
           src={banner.backgroundImage}
-          alt="People planting sapling"
+          alt={banner.heading}
           fill
           className="object-cover object-center"
           priority
@@ -75,7 +75,7 @@ export default function Banner({ data, className }: SectionProps<NGObannerData> 
         <div className="relative h-full w-full">
           <Image
             src={banner.backgroundImage}
-            alt="People planting sapling"
+            alt={banner.heading}
             fill
             className="object-cover object-center"
             priority

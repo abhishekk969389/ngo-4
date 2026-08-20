@@ -47,8 +47,8 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
         </defs>
       </svg>
 
-      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] p-6 sm:p-8 lg:p-12 mb-6">
+      <div className="mx-auto max-w-[1350px]  px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="rounded-[2rem] mb-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
             {/* Left Content Column */}
             <div className="relative z-10">
@@ -100,9 +100,8 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
                 {impactData.stats.map((stat: NgoImpactStat, idx: number) => (
                   <div
                     key={stat.id}
-                    className={`flex flex-col items-center text-center px-2 ${
-                      idx !== 0 ? "sm:border-l sm:border-[#e2e8de]" : ""
-                    }`}
+                    className={`flex flex-col items-center text-center px-2 ${idx !== 0 ? "sm:border-l sm:border-[#e2e8de]" : ""
+                      }`}
                   >
                     <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#edf5ee]">
                       {getStatIcon(stat.icon)}
@@ -163,7 +162,7 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
                     fill
                     priority
                     className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 </div>
               </div>
 
@@ -182,7 +181,7 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
                           alt={`Thumbnail ${index + 1}`}
                           fill
                           className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                       </div>
                     ))}
                 </div>

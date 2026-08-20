@@ -33,9 +33,10 @@ export default function OurBlog({ data, className }: SectionProps<NGOblogsSectio
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {blogsSection.posts.map((post: any) => (
-            <div
+            <Link
               key={post.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+              href={post.href || `/blog/${post.id}`}
+              className="group bg-white rounded-2xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between cursor-pointer"
             >
               <div>
                 <div className="relative h-52 sm:h-56 w-full overflow-hidden rounded-t-2xl">
@@ -75,15 +76,12 @@ export default function OurBlog({ data, className }: SectionProps<NGOblogsSectio
               </div>
 
               <div className="px-6 sm:px-7 mb-4">
-                <Link
-                  href={post.href}
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#2c7a3f] hover:text-[#0c4d1e] transition-colors font-sans group/link"
-                >
-                  <span>Read More</span>
+                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#2c7a3f] group-hover:text-[#0c4d1e] transition-colors font-sans group/link">
+                  <span>{(post as any).readMoreText || (post as any).ctaText || "Read More"}</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

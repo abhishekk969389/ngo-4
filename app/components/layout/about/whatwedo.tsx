@@ -52,7 +52,7 @@ export default function WhatWeDo({ data, className }: SectionProps<NGOwhatWeDoSe
 
   return (
     <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden mb-8 sm:mb-10 lg:mb-12">
-      <div className="mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-2 xl:gap-4 items-center">
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="flex flex-col items-start">

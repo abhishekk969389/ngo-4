@@ -88,7 +88,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
           <div className="lg:col-span-8">
             <div className="rounded-2xl border border-[#e6ebe5] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
               <div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0d3319]">
+                <h2 className=" text-xl sm:text-2xl font-bold text-[#0d3319]">
                   {aboutRole.title}
                 </h2>
                 <p className="mt-3 text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
@@ -99,7 +99,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
               <hr className="my-8 border-[#eef2ed]" />
 
               <div>
-                <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#16351d]">
                   {keyResponsibilities.title}
                 </h3>
                 <ul className="mt-4 space-y-3">
@@ -118,7 +118,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
               <hr className="my-8 border-[#eef2ed]" />
 
               <div>
-                <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#16351d]">
                   {qualifications.title}
                 </h3>
                 <ul className="mt-4 space-y-3">
@@ -137,7 +137,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
               <hr className="my-8 border-[#eef2ed]" />
 
               <div>
-                <h3 className="font-serif text-2xl font-bold text-[#16351d] sm:text-3xl">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#16351d]">
                   {whatWeOffer.title}
                 </h3>
                 <div className="mt-6 grid grid-cols-2 gap-4 text-center sm:grid-cols-5 sm:gap-2">
@@ -154,7 +154,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
                           <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f7f3] text-[#1d5e2d]">
                             <IconComponent className="h-6 w-6 text-[#1d5e2d]" />
                           </div>
-                          <span className="font-serif text-xs font-bold leading-tight text-[#16351d] sm:text-sm">
+                          <span className=" text-xs font-bold leading-tight text-[#16351d] sm:text-sm">
                             {offer.title}
                           </span>
                         </div>
@@ -183,7 +183,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
           <div className="lg:col-span-4">
             <div className="sticky top-8 space-y-6 rounded-2xl border border-[#e6ebe5] bg-white p-6 shadow-sm sm:p-8">
               <div>
-                <h3 className="font-serif text-2xl font-bold text-[#16351d]">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#16351d]">
                   {sidebar.title}
                 </h3>
                 <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-[#59665b]">
@@ -236,7 +236,7 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
               </div>
 
               <div className="mt-6 rounded-xl bg-[#f4f7f3] p-4 text-center">
-                <p className="font-serif text-xs font-bold text-[#16351d] sm:text-sm">
+                <p className=" text-xs font-bold text-[#16351d] sm:text-sm">
                   {sidebar.share.title}
                 </p>
                 <div className="mt-3 flex items-center justify-center gap-3">

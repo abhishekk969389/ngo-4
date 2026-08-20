@@ -37,11 +37,6 @@ export default function Contact({ data: propData, className }: SectionProps<Site
 
   if (!contactData) return null;
 
-  // Split title dynamically to highlight the second line/part in green like the screenshot
-  const titleWords = contactData.title ? contactData.title.split(" ") : [];
-  const titlePart1 = titleWords.slice(0, 3).join(" ");
-  const titlePart2 = titleWords.slice(3).join(" ");
-
   // Split form heading to highlight "a message" in green
   const formHeadingWords = contactData.form?.heading
     ? contactData.form.heading.split(" ")
@@ -63,17 +58,21 @@ export default function Contact({ data: propData, className }: SectionProps<Site
 
               <div className="mt-6">
                 <h2 className="font-serif text-2xl font-bold leading-tight text-[#0d3319] sm:text-3xl">
-                  {titlePart1 && <span>{titlePart1} </span>}
-                  {titlePart2 && (
-                    <span className="block text-[#2c7a3f]">{titlePart2}</span>
+                  {contactData.title && <span>{contactData.title}</span>}
+                  {contactData.subtitle && (
+                    <span className="block text-[#2c7a3f] mt-1">
+                      {contactData.subtitle}
+                    </span>
                   )}
                 </h2>
                 <div className="mt-3 h-[2.5px] w-10 rounded-full bg-[#2c7a3f]" />
               </div>
 
-              <p className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
-                {contactData.subtitle || contactData.description}
-              </p>
+              {contactData.description && (
+                <p className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
+                  {contactData.description}
+                </p>
+              )}
 
               <div className="mt-8 divide-y divide-[#e5ece3]">
                 {contactData.contactMethods.map(

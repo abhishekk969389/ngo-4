@@ -30,7 +30,7 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
   const teamBannerConfig = site.pageBanners?.ourteam;
 
   const dynamicBannerData: PageBannerData = {
-    title: teamBannerConfig?.title || "Our Team",
+    title: currentMember?.name || teamBannerConfig?.title || "Our Team",
     backgroundImage: teamBannerConfig?.backgroundImage || "/banner_bg.png",
     altText:
       currentMember?.name || teamBannerConfig?.altText || "Team member banner",

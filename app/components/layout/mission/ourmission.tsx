@@ -102,10 +102,10 @@ export default function OurMission({ data: propData, className }: SectionProps<S
 
   return (
     <section className="overflow-hidden mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 ">
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mt-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-10 xl:gap-14 items-center">
           {/* Left Column: Text Content & 4 Pillars */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Badge Row with Underline & Green Heart Doodle */}
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs sm:text-sm font-extrabold text-[#2c7a3f] tracking-widest uppercase font-sans relative pb-1">
@@ -175,61 +175,17 @@ export default function OurMission({ data: propData, className }: SectionProps<S
             </div>
           </div>
 
-          {/* Right Column: Brush Stroke Image Composition */}
-          <div className="relative lg:col-span-5 flex justify-center lg:justify-end mt-2 lg:mt-0">
-            {/* Top-Left Green 3 Dashes Doodle */}
-            <div className="absolute left-2 xs:left-6 sm:left-12 lg:left-16 top-3 sm:top-5 z-20 flex items-end gap-2 sm:gap-3 text-[#1f5e2e]">
-              <span className="w-0.5 sm:w-1 h-4 sm:h-6 bg-[#1f5e2e] rounded-full -rotate-[20deg]" />
-              <span className="w-0.5 sm:w-1 h-6 sm:h-8 bg-[#1f5e2e] rounded-full -rotate-[5deg]" />
-              <span className="w-0.5 sm:w-1 h-4 sm:h-6 bg-[#1f5e2e] rounded-full rotate-[15deg]" />
-            </div>
-
-            <div className="relative w-full max-w-[310px] xs:max-w-[350px] sm:max-w-[450px] pb-14 sm:pb-16 pt-2">
-              <div
-                className="relative w-full h-[310px] xs:h-[350px] sm:h-[420px] lg:h-[450px] bg-gray-100 overflow-hidden shadow-md"
-                style={{
-                  borderRadius: "42% 58% 62% 38% / 45% 45% 55% 55%",
-                }}
-              >
-                <Image
-                  src={missionData.images.main}
-                  alt="Smiling child - Our Mission"
-                  fill
-                  sizes="(max-width: 640px) 320px, (max-width: 1024px) 420px, 450px"
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
-
-              {/* Overlapping Bottom-Right Circular Image */}
-              <div className="absolute -bottom-2 right-0 sm:right-2 w-40 h-40 xs:w-46 xs:h-46 sm:w-56 sm:h-56 rounded-full overflow-hidden border-[4px] sm:border-[5px] border-white shadow-2xl z-20 bg-white">
-                <Image
-                  src={missionData.images.circle}
-                  alt="Children sharing meals"
-                  fill
-                  sizes="(max-width: 640px) 180px, 224px"
-                  className="object-cover object-center"
-                />
-              </div>
-
-              {/* Bottom-Left Organic Green Squircle Badge */}
-              <div className="absolute -bottom-6 sm:-bottom-8 left-2 xs:left-4 sm:left-8 z-30 flex flex-col items-center">
-                <div
-                  className="w-28 h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 bg-[#35ad3b] flex flex-col items-center justify-center text-white text-center p-3 sm:p-4 shadow-xl -rotate-6"
-                  style={{
-                    borderRadius: "42% 58% 52% 48% / 48% 52% 48% 52%",
-                  }}
-                >
-                  <span className="font-serif italic font-bold text-[11px] xs:text-xs sm:text-sm leading-snug whitespace-pre-line text-white">
-                    {missionData.badgeTagline}
-                  </span>
-                  <div className="flex justify-center gap-2 sm:gap-3 mt-2 sm:mt-4 text-white">
-                    <span className="w-0.5 sm:w-1 h-4 sm:h-6 bg-white rounded-full -rotate-[20deg]" />
-                    <span className="w-0.5 sm:w-1 h-6 sm:h-8 bg-white rounded-full" />
-                    <span className="w-0.5 sm:w-1 h-4 sm:h-6 bg-white rounded-full rotate-[20deg]" />
-                  </div>
-                </div>
-              </div>
+          {/* Right Column: Simple Image Container */}
+          <div className="relative lg:col-span-6 flex justify-center lg:justify-end mt-4 lg:mt-0 w-full">
+            <div className="relative w-full max-w-[450px] xs:max-w-[540px] sm:max-w-[680px] lg:max-w-[750px] h-[420px] xs:h-[500px] sm:h-[620px] lg:h-[720px]">
+              <Image
+                src={missionData.images.main}
+                alt="Our Mission"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 750px"
+                className="object-contain object-center"
+                priority
+              />
             </div>
           </div>
         </div>

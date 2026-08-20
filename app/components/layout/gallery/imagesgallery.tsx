@@ -41,7 +41,7 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
             <ImageIcon className="h-7 w-7 stroke-[1.75]" />
           </div>
           <div>
-            <h2 className="font-serif text-2xl xs:text-3xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
+            <h2 className=" text-2xl xs:text-3xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
               {header.title}
             </h2>
             <div className="mt-1 mb-1.5 h-[2.5px] w-10 rounded-full bg-[#2c7a3f]" />
@@ -98,7 +98,7 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
                 />
 
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <p className="font-serif text-sm font-semibold text-white sm:text-base">
+                  <p className=" text-sm font-semibold text-white sm:text-base">
                     {img.title}
                   </p>
                 </div>

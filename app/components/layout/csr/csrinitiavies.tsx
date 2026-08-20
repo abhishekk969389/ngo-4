@@ -29,7 +29,7 @@ export default function CsrInitiatives({ data, className }: SectionProps<NGOcsrI
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center">
-          <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
+          <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
             {initiatives.heading}
           </h2>
 

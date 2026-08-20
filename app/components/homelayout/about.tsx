@@ -41,7 +41,7 @@ export default function About({ data, className }: SectionProps<NGOaboutSectionD
               <div className="relative w-[290px] h-[360px] sm:w-[420px] sm:h-[500px] lg:w-[370px] lg:h-[450px] xl:w-[460px] xl:h-[540px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-lg">
                 <Image
                   src={aboutSection.images.main}
-                  alt="Main smiling child"
+                  alt={aboutSection.heading}
                   fill
                   className="object-cover"
                   priority
@@ -51,7 +51,7 @@ export default function About({ data, className }: SectionProps<NGOaboutSectionD
               <div className="absolute -bottom-5 -right-3 sm:-bottom-5 sm:-right-5 lg:-bottom-4 lg:-right-4 xl:-bottom-6 xl:-right-6 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] lg:w-[160px] lg:h-[160px] xl:w-[210px] xl:h-[210px] rounded-full overflow-hidden border-4 sm:border-[5px] border-white shadow-xl z-20">
                 <Image
                   src={aboutSection.images.circle}
-                  alt="Children eating meals"
+                  alt={aboutSection.tagline || aboutSection.heading}
                   fill
                   className="object-cover"
                   priority
