@@ -50,7 +50,7 @@ export default function ServiceFeaturesApproach({
             {data.topBannerTitle}
           </h2>
           {data.topBannerIcon && (
-            <span className="text-[#2c7a3f] text-lg sm:text-xl">
+            <span className=" text-[#2c7a3f] text-lg sm:text-xl">
               {data.topBannerIcon}
             </span>
           )}
@@ -63,12 +63,11 @@ export default function ServiceFeaturesApproach({
               return (
                 <div
                   key={card.id ?? idx}
-                  className={`flex flex-col items-center text-center p-3 sm:p-4 ${
-                    idx > 0 ? "lg:pl-6" : ""
-                  }`}
+                  className={`flex flex-col items-center text-center p-3 sm:p-4 ${idx > 0 ? "lg:pl-6" : ""
+                    }`}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e3f0e4] text-[#2c7a3f] mb-3 shadow-xs">
-                    <CardIcon className="w-6 h-6 stroke-[2]" />
+                  <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-[#e3f0e4] text-[#2c7a3f] mb-3 shadow-xs">
+                    <CardIcon className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2]" />
                   </div>
                   <h3 className="text-sm sm:text-base font-bold text-[#0d3319] leading-snug">
                     {card.title}
@@ -128,7 +127,7 @@ export default function ServiceFeaturesApproach({
               alt={data.centerImageAlt || "Service detail photo"}
               fill
               className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
         </div>
 

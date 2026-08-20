@@ -38,7 +38,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
               alt={`${brand.name} logo`}
               fill
               className="object-contain object-left"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
         </Link>
 

@@ -123,9 +123,8 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                     >
                       <span>{currency}</span>
                       <ChevronDown
-                        className={`h-3.5 w-3.5 text-[#8a998c] transition-transform duration-200 ${
-                          isCurrencyOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-3.5 w-3.5 text-[#8a998c] transition-transform duration-200 ${isCurrencyOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -146,11 +145,10 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setCurrency(curr.label);
                                   setIsCurrencyOpen(false);
                                 }}
-                                className={`w-full text-left px-3 py-2 text-xs font-bold transition-colors cursor-pointer ${
-                                  isSelected
+                                className={`w-full text-left px-3 py-2 text-xs font-bold transition-colors cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
-                                }`}
+                                  }`}
                               >
                                 <span>{curr.label}</span>
                               </button>
@@ -171,19 +169,17 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                         key={tier.id}
                         type="button"
                         onClick={() => handleTierSelect(tier)}
-                        className={`flex flex-col items-center justify-center rounded-lg border p-3.5 text-center transition-all duration-200 ${
-                          isSelected
+                        className={`flex flex-col items-center justify-center rounded-lg border p-3.5 text-center transition-all duration-200 ${isSelected
                             ? "border-[#1d5e2d] bg-[#1d5e2d] text-white shadow-sm"
                             : "border-[#e2e8e0] bg-white text-[#16351d] hover:border-[#1d5e2d]"
-                        }`}
+                          }`}
                       >
                         <span className="font-serif text-sm font-bold sm:text-base">
                           {tier.title}
                         </span>
                         <span
-                          className={`mt-0.5 text-[11px] font-medium transition-colors ${
-                            isSelected ? "text-white/80" : "text-[#8a998c]"
-                          }`}
+                          className={`mt-0.5 text-[11px] font-medium transition-colors ${isSelected ? "text-white/80" : "text-[#8a998c]"
+                            }`}
                         >
                           {tier.subtext}
                         </span>
@@ -212,9 +208,8 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                     >
                       <span>{frequency}</span>
                       <ChevronDown
-                        className={`h-3.5 w-3.5 text-[#1d5e2d] transition-transform duration-200 ${
-                          isDropdownOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-3.5 w-3.5 text-[#1d5e2d] transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -235,11 +230,10 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setFrequency(freq);
                                   setIsDropdownOpen(false);
                                 }}
-                                className={`w-full text-left px-3 py-2 text-xs font-semibold transition-colors flex items-center justify-between cursor-pointer ${
-                                  isSelected
+                                className={`w-full text-left px-3 py-2 text-xs font-semibold transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
-                                }`}
+                                  }`}
                               >
                                 <span>{freq}</span>
                               </button>
@@ -316,9 +310,8 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                           {formData.country || step2.placeholders.country}
                         </span>
                         <ChevronDown
-                          className={`h-4 w-4 text-[#8a998c] transition-transform duration-200 ${
-                            isCountryOpen ? "rotate-180" : ""
-                          }`}
+                          className={`h-4 w-4 text-[#8a998c] transition-transform duration-200 ${isCountryOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
@@ -339,11 +332,10 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                     setFormData({ ...formData, country: c });
                                     setIsCountryOpen(false);
                                   }}
-                                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${
-                                    isSelected
+                                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                       ? "bg-[#1d5e2d] text-white font-semibold"
                                       : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
-                                  }`}
+                                    }`}
                                 >
                                   <span>{c}</span>
                                 </button>
@@ -376,9 +368,8 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                         {formData.supportCause || step2.placeholders.supportCause}
                       </span>
                       <ChevronDown
-                        className={`h-4 w-4 text-[#8a998c] transition-transform duration-200 ${
-                          isCauseOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 text-[#8a998c] transition-transform duration-200 ${isCauseOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -399,11 +390,10 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setFormData({ ...formData, supportCause: cause });
                                   setIsCauseOpen(false);
                                 }}
-                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${
-                                  isSelected
+                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white font-semibold"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
-                                }`}
+                                  }`}
                               >
                                 <span>{cause}</span>
                               </button>
@@ -492,11 +482,10 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                     return (
                       <div
                         key={item.id}
-                        className={`flex items-start gap-4 py-1.5 ${
-                          idx < impactSidebar.items.length - 1
+                        className={`flex items-start gap-4 py-1.5 ${idx < impactSidebar.items.length - 1
                             ? "border-b border-[#e5eae2] pb-5 sm:pb-6"
                             : ""
-                        }`}
+                          }`}
                       >
                         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#e2ede0] text-[#1d5e2d]">
                           <ImpactIcon className="h-6 w-6 stroke-[1.5]" />

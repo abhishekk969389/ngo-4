@@ -45,8 +45,8 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
           {/* Left Column - Content */}
           <div className="lg:col-span-6 xl:col-span-6 space-y-6 z-10">
             <div className="inline-flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28] shrink-0">
-                <BadgeIcon className="w-6 h-6 stroke-[1.75]" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28] shrink-0">
+                <BadgeIcon className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75]" />
               </div>
               <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#1c4d28]">
                 {data.badge}
@@ -89,8 +89,8 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
                   const FeatureIcon = iconMap[feature.icon] || GraduationCap;
                   return (
                     <div key={feature.id} className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28]">
-                        <FeatureIcon className="w-5 h-5 stroke-[1.75]" />
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28]">
+                        <FeatureIcon className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75]" />
                       </div>
                       <span className="text-xs sm:text-sm font-semibold text-[#0d3319] leading-snug">
                         {feature.title}
@@ -129,7 +129,7 @@ export default function ServiceHeader({ data }: ServiceHeaderProps) {
                 fill
                 className="object-cover object-center"
                 priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
           </div>
         </div>

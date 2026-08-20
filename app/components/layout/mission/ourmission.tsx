@@ -101,11 +101,11 @@ export default function OurMission({ data: propData, className }: SectionProps<S
   };
 
   return (
-    <section className="overflow-hidden mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mt-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-10 xl:gap-14 items-center">
+    <section className={`mt-6 sm:mt-8 md:mt-10 lg:mt-14 overflow-hidden ${className || ""}`}>
+      <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-10 xl:gap-14 items-start">
           {/* Left Column: Text Content & 4 Pillars */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
+          <div className="lg:col-span-6 flex flex-col justify-start">
             {/* Badge Row with Underline & Green Heart Doodle */}
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs sm:text-sm font-extrabold text-[#2c7a3f] tracking-widest uppercase font-sans relative pb-1">
@@ -177,7 +177,7 @@ export default function OurMission({ data: propData, className }: SectionProps<S
 
           {/* Right Column: Simple Image Container */}
           <div className="relative lg:col-span-6 flex justify-center lg:justify-end mt-4 lg:mt-0 w-full">
-            <div className="relative w-full max-w-[450px] xs:max-w-[540px] sm:max-w-[680px] lg:max-w-[750px] h-[420px] xs:h-[500px] sm:h-[620px] lg:h-[720px]">
+            <div className="relative w-full max-w-[450px] xs:max-w-[540px] sm:max-w-[640px] lg:max-w-[680px] h-[360px] xs:h-[440px] sm:h-[520px] lg:h-[580px]">
               <Image
                 src={missionData.images.main}
                 alt="Our Mission"

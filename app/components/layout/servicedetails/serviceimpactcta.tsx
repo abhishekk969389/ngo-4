@@ -55,11 +55,10 @@ export default function ServiceImpactCta({ data }: ServiceImpactCtaProps) {
                 return (
                   <div
                     key={stat.id ?? idx}
-                    className={`flex items-center gap-4 py-2 px-4 lg:px-6 ${
-                      idx > 0
+                    className={`flex items-center gap-4 py-2 px-4 lg:px-6 ${idx > 0
                         ? "lg:border-l lg:border-dashed lg:border-white/40"
                         : ""
-                    }`}
+                      }`}
                   >
                     <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#f4f7f2] text-[#1c4d25] shadow-sm">
                       <StatIcon className="w-8 h-8 stroke-[1.75]" />
@@ -91,8 +90,8 @@ export default function ServiceImpactCta({ data }: ServiceImpactCtaProps) {
         <div className="mt-8 sm:mt-10 p-6 sm:p-8 rounded-3xl bg-[#f4f8f4] border border-[#e2ede2] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           {/* Left Side: Icon & Content */}
           <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#e3f0e4] text-[#1c4d25] shadow-xs">
-              <CtaIcon className="w-7 h-7 stroke-[2]" />
+            <div className="flex h-16 w-16 sm:h-18 sm:w-18 shrink-0 items-center justify-center rounded-full bg-[#1c4d25] text-white shadow-md">
+              <CtaIcon className="w-8 h-8 sm:w-9 sm:h-9 stroke-[2]" />
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold font-serif text-[#0d3319]">

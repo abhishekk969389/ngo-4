@@ -75,10 +75,10 @@ export default function PortfolioDetailContent({
               {about.features.map((feature) => (
                 <div
                   key={feature.id}
-                  className="flex flex-col items-center text-center p-3.5 rounded-2xl bg-[#f4f8f3] border border-[#e2ebd9] hover:shadow-sm transition-all"
+                  className="flex flex-col items-center text-center p-3.5 sm:p-4 rounded-2xl bg-[#f4f8f3] border border-[#e2ebd9] hover:shadow-sm transition-all"
                 >
-                  <div className="p-2.5 rounded-xl bg-white text-[#2c7a3f] shadow-2xs mb-2">
-                    {getIcon(feature.icon, "w-5 h-5 text-[#2c7a3f] stroke-[2]")}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white text-[#1c4d28] border border-[#d8eadb] flex items-center justify-center shadow-xs mb-3">
+                    {getIcon(feature.icon, "w-8 h-8 sm:w-9 sm:h-9 text-[#1c4d28] stroke-[1.75]")}
                   </div>
                   <h3 className="text-xs sm:text-sm font-bold text-[#0d3319] leading-tight">
                     {feature.title}
@@ -109,8 +109,8 @@ export default function PortfolioDetailContent({
                   key={stat.id}
                   className="flex flex-col items-center text-center p-4 rounded-2xl bg-[#f7f9f6] border border-[#e5efe7]"
                 >
-                  <div className="p-2.5 rounded-full bg-[#edf5ee] text-[#2c7a3f] mb-2">
-                    {getIcon(stat.icon, "w-5 h-5 text-[#2c7a3f] stroke-[2]")}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf5ee] border border-[#d8eadb] text-[#1c4d28] flex items-center justify-center mb-3 shadow-xs">
+                    {getIcon(stat.icon, "w-8 h-8 sm:w-9 sm:h-9 text-[#1c4d28] stroke-[1.75]")}
                   </div>
                   <span className="text-lg sm:text-xl font-extrabold text-[#0d3319]">
                     {stat.value}
@@ -139,30 +139,26 @@ export default function PortfolioDetailContent({
               {stories.cards.map((story) => (
                 <div
                   key={story.id}
-                  className="flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-white border border-gray-100 shadow-xs hover:shadow-sm transition-all"
+                  className="flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#f7f9f6] border border-[#e5efe7] hover:shadow-sm transition-all"
                 >
-                  <div className="flex items-start gap-3">
-                    {story.avatar && (
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-emerald-200">
-                        <Image
-                          src={story.avatar}
-                          alt={story.author}
-                          fill
-                          className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                      </div>
-                    )}
-                    <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">
+                  {story.avatar && (
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full overflow-hidden border-2 border-white shadow-sm bg-gray-100">
+                      <Image
+                        src={story.avatar}
+                        alt={story.author}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-width: 640px) 64px, 80px"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col justify-center min-w-0 flex-1 space-y-1.5">
+                    <p className="text-xs sm:text-[13px] text-gray-700 font-sans italic leading-relaxed">
                       &ldquo;{story.quote}&rdquo;
                     </p>
-                  </div>
-                  <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <span className="font-bold text-[#0d3319]">
-                      &mdash; {story.author}
-                    </span>
-                    <span className="text-gray-400 font-medium">
-                      {story.ageOrRole}
-                    </span>
+                    <p className="text-xs font-bold text-[#2c7a3f] font-sans">
+                      &mdash; {story.author}{story.ageOrRole ? `, ${story.ageOrRole}` : ""}
+                    </p>
                   </div>
                 </div>
               ))}

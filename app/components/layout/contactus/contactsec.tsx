@@ -181,11 +181,10 @@ export default function ContactSec({ data: propData, className }: SectionProps<S
                     return (
                       <div
                         key={item.id}
-                        className={`flex items-start gap-4 ${
-                          idx < info.items.length - 1
+                        className={`flex items-start gap-4 ${idx < info.items.length - 1
                             ? "border-b border-[#e2e8e0] pb-6"
                             : ""
-                        }`}
+                          }`}
                       >
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e2ede0] text-[#1d5e2d]">
                           <InfoIcon className="h-5 w-5 stroke-[1.75]" />

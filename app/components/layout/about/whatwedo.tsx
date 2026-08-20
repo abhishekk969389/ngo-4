@@ -92,15 +92,12 @@ export default function WhatWeDo({ data, className }: SectionProps<NGOwhatWeDoSe
                 return (
                   <div
                     key={item.id}
-                    className={`flex flex-col items-center text-center p-3.5 sm:p-4 ${
-                      isBorderRight ? "sm:border-r sm:border-gray-200/70" : ""
-                    } ${
-                      isBorderBottom ? "sm:border-b sm:border-gray-200/70" : ""
-                    } ${
-                      isMobileBorderBottom
+                    className={`flex flex-col items-center text-center p-3.5 sm:p-4 ${isBorderRight ? "sm:border-r sm:border-gray-200/70" : ""
+                      } ${isBorderBottom ? "sm:border-b sm:border-gray-200/70" : ""
+                      } ${isMobileBorderBottom
                         ? "border-b sm:border-b-0 border-gray-100"
                         : ""
-                    }`}
+                      }`}
                   >
                     <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#e8f2ea] flex items-center justify-center text-[#2c7a3f] mb-2 sm:mb-3 shrink-0">
                       {IconComp}

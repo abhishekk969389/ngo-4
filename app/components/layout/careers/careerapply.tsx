@@ -205,11 +205,10 @@ export default function CareerApply({ data: propData, className }: SectionProps<
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                   onClick={() => fileInputRef.current?.click()}
-                  className={`mt-3 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 text-center cursor-pointer transition-all ${
-                    isDragging
+                  className={`mt-3 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 text-center cursor-pointer transition-all ${isDragging
                       ? "border-[#1d5e2d] bg-[#f0f6ef]"
                       : "border-[#d5e0d3] bg-[#fcfdfc] hover:bg-[#f6f9f5]"
-                  }`}
+                    }`}
                 >
                   {file ? (
                     <div className="flex items-center gap-3">

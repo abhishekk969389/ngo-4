@@ -60,11 +60,10 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`rounded-xl px-5 py-2.5 text-xs font-semibold shadow-sm transition-all duration-200 sm:text-sm ${
-                  isActive
+                className={`rounded-xl px-5 py-2.5 text-xs font-semibold shadow-sm transition-all duration-200 sm:text-sm ${isActive
                     ? "bg-[#0c401a] text-white shadow-md"
                     : "border border-[#e2e8e0] bg-white text-[#1d5e2d] hover:bg-[#f0f6ef]"
-                }`}
+                  }`}
               >
                 {cat.label}
               </button>

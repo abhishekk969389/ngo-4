@@ -45,7 +45,7 @@ export default function About({ data, className }: SectionProps<NGOaboutSectionD
                   fill
                   className="object-cover"
                   priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
 
               <div className="absolute -bottom-5 -right-3 sm:-bottom-5 sm:-right-5 lg:-bottom-4 lg:-right-4 xl:-bottom-6 xl:-right-6 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] lg:w-[160px] lg:h-[160px] xl:w-[210px] xl:h-[210px] rounded-full overflow-hidden border-4 sm:border-[5px] border-white shadow-xl z-20">
@@ -55,7 +55,7 @@ export default function About({ data, className }: SectionProps<NGOaboutSectionD
                   fill
                   className="object-cover"
                   priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
             </div>
           </div>

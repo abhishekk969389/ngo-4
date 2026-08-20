@@ -136,7 +136,7 @@ export default function ServiceSection({ data, className }: SectionProps<NGOserv
                   fill
                   className="object-cover"
                   priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
             </div>
           </div>

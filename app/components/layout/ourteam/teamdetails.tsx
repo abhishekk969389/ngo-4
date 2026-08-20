@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import {
   IconBrandLinkedin,
-  IconBrandTwitter,
+  IconBrandX,
   IconBrandFacebook,
   IconQuote,
 } from "@tabler/icons-react";
@@ -43,7 +43,7 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
       case "linkedin":
         return <IconBrandLinkedin className="h-4 w-4" />;
       case "twitter":
-        return <IconBrandTwitter className="h-4 w-4" />;
+        return <IconBrandX className="h-4 w-4" />;
       case "facebook":
         return <IconBrandFacebook className="h-4 w-4" />;
       case "email":

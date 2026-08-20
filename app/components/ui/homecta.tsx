@@ -12,9 +12,8 @@ export default function HomeCta({ data, className }: SectionProps<NGOhomeCtaData
       case "user":
         return (
           <Users
-            className={`w-5 h-5 sm:w-[22px] sm:h-[22px] ${
-              isOutline ? "text-[#a3c737]" : "text-white"
-            } stroke-[1.8] shrink-0`}
+            className={`w-5 h-5 sm:w-[22px] sm:h-[22px] ${isOutline ? "text-[#a3c737]" : "text-white"
+              } stroke-[1.8] shrink-0`}
           />
         );
       default:
@@ -26,10 +25,10 @@ export default function HomeCta({ data, className }: SectionProps<NGOhomeCtaData
     <section className={`my-6 overflow-hidden ${className || ""}`}>
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="relative bg-[#102719] rounded-2xl py-8 sm:py-10 px-6 sm:px-8 lg:px-14 shadow-2xl overflow-hidden">
-          
+
           {/* Main Layout Container */}
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:mx-4">
-            
+
             {/* 1. Left Icon */}
             <div className="flex shrink-0 justify-center">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#2d7d3e]/50 flex items-center justify-center text-[#2d7d3e] transition-transform duration-300 hover:scale-105 shrink-0 bg-[#2d7d3e]/10">
@@ -39,7 +38,7 @@ export default function HomeCta({ data, className }: SectionProps<NGOhomeCtaData
 
             {/* 2. Center: Heading + Divider + Description */}
             <div className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-4 text-center lg:text-left w-full lg:w-auto">
-              
+
               {/* Heading */}
               <h2 className="text-2xl sm:text-3xl lg:text-[1.95rem] font-bold text-white font-serif leading-tight tracking-tight max-w-sm shrink-0">
                 {(() => {
