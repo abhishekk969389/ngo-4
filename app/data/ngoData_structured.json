@@ -333,7 +333,7 @@
               }
             ],
             "cta": {
-              "label": "Donate",
+              "label": "Donate Now",
               "href": "/donate"
             },
             "secondaryCta": {
@@ -383,7 +383,7 @@
               },
               {
                 "label": "Testimonial",
-                "href": "/about"
+                "href": "/testimonial"
               },
               {
                 "label": "Partners",
@@ -2705,9 +2705,9 @@
       "brand": {
         "variants": {
           "Legacy_brand": {
-            "name": "Bless",
-            "tagline": "FOUNDATION",
-            "logo": "/logo.svg"
+            "name": "",
+            "tagline": "",
+            "logo": "/mainlogo.png"
           }
         }
       },
@@ -2966,7 +2966,7 @@
                 },
                 {
                   "id": 2,
-                  "label": "Corporate Social Responsibility",
+                  "label": "CSR",
                   "isCurrent": true
                 }
               ]
@@ -3345,6 +3345,24 @@
                 {
                   "id": 2,
                   "label": "Branches",
+                  "isCurrent": true
+                }
+              ]
+            },
+            "testimonial": {
+              "title": "Testimonials",
+              "backgroundImage": "/ngo.jpg",
+              "altText": "Testimonials background",
+              "breadcrumbs": [
+                {
+                  "id": 1,
+                  "label": "Home",
+                  "href": "/",
+                  "icon": "home"
+                },
+                {
+                  "id": 2,
+                  "label": "Testimonials",
                   "isCurrent": true
                 }
               ]
@@ -3774,7 +3792,7 @@
             ],
             "badgeTagline": "Small Steps.\nBig Change.",
             "images": {
-              "main": "/about_main.png",
+              "main": "/download.svg",
               "circle": "/about_circle.png"
             }
           }
@@ -5614,6 +5632,20 @@
               },
               {
                 "id": 4,
+                "title": "Flood Relief Support",
+                "date": {
+                  "day": 20,
+                  "month": "JUL"
+                },
+                "location": "Relief Distribution Center, Houston, USA",
+                "time": "9:00 AM - 5:00 PM (CST)",
+                "description": "Support our relief efforts for families affected by recent floods.",
+                "image": "",
+                "buttonLabel": "View Details",
+                "href": "/events/flood-relief"
+              },
+                {
+                "id": 5,
                 "title": "Flood Relief Support",
                 "date": {
                   "day": 20,
@@ -7545,25 +7577,25 @@
                 {
                   "id": 1,
                   "title": "Education",
-                  "description": "Providing quality education for a brighter future.",
+                  "description": "Providing quality education, learning materials, and scholarships for underprivileged children to build a brighter future.",
                   "icon": "book-open"
                 },
                 {
                   "id": 2,
                   "title": "Food & Nutrition",
-                  "description": "Ensuring no one goes to bed hungry.",
+                  "description": "Ensuring no one goes to bed hungry by providing fresh, wholesome meals and emergency food supplies to vulnerable families.",
                   "icon": "utensils"
                 },
                 {
                   "id": 3,
                   "title": "Healthcare",
-                  "description": "Improving access to essential healthcare services.",
+                  "description": "Improving access to essential healthcare services, free medical checkups, and lifesaving medicines in underserved communities.",
                   "icon": "heart-pulse"
                 },
                 {
                   "id": 4,
                   "title": "Community Support",
-                  "description": "Empowering communities to build a better tomorrow.",
+                  "description": "Empowering local communities through sustainable development, clean water initiatives, and skill training programs.",
                   "icon": "users"
                 }
               ]
@@ -8264,8 +8296,8 @@
             },
             {
               "id": 6,
-              "label": "Blog",
-              "href": "/blog"
+              "label": "Testimonial",
+              "href": "/testimonial"
             },
             {
               "id": 7,
@@ -8280,8 +8312,8 @@
           "Legacy_ourCauses": [
             {
               "id": 1,
-              "label": "Support",
-              "href": "/support"
+              "label": "Blog",
+              "href": "/blog"
             },
             {
               "id": 2,

@@ -112,7 +112,7 @@ export default function Articles({ data: propData, className }: SectionProps<Sit
                 </div>
 
                 <div className="flex-1 pr-3">
-                  <h3 className="font-serif text-base font-bold text-[#16351d] sm:text-lg">
+                  <h3 className=" text-base font-bold text-[#16351d] sm:text-lg">
                     {card.title}
                   </h3>
                   <p className="mt-1 text-xs sm:text-sm leading-relaxed text-[#59665b]">

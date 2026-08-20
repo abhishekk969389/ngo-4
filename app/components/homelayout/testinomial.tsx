@@ -80,7 +80,7 @@ export default function Testinomial({ data, className }: SectionProps<NGOtestimo
           </button>
 
           {/* Carousel Wrapper */}
-          <div className="mx-auto max-w-[1068px] overflow-hidden py-8">
+          <div className="mx-auto max-w-[1068px] overflow-hidden mb-8">
             <div
               className="flex gap-6 transition-transform duration-700 ease-in-out"
               style={{
@@ -89,73 +89,71 @@ export default function Testinomial({ data, className }: SectionProps<NGOtestimo
             >
               {allCards.map((card, idx) => {
                 // The card in the center position among the 3 visible cards is (activeIndex + 1)
-              const isCenter = idx === activeIndex + 1;
-              const activeThemeColor = isCenter ? "#f59e0b" : "#0c4d1e";
+                const isCenter = idx === activeIndex + 1;
+                const activeThemeColor = isCenter ? "#f59e0b" : "#174324";
 
-              return (
-                <div
-                  key={`${card.id}-${idx}`}
-                  className={`flex-shrink-0 w-[340px] bg-white rounded-[1.75rem] p-6 pt-0 flex flex-col justify-between transition-all duration-500 ease-in-out border ${isCenter
-                    ? "shadow-xl scale-105 border-amber-300 z-10"
-                    : "shadow-sm scale-95 border-gray-100 opacity-85"
-                    }`}
-                  style={{
-                    borderBottomWidth: "4px",
-                    borderBottomColor: activeThemeColor,
-                  }}
-                >
-                  <div className="flex flex-col">
-                    <div className="relative flex items-center justify-center -mt-5 mb-4">
+                return (
+                  <div
+                    key={`${card.id}-${idx}`}
+                    className="flex-shrink-0 w-[340px] bg-white rounded-2xl p-8 pt-0 flex flex-col transition-all duration-500 ease-in-out shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 relative"
+                    style={{
+                      borderBottomWidth: "4px",
+                      borderBottomColor: activeThemeColor,
+                    }}
+                  >
+                    <div className="flex flex-col flex-grow">
+                      <div className="relative flex items-center justify-center pt-8 mb-6">
+                        <div
+                          className="absolute h-[1.5px] w-[85%] transition-colors duration-500"
+                          style={{ backgroundColor: activeThemeColor }}
+                        ></div>
+                        <div className="relative bg-white px-5 z-10">
+                          <div
+                            className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white transition-all duration-500"
+                            style={{ backgroundColor: activeThemeColor }}
+                          >
+                            <svg className="w-[22px] h-[22px] text-white" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-center gap-1.5 mb-5">
+                        {Array.from({ length: card.rating }).map((_, i) => (
+                          <IconStarFilled
+                            key={i}
+                            className="w-4 h-4 text-[#f59e0b]"
+                          />
+                        ))}
+                      </div>
+                      <p className="text-[14px] text-gray-600 leading-[1.8] text-center font-sans tracking-wide mb-3">
+                        {card.feedback}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4 justify-center mt-auto">
                       <div
-                        className="absolute inset-x-0 h-[2px] transition-colors duration-500"
-                        style={{
-                          backgroundColor: activeThemeColor,
-                          opacity: 0.3,
-                        }}
-                      ></div>
-                      <div
-                        className="relative w-10 h-10 rounded-full flex items-center justify-center text-white z-10 transition-all duration-500 shadow-md"
-                        style={{ backgroundColor: activeThemeColor }}
+                        className="relative w-[64px] h-[64px] rounded-full overflow-hidden border-[2px] transition-colors duration-500 flex-shrink-0"
+                        style={{ borderColor: activeThemeColor }}
                       >
-                        <IconQuote className="w-4 h-4 text-white" />
+                        <Image
+                          src={card.image}
+                          alt={card.name}
+                          fill
+                          className="object-cover p-0.5 rounded-full"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className="text-[17px] font-bold text-gray-900 font-sans leading-tight">
+                          {card.name}
+                        </span>
+                        <span className="text-[13px] text-gray-500 font-sans mt-1">
+                          {card.designation}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex justify-center gap-1 mb-4">
-                      {Array.from({ length: card.rating }).map((_, i) => (
-                        <IconStarFilled
-                          key={i}
-                          className="w-3.5 h-3.5 text-[#f59e0b]"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed text-center font-sans tracking-wide">
-                      {card.feedback}
-                    </p>
                   </div>
-                  <div className="flex items-center gap-3 mt-6 border-t border-gray-50 pt-4 justify-center">
-                    <div
-                      className="relative w-10 h-10 rounded-full overflow-hidden border-2 transition-colors duration-500"
-                      style={{ borderColor: activeThemeColor }}
-                    >
-                      <Image
-                        src={card.image}
-                        alt={card.name}
-                        fill
-                        className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    </div>
-                    <div className="flex flex-col text-left">
-                      <span className="text-sm font-bold text-gray-900 font-sans leading-tight">
-                        {card.name}
-                      </span>
-                      <span className="text-[11px] text-gray-500 font-sans mt-0.5">
-                        {card.designation}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
             </div>
           </div>
         </div>

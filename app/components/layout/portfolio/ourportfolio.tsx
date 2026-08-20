@@ -56,18 +56,32 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
             <span>{portfolioData.badge || "OUR PORTFOLIO"}</span>
           </div>
 
-          <h2 className="mt-3 font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
+          <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0d3319] leading-[1.2] sm:leading-[1.18]">
             {portfolioData.heading?.line1 || "Stories of Change,"}
-            <span className="block font-serif italic font-normal text-[#2c7a3f] mt-1">
+            <br />
+            <span className="relative inline-block font-serif italic font-normal text-[#2c7a3f] mt-1">
               {portfolioData.heading?.line2 || "Built Together."}
+              <svg
+                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2.5 sm:h-3 text-[#2c7a3f]/75"
+                viewBox="0 0 300 12"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 5 8 Q 150 2, 295 7"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
             </span>
           </h2>
-
+        
           <p className="mx-auto mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
             {portfolioData.description}
           </p>
         </div>
-
+          
         {/* 2-Column Responsive Portfolio Grid */}
         <div className="grid gap-6 md:grid-cols-2">
           {portfolioData.cards.map((card: any, index: number) => {
@@ -118,6 +132,7 @@ export default function OurPortfolio({ data: propData, className }: SectionProps
                         {card.description}
                       </p>
                     </div>
+                    
 
                     <Link
                       href={card.href || `/portfolio/${card.id}`}

@@ -1,20 +1,19 @@
 "use client";
 import { site, SectionProps, SiteData } from "@/app/data";
-
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin } from "lucide-react";
 import type {
-  NgoData,
   NgoEventSection,
   NgoUpcomingEventCard,
 } from "@/app/data";
 
-
-
 export default function UpcomingEvent({ data: propData, className }: SectionProps<SiteData> = {}) {
   const data = propData || site;
   const eventData = data.eventSection as NgoEventSection | undefined;
+
+  const [showAll, setShowAll] = useState(false);
 
   if (!eventData) return null;
 
@@ -26,8 +25,12 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
   const highlightedWord =
     titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
 
+  const visibleCards = showAll
+    ? eventData.upcomingCards
+    : eventData.upcomingCards.slice(0, 3);
+
   return (
-    <section className="bg-[#fafbf9] py-12 ">
+    <section className="bg-[#fafbf9] py-12">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-8">
@@ -42,7 +45,7 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
 
         {/* Events List (Horizontal Row Layout) */}
         <div className="space-y-4">
-          {eventData.upcomingCards.map((card: NgoUpcomingEventCard) => (
+          {visibleCards.map((card: NgoUpcomingEventCard) => (
             <article
               key={card.id}
               className="flex flex-col gap-4 rounded-2xl border border-[#edf1ea] bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md lg:flex-row lg:items-center lg:justify-between lg:p-5"
@@ -104,14 +107,17 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
         </div>
 
         {/* Bottom Centered "View More Events" Button */}
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg border border-[#234b2c] bg-white px-8 py-3 text-xs font-semibold text-[#234b2c] transition duration-200 hover:bg-[#234b2c] hover:text-white sm:text-sm"
-          >
-            {eventData.viewMoreLabel || "View More Events"}
-          </button>
-        </div>
+        {eventData.upcomingCards && eventData.upcomingCards.length > 3 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center justify-center rounded-lg border border-[#234b2c] bg-white px-8 py-3 text-xs font-semibold text-[#234b2c] transition duration-200 hover:bg-[#234b2c] hover:text-white sm:text-sm cursor-pointer active:scale-[0.98]"
+            >
+              {showAll ? "Show Less Events" : (eventData.viewMoreLabel || "View More Events")}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

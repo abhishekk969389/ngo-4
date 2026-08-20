@@ -90,21 +90,13 @@ export default function Footer({ data: propData, className }: SectionProps<SiteD
           <div className="lg:col-span-3 pr-0 lg:pr-8 flex flex-col justify-between border-b border-gray-200/60 pb-8 lg:pb-0 lg:border-b-0">
             <div>
               <Link href="/" className="flex items-center gap-2 xl:gap-3 flex-shrink-0">
-                <div className="relative h-12 w-12 lg:h-18 lg:w-18 flex-shrink-0">
+                <div className="relative h-12 w-[140px] sm:h-14 sm:w-[160px] lg:h-20 lg:w-[220px] flex-shrink-0">
                   <Image
                     src={brand.logo}
                     alt={`${brand.name} logo`}
                     fill
-                    className="object-contain"
+                    className="object-contain object-left"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                </div>
-                <div className="flex flex-col justify-center whitespace-nowrap">
-                  <span className="text-xl lg:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
-                    {brand.name}
-                  </span>
-                  <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-[#0c4d1e]">
-                    {brand.tagline}
-                  </span>
                 </div>
               </Link>
               <p className="mt-6 text-sm leading-6 text-gray-600 max-w-sm tracking-wide">
