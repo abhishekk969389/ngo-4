@@ -1,3 +1,4 @@
+import { site, SectionProps, SiteData } from "@/app/data";
 import {
   Clock3,
   Mail,
@@ -10,20 +11,14 @@ import {
   Headphones,
   ChevronDown,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoContactSection,
   NgoData,
   NgoSupportContactField,
   NgoSupportContactMethod,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   mail: Mail,
@@ -36,7 +31,8 @@ const iconMap = {
   support: Headphones,
 };
 
-export default function Contact() {
+export default function Contact({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const contactData = data.contactSection as NgoContactSection | undefined;
 
   if (!contactData) return null;

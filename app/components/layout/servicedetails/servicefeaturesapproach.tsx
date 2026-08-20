@@ -14,7 +14,7 @@ import {
   Presentation,
   LucideIcon,
 } from "lucide-react";
-import type { ServiceFeaturesApproachData } from "@/app/type/ngo";
+import type { ServiceFeaturesApproachData } from "@/app/data";
 
 const iconMap: Record<string, LucideIcon> = {
   users: Users,
@@ -128,7 +128,7 @@ export default function ServiceFeaturesApproach({
               alt={data.centerImageAlt || "Service detail photo"}
               fill
               className="object-cover"
-            />
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
         </div>
 

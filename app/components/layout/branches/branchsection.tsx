@@ -1,27 +1,22 @@
 "use client";
+import { site, SectionProps } from "@/app/data";
 
 import React from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoBranchesSection,
   NgoBranchItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface BranchSectionProps {
   sectionData?: NgoBranchesSection;
 }
 
 export default function BranchSection({ sectionData }: BranchSectionProps) {
-  const branchesData = sectionData || data.branchesSection;
+  const branchesData = sectionData || site.branchesSection;
 
   if (!branchesData || !branchesData.branches?.length) {
     return null;

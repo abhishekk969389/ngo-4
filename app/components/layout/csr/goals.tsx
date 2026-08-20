@@ -1,3 +1,5 @@
+import type { NgoGoalItem } from "@/app/data";
+import { site, SectionProps, NGOgoalsSectionData } from "@/app/data";
 import {
   BookOpenText,
   HeartPulse,
@@ -10,15 +12,8 @@ import {
   Users,
   Heart,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoGoalItem } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   book: BookOpenText,
@@ -31,8 +26,8 @@ const iconMap = {
   partnership: Handshake,
 };
 
-export default function Goals() {
-  const goalsData = data.goalsSection;
+export default function Goals({ data, className }: SectionProps<NGOgoalsSectionData> = {}) {
+  const goalsData = data || site.goalssection;
 
   if (!goalsData) return null;
 

@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import Link from "next/link";
@@ -22,21 +23,15 @@ import {
   IconBrandTwitter,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoCareersSection,
   NgoCareerOfferItem,
   NgoCareerJobDetailItem,
   NgoCareerShareLink,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const offerIconMap: Record<
   string,
@@ -71,7 +66,8 @@ const shareIconMap: Record<
   whatsapp: IconBrandWhatsapp,
 };
 
-export default function CareerSec() {
+export default function CareerSec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const careersData = data.careersSection as NgoCareersSection | undefined;
 
   if (!careersData) return null;

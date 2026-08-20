@@ -1,15 +1,10 @@
+import type { TeamMember, PageBannerData } from "@/app/data";
+import { site, SectionProps } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import TeamDetails from "@/app/components/layout/ourteam/teamdetails";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, TeamMember, PageBannerData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface TeamDetailPageProps {
   params: Promise<{
@@ -18,7 +13,7 @@ interface TeamDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const members = data.teamSection?.members || [];
+  const members = site.teamSection?.members || [];
   return members.map((member: TeamMember) => ({
     id: String(member.id),
   }));
@@ -28,11 +23,11 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  const currentMember = data.teamSection?.members.find(
+  const currentMember = site.teamSection?.members.find(
     (m: TeamMember) => String(m.id) === String(id),
   );
 
-  const teamBannerConfig = data.pageBanners?.ourteam;
+  const teamBannerConfig = site.pageBanners?.ourteam;
 
   const dynamicBannerData: PageBannerData = {
     title: teamBannerConfig?.title || "Our Team",

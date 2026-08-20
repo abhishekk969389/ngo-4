@@ -6217,7 +6217,7 @@
                 "ctaText": "Learn More"
               },
               {
-                "id": 3,
+                "id": 7,
                 "title": "Help For Education",
                 "description": "Provide quality education and resources to help every child learn and grow.",
                 "category": "Education",
@@ -6228,7 +6228,7 @@
                 "ctaText": "Learn More"
               },
               {
-                "id": 3,
+                "id": 8,
                 "title": "Help For Education",
                 "description": "Provide quality education and resources to help every child learn and grow.",
                 "category": "Education",
@@ -8056,7 +8056,7 @@
         "variants": {
           "Legacy_homeCta": {
             "heading": "Be A Part Of Something Bigger Than Yourself",
-            "description": "Your support can bring hope, change lives and create a better tomorrow for those who need it most.",
+            "description": "Your support can bring hope, change lives and create a better tomorrow for those who need it most tomorrow.",
             "buttons": {
               "donate": {
                 "label": "Donate Now",

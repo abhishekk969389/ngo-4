@@ -1,15 +1,10 @@
 "use client";
+import type { NgoMediaSection, NgoMediaOutlet } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoMediaSection, NgoMediaOutlet } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const renderIcon = (iconName: string) => {
   const colorClass = "text-[#1a3520]";
@@ -291,7 +286,8 @@ const renderIcon = (iconName: string) => {
   }
 };
 
-export default function MediaSection() {
+export default function MediaSection({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const mediaData = data.mediaSection as NgoMediaSection | undefined;
 
   if (!mediaData) return null;

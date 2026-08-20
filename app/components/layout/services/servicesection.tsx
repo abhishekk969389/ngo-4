@@ -1,3 +1,5 @@
+import type { NgoServiceItem } from "@/app/data";
+import { site, SectionProps, NGOservicesSectionData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,15 +15,8 @@ import {
   Sprout,
   Orbit,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoServiceItem } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const serviceIconMap = {
   education: BookOpen,
@@ -36,8 +31,8 @@ const serviceIconMap = {
   impact: Orbit,
 };
 
-export default function ServiceSection() {
-  const services = data.servicesSection;
+export default function ServiceSection({ data, className }: SectionProps<NGOservicesSectionData> = {}) {
+  const services = data || site.servicessection;
 
   if (!services) return null;
 
@@ -141,7 +136,7 @@ export default function ServiceSection() {
                   fill
                   className="object-cover"
                   priority
-                />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
             </div>
           </div>

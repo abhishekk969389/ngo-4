@@ -1,15 +1,10 @@
+import type { PageBannerData, NgoBlogCardItem } from "@/app/data";
+import { site } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import BlogDetail from "@/app/components/layout/blog/blogdetail";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoBlogCardItem, PageBannerData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -18,7 +13,7 @@ interface BlogDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const blogs = data.blogPageSection?.blogs || [];
+  const blogs = site.blogPageSection?.blogs || [];
   return blogs.map((blog: NgoBlogCardItem) => ({
     id: String(blog.id),
   }));
@@ -28,11 +23,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  const currentBlog = data.blogPageSection?.blogs.find(
+  const currentBlog = site.blogPageSection?.blogs.find(
     (b: NgoBlogCardItem) => String(b.id) === String(id),
   );
 
-  const blogBannerConfig = data.pageBanners?.blog;
+  const blogBannerConfig = site.pageBanners?.blog;
 
   const dynamicBannerData: PageBannerData = {
     title: blogBannerConfig?.title || "Blog",

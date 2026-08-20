@@ -1,31 +1,27 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Video as VideoIcon, Play, X } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
+import { Video as VideoIcon, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import type {
   NgoData,
   NgoVideoGallerySection,
   NgoVideoCategory,
   NgoVideoItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function VideosGallery() {
+
+export default function VideosGallery({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const videoGalleryData = data.videoGallerySection as
     NgoVideoGallerySection | undefined;
 
   const [activeCategory, setActiveCategory] = useState<string>(
     videoGalleryData?.categories[0]?.id || "all",
   );
-  const [selectedVideo, setSelectedVideo] = useState<NgoVideoItem | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (!videoGalleryData) return null;
 
@@ -77,10 +73,10 @@ export default function VideosGallery() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {filteredVideos.map((video: NgoVideoItem) => (
+          {filteredVideos.map((video: NgoVideoItem, idx: number) => (
             <div
               key={video.id}
-              onClick={() => setSelectedVideo(video)}
+              onClick={() => setSelectedIndex(idx)}
               className="group cursor-pointer flex flex-col overflow-hidden rounded-2xl bg-white p-3 shadow-xs border border-[#eef2ed] transition-all duration-300 hover:shadow-md"
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-[#f0f4ef]">
@@ -116,63 +112,87 @@ export default function VideosGallery() {
           ))}
         </div>
 
-        {selectedVideo && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-xs">
-            <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl">
-              {/* Modal Header */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-[#16351d] px-6 py-4 text-white">
-                <div>
-                  <h4 className="font-serif text-lg font-bold">
-                    {selectedVideo.title}
-                  </h4>
-                  <p className="text-xs text-white/70">
-                    {selectedVideo.description}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedVideo(null)}
-                  className="rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
+        {selectedIndex !== null && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md"
+            onClick={() => setSelectedIndex(null)}
+          >
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex(null);
+              }}
+              className="fixed top-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Close modal"
+            >
+              <X className="h-5 w-5" />
+            </button>
 
-              <div className="relative aspect-[16/9] w-full bg-black">
-                {selectedVideo.videoUrl ? (
-                  <iframe
-                    src={selectedVideo.videoUrl}
-                    title={selectedVideo.title}
-                    className="h-full w-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+            {/* Left arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex(
+                  (selectedIndex - 1 + filteredVideos.length) % filteredVideos.length
+                );
+              }}
+              className="fixed left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Previous video"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Right arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIndex((selectedIndex + 1) % filteredVideos.length);
+              }}
+              className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              aria-label="Next video"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Main Video / Content */}
+            <div
+              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {filteredVideos[selectedIndex].videoUrl ? (
+                <iframe
+                  src={filteredVideos[selectedIndex].videoUrl}
+                  title={filteredVideos[selectedIndex].title}
+                  className="h-full w-full border-0 rounded-lg shadow-2xl"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="relative h-full w-full flex items-center justify-center">
+                  <Image
+                    src={filteredVideos[selectedIndex].thumbnail}
+                    alt={filteredVideos[selectedIndex].title}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                    priority
                   />
-                ) : (
-                  <div className="relative flex h-full w-full items-center justify-center bg-[#0d2112]">
-                    <Image
-                      src={selectedVideo.thumbnail}
-                      alt={selectedVideo.title}
-                      fill
-                      className="object-cover opacity-40"
-                    />
-                    <div className="relative z-10 text-center p-6 bg-black/60 rounded-2xl backdrop-blur-md max-w-md mx-4">
-                      <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#1d5e2d] text-white">
-                        <Play className="h-6 w-6 fill-white translate-x-0.5" />
-                      </div>
-                      <h5 className="text-white font-bold text-base">
-                        {selectedVideo.title}
-                      </h5>
-                      <p className="text-xs text-gray-300 mt-1">
-                        {selectedVideo.duration}
-                      </p>
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-black/60 text-white shadow-2xl backdrop-blur-sm border border-white/20 transition-transform duration-300">
+                      <Play className="h-8 w-8 sm:h-10 sm:w-10 fill-white translate-x-0.5" />
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         )}
-      </div>
-    </section>
+
+      </div >
+    </section >
   );
 }

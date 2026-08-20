@@ -1,16 +1,10 @@
+import { site, SectionProps, NGOcertificateSectionData } from "@/app/data";
 import Image from "next/image";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function CertificateSection() {
-  const { certificateSection } = data;
+
+export default function CertificateSection({ data, className }: SectionProps<NGOcertificateSectionData> = {}) {
+  const certificateSection = data || site.certificatesection;
 
   if (!certificateSection) return null;
 

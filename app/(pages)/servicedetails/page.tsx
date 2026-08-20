@@ -1,22 +1,17 @@
+import { site, SectionProps } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import ServiceHeader from "@/app/components/layout/servicedetails/serviceheader";
 import ServiceFeaturesApproach from "@/app/components/layout/servicedetails/servicefeaturesapproach";
 import ServiceImpactCta from "@/app/components/layout/servicedetails/serviceimpactcta";
 import HomeCta from "@/app/components/ui/homecta";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   PageBannerData,
   ServiceDetailItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 import { notFound } from "next/navigation";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface ServiceDetailsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -32,20 +27,20 @@ export default async function ServiceDetailsPage({
       : "education";
   const idKey = rawId.toLowerCase().trim();
   const serviceDetail: ServiceDetailItem | undefined =
-    (data.serviceDetails && data.serviceDetails[idKey]) ||
-    Object.values(data.serviceDetails || {}).find(
+    (site.serviceDetails && (site.serviceDetails as any)[idKey]) ||
+    Object.values(site.serviceDetails || {}).find(
       (s: any) => String(s.numericId) === idKey || s.id.toLowerCase() === idKey,
     ) ||
-    data.serviceDetails?.["education"];
+    (site.serviceDetails as any)?.["education"];
   if (!serviceDetail) {
     notFound();
   }
 
   const bannerConfig =
     serviceDetail.banner ||
-    data.pageBanners?.servicesDetail ||
-    data.pageBanners?.services ||
-    data.pageBanners?.default;
+    site.pageBanners?.servicesDetail ||
+    site.pageBanners?.services ||
+    site.pageBanners?.default;
 
   const baseBreadcrumbs = bannerConfig?.breadcrumbs || [];
   const hasSpecificBanner = !!serviceDetail.banner;

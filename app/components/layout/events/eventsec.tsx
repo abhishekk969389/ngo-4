@@ -1,19 +1,15 @@
 "use client";
+import type { NgoEventSection, NgoEventCard } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, MapPin, Clock3 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoEventCard, NgoEventSection } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function EventSection() {
+
+export default function EventSection({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const eventData = data.eventSection as NgoEventSection | undefined;
 
   if (!eventData) return null;

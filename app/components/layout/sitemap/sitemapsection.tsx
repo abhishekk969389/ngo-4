@@ -1,3 +1,4 @@
+import { site, SectionProps, NGOsitemapSectionData } from "@/app/data";
 import Link from "next/link";
 import {
   Home,
@@ -10,15 +11,8 @@ import {
   Phone,
   ChevronRight,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap: Record<string, React.ElementType> = {
   home: Home,
@@ -31,8 +25,8 @@ const iconMap: Record<string, React.ElementType> = {
   phone: Phone,
 };
 
-export default function SitemapSection() {
-  const { sitemapSection } = data;
+export default function SitemapSection({ data, className }: SectionProps<NGOsitemapSectionData> = {}) {
+  const sitemapSection = data || site.sitemapsection;
 
   if (!sitemapSection) return null;
 

@@ -1,25 +1,19 @@
 "use client";
+import { site, SectionProps } from "@/app/data";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Heart, Quote, ArrowRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoBlogPost } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface BlogDetailProps {
   blogId: string | number;
 }
 
 export default function BlogDetail({ blogId }: BlogDetailProps) {
-  const blogPageData = data.blogPageSection as any;
+  const blogPageData = site.blogPageSection as any;
 
   if (!blogPageData) return null;
 

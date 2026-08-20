@@ -1,3 +1,4 @@
+import { site, SectionProps, SiteData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,30 +14,13 @@ import {
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandLinkedin,
-  IconBrandTwitter,
+IconBrandX,
   IconBrandYoutube,
 } from "@tabler/icons-react";
 
-const brand = (footerDataJson as any).NGO.sections.brand.variants.Legacy_brand;
-const footerData = {
-  about: (footerDataJson as any).NGO.sections.about.variants.Legacy_about,
-  socialLinks: (footerDataJson as any).NGO.sections.socialLinks.variants
-    .Legacy_socialLinks,
-  footerHeadings: (footerDataJson as any).NGO.sections.footerHeadings.variants
-    .Legacy_footerHeadings,
-  quickLinks: (footerDataJson as any).NGO.sections.quickLinks.variants
-    .Legacy_quickLinks,
-  ourCauses: (footerDataJson as any).NGO.sections.ourCauses.variants
-    .Legacy_ourCauses,
-  usefulLinks: (footerDataJson as any).NGO.sections.usefulLinks.variants
-    .Legacy_usefulLinks,
-  contactInfo: (footerDataJson as any).NGO.sections.contactInfo.variants
-    .Legacy_contactInfo,
-  copyrightText: (footerDataJson as any).NGO.sections.copyrightText.variants
-    .Legacy_copyrightText,
-};
-
-export default function Footer() {
+const brand = site.brand;
+export default function Footer({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const getSocialIcon = (platform: string) => {
     switch (platform) {
       case "facebook":
@@ -44,7 +28,7 @@ export default function Footer() {
       case "instagram":
         return <IconBrandInstagram className="w-6 h-6" />;
       case "twitter":
-        return <IconBrandTwitter className="w-6 h-6" />;
+        return <IconBrandX className="w-6 h-6" />;
       case "youtube":
         return <IconBrandYoutube className="w-6 h-6" />;
       case "linkedin":
@@ -56,44 +40,44 @@ export default function Footer() {
 
   const linkSections = [
     {
-      title: footerData.footerHeadings.quickLinks,
-      links: footerData.quickLinks,
+      title: data.footerHeadings.quickLinks,
+      links: data.quickLinks,
     },
     {
-      title: footerData.footerHeadings.ourCauses,
-      links: footerData.ourCauses,
+      title: data.footerHeadings.ourCauses,
+      links: data.ourCauses,
     },
     {
-      title: footerData.footerHeadings.usefulLinks,
-      links: footerData.usefulLinks,
+      title: data.footerHeadings.usefulLinks,
+      links: data.usefulLinks,
     },
   ];
 
   const contactDetails = [
     {
       icon: MapPin,
-      content: footerData.contactInfo.address,
+      content: data.contactInfo.address,
       isMultiline: true,
       className: "items-start",
       iconClassName: "mt-0.5",
     },
     {
       icon: Phone,
-      content: footerData.contactInfo.phone,
-      href: `tel:${footerData.contactInfo.phone}`,
+      content: data.contactInfo.phone,
+      href: `tel:${data.contactInfo.phone}`,
       className: "items-center font-medium",
       iconClassName: "",
     },
     {
       icon: Mail,
-      content: footerData.contactInfo.email,
-      href: `mailto:${footerData.contactInfo.email}`,
+      content: data.contactInfo.email,
+      href: `mailto:${data.contactInfo.email}`,
       className: "items-center",
       iconClassName: "",
     },
     {
       icon: Clock,
-      content: footerData.contactInfo.workingHours,
+      content: data.contactInfo.workingHours,
       className: "items-center whitespace-nowrap",
       iconClassName: "",
     },
@@ -112,7 +96,7 @@ export default function Footer() {
                     alt={`${brand.name} logo`}
                     fill
                     className="object-contain"
-                  />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 </div>
                 <div className="flex flex-col justify-center whitespace-nowrap">
                   <span className="text-xl lg:text-2xl font-black leading-none tracking-tight text-[#0c4d1e]">
@@ -124,12 +108,12 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="mt-6 text-sm leading-6 text-gray-600 max-w-sm tracking-wide">
-                {footerData.about.description}
+                {data.about.description}
               </p>
             </div>
 
             <div className="flex items-center gap-3 mt-6">
-              {footerData.socialLinks.map((item: any, idx: number) => (
+              {data.socialLinks.map((item: any, idx: number) => (
                 <a
                   key={idx}
                   href={item.href}
@@ -169,7 +153,7 @@ export default function Footer() {
 
           <div className="lg:col-span-3 lg:pl-6 lg:border-l lg:border-gray-200 pb-8 lg:pb-0">
             <h3 className="text-lg font-bold text-gray-900 tracking-tight font-serif">
-              {footerData.footerHeadings.contactInfo}
+              {data.footerHeadings.contactInfo}
             </h3>
             <div className="w-6 h-[2px] bg-[#2c7a3f] mt-1 mb-5"></div>
             <ul className="space-y-4 text-sm text-gray-600">
@@ -213,7 +197,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center text-sm mb-5 text-gray-500 font-medium">
-          {footerData.copyrightText}
+          {data.copyrightText}
         </div>
       </div>
     </footer>

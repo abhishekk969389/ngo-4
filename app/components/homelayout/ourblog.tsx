@@ -1,18 +1,12 @@
+import { site, SectionProps, NGOblogsSectionData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Leaf, ArrowRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function OurBlog() {
-  const { blogsSection } = data;
+
+export default function OurBlog({ data, className }: SectionProps<NGOblogsSectionData> = {}) {
+  const blogsSection = data || site.blogssection;
 
   return (
     <section className="py-12 overflow-hidden border-t border-gray-100">
@@ -50,7 +44,7 @@ export default function OurBlog() {
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
 
                   <div className="absolute top-4 left-4 z-10 flex flex-col items-center justify-center bg-[#28602c] text-white text-center rounded-xl px-3 py-2 shadow-sm font-sans min-w-[60px]">
                     <span className="text-xl font-bold leading-none">

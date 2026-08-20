@@ -1,22 +1,17 @@
+import { site, SectionProps } from "@/app/data";
 import { notFound } from "next/navigation";
 import Banner from "@/app/components/ui/banner";
 import PortfolioDetailHeader from "@/app/components/layout/portfolio/portfoliodetailheader";
 import PortfolioDetailContent from "@/app/components/layout/portfolio/portfoliodetailcontent";
 import PortfolioDetailSidebar from "@/app/components/layout/portfolio/portfoliodetailsidebar";
 import PortfolioDetailCta from "@/app/components/layout/portfolio/portfoliodetailcta";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   PortfolioDetailItem,
   PageBannerData,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 interface PortfolioDetailPageProps {
   params: Promise<{
@@ -25,7 +20,7 @@ interface PortfolioDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const details = data.portfolioDetails || {};
+  const details = site.portfolioDetails || {};
   const keys = Object.keys(details);
   return keys.map((key) => ({
     id: key,
@@ -40,7 +35,7 @@ export default async function PortfolioDetailPage({
 
   const idKey = (id || "").toLowerCase().trim();
 
-  const detailsMap = data.portfolioDetails || {};
+  const detailsMap = (site.portfolioDetails as any) || {};
 
   const projectDetail: PortfolioDetailItem | undefined =
     detailsMap[idKey] ||
@@ -56,9 +51,9 @@ export default async function PortfolioDetailPage({
   }
 
   const portfolioBannerConfig =
-    data.pageBanners?.portfolioDetail ||
-    data.pageBanners?.portfolio ||
-    data.pageBanners?.default;
+    site.pageBanners?.portfolioDetail ||
+    site.pageBanners?.portfolio ||
+    site.pageBanners?.default;
 
   const baseBreadcrumbs = portfolioBannerConfig?.breadcrumbs || [];
 

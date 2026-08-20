@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HeartHandshake, ArrowRight, Sprout } from "lucide-react";
-import type { PortfolioDetailCtaData } from "@/app/type/ngo";
+import type { PortfolioDetailCtaData } from "@/app/data";
 
 interface PortfolioDetailCtaProps {
   data: PortfolioDetailCtaData;

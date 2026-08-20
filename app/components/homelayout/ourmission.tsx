@@ -1,17 +1,11 @@
+import { site, SectionProps, NGOourMissionData } from "@/app/data";
 import Link from "next/link";
 import { Sprout, Heart, Home, BookOpen, ArrowRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function OurMission() {
-  const { ourMission } = data;
+
+export default function OurMission({ data, className }: SectionProps<NGOourMissionData> = {}) {
+  const ourMission = data || site.ourmission;
 
   const getCardIcon = (iconName: string) => {
     switch (iconName) {

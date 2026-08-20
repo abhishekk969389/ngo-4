@@ -1,18 +1,13 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import { FileCheck } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function TermsSection() {
+
+export default function TermsSection({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const termsData = data.termsConditionSection as any;
 
   if (!termsData) return null;

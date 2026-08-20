@@ -1,19 +1,13 @@
+import { site, SectionProps, NGOaboutSectionData } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, HandHeart, Users, Sprout, ArrowRight } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 import { IconQuote } from "@tabler/icons-react";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function About() {
-  const { aboutSection } = data;
+
+export default function About({ data, className }: SectionProps<NGOaboutSectionData> = {}) {
+  const aboutSection = data || site.aboutsection;
 
   const getFeatureIcon = (iconName: string) => {
     switch (iconName) {
@@ -51,7 +45,7 @@ export default function About() {
                   fill
                   className="object-cover"
                   priority
-                />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
 
               <div className="absolute -bottom-5 -right-3 sm:-bottom-5 sm:-right-5 lg:-bottom-4 lg:-right-4 xl:-bottom-6 xl:-right-6 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] lg:w-[160px] lg:h-[160px] xl:w-[210px] xl:h-[210px] rounded-full overflow-hidden border-4 sm:border-[5px] border-white shadow-xl z-20">
@@ -61,7 +55,7 @@ export default function About() {
                   fill
                   className="object-cover"
                   priority
-                />
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </div>
             </div>
           </div>

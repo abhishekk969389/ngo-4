@@ -15,7 +15,7 @@ import {
   Heart,
   ExternalLink,
 } from "lucide-react";
-import type { EventDetailItem } from "@/app/type/ngo";
+import type { EventDetailItem } from "@/app/data";
 
 const detailIconMap = {
   calendar: Calendar,

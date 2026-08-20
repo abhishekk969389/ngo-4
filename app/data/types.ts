@@ -1,4 +1,4 @@
-export interface NgoBrand {
+﻿export interface NgoBrand {
   name: string;
   tagline: string;
   logo: string;

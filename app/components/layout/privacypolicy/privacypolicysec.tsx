@@ -1,18 +1,14 @@
 "use client";
+import type { NgoPrivacyPolicySection } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import { ShieldCheck, FileCheck } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoPrivacyPolicySection } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function PrivacyPolicySec() {
+
+export default function PrivacyPolicySec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const policyData = data.privacyPolicySection as
     NgoPrivacyPolicySection | undefined;
 

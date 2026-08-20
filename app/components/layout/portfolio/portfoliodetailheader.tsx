@@ -11,7 +11,7 @@ import {
   Quote,
   BookOpen,
 } from "lucide-react";
-import type { PortfolioDetailHeaderData } from "@/app/type/ngo";
+import type { PortfolioDetailHeaderData } from "@/app/data";
 
 const iconMap = {
   leaf: Sprout,

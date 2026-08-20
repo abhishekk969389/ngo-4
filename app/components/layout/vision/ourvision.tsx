@@ -1,3 +1,4 @@
+import { site, SectionProps, NGOvisionPageSectionData } from "@/app/data";
 import Image from "next/image";
 import {
   Globe,
@@ -8,18 +9,11 @@ import {
   Eye,
   Sprout,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function OurVision() {
-  const visionData = data.visionPageSection;
+
+export default function OurVision({ data, className }: SectionProps<NGOvisionPageSectionData> = {}) {
+  const visionData = data || site.visionpagesection;
 
   if (!visionData) return null;
 

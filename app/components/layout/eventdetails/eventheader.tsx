@@ -10,7 +10,7 @@ import {
   Share2,
   ExternalLink,
 } from "lucide-react";
-import type { EventDetailItem } from "@/app/type/ngo";
+import type { EventDetailItem } from "@/app/data";
 
 interface EventHeaderProps {
   data: EventDetailItem;

@@ -1,18 +1,14 @@
 "use client";
+import type { NgoRefundPolicySection } from "@/app/data";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React from "react";
 import { FileCheck } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoRefundPolicySection } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
 
-export default function RefundSec() {
+
+export default function RefundSec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const refundData = data.refundPolicySection as
     NgoRefundPolicySection | undefined;
 

@@ -1,4 +1,5 @@
 "use client";
+import { site, SectionProps, SiteData } from "@/app/data";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -12,20 +13,14 @@ import {
   ChevronUp,
   Heart,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
 import type {
   NgoData,
   NgoFaqSection,
   NgoFaqItem,
   NgoFaqSidebarItem,
-} from "@/app/type/ngo";
+} from "@/app/data";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const sidebarIconMap: Record<
   string,
@@ -36,7 +31,8 @@ const sidebarIconMap: Record<
   clock: Clock,
 };
 
-export default function FaqSec() {
+export default function FaqSec({ data: propData, className }: SectionProps<SiteData> = {}) {
+  const data = propData || site;
   const faqData = data.faqSection as NgoFaqSection | undefined;
 
   // Open first item by default matching the screenshot

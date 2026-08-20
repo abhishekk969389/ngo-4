@@ -1,18 +1,13 @@
+import type { NgoHelpCard } from "@/app/data";
+import { site, SectionProps, NGOhelpSectionData } from "@/app/data";
 import {
   BookOpenText,
   MessageSquareText,
   Mail,
   Headphones,
 } from "lucide-react";
-import ngoDataJson from "@/app/data/ngoData_structured.json";
-import type { NgoData, NgoHelpCard } from "@/app/type/ngo";
 
-const data = new Proxy(ngoDataJson as any, {
-  get(target, prop: string) {
-    if (prop === "$$typeof") return undefined;
-    return target.NGO?.sections?.[prop]?.variants?.["Legacy_" + prop];
-  },
-});
+
 
 const iconMap = {
   articles: BookOpenText,
@@ -21,8 +16,8 @@ const iconMap = {
   support: Headphones,
 };
 
-export default function Help() {
-  const helpData = data.helpSection;
+export default function Help({ data, className }: SectionProps<NGOhelpSectionData> = {}) {
+  const helpData = data || site.helpsection;
 
   if (!helpData) return null;
 
