@@ -139,13 +139,13 @@ export default function OurMission({ data, className }: SectionProps<NGOourMissi
                   {card.description}
                 </p>
 
-                <Link
+                {/* <Link
                   href={card.href}
                   className="mt-auto w-10 h-10 rounded-full border border-[#1f5e2e] flex items-center justify-center text-[#1f5e2e] hover:bg-[#1f5e2e] hover:text-white transition-colors duration-200"
                   aria-label={`Learn more about ${card.title}`}
                 >
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
+                </Link> */}
               </div>
             );
           })}
