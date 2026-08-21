@@ -12,7 +12,6 @@ export default function Banner({
   bannerData,
   className = "",
 }: BannerProps) {
-  // Extract active banner data from props, pageKey lookup in JSON, or default JSON configuration
   const activeData: PageBannerData = bannerData ||
     (pageBanners && (pageBanners as any)[pageKey]) || {
       title: "",
@@ -82,27 +81,27 @@ export default function Banner({
                         />
                       )}
 
-                      {item.href && !item.isCurrent ? (
+                      {(item as any).href && !(item as any).isCurrent ? (
                         <Link
-                          href={item.href}
+                          href={(item as any).href}
                           className="inline-flex items-center gap-1.5 text-[#0f3c1d] font-medium hover:text-[#2d6a38] transition-colors"
                         >
                           {itemIcon}
-                          <span>{item.label}</span>
+                          <span>{(item as any).label}</span>
                         </Link>
                       ) : (
                         <span
                           className={`inline-flex items-center gap-1.5 ${
-                            item.isCurrent || isLast
+                            (item as any).isCurrent || isLast
                               ? "text-[#2d6a38] font-semibold"
                               : "text-[#0f3c1d] font-medium"
                           }`}
                           aria-current={
-                            item.isCurrent || isLast ? "page" : undefined
+                            (item as any).isCurrent || isLast ? "page" : undefined
                           }
                         >
                           {itemIcon}
-                          <span>{item.label}</span>
+                          <span>{(item as any).label}</span>
                         </span>
                       )}
                     </li>

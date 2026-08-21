@@ -130,9 +130,9 @@ export default function Contact({ data: propData, className }: SectionProps<Site
                 <div className="grid gap-5 sm:grid-cols-2">
                   {contactData.form.fields
                     .filter(
-                      (f) =>
-                        f.name === "name" ||
-                        f.name === "email" ||
+                      (f: any) =>
+                        (f as any).name === "name" ||
+                        (f as any).name === "email" ||
                         f.type === "text",
                     )
                     .map((field: NgoSupportContactField) => (
@@ -155,7 +155,7 @@ export default function Contact({ data: propData, className }: SectionProps<Site
                 </div>
 
                 {contactData.form.fields
-                  .filter((f) => f.name === "subject")
+                  .filter((f: any) => (f as any).name === "subject")
                   .map((field: NgoSupportContactField) => (
                     <div key={field.id} className="relative">
                       <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-[#59665b]">
@@ -171,7 +171,7 @@ export default function Contact({ data: propData, className }: SectionProps<Site
                   ))}
 
                 {contactData.form.fields
-                  .filter((f) => f.type === "select")
+                  .filter((f: any) => f.type === "select")
                   .map((field: NgoSupportContactField) => (
                     <div key={field.id} className="relative">
                       <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-[#59665b]">
@@ -185,7 +185,7 @@ export default function Contact({ data: propData, className }: SectionProps<Site
                         <option value="" disabled>
                           {field.placeholder}
                         </option>
-                        {field.options?.map((option) => (
+                        {field.options?.map((option: any) => (
                           <option
                             key={option.value}
                             value={option.value}
@@ -202,7 +202,7 @@ export default function Contact({ data: propData, className }: SectionProps<Site
                   ))}
 
                 {contactData.form.fields
-                  .filter((f) => f.type === "textarea")
+                  .filter((f: any) => f.type === "textarea")
                   .map((field: NgoSupportContactField) => (
                     <div key={field.id} className="relative">
                       <span className="pointer-events-none absolute left-4 top-4 flex items-center text-[#59665b]">

@@ -14,7 +14,7 @@ interface BlogDetailPageProps {
 
 export async function generateStaticParams() {
   const blogs = site.blogPageSection?.blogs || [];
-  return blogs.map((blog: NgoBlogCardItem) => ({
+  return blogs.map((blog: any) => ({
     id: String(blog.id),
   }));
 }
@@ -24,7 +24,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { id } = resolvedParams;
 
   const currentBlog = site.blogPageSection?.blogs.find(
-    (b: NgoBlogCardItem) => String(b.id) === String(id),
+    (b: any) => String(b.id) === String(id),
   );
 
   const blogBannerConfig = site.pageBanners?.blog;
@@ -33,7 +33,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     title: currentBlog?.title || blogBannerConfig?.title || "Blog",
     backgroundImage: blogBannerConfig?.backgroundImage || "/banner_bg.png",
     altText: currentBlog?.title || blogBannerConfig?.altText || "Blog details",
-    breadcrumbs: [
+    breadcrumbs: ([
       {
         id: 1,
         label: blogBannerConfig?.breadcrumbs?.[0]?.label || "Home",
@@ -50,7 +50,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         label: currentBlog?.title || "Blog Details",
         isCurrent: true,
       },
-    ],
+    ] as any),
   };
 
   return (

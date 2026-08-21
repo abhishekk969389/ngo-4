@@ -54,7 +54,7 @@ export default function OurMission({ data, className }: SectionProps<NGOourMissi
   };
 
   return (
-    <section className="relative bg-[#f7f9f5] py-6 sm:py-10 lg:py-12 overflow-hidden border-t border-gray-100">
+    <section className="relative bg-[#f7f9f5] py-6 mt-4 sm:mt-6 md:mt-10 lg:mt-12 overflow-hidden border-t border-gray-100">
       <div className="absolute top-5 right-6 sm:top-8 sm:right-12 md:right-20 lg:right-28 hidden md:block pointer-events-none">
         <svg
           width="240"

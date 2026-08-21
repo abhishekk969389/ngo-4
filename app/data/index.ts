@@ -33,18 +33,8 @@ export type NGOMissionPageData = NGOSections['MissionPage']['variants']['NGOMiss
 export type NGOEventsData = NGOSections['Events']['variants']['NGOEvents1'];
 export type NGOCareerData = NGOSections['Career']['variants']['NGOCareer1'];
 export type NGOPrivacyPolicyData = NGOSections['PrivacyPolicy']['variants']['NGOPrivacyPolicy1'];
-export type NGOTermsData = NGOSections['Terms']['variants']['NGOTerms1'];
 export type NGOSitemapData = NGOSections['Sitemap']['variants']['NGOSitemap1'];
-export type NGOFeaturedProjectsData = NGOSections['FeaturedProjects']['variants']['NGOFeaturedProjects1'];
-export type NGOSuccessStoriesData = NGOSections['SuccessStories']['variants']['NGOSuccessStories1'];
-export type NGOPartnersSponsorsData = NGOSections['PartnersSponsors']['variants']['NGOPartnersSponsors1'];
-export type NGOContactSectionData = NGOSections['ContactSection']['variants']['NGOContactSection1'];
-export type NGOTaxBenefitsData = NGOSections['TaxBenefits']['variants']['NGOTaxBenefits1'];
-export type NGOEventDetailData = NGOSections['EventDetail']['variants']['NGOEventDetail1'];
 export type NGOBlogDetailData = NGOSections['BlogDetail']['variants']['NGOBlogDetail1'];
-export type NGOJobDetailData = NGOSections['JobDetail']['variants']['NGOJobDetails1'];
-export type NGONotFoundData = NGOSections['NotFound']['variants']['NGONotFound1'];
-export type NGOProgramDetailData = NGOSections['ProgramDetail']['variants']['NGOProgramDetail1'];
 export type NGObrandData = NGOSections['brand']['variants']['Legacy_brand'];
 export type NGObannerData = NGOSections['banner']['variants']['Legacy_banner'];
 export type NGOpageBannersData = NGOSections['pageBanners']['variants']['Legacy_pageBanners'];
@@ -94,7 +84,6 @@ export type NGOgallerySectionData = NGOSections['gallerySection']['variants']['L
 export type NGOvideoGallerySectionData = NGOSections['videoGallerySection']['variants']['Legacy_videoGallerySection'];
 export type NGOblogPageSectionData = NGOSections['blogPageSection']['variants']['Legacy_blogPageSection'];
 export type NGOhomeCtaData = NGOSections['homeCta']['variants']['Legacy_homeCta'];
-export type NGOnavLinksData = NGOSections['navLinks']['variants']['Legacy_navLinks'];
 export type NGOactionsData = NGOSections['actions']['variants']['Legacy_actions'];
 export type NGOaboutData = NGOSections['about']['variants']['Legacy_about'];
 export type NGOsocialLinksData = NGOSections['socialLinks']['variants']['Legacy_socialLinks'];
@@ -150,30 +139,10 @@ export const site = {
   career: sec['Career']?.variants?.['NGOCareer1'],
   PrivacyPolicy: sec['PrivacyPolicy']?.variants?.['NGOPrivacyPolicy1'],
   privacypolicy: sec['PrivacyPolicy']?.variants?.['NGOPrivacyPolicy1'],
-  Terms: sec['Terms']?.variants?.['NGOTerms1'],
-  terms: sec['Terms']?.variants?.['NGOTerms1'],
   Sitemap: sec['Sitemap']?.variants?.['NGOSitemap1'],
   sitemap: sec['Sitemap']?.variants?.['NGOSitemap1'],
-  FeaturedProjects: sec['FeaturedProjects']?.variants?.['NGOFeaturedProjects1'],
-  featuredprojects: sec['FeaturedProjects']?.variants?.['NGOFeaturedProjects1'],
-  SuccessStories: sec['SuccessStories']?.variants?.['NGOSuccessStories1'],
-  successstories: sec['SuccessStories']?.variants?.['NGOSuccessStories1'],
-  PartnersSponsors: sec['PartnersSponsors']?.variants?.['NGOPartnersSponsors1'],
-  partnerssponsors: sec['PartnersSponsors']?.variants?.['NGOPartnersSponsors1'],
-  ContactSection: sec['ContactSection']?.variants?.['NGOContactSection1'],
-  contactsection: sec['ContactSection']?.variants?.['NGOContactSection1'],
-  TaxBenefits: sec['TaxBenefits']?.variants?.['NGOTaxBenefits1'],
-  taxbenefits: sec['TaxBenefits']?.variants?.['NGOTaxBenefits1'],
-  EventDetail: sec['EventDetail']?.variants?.['NGOEventDetail1'],
-  eventdetail: sec['EventDetail']?.variants?.['NGOEventDetail1'],
   BlogDetail: sec['BlogDetail']?.variants?.['NGOBlogDetail1'],
   blogdetail: sec['BlogDetail']?.variants?.['NGOBlogDetail1'],
-  JobDetail: sec['JobDetail']?.variants?.['NGOJobDetails1'],
-  jobdetail: sec['JobDetail']?.variants?.['NGOJobDetails1'],
-  NotFound: sec['NotFound']?.variants?.['NGONotFound1'],
-  notfound: sec['NotFound']?.variants?.['NGONotFound1'],
-  ProgramDetail: sec['ProgramDetail']?.variants?.['NGOProgramDetail1'],
-  programdetail: sec['ProgramDetail']?.variants?.['NGOProgramDetail1'],
   brand: sec['brand']?.variants?.['Legacy_brand'],
   pageBanners: sec['pageBanners']?.variants?.['Legacy_pageBanners'],
   pagebanners: sec['pageBanners']?.variants?.['Legacy_pageBanners'],
@@ -267,8 +236,6 @@ export const site = {
   blogpagesection: sec['blogPageSection']?.variants?.['Legacy_blogPageSection'],
   homeCta: sec['homeCta']?.variants?.['Legacy_homeCta'],
   homecta: sec['homeCta']?.variants?.['Legacy_homeCta'],
-  navLinks: sec['navLinks']?.variants?.['Legacy_navLinks'],
-  navlinks: sec['navLinks']?.variants?.['Legacy_navLinks'],
   actions: sec['actions']?.variants?.['Legacy_actions'],
   socialLinks: sec['socialLinks']?.variants?.['Legacy_socialLinks'],
   sociallinks: sec['socialLinks']?.variants?.['Legacy_socialLinks'],
@@ -296,4 +263,332 @@ export const site = {
 
 export type SiteData = typeof site;
 export default ngoDataJson;
-export * from './types';
+
+// Dynamically extracted types
+export type PageBannerData = NonNullable<NGOpageBannersData>[keyof NonNullable<NGOpageBannersData>];
+export type BreadcrumbItem = NonNullable<PageBannerData['breadcrumbs']>[number];
+
+export type NgoBlogCardItem = NonNullable<NGOblogsSectionData>['posts'][number];
+export type NgoBlogPageSection = NonNullable<NGOblogPageSectionData>;
+
+export type CaseStudyDetailItem = NonNullable<NGOcaseStudyDetailsData>[keyof NonNullable<NGOcaseStudyDetailsData>];
+export type CaseStudyGallery = CaseStudyDetailItem['gallery'];
+export type CaseStudyImpact = CaseStudyDetailItem['impact'];
+export type CaseStudyStory = CaseStudyDetailItem['story'];
+export type CaseStudyOverview = CaseStudyDetailItem['overview'];
+export type NgoCaseStudySection = NonNullable<NGOcaseStudySectionData>;
+export type NgoCaseStudyCard = NgoCaseStudySection['cards'][number];
+
+export type NgoEventSection = NonNullable<NGOeventSectionData>;
+export type NgoEventCard = NgoEventSection['cards'][number];
+
+export type TeamSectionData = NonNullable<NGOteamSectionData>;
+export type TeamMember = TeamSectionData['members'][number];
+
+export type PortfolioDetailItem = NonNullable<NGOportfolioDetailsData>[keyof NonNullable<NGOportfolioDetailsData>];
+export type PortfolioDetailContentData = PortfolioDetailItem['content'];
+export type PortfolioDetailCtaData = PortfolioDetailItem['cta'];
+export type PortfolioDetailHeaderData = PortfolioDetailItem['header'];
+export type PortfolioDetailSidebarData = PortfolioDetailItem['sidebar'];
+
+export type ServiceDetailItem = NonNullable<NGOserviceDetailsData>[keyof NonNullable<NGOserviceDetailsData>];
+export type ServiceFeaturesApproachData = ServiceDetailItem['featuresApproach'];
+export type ServiceHeaderData = ServiceDetailItem['header'];
+export type ServiceImpactCtaData = ServiceDetailItem['impactCta'];
+export type NgoServiceItem = NonNullable<NGOservicesSectionData>['items'][number];
+
+export type NgoBranchesSection = NonNullable<NGObranchesSectionData>;
+export type NgoBrochureSection = NonNullable<NGObrochureSectionData>;
+
+export type NgoCareersSection = NonNullable<NGOcareersSectionData>;
+export type NgoCareerApplyForm = NonNullable<NgoCareersSection['applyForm']>;
+
+export type NgoContactUsSection = NonNullable<NGOcontactUsSectionData>;
+
+export type NgoCsrInitiativeItem = NonNullable<NGOcsrInitiativesSectionData>['items'][number];
+export type NgoFocusAreaCard = NonNullable<NGOfocusAreaSectionData>['cards'][number];
+export type NgoGoalItem = NonNullable<NGOgoalsSectionData>['items'][number];
+export type NgoImpactGlanceStat = NonNullable<NGOimpactGlanceSectionData>['stats'][number];
+export type NgoImpactStat = NonNullable<NGOimpactSectionData>['stats'][number];
+
+export type NgoDonateSection = NonNullable<NGOdonateSectionData>;
+export type NgoTogetherDonateSection = NonNullable<NGOtogetherDonateSectionData>;
+export type NgoEnquirySection = NonNullable<NGOenquirySectionData>;
+
+export type NgoFaqSection = NonNullable<NGOfaqSectionData>;
+export type NgoFaqItem = NgoFaqSection['faqs'][number];
+
+export type NgoGallerySection = NonNullable<NGOgallerySectionData>;
+export type NgoGalleryCategory = NgoGallerySection['categories'][number];
+export type NgoGalleryImageItem = NgoGallerySection['images'][number];
+
+export type NgoVideoGallerySection = NonNullable<NGOvideoGallerySectionData>;
+export type NgoVideoCategory = NonNullable<any>; // Need fallback?
+export type NgoVideoItem = NgoVideoGallerySection['videos'][number];
+
+export type NgoMediaSection = NonNullable<NGOmediaSectionData>;
+export type NgoMediaOutlet = NgoMediaSection['outlets'][number];
+
+export type MissionPageSection = NonNullable<NGOmissionPageSectionData>;
+
+export type NgoBecomePartnerSection = NonNullable<NGObecomePartnerSectionData>;
+
+export type NgoPrivacyPolicySection = NonNullable<NGOprivacyPolicySectionData>;
+export type NgoRefundPolicySection = NonNullable<NGOrefundPolicySectionData>;
+
+export type NgoArticlesSection = NonNullable<NGOarticlesSectionData>;
+export type NgoArticleCard = NgoArticlesSection['cards'][number];
+
+export type NgoHelpCard = NonNullable<NGOhelpSectionData>['cards'][number];
+
+export type BannerProps = {
+  data?: any; 
+  pageKey?: string;
+  bannerData?: any;
+  className?: string;
+};
+
+export type NgoData = NonNullable<RawSiteData>['NGO'];
+
+// Static types required for components
+export interface NgoBranchItem {
+  id: number;
+  title: string;
+  city: string;
+  address: string;
+  phone: string;
+  email: string;
+  hours: string;
+}
+
+export interface NgoBrochureItem {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  fileType: string;
+  fileSize: string;
+  downloadUrl: string;
+  buttonLabel?: string;
+}
+
+export interface NgoCareerFormField {
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  type: "text" | "email" | "tel" | "select";
+  required?: boolean;
+  options?: string[];
+  colSpan?: "full" | "half";
+}
+
+export interface NgoCareerOfferItem {
+  id: number;
+  title: string;
+  icon: string;
+}
+
+export interface NgoCareerJobDetailItem {
+  id: number;
+  label: string;
+  value: string;
+  icon: string;
+}
+
+export interface NgoCareerShareLink {
+  platform: string;
+  href: string;
+  icon: string;
+}
+
+export interface NgoContactInfoDetailItem {
+  id: number;
+  label: string;
+  value: string;
+  subtext: string;
+  icon: string;
+}
+
+export interface NgoDonateTier {
+  id: number;
+  title: string;
+  subtext: string;
+  amount: number;
+  isDefault?: boolean;
+}
+
+export interface NgoDonateImpactItem {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface NgoTogetherDonateStat {
+  id: number;
+  value: string;
+  label: string;
+  icon: string;
+}
+
+export interface NgoEnquiryFeature {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface NgoUpcomingEventCard {
+  id: number;
+  title: string;
+  date: {
+    day: number;
+    month: string;
+  };
+  location: string;
+  time: string;
+  description: string;
+  image: string;
+  buttonLabel: string;
+  href: string;
+}
+
+export interface NgoFaqSidebarItem {
+  id: number;
+  label: string;
+  value: string;
+  icon: string;
+  href?: string;
+}
+
+
+// Extra Static types required for components
+export interface EventDetailItem {
+  id: string;
+  numericId?: number;
+  title: string;
+  categoryTag?: string;
+  description: string;
+  image: string;
+  date: {
+    day: number | string;
+    month: string;
+    fullDate: string;
+  };
+  time: string;
+  location: string;
+  locationMapUrl?: string;
+  viewOnMapLabel?: string;
+  shareEventLabel?: string;
+  volunteersRegistered?: string;
+  aboutTitle?: string;
+  aboutContent: string;
+  expectationsTitle?: string;
+  expectations: EventExpectation[];
+  detailsTitle?: string;
+  detailsRows: EventDetailRow[];
+  bringTitle?: string;
+  bringItems: EventBringItem[];
+  galleryTitle?: string;
+  gallery: EventGalleryImage[];
+  impactCallout?: {
+    title: string;
+    subtitle: string;
+  };
+  registrationCard?: {
+    title: string;
+    description: string;
+    buttonLabel: string;
+    buttonHref: string;
+    loginText?: string;
+    loginHref?: string;
+  };
+  organizer?: EventOrganizer;
+  shareCard?: {
+    title: string;
+    description: string;
+  };
+  support?: EventSupport;
+}
+
+export interface NgoContactSection {
+  title: string;
+  subtitle: string;
+  description: string;
+  contactMethods: NgoSupportContactMethod[];
+  form: NgoSupportContactForm;
+}
+
+export interface NgoSupportContactField {
+  id: number;
+  name: string;
+  type: "text" | "email" | "select" | "textarea";
+  placeholder: string;
+  icon?: string;
+  options?: NgoSupportContactFieldOption[];
+}
+
+export interface NgoSupportContactMethod {
+  id: number;
+  label: string;
+  value: string;
+  href?: string;
+  icon: string;
+}
+
+
+// Nested Static types required for components
+export interface EventExpectation {
+  id: number;
+  text: string;
+}
+
+export interface EventDetailRow {
+  id: number;
+  label: string;
+  value: string;
+  icon?: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+export interface EventBringItem {
+  id: number;
+  icon: string;
+  label: string;
+}
+
+export interface EventGalleryImage {
+  id: number;
+  image: string;
+  alt?: string;
+}
+
+export interface EventOrganizer {
+  cardTitle?: string;
+  name: string;
+  description: string;
+  icon?: string;
+  profileLink?: string;
+  profileText?: string;
+}
+
+export interface EventSupport {
+  title: string;
+  description: string;
+  phone: string;
+  email: string;
+}
+
+export interface NgoSupportContactForm {
+  heading: string;
+  fields: NgoSupportContactField[];
+  buttonLabel: string;
+}
+
+export interface NgoSupportContactFieldOption {
+  value: string;
+  label: string;
+}
+

@@ -14,7 +14,7 @@ export default function CareerApplyPage({ data: propData, className }: SectionPr
     title: careersBannerConfig?.title || "Careers",
     backgroundImage: careersBannerConfig?.backgroundImage || "/banner_bg.png",
     altText: careersBannerConfig?.altText || "Careers Application Banner",
-    breadcrumbs: [
+    breadcrumbs: ([
       {
         id: 1,
         label: careersBannerConfig?.breadcrumbs?.[0]?.label || "Home",
@@ -31,7 +31,7 @@ export default function CareerApplyPage({ data: propData, className }: SectionPr
         label: "Apply Now",
         isCurrent: true,
       },
-    ],
+    ] as any),
   };
 
   return (
