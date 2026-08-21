@@ -1,6 +1,6 @@
 "use client";
 import type { NgoEventSection, NgoEventCard } from "@/app/data";
-import { site, SectionProps, SiteData } from "@/app/data";
+import { site, SectionProps, SiteData, slugify } from "@/app/data";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -132,8 +132,8 @@ export default function EventSection({ data: propData, className }: SectionProps
 
               <div className="p-5 pt-0">
                 <Link
-                  href={`/events/${card.id}`}
-                  className="inline-flex rounded-lg bg-[#1a4325] cursor-pointer px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-[#13351d]"
+                  href={`/events/${slugify(card.title) || (card as any).slug || card.id}`}
+                  className="inline-flex rounded-xl bg-[#1a4325] cursor-pointer px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-[#13351d] hover:shadow-md active:scale-[0.98]"
                 >
                   {card.buttonLabel || "Register Now"}
                 </Link>

@@ -1,5 +1,5 @@
 "use client";
-import { site, SectionProps, NGOteamSectionData } from "@/app/data";
+import { site, SectionProps, NGOteamSectionData, slugify } from "@/app/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Heart, Sprout, ArrowRight } from "lucide-react";
@@ -72,12 +72,14 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
 
         {/* Team Members Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-8 sm:mt-12">
-          {teamData.members.map((member: any) => (
-            <Link
-              key={member.id}
-              href={`/ourteam/${member.id}`}
-              className="group relative flex items-center sm:items-start rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] gap-5 sm:gap-6 cursor-pointer"
-            >
+          {teamData.members.map((member: any) => {
+            const memberSlug = member.slug || slugify(member.name) || member.id;
+            return (
+              <Link
+                key={member.id}
+                href={`/teamdetails?id=${memberSlug}`}
+                className="group relative flex items-center sm:items-start rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] gap-5 sm:gap-6 cursor-pointer"
+              >
               {/* Left Image */}
               <div className="relative w-28 h-28 sm:w-[140px] sm:h-[140px] shrink-0 rounded-full overflow-hidden bg-[#f4f7f4] z-10">
                 <Image
@@ -124,7 +126,8 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
                 </div>
               </div>
             </Link>
-          ))}
+          );
+        })}
         </div>
 
         {/* Bottom CTA Banner */}

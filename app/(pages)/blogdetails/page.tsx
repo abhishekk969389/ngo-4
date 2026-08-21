@@ -1,30 +1,32 @@
-import type { PageBannerData, NgoBlogCardItem } from "@/app/data";
+import type { PageBannerData } from "@/app/data";
 import { site, slugify } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import BlogDetail from "@/app/components/layout/blog/blogdetail";
 import HomeCta from "@/app/components/ui/homecta";
 
-interface BlogDetailPageProps {
-  params: Promise<{
-    id: string;
-  }>;
+interface BlogDetailsPageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateStaticParams() {
+export default async function BlogDetailsPage({
+  searchParams,
+}: BlogDetailsPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const rawId =
+    typeof resolvedSearchParams.id === "string"
+      ? resolvedSearchParams.id
+      : "1";
+
+  const targetId = rawId.toLowerCase().trim();
+
   const blogs = site.blogPageSection?.blogs || [];
-  return blogs.map((blog: any) => ({
-    id: blog.slug || slugify(blog.title) || String(blog.id),
-  }));
-}
-
-export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
-
-  const currentBlog = site.blogPageSection?.blogs.find(
-    (b: any) =>
-      b.slug === id || slugify(b.title) === id || String(b.id) === String(id),
-  );
+  const currentBlog =
+    blogs.find(
+      (b: any) =>
+        b.slug === targetId ||
+        slugify(b.title) === targetId ||
+        String(b.id) === targetId
+    ) || blogs[0];
 
   const blogBannerConfig = site.pageBanners?.blog;
 
@@ -55,7 +57,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   return (
     <>
       <Banner bannerData={dynamicBannerData} />
-      <BlogDetail blogId={id} />
+      <BlogDetail blogId={rawId} />
       <HomeCta />
     </>
   );

@@ -10,6 +10,7 @@ import type {
   PortfolioDetailItem,
   PageBannerData,
 } from "@/app/data";
+import HomeCta from "@/app/components/ui/homecta";
 
 
 
@@ -93,6 +94,7 @@ export default async function PortfolioDetailPage({
       </main>
 
       <PortfolioDetailCta data={projectDetail.cta} />
+      <HomeCta/>
     </>
   );
 }

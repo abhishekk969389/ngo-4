@@ -1,5 +1,5 @@
 import type { PageBannerData, EventDetailItem } from "@/app/data";
-import { site } from "@/app/data";
+import { site, slugify } from "@/app/data";
 import { notFound } from "next/navigation";
 import Banner from "@/app/components/ui/banner";
 import HomeCta from "@/app/components/ui/homecta";
@@ -7,64 +7,76 @@ import EventHeader from "@/app/components/layout/eventdetails/eventheader";
 import EventContent from "@/app/components/layout/eventdetails/eventcontent";
 import EventSidebar from "@/app/components/layout/eventdetails/eventsidebar";
 
-
-
 interface EventDetailPageProps {
-  params: Promise<{
-    id: string;
-  }>;
+  params: Promise<{ id: string }>;
+}
+
+// Data lookup ko normalize karne ke liye single helper function
+function getEventMap(): Map<string, EventDetailItem> {
+  const map = new Map<string, EventDetailItem>();
+  const details = (site.eventDetails as Record<string, EventDetailItem>) || {};
+
+  Object.entries(details).forEach(([key, item]) => {
+    if (!item) return;
+    const keys = [
+      key,
+      item.id,
+      (item as any).slug,
+      item.title && slugify(item.title),
+      (item as any).numericId,
+    ].filter(Boolean);
+
+    keys.forEach((k) => map.set(String(k).toLowerCase().trim(), item));
+  });
+
+  return map;
 }
 
 export async function generateStaticParams() {
-  const details = site.eventDetails || {};
-  const keys = Object.keys(details);
-  return keys.map((key) => ({
-    id: key,
-  }));
+  const eventMap = getEventMap();
+  const keys = new Set(eventMap.keys());
+
+  const cards = [
+    ...(site.eventSection?.cards || []),
+    ...(site.eventSection?.upcomingCards || []),
+  ];
+
+  cards.forEach((card: any) => {
+    if (card?.slug) keys.add(card.slug.toLowerCase());
+    if (card?.id) keys.add(String(card.id).toLowerCase());
+    if (card?.title) keys.add(slugify(card.title).toLowerCase());
+  });
+
+  return Array.from(keys).map((id) => ({ id }));
 }
 
-export default async function EventDetailPage({
-  params,
-}: EventDetailPageProps) {
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
-
+export default async function EventDetailPage({ params }: EventDetailPageProps) {
+  const { id } = await params;
   const idKey = (id || "").toLowerCase().trim();
 
-  const detailsMap = (site.eventDetails as any) || {};
-
-  const detailItem: EventDetailItem | undefined =
-    detailsMap[idKey] ||
-    Object.values(detailsMap).find(
-      (item: any) =>
-        String(item.numericId) === idKey || item.id.toLowerCase() === idKey,
-    ) ||
-    detailsMap["community-cleanup"] ||
-    detailsMap["1"];
+  const eventMap = getEventMap();
+  const detailItem = eventMap.get(idKey);
 
   if (!detailItem) {
     notFound();
   }
 
-  const eventsBannerConfig =
+  const bannerConfig =
     site.pageBanners?.eventsDetail ||
     site.pageBanners?.events ||
     site.pageBanners?.default;
 
-  const baseBreadcrumbs = eventsBannerConfig?.breadcrumbs || [];
+  const baseBreadcrumbs = bannerConfig?.breadcrumbs || [];
 
   const dynamicBannerData: PageBannerData = {
-    title: detailItem.title || eventsBannerConfig?.title || "",
-    backgroundImage: eventsBannerConfig?.backgroundImage || "/banner_bg.png",
-    altText: detailItem.title || eventsBannerConfig?.altText || "",
+    title: detailItem.title || bannerConfig?.title || "",
+    backgroundImage: bannerConfig?.backgroundImage || "/banner_bg.png",
+    altText: detailItem.title || bannerConfig?.altText || "",
     breadcrumbs: [
-      ...baseBreadcrumbs.map((item: any) => ({
-        ...item,
-        isCurrent: false,
-      })),
+      ...baseBreadcrumbs.map((item: any) => ({ ...item, isCurrent: false })),
       {
         id: baseBreadcrumbs.length + 1,
-        label: detailItem.title || eventsBannerConfig?.title || "",
+        label: detailItem.title || bannerConfig?.title || "",
         isCurrent: true,
       },
     ],
@@ -74,18 +86,13 @@ export default async function EventDetailPage({
     <>
       <Banner bannerData={dynamicBannerData} />
 
-      {/* Component 1: Event Hero Header */}
       <EventHeader data={detailItem} />
 
-      {/* Main Grid Layout: Left Content Column & Right Sidebar Column */}
       <main className="font-sans px-4 sm:px-6 lg:px-8 max-w-[1380px] mx-auto my-10 sm:my-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* Component 2: Event Main Content Left Column */}
           <div className="lg:col-span-8">
             <EventContent data={detailItem} />
           </div>
-
-          {/* Component 3: Event Sidebar Right Column */}
           <div className="lg:col-span-4">
             <EventSidebar data={detailItem} />
           </div>

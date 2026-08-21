@@ -4994,7 +4994,7 @@
               }
             ],
             "showcase": {
-              "mainImage": "/about_main.png",
+              "mainImage": "/ourimpact.svg",
               "secondaryImages": [
                 "/about_circle.png",
                 "/causes_education_1.png",
@@ -5553,7 +5553,7 @@
                 "time": "9:00 AM - 1:00 PM (EST)",
                 "description": "Let’s come together to clean our streets and make our community a cleaner place.",
                 "image": "",
-                "buttonLabel": "Register Now",
+                "buttonLabel": "View Details",
                 "href": "/contactus"
               },
               {
@@ -5567,7 +5567,7 @@
                 "time": "10:00 AM - 2:00 PM (PST)",
                 "description": "A workshop focused on making quality education accessible for every child.",
                 "image": "",
-                "buttonLabel": "Register Now",
+                "buttonLabel": "View Details",
                 "href": "/contactus"
               },
               {
@@ -5581,7 +5581,7 @@
                 "time": "8:00 AM - 12:00 PM (CST)",
                 "description": "Plant trees, protect the environment and build a sustainable future together.",
                 "image": "",
-                "buttonLabel": "Register Now",
+                "buttonLabel": "View Details",
                 "href": "/contactus"
               }
             ],
@@ -5644,7 +5644,7 @@
                 "buttonLabel": "View Details",
                 "href": "/events/flood-relief"
               },
-                {
+              {
                 "id": 5,
                 "title": "Flood Relief Support",
                 "date": {
@@ -6899,8 +6899,8 @@
               },
               {
                 "id": 18,
-                "name": "Google.org",
-                "logo": "/partners/google_org.svg",
+                "name": "JICA",
+                "logo": "/partners/jica.svg",
                 "href": "#"
               },
               {
@@ -12981,10 +12981,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13137,10 +13137,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13293,10 +13293,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13449,10 +13449,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13605,10 +13605,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13761,10 +13761,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -13917,10 +13917,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",
@@ -14073,10 +14073,10 @@
               "registrationCard": {
                 "title": "Event Registration",
                 "description": "Join us and be a part of the change. Register now to secure your spot!",
-                "buttonLabel": "Register Now",
-                "buttonHref": "/contactus",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
                 "loginText": "Already registered? Login",
-                "loginHref": "/contactus"
+                "loginHref": "/enquiry"
               },
               "organizer": {
                 "name": "Green Future Initiative",

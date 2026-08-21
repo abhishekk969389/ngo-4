@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   CheckCircle2,
@@ -14,6 +15,9 @@ import {
   Smile,
   Heart,
   ExternalLink,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import type { EventDetailItem } from "@/app/data";
 
@@ -39,6 +43,23 @@ interface EventContentProps {
 }
 
 export default function EventContent({ data }: EventContentProps) {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedIndex === null || !data?.gallery) return;
+      if (e.key === "Escape") setSelectedIndex(null);
+      if (e.key === "ArrowLeft") {
+        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + data.gallery.length) % data.gallery.length : null));
+      }
+      if (e.key === "ArrowRight") {
+        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % data.gallery.length : null));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, data?.gallery]);
+
   if (!data) return null;
 
   const aboutWords = (data.aboutTitle || "").split(" ");
@@ -161,10 +182,11 @@ export default function EventContent({ data }: EventContentProps) {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {data.gallery.map((img) => (
+            {data.gallery.map((img, idx) => (
               <div
                 key={img.id}
-                className="relative h-24 sm:h-28 rounded-xl overflow-hidden border border-[#e2ebd9] shadow-2xs group"
+                onClick={() => setSelectedIndex(idx)}
+                className="relative h-24 sm:h-28 rounded-xl overflow-hidden border border-[#e2ebd9] shadow-2xs group cursor-pointer"
               >
                 <Image
                   src={img.image}
@@ -180,17 +202,81 @@ export default function EventContent({ data }: EventContentProps) {
       )}
 
       {data.impactCallout && (
-        <div className="bg-[#f4f8f4] border border-[#e2ebd9] rounded-2xl p-5 flex items-center gap-4">
-          <div className="w-11 h-11 rounded-full bg-[#e2ebd9] flex-shrink-0 flex items-center justify-center text-[#1b4d25]">
-            <Heart className="w-5 h-5 fill-[#1b4d25]/20" />
+        <div className="bg-[#f4f8f4] border border-[#e2ebd9] rounded-2xl p-5 sm:p-6 flex items-center gap-4 sm:gap-5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#e2ebd9] flex-shrink-0 flex items-center justify-center text-[#1b4d25]">
+            <Heart className="w-6 h-6 sm:w-7 sm:h-7 fill-[#1b4d25]/20 stroke-[2]" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold font-serif text-[#0d3319]">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold font-serif text-[#0d3319] leading-snug">
               {data.impactCallout.title}
             </h3>
-            <p className="text-xs sm:text-sm text-[#4b584d] mt-0.5">
+            <p className="text-xs sm:text-sm md:text-base text-[#4b584d] mt-0.5 leading-relaxed font-sans">
               {data.impactCallout.subtitle}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Modal */}
+      {selectedIndex !== null && data.gallery && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md p-4 sm:p-6"
+          onClick={() => setSelectedIndex(null)}
+        >
+          {/* Close button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedIndex(null);
+            }}
+            className="fixed top-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+            aria-label="Close modal"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          {/* Left arrow */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedIndex(
+                (selectedIndex - 1 + data.gallery.length) % data.gallery.length
+              );
+            }}
+            className="fixed left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          {/* Right arrow */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedIndex((selectedIndex + 1) % data.gallery.length);
+            }}
+            className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          {/* Main Image */}
+          <div
+            className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={data.gallery[selectedIndex].image}
+              alt={(data.gallery[selectedIndex] as any).title || data.gallery[selectedIndex].alt || "Event gallery image"}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
           </div>
         </div>
       )}

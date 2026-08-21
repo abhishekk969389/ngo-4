@@ -261,6 +261,16 @@ export const site = {
   eventdetails: sec['eventDetails']?.variants?.['Legacy_eventDetails'],
 };
 
+export const slugify = (text: string): string => {
+  if (!text) return "";
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
 export type SiteData = typeof site;
 export default ngoDataJson;
 
@@ -342,7 +352,7 @@ export type NgoArticleCard = NgoArticlesSection['cards'][number];
 export type NgoHelpCard = NonNullable<NGOhelpSectionData>['cards'][number];
 
 export type BannerProps = {
-  data?: any; 
+  data?: any;
   pageKey?: string;
   bannerData?: any;
   className?: string;

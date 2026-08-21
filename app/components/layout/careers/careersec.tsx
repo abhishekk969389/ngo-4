@@ -10,7 +10,6 @@ import {
   Clock,
   ShieldCheck,
   UserCheck,
-  Bookmark,
   Heart,
   TrendingUp,
   Users,
@@ -196,20 +195,6 @@ export default function CareerSec({ data: propData, className }: SectionProps<Si
               >
                 {sidebar.applyButton.label}
               </Link>
-
-              <div className="flex items-center gap-4 text-xs font-semibold text-[#8a998c]">
-                <span className="h-px grow bg-[#e2e8e0]" />
-                <span>{sidebar.dividerText}</span>
-                <span className="h-px grow bg-[#e2e8e0]" />
-              </div>
-
-              <button
-                type="button"
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#0d4019] py-3 text-sm font-semibold text-[#0d4019] transition hover:bg-[#f4f7f3]"
-              >
-                <Bookmark className="h-4 w-4" />
-                <span>{sidebar.saveButton.label}</span>
-              </button>
 
               <hr className="border-[#eef2ed]" />
 
