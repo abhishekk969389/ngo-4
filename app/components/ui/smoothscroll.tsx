@@ -20,9 +20,9 @@ function GlobalScrollEffects() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Sirf un elements ko select karein jo animate hone chahiye
+    // Select elements that should animate based on our CSS rules
     const elements = document.querySelectorAll(
-      "section, article, .scroll-reveal"
+      "section h1, section h2, section h3, section h4, section p, section img, section .group, section button, .scroll-reveal, .animate-section"
     );
 
     const observer = new IntersectionObserver(
@@ -30,25 +30,32 @@ function GlobalScrollEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            // Ek baar visible hone ke baad unobserve kar dein taaki bar-bar hide/show flicker na ho
             observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.05,
-        rootMargin: "0px 0px 80px 0px", // Scroll aane se thoda pehle hi trigger hoga
+        rootMargin: "0px 0px -50px 0px", // Trigger slightly before it comes fully into view
       }
     );
 
-    elements.forEach((el) => {
+    elements.forEach((el, index) => {
       const rect = el.getBoundingClientRect();
       
-      // Agar element already screen (above the fold) me hai toh use turant visible karein
-      if (rect.top < window.innerHeight) {
-        el.classList.add("is-visible");
+      // Add stagger delay based on DOM order loosely, for elements close together
+      const staggerIndex = index % 5;
+      if (staggerIndex === 1) el.classList.add("delay-100");
+      if (staggerIndex === 2) el.classList.add("delay-200");
+      if (staggerIndex === 3) el.classList.add("delay-300");
+      if (staggerIndex === 4) el.classList.add("delay-400");
+
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        // If already in viewport on load, show it
+        setTimeout(() => {
+          el.classList.add("is-visible");
+        }, 50);
       } else {
-        el.classList.add("reveal-init");
         observer.observe(el);
       }
     });
