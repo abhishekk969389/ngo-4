@@ -30,7 +30,7 @@ export default function CaseStudyGallerySection({
   };
 
   return (
-    <section className="py-6 bg-[#f9faf7] font-sans border-t border-[#e2ebd9]">
+    <section className=" font-sans mt-6 sm:mt-8 md:mt-10 lg:mt-14 mb-8">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         {/* Badge & Header */}
         <div className="text-center">
@@ -52,13 +52,13 @@ export default function CaseStudyGallerySection({
           </div>
         </div>
 
-        <div className="relative mt-10">
+        <div className="relative mt-10 ">
           {/* Navigation Arrows */}
           <button
             type="button"
             onClick={handlePrev}
             aria-label="Previous images"
-            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -67,12 +67,12 @@ export default function CaseStudyGallerySection({
             type="button"
             onClick={handleNext}
             aria-label="Next images"
-            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-12 sm:px-14">
             {items.slice(startIndex, startIndex + 4).map((item) => (
               <div
                 key={item.id}
