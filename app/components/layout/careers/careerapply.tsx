@@ -124,7 +124,7 @@ export default function CareerApply({ data: propData, className }: SectionProps<
                 </h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {applicantInfo.fields.map((field: NgoCareerFormField) => {
+                  {applicantInfo.fields.map((field: any) => {
                     const isFullWidth = field.colSpan === "full";
                     const currentValue =
                       (formValues[field.name] as string) || "";

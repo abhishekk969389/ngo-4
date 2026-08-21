@@ -34,7 +34,7 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
     backgroundImage: teamBannerConfig?.backgroundImage || "/banner_bg.png",
     altText:
       currentMember?.name || teamBannerConfig?.altText || "Team member banner",
-    breadcrumbs: [
+    breadcrumbs: ([
       {
         id: 1,
         label: teamBannerConfig?.breadcrumbs?.[0]?.label || "Home",
@@ -51,7 +51,7 @@ export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
         label: currentMember?.name || "Team Member",
         isCurrent: true,
       },
-    ],
+    ] as any),
   };
 
   return (
