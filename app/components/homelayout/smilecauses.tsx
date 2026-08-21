@@ -106,7 +106,7 @@ export default function SmileCauses({ data, className }: SectionProps<NGOsmileCa
   }, []);
 
   return (
-    <section className="bg-[#fafcfb] py-10 border-t border-gray-100 overflow-hidden">
+    <section className="py-10 border-t border-gray-100 overflow-hidden">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <h2 className="text-center text-3xl sm:text-5xl font-black text-[#04240d] font-serif leading-tight">
@@ -186,7 +186,7 @@ export default function SmileCauses({ data, className }: SectionProps<NGOsmileCa
                       </p>
                     </div>
 
-                    <Link
+                    {/* <Link
                       href={card.href}
                       className="inline-flex items-center gap-1.5 rounded-full border border-[#1f5e2e] bg-white px-4 py-1.5 text-xs font-semibold text-[#0c3b18] hover:bg-[#1f5e2e] hover:text-white transition-all font-sans cursor-pointer mt-5"
                     >
@@ -194,7 +194,7 @@ export default function SmileCauses({ data, className }: SectionProps<NGOsmileCa
                         {card.ctaText || smileCauses.ctaText || "Learn More"}
                       </span>
                       <ArrowRight className="w-3 h-3" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               );
