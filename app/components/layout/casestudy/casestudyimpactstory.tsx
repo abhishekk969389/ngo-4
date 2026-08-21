@@ -91,7 +91,7 @@ export default function CaseStudyImpactStory({
       )}
 
       {story && (
-        <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 lg:mt-20">
+        <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 md:mt-10 lg:mt-14">
           <div className="text-center">
             <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1b4d25] font-sans">
               <Sprout className="h-5 w-5 text-[#1b4d25]" />
