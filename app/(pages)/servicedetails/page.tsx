@@ -72,7 +72,7 @@ export default async function ServiceDetailsPage({
       <ServiceHeader data={serviceDetail.header} />
       <ServiceFeaturesApproach data={serviceDetail.featuresApproach} />
       <ServiceImpactCta data={serviceDetail.impactCta} />
-
+       
       <HomeCta />
     </>
   );

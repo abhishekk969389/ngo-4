@@ -181,26 +181,25 @@ export default function ServiceSection({ data, className }: SectionProps<NGOserv
         <div className="relative mt-8 sm:mt-10 lg:mt-12 overflow-hidden rounded-2xl bg-[#f2f7f2] border border-[#e2ede2] p-5 sm:p-6 lg:p-8">
           <div className="relative z-10 grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {bottomItems.map((item: any) => (
-              <Link
+              <div
                 key={item.id}
-                href={item.href || `/servicedetails?id=${item.slug || item.id}`}
-                className="group flex items-center gap-3.5 p-2 rounded-xl transition-all hover:bg-white/60 cursor-pointer"
+                className="flex items-center gap-3.5 p-2 rounded-xl"
               >
                 <div
-                  className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full transition-transform group-hover:scale-105"
+                  className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full"
                   style={{ backgroundColor: `${item.accent}20` }}
                 >
                   {renderIcon(item)}
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-gray-900 sm:text-base group-hover:text-[#2c7a3f] transition-colors">
+                  <h4 className="text-sm font-bold text-gray-900 sm:text-base">
                     {item.title}
                   </h4>
                   <p className="mt-0.5 text-xs text-gray-600 leading-snug">
                     {item.description}
                   </p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
 
