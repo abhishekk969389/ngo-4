@@ -3603,12 +3603,12 @@
               {
                 "id": 1,
                 "label": "Privacy Policy",
-                "href": "/privacy-policy"
+                "href": "/privacypolicy"
               },
-              {
+                  {
                 "id": 2,
-                "label": "Terms of Use",
-                "href": "/terms-of-use"
+                "label": "Terms & Conditions",
+                "href": "/termscondition"
               },
               {
                 "id": 3,
