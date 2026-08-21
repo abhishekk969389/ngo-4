@@ -1,12 +1,10 @@
 "use client";
-import { site, SectionProps } from "@/app/data";
+import { site, SectionProps, slugify } from "@/app/data";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Heart, Quote, ArrowRight } from "lucide-react";
-
-
 
 interface BlogDetailProps {
   blogId: string | number;
@@ -19,11 +17,17 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
 
   const { sidebar, blogs } = blogPageData;
 
+  const target = String(blogId).toLowerCase().trim();
   const currentBlog =
-    blogs.find((b: any) => String(b.id) === String(blogId)) || blogs[0];
+    blogs.find(
+      (b: any) =>
+        b.slug === target ||
+        slugify(b.title) === target ||
+        String(b.id) === target
+    ) || blogs[0];
 
   const moreBlogs = blogs.filter(
-    (b: any) => String(b.id) !== String(currentBlog.id),
+    (b: any) => String(b.id) !== String(currentBlog.id)
   );
 
   return (
@@ -113,31 +117,34 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
               <div className="mt-1.5 mb-6 h-[2px] w-8 rounded-full bg-[#1d5e2d]" />
 
               <div className="flex flex-col divide-y divide-[#f0f4ef]">
-                {moreBlogs.map((b: any) => (
-                  <Link
-                    key={b.id}
-                    href={b.href}
-                    className="group flex items-center gap-3.5 py-4 first:pt-0 last:pb-0 transition-all"
-                  >
-                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#f0f4ef]">
-                      <Image
-                        src={b.image}
-                        alt={b.alt || b.title}
-                        fill
-                        sizes="64px"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="text-[11px] font-medium text-[#59665b]">
-                        {b.date}
-                      </span>
-                      <h4 className="font-serif text-xs font-bold leading-snug text-[#16351d] line-clamp-2 transition-colors group-hover:text-[#1d5e2d] sm:text-sm">
-                        {b.title}
-                      </h4>
-                    </div>
-                  </Link>
-                ))}
+                {moreBlogs.map((b: any) => {
+                  const bSlug = b.slug || slugify(b.title) || b.id;
+                  return (
+                    <Link
+                      key={b.id}
+                      href={`/blogdetails?id=${bSlug}`}
+                      className="group flex items-center gap-3.5 py-4 first:pt-0 last:pb-0 transition-all"
+                    >
+                      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#f0f4ef]">
+                        <Image
+                          src={b.image}
+                          alt={b.alt || b.title}
+                          fill
+                          sizes="64px"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[11px] font-medium text-[#59665b]">
+                          {b.date}
+                        </span>
+                        <h4 className="font-serif text-xs font-bold leading-snug text-[#16351d] line-clamp-2 transition-colors group-hover:text-[#1d5e2d] sm:text-sm">
+                          {b.title}
+                        </h4>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
 
               {sidebar?.viewAllButton && (

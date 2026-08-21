@@ -1,5 +1,5 @@
 "use client";
-import { site, SectionProps, SiteData } from "@/app/data";
+import { site, SectionProps, SiteData, slugify } from "@/app/data";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -96,7 +96,7 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
               {/* Right Group: Action Button */}
               <div className="shrink-0 pt-2 lg:pt-0">
                 <Link
-                  href={`/events/${card.id}`}
+                  href={`/events/${slugify(card.title) || (card as any).slug || card.id}`}
                   className="inline-flex w-full items-center justify-center rounded-lg border border-[#234b2c] bg-transparent px-5 py-2.5 text-xs font-semibold text-[#234b2c] transition duration-200 hover:bg-[#234b2c] hover:text-white sm:text-sm lg:w-auto"
                 >
                   {card.buttonLabel || "View Details"}

@@ -97,35 +97,37 @@ export default function EnquirySec({ data: propData, className }: SectionProps<S
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#e2ece0] bg-[#f0f6ef] p-6 shadow-sm max-w-sm">
-              <h3 className="font-serif text-lg font-bold text-[#16351d] mb-4">
+            <div className="rounded-2xl border border-[#e2ece0] bg-[#f0f6ef]  p-8 sm:p-10 shadow-sm w-full mt-3">
+              <div className="">
+              <h3 className="font-serif text-xl font-bold text-[#16351d] mb-4 ">
                 {getInTouch.title}
               </h3>
-              <div className="space-y-3 text-xs sm:text-sm text-[#16351d]">
+              <div className="space-y-3.5 text-sm sm:text-base text-[#16351d]">
                 <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-[#1d5e2d] shrink-0" />
+                  <Phone className="h-5 w-5 text-[#1d5e2d] shrink-0" />
                   <a
                     href={`tel:${getInTouch.phone}`}
-                    className="font-semibold hover:underline"
+                    className="font-bold hover:underline"
                   >
                     {getInTouch.phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-[#1d5e2d] shrink-0" />
+                  <Mail className="h-5 w-5 text-[#1d5e2d] shrink-0" />
                   <a
                     href={`mailto:${getInTouch.email}`}
-                    className="font-semibold hover:underline"
+                    className="font-bold hover:underline"
                   >
                     {getInTouch.email}
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-4 w-4 text-[#1d5e2d] shrink-0 mt-0.5" />
-                  <span className="font-semibold whitespace-pre-line">
+                  <MapPin className="h-5 w-5 text-[#1d5e2d] shrink-0 mt-0.5" />
+                  <span className="font-bold whitespace-pre-line leading-snug">
                     {getInTouch.address}
                   </span>
                 </div>
+              </div>
               </div>
             </div>
           </div>

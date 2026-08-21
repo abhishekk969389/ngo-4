@@ -32,6 +32,21 @@ export default function VideosGallery({ data: propData, className }: SectionProp
       ? videos
       : videos.filter((video) => video.category === activeCategory);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedIndex === null) return;
+      if (e.key === "Escape") setSelectedIndex(null);
+      if (e.key === "ArrowLeft") {
+        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + filteredVideos.length) % filteredVideos.length : null));
+      }
+      if (e.key === "ArrowRight") {
+        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % filteredVideos.length : null));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, filteredVideos.length]);
+
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-12 pb-12">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
@@ -61,8 +76,8 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
                 className={`rounded-xl px-5 py-2.5 text-xs font-semibold shadow-sm transition-all duration-200 sm:text-sm ${isActive
-                    ? "bg-[#0c401a] text-white shadow-md"
-                    : "border border-[#e2e8e0] bg-white text-[#1d5e2d] hover:bg-[#f0f6ef]"
+                  ? "bg-[#0c401a] text-white shadow-md"
+                  : "border border-[#e2e8e0] bg-white text-[#1d5e2d] hover:bg-[#f0f6ef]"
                   }`}
               >
                 {cat.label}
@@ -113,7 +128,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
 
         {selectedIndex !== null && (
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md p-4 sm:p-6"
             onClick={() => setSelectedIndex(null)}
           >
             {/* Close button */}
@@ -159,14 +174,14 @@ export default function VideosGallery({ data: propData, className }: SectionProp
 
             {/* Main Video / Content */}
             <div
-              className="relative w-[90vw] max-w-5xl aspect-video max-h-[85vh] overflow-hidden flex items-center justify-center rounded-xl bg-black shadow-2xl border border-white/10"
+              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               {filteredVideos[selectedIndex].videoUrl ? (
                 <iframe
                   src={filteredVideos[selectedIndex].videoUrl.includes('autoplay') ? filteredVideos[selectedIndex].videoUrl : `${filteredVideos[selectedIndex].videoUrl}?autoplay=1`}
                   title={filteredVideos[selectedIndex].title}
-                  className="w-full h-full border-0 rounded-xl"
+                  className="w-full h-full border-0 rounded-2xl"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -185,6 +200,15 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                       <Play className="h-8 w-8 sm:h-10 sm:w-10 fill-white translate-x-0.5" />
                     </div>
                   </div>
+                </div>
+              )}
+
+              {/* Title overlay */}
+              {filteredVideos[selectedIndex]?.title && (
+                <div className="absolute bottom-4 inset-x-0 p-4 text-center pointer-events-none z-10 flex justify-center items-center">
+                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-sans text-center">
+                    {filteredVideos[selectedIndex].title}
+                  </h3>
                 </div>
               )}
             </div>

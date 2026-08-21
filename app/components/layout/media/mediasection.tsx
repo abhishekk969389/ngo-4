@@ -317,17 +317,16 @@ export default function MediaSection({ data: propData, className }: SectionProps
         {/* Media Mentions Outlet Grid (5 columns on desktop) */}
         <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-5">
           {mediaData.outlets.map((outlet: NgoMediaOutlet) => (
-            <a
+            <div
               key={outlet.id}
-              href={outlet.href || "#"}
-              className="group flex min-h-[92px] items-center gap-3.5 rounded-xl border border-[#e5eae2] bg-white p-4 transition-all duration-300 hover:border-[#1b3d22]/40 hover:shadow-md"
+              className="flex min-h-[92px] items-center gap-3.5 rounded-xl border border-[#e5eae2] bg-white p-4 shadow-2xs transition-all duration-300"
             >
               {renderIcon(outlet.icon)}
 
-              <span className="text-xs font-bold uppercase leading-tight tracking-wider text-[#1a331e] sm:text-sm group-hover:text-[#2c5832]">
+              <span className="text-xs font-bold uppercase leading-tight tracking-wider text-[#1a331e] sm:text-sm">
                 {outlet.name}
               </span>
-            </a>
+            </div>
           ))}
         </div>
       </div>

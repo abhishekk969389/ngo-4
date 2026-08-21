@@ -9,7 +9,7 @@ export default function TestimonialPage({ data: propData, className }: SectionPr
     <>
       <Banner pageKey="testimonial" />
       <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-14">
-      <Testinomial data={data.testimonials} />
+        <Testinomial data={data.testimonials} isSlider={false} />
       </div>
       <HomeCta data={data.homecta} />
     </>

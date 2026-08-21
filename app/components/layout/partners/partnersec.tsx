@@ -47,21 +47,22 @@ export default function PartnerSec({ data: propData, className }: SectionProps<S
         </div>
 
         {/* 5-Column Logo Cards Grid */}
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:mt-16 lg:gap-5">
+        <div className="mt-12 grid justify-between grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:mt-16 lg:gap-5">
           {partnersData.partners.map((partner: any) => (
-            <a
+            <div
               key={partner.id}
-              href={partner.href || "#"}
-              className="group flex h-24 items-center justify-center rounded-2xl border border-[#e5eae2] bg-white p-4 transition-all duration-300 hover:border-[#1d5e2d]/40 hover:shadow-md"
+              className="group flex h-24 sm:h-28 items-center justify-center rounded-2xl border border-[#e5eae2] bg-white p-1 sm:p-1.5 shadow-2xs transition-all duration-300"
             >
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                width={140}
-                height={50}
-                className="max-h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-            </a>
+              <div className="relative flex h-full w-full items-center justify-center">
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={280}
+                  height={100}
+                  className="max-h-[85%] max-w-[90%] w-auto h-auto object-contain mx-auto transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>

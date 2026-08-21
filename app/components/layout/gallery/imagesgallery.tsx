@@ -32,6 +32,21 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
 
   const displayedImages = filteredImages.slice(0, visibleCount);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedIndex === null) return;
+      if (e.key === "Escape") setSelectedIndex(null);
+      if (e.key === "ArrowLeft") {
+        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + displayedImages.length) % displayedImages.length : null));
+      }
+      if (e.key === "ArrowRight") {
+        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % displayedImages.length : null));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, displayedImages.length]);
+
   return (
     <section className="bg-[#fcfdfc] mt-6 sm:mt-8 md:mt-10 lg:mt-14">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8">
@@ -64,8 +79,8 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
                   setVisibleCount(7);
                 }}
                 className={`rounded-xl px-5 py-2.5 text-xs font-semibold shadow-sm transition-all duration-200 sm:text-sm ${isActive
-                    ? "bg-[#0c401a] text-white shadow-md"
-                    : "border border-[#e2e8e0] bg-white text-[#1d5e2d] hover:bg-[#f0f6ef]"
+                  ? "bg-[#0c401a] text-white shadow-md"
+                  : "border border-[#e2e8e0] bg-white text-[#1d5e2d] hover:bg-[#f0f6ef]"
                   }`}
               >
                 {cat.label}
@@ -83,8 +98,8 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
                 key={img.id}
                 onClick={() => setSelectedIndex(idx)}
                 className={`cursor-pointer group relative overflow-hidden rounded-2xl bg-[#f0f4ef] shadow-sm transition-all duration-300 hover:shadow-lg ${isFeatured
-                    ? "lg:col-span-1 lg:row-span-2 min-h-[380px]"
-                    : "min-h-[220px]"
+                  ? "lg:col-span-1 lg:row-span-2 min-h-[380px]"
+                  : "min-h-[220px]"
                   }`}
               >
                 <Image
@@ -122,7 +137,7 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
 
         {selectedIndex !== null && (
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090e]/95 backdrop-blur-md p-4 sm:p-6"
             onClick={() => setSelectedIndex(null)}
           >
             {/* Close button */}
@@ -168,7 +183,7 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
 
             {/* Main Image */}
             <div
-              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden rounded-lg shadow-2xl flex items-center justify-center"
+              className="relative h-[82vh] w-[88vw] max-w-5xl overflow-hidden flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -179,6 +194,15 @@ export default function ImagesGallery({ data: propData, className }: SectionProp
                 sizes="100vw"
                 priority
               />
+
+              {/* Title overlay */}
+              {displayedImages[selectedIndex]?.title && (
+                <div className="absolute bottom-4 inset-x-0 p-4 text-center pointer-events-none z-10 flex justify-center items-center">
+                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-sans text-center">
+                    {displayedImages[selectedIndex].title}
+                  </h3>
+                </div>
+              )}
             </div>
           </div>
         )}
