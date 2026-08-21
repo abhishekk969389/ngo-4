@@ -3384,6 +3384,24 @@
                   "isCurrent": true
                 }
               ]
+            },
+            "cookiepolicy": {
+              "title": "Cookie Policy",
+              "backgroundImage": "/ngo.jpg",
+              "altText": "Cookie Policy background image",
+              "breadcrumbs": [
+                {
+                  "id": 1,
+                  "label": "Home",
+                  "href": "/",
+                  "icon": "home"
+                },
+                {
+                  "id": 2,
+                  "label": "Cookie Policy",
+                  "isCurrent": true
+                }
+              ]
             }
           }
         }
@@ -3605,7 +3623,7 @@
                 "label": "Privacy Policy",
                 "href": "/privacypolicy"
               },
-                  {
+              {
                 "id": 2,
                 "label": "Terms & Conditions",
                 "href": "/termscondition"
@@ -3613,7 +3631,7 @@
               {
                 "id": 3,
                 "label": "Cookie Policy",
-                "href": "/cookie-policy"
+                "href": "/cookiepolicy"
               }
             ]
           }
@@ -14098,6 +14116,49 @@
                 "title": "Share this Event",
                 "description": "Spread the word and invite others to join this good cause."
               }
+            }
+          }
+        }
+      },
+      "cookiePolicySection": {
+        "variants": {
+          "Legacy_cookiePolicySection": {
+            "sections": [
+              {
+                "id": 1,
+                "title": "1. What Are Cookies",
+                "content": "Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to the owners of the site."
+              },
+              {
+                "id": 2,
+                "title": "2. How We Use Cookies",
+                "content": "We use cookies to understand how you interact with our website, to remember your preferences, and to improve your overall user experience. This helps us tailor our content and campaigns to better serve our mission."
+              },
+              {
+                "id": 3,
+                "title": "3. Types of Cookies We Use",
+                "content": "We use essential cookies that are necessary for the website to function, analytical cookies to gather usage statistics, and functional cookies to remember your choices."
+              },
+              {
+                "id": 4,
+                "title": "4. Third-Party Cookies",
+                "content": "Some of our pages may use third-party services (such as video embedding or analytics) which may also set their own cookies. We have no control over these third-party cookies."
+              },
+              {
+                "id": 5,
+                "title": "5. Managing Cookies",
+                "content": "Most web browsers allow you to manage cookies through their settings preferences. You can choose to block or delete cookies, but please note that some parts of our website may not function properly if you do so."
+              },
+              {
+                "id": 6,
+                "title": "6. Changes to This Policy",
+                "content": "We may update our Cookie Policy from time to time. Any changes will be posted on this page with an updated effective date."
+              }
+            ],
+            "callout": {
+              "title": "Your Privacy Matters",
+              "subtitle": "We are committed to being transparent about how we use your data to improve our services.",
+              "icon": "shield-check"
             }
           }
         }
