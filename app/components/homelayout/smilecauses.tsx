@@ -186,7 +186,7 @@ export default function SmileCauses({ data, className }: SectionProps<NGOsmileCa
                       </p>
                     </div>
 
-                    {/* <Link
+                    {/* <Link dfs
                       href={card.href}
                       className="inline-flex items-center gap-1.5 rounded-full border border-[#1f5e2e] bg-white px-4 py-1.5 text-xs font-semibold text-[#0c3b18] hover:bg-[#1f5e2e] hover:text-white transition-all font-sans cursor-pointer mt-5"
                     >
