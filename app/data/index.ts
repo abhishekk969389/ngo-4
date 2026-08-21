@@ -76,6 +76,7 @@ export type NGObrochureSectionData = NGOSections['brochureSection']['variants'][
 export type NGOcontactUsSectionData = NGOSections['contactUsSection']['variants']['Legacy_contactUsSection'];
 export type NGOfaqSectionData = NGOSections['faqSection']['variants']['Legacy_faqSection'];
 export type NGOprivacyPolicySectionData = NGOSections['privacyPolicySection']['variants']['Legacy_privacyPolicySection'];
+export type NGOcookiePolicySectionData = NGOSections['cookiePolicySection']['variants']['Legacy_cookiePolicySection'];
 export type NGOtermsConditionSectionData = NGOSections['termsConditionSection']['variants']['Legacy_termsConditionSection'];
 export type NGOrefundPolicySectionData = NGOSections['refundPolicySection']['variants']['Legacy_refundPolicySection'];
 export type NGOdonateSectionData = NGOSections['donateSection']['variants']['Legacy_donateSection'];
@@ -220,6 +221,8 @@ export const site = {
   faqsection: sec['faqSection']?.variants?.['Legacy_faqSection'],
   privacyPolicySection: sec['privacyPolicySection']?.variants?.['Legacy_privacyPolicySection'],
   privacypolicysection: sec['privacyPolicySection']?.variants?.['Legacy_privacyPolicySection'],
+  cookiePolicySection: sec['cookiePolicySection']?.variants?.['Legacy_cookiePolicySection'],
+  cookiepolicysection: sec['cookiePolicySection']?.variants?.['Legacy_cookiePolicySection'],
   termsConditionSection: sec['termsConditionSection']?.variants?.['Legacy_termsConditionSection'],
   termsconditionsection: sec['termsConditionSection']?.variants?.['Legacy_termsConditionSection'],
   refundPolicySection: sec['refundPolicySection']?.variants?.['Legacy_refundPolicySection'],
@@ -344,6 +347,7 @@ export type MissionPageSection = NonNullable<NGOmissionPageSectionData>;
 export type NgoBecomePartnerSection = NonNullable<NGObecomePartnerSectionData>;
 
 export type NgoPrivacyPolicySection = NonNullable<NGOprivacyPolicySectionData>;
+export type NgoCookiePolicySection = NonNullable<NGOcookiePolicySectionData>;
 export type NgoRefundPolicySection = NonNullable<NGOrefundPolicySectionData>;
 
 export type NgoArticlesSection = NonNullable<NGOarticlesSectionData>;
