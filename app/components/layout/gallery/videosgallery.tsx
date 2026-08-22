@@ -138,7 +138,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                 e.stopPropagation();
                 setSelectedIndex(null);
               }}
-              className="fixed top-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              className="fixed top-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95 no-animate"
               aria-label="Close modal"
             >
               <X className="h-5 w-5" />
@@ -153,7 +153,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                   (selectedIndex - 1 + filteredVideos.length) % filteredVideos.length
                 );
               }}
-              className="fixed left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              className="fixed left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95 no-animate"
               aria-label="Previous video"
             >
               <ChevronLeft className="h-6 w-6" />
@@ -166,7 +166,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                 e.stopPropagation();
                 setSelectedIndex((selectedIndex + 1) % filteredVideos.length);
               }}
-              className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95"
+              className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/25 hover:scale-105 active:scale-95 no-animate"
               aria-label="Next video"
             >
               <ChevronRight className="h-6 w-6" />
@@ -191,7 +191,7 @@ export default function VideosGallery({ data: propData, className }: SectionProp
                     src={filteredVideos[selectedIndex].thumbnail}
                     alt={filteredVideos[selectedIndex].title}
                     fill
-                    className="object-contain"
+                    className="object-contain no-animate"
                     sizes="100vw"
                     priority
                   />
@@ -206,9 +206,9 @@ export default function VideosGallery({ data: propData, className }: SectionProp
               {/* Title overlay */}
               {filteredVideos[selectedIndex]?.title && (
                 <div className="absolute bottom-4 inset-x-0 p-4 text-center pointer-events-none z-10 flex justify-center items-center">
-                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-sans text-center">
+                  <p className="no-animate text-base sm:text-lg md:text-xl font-bold text-white bg-black/60 px-5 py-2.5 rounded-full backdrop-blur-md tracking-wide shadow-lg font-sans text-center max-w-2xl">
                     {filteredVideos[selectedIndex].title}
-                  </h3>
+                  </p>
                 </div>
               )}
             </div>

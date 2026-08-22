@@ -5515,9 +5515,9 @@
                 "location": "Central Park, New York, USA",
                 "time": "9:00 AM - 1:00 PM (EST)",
                 "description": "Let’s come together to clean our streets and make our community a cleaner place.",
-                "image": "",
+                "image": "/causes1.jpg",
                 "buttonLabel": "View Details",
-                "href": "/contactus"
+                "href": "/events/community-cleanup"
               },
               {
                 "id": 2,
@@ -5529,9 +5529,9 @@
                 "location": "Greenwood Community Center, San Francisco, USA",
                 "time": "10:00 AM - 2:00 PM (PST)",
                 "description": "A workshop focused on making quality education accessible for every child.",
-                "image": "",
+                "image": "/causes_education_1.png",
                 "buttonLabel": "View Details",
-                "href": "/contactus"
+                "href": "/events/education-workshop"
               },
               {
                 "id": 3,
@@ -5543,9 +5543,9 @@
                 "location": "Riverside Park, Austin, USA",
                 "time": "8:00 AM - 12:00 PM (CST)",
                 "description": "Plant trees, protect the environment and build a sustainable future together.",
-                "image": "",
+                "image": "/causes.jpg",
                 "buttonLabel": "View Details",
-                "href": "/contactus"
+                "href": "/events/tree-plantation"
               }
             ],
             "upcomingTitle": "All Upcoming Events",
@@ -5561,9 +5561,9 @@
                 "location": "Helping Hands Center, Chicago, USA",
                 "time": "11:00 AM - 3:00 PM (CST)",
                 "description": "Help us fight hunger by donating food and distributing food to those in need.",
-                "image": "",
+                "image": "/causes_food.png",
                 "buttonLabel": "View Details",
-                "href": "/events/food-donation-drive"
+                "href": "/events/food-donation"
               },
               {
                 "id": 2,
@@ -5575,7 +5575,7 @@
                 "location": "Hope Community Clinic, Los Angeles, USA",
                 "time": "9:00 AM - 1:00 PM (PST)",
                 "description": "Providing free health check-ups and consultations for the community.",
-                "image": "",
+                "image": "/causes_health.png",
                 "buttonLabel": "View Details",
                 "href": "/events/health-checkup-camp"
               },
@@ -5589,7 +5589,7 @@
                 "location": "Paws & Care Shelter, Dallas, USA",
                 "time": "10:00 AM - 2:00 PM (CST)",
                 "description": "Join us in providing love, care and forever homes for animals.",
-                "image": "",
+                "image": "/causes4.jpg",
                 "buttonLabel": "View Details",
                 "href": "/events/adoption-day"
               },
@@ -5603,23 +5603,23 @@
                 "location": "Relief Distribution Center, Houston, USA",
                 "time": "9:00 AM - 5:00 PM (CST)",
                 "description": "Support our relief efforts for families affected by recent floods.",
-                "image": "",
+                "image": "/causes2.jpg",
                 "buttonLabel": "View Details",
                 "href": "/events/flood-relief"
               },
               {
                 "id": 5,
-                "title": "Flood Relief Support",
+                "title": "Clean Water Initiative",
                 "date": {
-                  "day": 20,
+                  "day": 25,
                   "month": "JUL"
                 },
-                "location": "Relief Distribution Center, Houston, USA",
-                "time": "9:00 AM - 5:00 PM (CST)",
-                "description": "Support our relief efforts for families affected by recent floods.",
-                "image": "",
+                "location": "Community Center, Atlanta, USA",
+                "time": "10:00 AM - 4:00 PM (EST)",
+                "description": "Providing clean water and sanitation access for vulnerable communities.",
+                "image": "/ngo.jpg",
                 "buttonLabel": "View Details",
-                "href": "/events/flood-relief"
+                "href": "/events/clean-water"
               }
             ]
           }
@@ -13972,6 +13972,630 @@
               "volunteersRegistered": "120+ Volunteers Registered",
               "aboutTitle": "About the Event",
               "aboutContent": "Our Food Donation Drive brings nutritious meals and essential rations to under-resourced families across the city.",
+              "expectationsTitle": "What to Expect",
+              "expectations": [
+                {
+                  "id": 1,
+                  "text": "Cleaning of parks, streets, and public spaces"
+                },
+                {
+                  "id": 2,
+                  "text": "Waste collection and proper segregation"
+                },
+                {
+                  "id": 3,
+                  "text": "Community engagement and awareness"
+                },
+                {
+                  "id": 4,
+                  "text": "A positive impact on our environment"
+                }
+              ],
+              "detailsTitle": "Event Details",
+              "detailsRows": [
+                {
+                  "id": 1,
+                  "label": "Date",
+                  "value": "Sunday, 15 June 2025",
+                  "icon": "calendar"
+                },
+                {
+                  "id": 2,
+                  "label": "Time",
+                  "value": "9:00 AM - 1:00 PM (EST)",
+                  "icon": "clock"
+                },
+                {
+                  "id": 3,
+                  "label": "Location",
+                  "value": "Central Park, New York, NY, USA",
+                  "icon": "mapPin",
+                  "linkText": "View on Map",
+                  "linkHref": "https://maps.google.com"
+                },
+                {
+                  "id": 4,
+                  "label": "Organizer",
+                  "value": "Green Future Initiative",
+                  "icon": "user"
+                },
+                {
+                  "id": 5,
+                  "label": "Contact",
+                  "value": "+1 (212) 555-0198  info@greenfuture.org",
+                  "icon": "phone"
+                }
+              ],
+              "bringTitle": "What to Bring",
+              "bringItems": [
+                {
+                  "id": 1,
+                  "label": "Reusable Water Bottle",
+                  "icon": "bottle"
+                },
+                {
+                  "id": 2,
+                  "label": "Comfortable Clothing",
+                  "icon": "shirt"
+                },
+                {
+                  "id": 3,
+                  "label": "Gloves (Optional)",
+                  "icon": "hand"
+                },
+                {
+                  "id": 4,
+                  "label": "Positive Attitude!",
+                  "icon": "smile"
+                }
+              ],
+              "galleryTitle": "Gallery",
+              "gallery": [
+                {
+                  "id": 1,
+                  "image": "/causes1.jpg",
+                  "alt": "Volunteers cleaning park"
+                },
+                {
+                  "id": 2,
+                  "image": "/causes2.jpg",
+                  "alt": "Waste collection drive"
+                },
+                {
+                  "id": 3,
+                  "image": "/causes4.jpg",
+                  "alt": "Tree planting activity"
+                },
+                {
+                  "id": 4,
+                  "image": "/ngo.jpg",
+                  "alt": "Group photo of volunteers"
+                },
+                {
+                  "id": 5,
+                  "image": "/ngo1.jpg",
+                  "alt": "Community cleanup team"
+                }
+              ],
+              "impactCallout": {
+                "title": "Together, we can make a lasting impact!",
+                "subtitle": "Small actions today lead to a better tomorrow."
+              },
+              "registrationCard": {
+                "title": "Event Registration",
+                "description": "Join us and be a part of the change. Register now to secure your spot!",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
+                "loginText": "Already registered? Login",
+                "loginHref": "/enquiry"
+              },
+              "organizer": {
+                "name": "Green Future Initiative",
+                "description": "We are committed to building a sustainable future through community action and environmental awareness.",
+                "icon": "sprout",
+                "profileLink": "/about",
+                "cardTitle": "Organizer",
+                "profileText": "View Organizer Profile"
+              },
+              "support": {
+                "title": "Need Help?",
+                "description": "Contact our support team for any queries related to this event.",
+                "phone": "+1 (212) 555-0198",
+                "email": "support@greenfuture.org"
+              },
+              "viewOnMapLabel": "View on Map",
+              "shareEventLabel": "Share Event",
+              "shareCard": {
+                "title": "Share this Event",
+                "description": "Spread the word and invite others to join this good cause."
+              }
+            },
+            "health-checkup-camp": {
+              "id": "health-checkup-camp",
+              "numericId": 5,
+              "title": "Free Health Check-Up Camp",
+              "categoryTag": "HEALTHCARE",
+              "description": "Providing free health check-ups, medical consultations, and essential medicine distribution for underserved families.",
+              "image": "/causes_health.png",
+              "date": {
+                "day": 28,
+                "month": "JUN",
+                "fullDate": "Saturday, 28 June 2025"
+              },
+              "time": "9:00 AM - 1:00 PM (PST)",
+              "location": "Hope Community Clinic, Los Angeles, USA",
+              "locationMapUrl": "https://maps.google.com",
+              "volunteersRegistered": "120+ Volunteers Registered",
+              "aboutTitle": "About the Event",
+              "aboutContent": "Our Free Health Check-Up Camp provides comprehensive health screenings, basic diagnostic services, and medical consultations for individuals and families in need.",
+              "expectationsTitle": "What to Expect",
+              "expectations": [
+                {
+                  "id": 1,
+                  "text": "Cleaning of parks, streets, and public spaces"
+                },
+                {
+                  "id": 2,
+                  "text": "Waste collection and proper segregation"
+                },
+                {
+                  "id": 3,
+                  "text": "Community engagement and awareness"
+                },
+                {
+                  "id": 4,
+                  "text": "A positive impact on our environment"
+                }
+              ],
+              "detailsTitle": "Event Details",
+              "detailsRows": [
+                {
+                  "id": 1,
+                  "label": "Date",
+                  "value": "Sunday, 15 June 2025",
+                  "icon": "calendar"
+                },
+                {
+                  "id": 2,
+                  "label": "Time",
+                  "value": "9:00 AM - 1:00 PM (EST)",
+                  "icon": "clock"
+                },
+                {
+                  "id": 3,
+                  "label": "Location",
+                  "value": "Central Park, New York, NY, USA",
+                  "icon": "mapPin",
+                  "linkText": "View on Map",
+                  "linkHref": "https://maps.google.com"
+                },
+                {
+                  "id": 4,
+                  "label": "Organizer",
+                  "value": "Green Future Initiative",
+                  "icon": "user"
+                },
+                {
+                  "id": 5,
+                  "label": "Contact",
+                  "value": "+1 (212) 555-0198  info@greenfuture.org",
+                  "icon": "phone"
+                }
+              ],
+              "bringTitle": "What to Bring",
+              "bringItems": [
+                {
+                  "id": 1,
+                  "label": "Reusable Water Bottle",
+                  "icon": "bottle"
+                },
+                {
+                  "id": 2,
+                  "label": "Comfortable Clothing",
+                  "icon": "shirt"
+                },
+                {
+                  "id": 3,
+                  "label": "Gloves (Optional)",
+                  "icon": "hand"
+                },
+                {
+                  "id": 4,
+                  "label": "Positive Attitude!",
+                  "icon": "smile"
+                }
+              ],
+              "galleryTitle": "Gallery",
+              "gallery": [
+                {
+                  "id": 1,
+                  "image": "/causes1.jpg",
+                  "alt": "Volunteers cleaning park"
+                },
+                {
+                  "id": 2,
+                  "image": "/causes2.jpg",
+                  "alt": "Waste collection drive"
+                },
+                {
+                  "id": 3,
+                  "image": "/causes4.jpg",
+                  "alt": "Tree planting activity"
+                },
+                {
+                  "id": 4,
+                  "image": "/ngo.jpg",
+                  "alt": "Group photo of volunteers"
+                },
+                {
+                  "id": 5,
+                  "image": "/ngo1.jpg",
+                  "alt": "Community cleanup team"
+                }
+              ],
+              "impactCallout": {
+                "title": "Together, we can make a lasting impact!",
+                "subtitle": "Small actions today lead to a better tomorrow."
+              },
+              "registrationCard": {
+                "title": "Event Registration",
+                "description": "Join us and be a part of the change. Register now to secure your spot!",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
+                "loginText": "Already registered? Login",
+                "loginHref": "/enquiry"
+              },
+              "organizer": {
+                "name": "Green Future Initiative",
+                "description": "We are committed to building a sustainable future through community action and environmental awareness.",
+                "icon": "sprout",
+                "profileLink": "/about",
+                "cardTitle": "Organizer",
+                "profileText": "View Organizer Profile"
+              },
+              "support": {
+                "title": "Need Help?",
+                "description": "Contact our support team for any queries related to this event.",
+                "phone": "+1 (212) 555-0198",
+                "email": "support@greenfuture.org"
+              },
+              "viewOnMapLabel": "View on Map",
+              "shareEventLabel": "Share Event",
+              "shareCard": {
+                "title": "Share this Event",
+                "description": "Spread the word and invite others to join this good cause."
+              }
+            },
+            "adoption-day": {
+              "id": "adoption-day",
+              "numericId": 6,
+              "title": "Animal Care & Adoption Day",
+              "categoryTag": "ANIMAL WELFARE",
+              "description": "Join us in providing love, medical care, and forever homes for rescued animals.",
+              "image": "/causes4.jpg",
+              "date": {
+                "day": 12,
+                "month": "JUL",
+                "fullDate": "Saturday, 12 July 2025"
+              },
+              "time": "10:00 AM - 2:00 PM (CST)",
+              "location": "Paws & Care Shelter, Dallas, USA",
+              "locationMapUrl": "https://maps.google.com",
+              "volunteersRegistered": "120+ Volunteers Registered",
+              "aboutTitle": "About the Event",
+              "aboutContent": "Animal Care & Adoption Day brings animal lovers together to support shelter animals, promote responsible adoption, and offer free pet care advice.",
+              "expectationsTitle": "What to Expect",
+              "expectations": [
+                {
+                  "id": 1,
+                  "text": "Cleaning of parks, streets, and public spaces"
+                },
+                {
+                  "id": 2,
+                  "text": "Waste collection and proper segregation"
+                },
+                {
+                  "id": 3,
+                  "text": "Community engagement and awareness"
+                },
+                {
+                  "id": 4,
+                  "text": "A positive impact on our environment"
+                }
+              ],
+              "detailsTitle": "Event Details",
+              "detailsRows": [
+                {
+                  "id": 1,
+                  "label": "Date",
+                  "value": "Sunday, 15 June 2025",
+                  "icon": "calendar"
+                },
+                {
+                  "id": 2,
+                  "label": "Time",
+                  "value": "9:00 AM - 1:00 PM (EST)",
+                  "icon": "clock"
+                },
+                {
+                  "id": 3,
+                  "label": "Location",
+                  "value": "Central Park, New York, NY, USA",
+                  "icon": "mapPin",
+                  "linkText": "View on Map",
+                  "linkHref": "https://maps.google.com"
+                },
+                {
+                  "id": 4,
+                  "label": "Organizer",
+                  "value": "Green Future Initiative",
+                  "icon": "user"
+                },
+                {
+                  "id": 5,
+                  "label": "Contact",
+                  "value": "+1 (212) 555-0198  info@greenfuture.org",
+                  "icon": "phone"
+                }
+              ],
+              "bringTitle": "What to Bring",
+              "bringItems": [
+                {
+                  "id": 1,
+                  "label": "Reusable Water Bottle",
+                  "icon": "bottle"
+                },
+                {
+                  "id": 2,
+                  "label": "Comfortable Clothing",
+                  "icon": "shirt"
+                },
+                {
+                  "id": 3,
+                  "label": "Gloves (Optional)",
+                  "icon": "hand"
+                },
+                {
+                  "id": 4,
+                  "label": "Positive Attitude!",
+                  "icon": "smile"
+                }
+              ],
+              "galleryTitle": "Gallery",
+              "gallery": [
+                {
+                  "id": 1,
+                  "image": "/causes1.jpg",
+                  "alt": "Volunteers cleaning park"
+                },
+                {
+                  "id": 2,
+                  "image": "/causes2.jpg",
+                  "alt": "Waste collection drive"
+                },
+                {
+                  "id": 3,
+                  "image": "/causes4.jpg",
+                  "alt": "Tree planting activity"
+                },
+                {
+                  "id": 4,
+                  "image": "/ngo.jpg",
+                  "alt": "Group photo of volunteers"
+                },
+                {
+                  "id": 5,
+                  "image": "/ngo1.jpg",
+                  "alt": "Community cleanup team"
+                }
+              ],
+              "impactCallout": {
+                "title": "Together, we can make a lasting impact!",
+                "subtitle": "Small actions today lead to a better tomorrow."
+              },
+              "registrationCard": {
+                "title": "Event Registration",
+                "description": "Join us and be a part of the change. Register now to secure your spot!",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
+                "loginText": "Already registered? Login",
+                "loginHref": "/enquiry"
+              },
+              "organizer": {
+                "name": "Green Future Initiative",
+                "description": "We are committed to building a sustainable future through community action and environmental awareness.",
+                "icon": "sprout",
+                "profileLink": "/about",
+                "cardTitle": "Organizer",
+                "profileText": "View Organizer Profile"
+              },
+              "support": {
+                "title": "Need Help?",
+                "description": "Contact our support team for any queries related to this event.",
+                "phone": "+1 (212) 555-0198",
+                "email": "support@greenfuture.org"
+              },
+              "viewOnMapLabel": "View on Map",
+              "shareEventLabel": "Share Event",
+              "shareCard": {
+                "title": "Share this Event",
+                "description": "Spread the word and invite others to join this good cause."
+              }
+            },
+            "flood-relief": {
+              "id": "flood-relief",
+              "numericId": 7,
+              "title": "Flood Relief Support",
+              "categoryTag": "EMERGENCY RELIEF",
+              "description": "Emergency response and supply distribution for families affected by recent severe flooding.",
+              "image": "/causes2.jpg",
+              "date": {
+                "day": 20,
+                "month": "JUL",
+                "fullDate": "Sunday, 20 July 2025"
+              },
+              "time": "9:00 AM - 5:00 PM (CST)",
+              "location": "Relief Distribution Center, Houston, USA",
+              "locationMapUrl": "https://maps.google.com",
+              "volunteersRegistered": "120+ Volunteers Registered",
+              "aboutTitle": "About the Event",
+              "aboutContent": "Our Flood Relief Support drive provides emergency shelter kits, clean drinking water, food packs, and medical aid to displaced families.",
+              "expectationsTitle": "What to Expect",
+              "expectations": [
+                {
+                  "id": 1,
+                  "text": "Cleaning of parks, streets, and public spaces"
+                },
+                {
+                  "id": 2,
+                  "text": "Waste collection and proper segregation"
+                },
+                {
+                  "id": 3,
+                  "text": "Community engagement and awareness"
+                },
+                {
+                  "id": 4,
+                  "text": "A positive impact on our environment"
+                }
+              ],
+              "detailsTitle": "Event Details",
+              "detailsRows": [
+                {
+                  "id": 1,
+                  "label": "Date",
+                  "value": "Sunday, 15 June 2025",
+                  "icon": "calendar"
+                },
+                {
+                  "id": 2,
+                  "label": "Time",
+                  "value": "9:00 AM - 1:00 PM (EST)",
+                  "icon": "clock"
+                },
+                {
+                  "id": 3,
+                  "label": "Location",
+                  "value": "Central Park, New York, NY, USA",
+                  "icon": "mapPin",
+                  "linkText": "View on Map",
+                  "linkHref": "https://maps.google.com"
+                },
+                {
+                  "id": 4,
+                  "label": "Organizer",
+                  "value": "Green Future Initiative",
+                  "icon": "user"
+                },
+                {
+                  "id": 5,
+                  "label": "Contact",
+                  "value": "+1 (212) 555-0198  info@greenfuture.org",
+                  "icon": "phone"
+                }
+              ],
+              "bringTitle": "What to Bring",
+              "bringItems": [
+                {
+                  "id": 1,
+                  "label": "Reusable Water Bottle",
+                  "icon": "bottle"
+                },
+                {
+                  "id": 2,
+                  "label": "Comfortable Clothing",
+                  "icon": "shirt"
+                },
+                {
+                  "id": 3,
+                  "label": "Gloves (Optional)",
+                  "icon": "hand"
+                },
+                {
+                  "id": 4,
+                  "label": "Positive Attitude!",
+                  "icon": "smile"
+                }
+              ],
+              "galleryTitle": "Gallery",
+              "gallery": [
+                {
+                  "id": 1,
+                  "image": "/causes1.jpg",
+                  "alt": "Volunteers cleaning park"
+                },
+                {
+                  "id": 2,
+                  "image": "/causes2.jpg",
+                  "alt": "Waste collection drive"
+                },
+                {
+                  "id": 3,
+                  "image": "/causes4.jpg",
+                  "alt": "Tree planting activity"
+                },
+                {
+                  "id": 4,
+                  "image": "/ngo.jpg",
+                  "alt": "Group photo of volunteers"
+                },
+                {
+                  "id": 5,
+                  "image": "/ngo1.jpg",
+                  "alt": "Community cleanup team"
+                }
+              ],
+              "impactCallout": {
+                "title": "Together, we can make a lasting impact!",
+                "subtitle": "Small actions today lead to a better tomorrow."
+              },
+              "registrationCard": {
+                "title": "Event Registration",
+                "description": "Join us and be a part of the change. Register now to secure your spot!",
+                "buttonLabel": "Enquiry Now",
+                "buttonHref": "/enquiry",
+                "loginText": "Already registered? Login",
+                "loginHref": "/enquiry"
+              },
+              "organizer": {
+                "name": "Green Future Initiative",
+                "description": "We are committed to building a sustainable future through community action and environmental awareness.",
+                "icon": "sprout",
+                "profileLink": "/about",
+                "cardTitle": "Organizer",
+                "profileText": "View Organizer Profile"
+              },
+              "support": {
+                "title": "Need Help?",
+                "description": "Contact our support team for any queries related to this event.",
+                "phone": "+1 (212) 555-0198",
+                "email": "support@greenfuture.org"
+              },
+              "viewOnMapLabel": "View on Map",
+              "shareEventLabel": "Share Event",
+              "shareCard": {
+                "title": "Share this Event",
+                "description": "Spread the word and invite others to join this good cause."
+              }
+            },
+            "clean-water": {
+              "id": "clean-water",
+              "numericId": 8,
+              "title": "Clean Water Initiative",
+              "categoryTag": "COMMUNITY DEVELOPMENT",
+              "description": "Bringing clean, safe drinking water solutions and sanitation education to local communities.",
+              "image": "/ngo.jpg",
+              "date": {
+                "day": 25,
+                "month": "JUL",
+                "fullDate": "Friday, 25 July 2025"
+              },
+              "time": "10:00 AM - 4:00 PM (EST)",
+              "location": "Community Center, Atlanta, USA",
+              "locationMapUrl": "https://maps.google.com",
+              "volunteersRegistered": "120+ Volunteers Registered",
+              "aboutTitle": "About the Event",
+              "aboutContent": "The Clean Water Initiative focuses on installing water filtration systems and educating families on sanitation best practices.",
               "expectationsTitle": "What to Expect",
               "expectations": [
                 {
