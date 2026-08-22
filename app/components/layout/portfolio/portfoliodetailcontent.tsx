@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   Sprout,
+  Leaf,
   BookOpen,
   Shield,
   BookMarked,
@@ -168,31 +169,44 @@ export default function PortfolioDetailContent({
       )}
 
       {partners && (
-        <section className="space-y-4 sm:space-y-6">
-          <div className="flex items-center gap-2">
-            <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
-              {partners.title}
-            </h2>
-            <Sprout className="w-5 h-5 text-[#2c7a3f] fill-[#2c7a3f]" />
+        <section className="space-y-4 sm:space-y-5">
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#0d3319]">
+                {partners.title}
+              </h2>
+              <Leaf className="w-5 h-5 text-[#2c7a3f] fill-[#2c7a3f]" />
+            </div>
+            <div className="mt-1.5 h-[3px] w-9 rounded-full bg-[#2c7a3f]" />
           </div>
 
           {partners.partners && partners.partners.length > 0 && (
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#f7f9f6] border border-[#e5efe7]">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center">
-                {partners.partners.map((partner) => (
+            <div className="rounded-2xl bg-white border border-gray-200/80 p-4 sm:p-6 shadow-2xs">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 items-center divide-y md:divide-y-0 md:divide-x divide-gray-200/80">
+                {partners.partners.map((partner: any) => (
                   <div
                     key={partner.id}
-                    className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-gray-100 shadow-2xs hover:border-emerald-200 transition-all justify-center"
+                    className="flex items-center justify-center p-2.5 sm:p-4 transition-all hover:scale-105"
                   >
-                    <div className="p-1.5 rounded-lg bg-[#edf5ee] text-[#2c7a3f]">
-                      {getIcon(
-                        partner.icon || "book",
-                        "w-4 h-4 text-[#2c7a3f]",
-                      )}
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-[#0d3319] truncate">
-                      {partner.name}
-                    </span>
+                    {partner.logo ? (
+                      <div className="relative h-16 w-full max-w-[230px] sm:h-20 sm:max-w-[260px] flex-shrink-0">
+                        <Image
+                          src={partner.logo}
+                          alt={partner.name}
+                          fill
+                          className="object-contain object-center"
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2.5">
+                        <div className="p-2 rounded-lg bg-[#edf5ee] text-[#2c7a3f]">
+                          {getIcon(partner.icon || "book", "w-5 h-5 text-[#2c7a3f]")}
+                        </div>
+                        <span className="text-xs sm:text-sm font-bold text-[#0d3319] whitespace-nowrap">
+                          {partner.name}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

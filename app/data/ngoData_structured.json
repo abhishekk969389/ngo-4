@@ -5601,8 +5601,7 @@
                 "image": "",
                 "buttonLabel": "View Details",
                 "href": "/contactus"
-              }          
-              
+              }
             ],
             "upcomingTitle": "All Upcoming Events",
             "viewMoreLabel": "View More Events",
@@ -8642,22 +8641,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -8894,22 +8897,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -9146,22 +9153,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -9398,22 +9409,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -9650,22 +9665,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -9902,22 +9921,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -10154,22 +10177,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -10406,22 +10433,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -10658,22 +10689,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -10910,22 +10945,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -11162,22 +11201,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
@@ -11414,22 +11457,26 @@
                     {
                       "id": 1,
                       "name": "EduCare Foundation",
-                      "icon": "book"
+                      "icon": "book",
+                      "logo": "/partners/educare_foundation.svg"
                     },
                     {
                       "id": 2,
                       "name": "Helping Hands",
-                      "icon": "heart"
+                      "icon": "heart",
+                      "logo": "/partners/helping_hands.svg"
                     },
                     {
                       "id": 3,
                       "name": "Bright Steps",
-                      "icon": "sparkles"
+                      "icon": "sparkles",
+                      "logo": "/partners/bright_steps.svg"
                     },
                     {
                       "id": 4,
                       "name": "Pune Volunteers Network",
-                      "icon": "users"
+                      "icon": "users",
+                      "logo": "/partners/pune_volunteers_network.svg"
                     }
                   ]
                 }
