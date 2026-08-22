@@ -1,6 +1,6 @@
 "use client";
 import type { TeamSectionData, TeamMember } from "@/app/data";
-import { site, SectionProps } from "@/app/data";
+import { site, SectionProps, slugify } from "@/app/data";
 
 import React from "react";
 import Image from "next/image";
@@ -34,9 +34,14 @@ export default function TeamDetails({ memberId }: TeamDetailsProps) {
 
   const { detailLabels, members } = teamData;
 
+  const targetId = String(memberId).toLowerCase().trim();
   const currentMember =
-    members.find((m: TeamMember) => String(m.id) === String(memberId)) ||
-    members[0];
+    members.find(
+      (m: TeamMember) =>
+        String(m.id) === targetId ||
+        (m as any).slug === targetId ||
+        slugify(m.name) === targetId
+    ) || members[0];
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {

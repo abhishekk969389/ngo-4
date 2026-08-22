@@ -10,7 +10,7 @@ interface BlogDetailPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams() { 
   const blogs = site.blogPageSection?.blogs || [];
   return blogs.map((blog: any) => ({
     id: blog.slug || slugify(blog.title) || String(blog.id),
