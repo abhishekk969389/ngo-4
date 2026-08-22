@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 56" fill="none">
+  <!-- Logo Mark -->
+  <g transform="translate(2, 3)">
+    <!-- Sun Rays -->
+    <circle cx="24" cy="14" r="7" fill="#ff9800"/>
+    <path d="M 24 3 L 24 6 M 24 22 L 24 25 M 13 14 L 16 14 M 32 14 L 35 14 M 16 6 L 18 8 M 30 20 L 32 22 M 16 22 L 18 20 M 30 8 L 32 6" stroke="#f57c00" stroke-width="2" stroke-linecap="round"/>
+    <!-- Cupped Hands -->
+    <path d="M 8 36 C 8 36, 14 26, 22 28 C 24 28.5, 24 32, 24 32 C 24 32, 16 33, 14 42 L 8 36 Z" fill="#1565c0"/>
+    <path d="M 40 36 C 40 36, 34 26, 26 28 C 24 28.5, 24 32, 24 32 C 24 32, 32 33, 34 42 L 40 36 Z" fill="#1976d2"/>
+    <path d="M 12 40 C 18 47, 30 47, 36 40 L 33 46 C 26 50, 22 50, 15 46 Z" fill="#0d47a1"/>
+  </g>
+  <!-- Brand Typography -->
+  <text x="54" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="20" fill="#0d47a1" letter-spacing="-0.3">Helping</text>
+  <text x="54" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="20" fill="#0d47a1" letter-spacing="-0.3">Hands</text>
+</svg>
