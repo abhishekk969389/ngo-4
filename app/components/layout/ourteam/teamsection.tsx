@@ -77,7 +77,7 @@ export default function TeamSection({ data, className }: SectionProps<NGOteamSec
             return (
               <Link
                 key={member.id}
-                href={`/teamdetails?id=${memberSlug}`}
+                href={`/ourteam/${memberSlug}`}
                 className="group relative flex items-center sm:items-start rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] gap-5 sm:gap-6 cursor-pointer"
               >
               {/* Left Image */}

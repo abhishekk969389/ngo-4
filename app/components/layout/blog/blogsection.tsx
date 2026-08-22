@@ -55,7 +55,7 @@ export default function BlogSection({ data: propData, className }: SectionProps<
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {paginatedBlogs.map((blog: any) => {
             const blogSlug = blog.slug || slugify(blog.title) || blog.id;
-            const blogLink = `/blogdetails?id=${blogSlug}`;
+            const blogLink = `/blog/${blogSlug}`;
             return (
               <article
                 key={blog.id}

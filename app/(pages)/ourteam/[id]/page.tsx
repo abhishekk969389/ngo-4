@@ -1,10 +1,8 @@
 import type { TeamMember, PageBannerData } from "@/app/data";
-import { site, SectionProps } from "@/app/data";
+import { site, slugify } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
 import TeamDetails from "@/app/components/layout/ourteam/teamdetails";
 import HomeCta from "@/app/components/ui/homecta";
-
-
 
 interface TeamDetailPageProps {
   params: Promise<{
@@ -15,17 +13,23 @@ interface TeamDetailPageProps {
 export async function generateStaticParams() {
   const members = site.teamSection?.members || [];
   return members.map((member: TeamMember) => ({
-    id: String(member.id),
+    id: (member as any).slug || slugify(member.name) || String(member.id),
   }));
 }
 
 export default async function TeamDetailPage({ params }: TeamDetailPageProps) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
+  const targetId = id ? id.toLowerCase().trim() : "";
 
-  const currentMember = site.teamSection?.members.find(
-    (m: TeamMember) => String(m.id) === String(id),
-  );
+  const members = site.teamSection?.members || [];
+  const currentMember =
+    members.find(
+      (m: TeamMember) =>
+        (m as any).slug === targetId ||
+        slugify(m.name) === targetId ||
+        String(m.id) === targetId
+    ) || members[0];
 
   const teamBannerConfig = site.pageBanners?.ourteam;
 

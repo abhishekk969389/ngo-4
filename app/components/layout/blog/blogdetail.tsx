@@ -109,36 +109,36 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
             </article>
           </div>
 
-          <aside className="lg:col-span-4">
-            <div className="sticky top-24 rounded-2xl border border-[#e8eee7] bg-white p-6 shadow-xs">
-              <h3 className="font-serif text-xl font-bold tracking-tight text-[#16351d]">
+          <aside className="no-animate lg:col-span-4">
+            <div className="no-animate sticky top-24 rounded-2xl border border-[#e8eee7] bg-white p-6 shadow-xs">
+              <h3 className="no-animate font-serif text-xl font-bold tracking-tight text-[#16351d]">
                 {sidebar?.title || "More Blogs"}
               </h3>
               <div className="mt-1.5 mb-6 h-[2px] w-8 rounded-full bg-[#1d5e2d]" />
 
-              <div className="flex flex-col divide-y divide-[#f0f4ef]">
+              <div className="no-animate flex flex-col divide-y divide-[#f0f4ef]">
                 {moreBlogs.map((b: any) => {
                   const bSlug = b.slug || slugify(b.title) || b.id;
                   return (
                     <Link
                       key={b.id}
-                      href={`/blogdetails?id=${bSlug}`}
-                      className="group flex items-center gap-3.5 py-4 first:pt-0 last:pb-0 transition-all"
+                      href={`/blog/${bSlug}`}
+                      className="no-animate group flex items-center gap-3.5 py-4 first:pt-0 last:pb-0 transition-all"
                     >
-                      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#f0f4ef]">
+                      <div className="no-animate relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#f0f4ef]">
                         <Image
                           src={b.image}
                           alt={b.alt || b.title}
                           fill
                           sizes="64px"
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="no-animate object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-[11px] font-medium text-[#59665b]">
+                      <div className="no-animate flex-1 min-w-0">
+                        <span className="no-animate text-[11px] font-medium text-[#59665b]">
                           {b.date}
                         </span>
-                        <h4 className="font-serif text-xs font-bold leading-snug text-[#16351d] line-clamp-2 transition-colors group-hover:text-[#1d5e2d] sm:text-sm">
+                        <h4 className="no-animate font-serif text-xs font-bold leading-snug text-[#16351d] line-clamp-2 transition-colors group-hover:text-[#1d5e2d] sm:text-sm">
                           {b.title}
                         </h4>
                       </div>
@@ -148,10 +148,10 @@ export default function BlogDetail({ blogId }: BlogDetailProps) {
               </div>
 
               {sidebar?.viewAllButton && (
-                <div className="mt-8 pt-2">
+                <div className="no-animate mt-8 pt-2">
                   <Link
-                    href={sidebar.viewAllButton.href}
-                    className="flex w-full items-center justify-center gap-2 rounded-full border border-[#1d5e2d] bg-white px-5 py-2.5 text-xs font-semibold text-[#1d5e2d] shadow-xs transition-all hover:bg-[#1d5e2d] hover:text-white"
+                    href={sidebar.viewAllButton.href || "/blog"}
+                    className="no-animate flex w-full items-center justify-center gap-2 rounded-full border border-[#1d5e2d] bg-white px-5 py-2.5 text-xs font-semibold text-[#1d5e2d] shadow-xs transition-all hover:bg-[#1d5e2d] hover:text-white"
                   >
                     <span>{sidebar.viewAllButton.label}</span>
                     <ArrowRight className="h-3.5 w-3.5 stroke-[2]" />

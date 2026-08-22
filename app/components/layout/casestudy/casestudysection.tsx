@@ -101,13 +101,13 @@ export default function CaseStudySection({ data: propData, className }: SectionP
                 key={category.id}
                 type="button"
                 onClick={() => setActiveFilter(category.value)}
-                className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-xs font-semibold transition sm:text-sm ${isActive
-                    ? "border-[#1a4325] bg-[#1a4325] text-white shadow-sm"
-                    : "border-[#e2e8e0] bg-white text-[#234b2c] hover:border-[#1a4325] hover:bg-[#f4f7f2]"
+                className={`no-animate inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-xs font-semibold transition-all duration-200 sm:text-sm cursor-pointer select-none ${isActive
+                  ? "border-[#1a4325] bg-[#1a4325] text-white shadow-sm ring-2 ring-[#1a4325]/20"
+                  : "border-[#e2e8e0] bg-white text-[#234b2c] hover:border-[#1a4325] hover:bg-[#f4f7f2] hover:shadow-xs"
                   }`}
               >
                 <CategoryIcon
-                  className={`h-4 w-4 ${isActive ? "text-white" : "text-[#234b2c]"}`}
+                  className={`h-4 w-4 transition-colors duration-200 ${isActive ? "text-white" : "text-[#234b2c]"}`}
                 />
                 <span>{category.label}</span>
               </button>
@@ -115,55 +115,61 @@ export default function CaseStudySection({ data: propData, className }: SectionP
           })}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCards.map((card: NgoCaseStudyCard) => (
-            <article
-              key={card.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#edf1ea] bg-white transition-all duration-300 hover:shadow-md"
-            >
-              <div>
-                <div className="relative h-52 w-full overflow-hidden rounded-t-2xl">
-                  <Image
-                    src={card.image || "/banner_bg.png"}
-                    alt={card.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+        {filteredCards.length > 0 ? (
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-300">
+            {filteredCards.map((card: NgoCaseStudyCard) => (
+              <article
+                key={card.id}
+                className="no-animate group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#edf1ea] bg-white transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+              >
+                <div>
+                  <div className="relative h-52 w-full overflow-hidden rounded-t-2xl">
+                    <Image
+                      src={card.image || "/banner_bg.png"}
+                      alt={card.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
 
-                  <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#1d5e2d] shadow-sm backdrop-blur-sm">
-                    {getIcon(card.icon, "h-5 w-5 text-[#1d5e2d]")}
+                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#1d5e2d] shadow-sm backdrop-blur-sm">
+                      {getIcon(card.icon, "h-5 w-5 text-[#1d5e2d]")}
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#1d5e2d]">
+                      {card.category}
+                    </span>
+
+                    <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-[#16351d] sm:text-2xl">
+                      {card.title}
+                    </h3>
+
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[#59665b]">
+                      {card.description}
+                    </p>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#1d5e2d]">
-                    {card.category}
-                  </span>
-
-                  <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-[#16351d] sm:text-2xl">
-                    {card.title}
-                  </h3>
-
-                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[#59665b]">
-                    {card.description}
-                  </p>
+                {/* Bottom "Read Full Story" Link */}
+                <div className="p-6 pt-0">
+                  <Link
+                    href={card.href || "#"}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1d5e2d] transition hover:text-[#16351d] sm:text-sm group/link"
+                  >
+                    <span>{card.buttonLabel || "Read Full Story"}</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
                 </div>
-              </div>
-
-              {/* Bottom "Read Full Story" Link */}
-              <div className="p-6 pt-0">
-                <Link
-                  href={card.href || "#"}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1d5e2d] transition hover:text-[#16351d] sm:text-sm"
-                >
-                  <span>{card.buttonLabel || "Read Full Story"}</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-12 py-12 text-center text-gray-500 font-sans text-sm sm:text-base">
+            No case studies available for this category right now.
+          </div>
+        )}
       </div>
     </section>
   );
