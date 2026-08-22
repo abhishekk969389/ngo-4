@@ -1,6 +1,5 @@
 import { site, SectionProps } from "@/app/data";
 import Banner from "@/app/components/ui/banner";
-import Articles from "@/app/components/layout/support/articles";
 import Contact from "@/app/components/layout/support/contact";
 import Help from "@/app/components/layout/support/help";
 import HomeCta from "@/app/components/ui/homecta";
@@ -11,9 +10,11 @@ export default function SupportPage({ data: propData, className }: SectionProps<
     <>
       <Banner pageKey="support" />
       <Help />
-      <Articles />
       <Contact />
+       <div className="pt-0.5">
       <HomeCta />
+      </div>
+     
     </>
   );
 }

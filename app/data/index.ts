@@ -52,7 +52,7 @@ export type NGOfocusAreaSectionData = NGOSections['focusAreaSection']['variants'
 export type NGOcsrInitiativesSectionData = NGOSections['csrInitiativesSection']['variants']['Legacy_csrInitiativesSection'];
 export type NGOgoalsSectionData = NGOSections['goalsSection']['variants']['Legacy_goalsSection'];
 export type NGOcommitmentSectionData = NGOSections['commitmentSection']['variants']['Legacy_commitmentSection'];
-export type NGOarticlesSectionData = NGOSections['articlesSection']['variants']['Legacy_articlesSection'];
+export type NGOarticlesSectionData = any;
 export type NGOcontactSectionData = NGOSections['contactSection']['variants']['Legacy_contactSection'];
 export type NGOportfolioSectionData = NGOSections['portfolioSection']['variants']['Legacy_portfolioSection'];
 export type NGOcaseStudySectionData = NGOSections['caseStudySection']['variants']['Legacy_caseStudySection'];
@@ -175,8 +175,8 @@ export const site = {
   goalssection: sec['goalsSection']?.variants?.['Legacy_goalsSection'],
   commitmentSection: sec['commitmentSection']?.variants?.['Legacy_commitmentSection'],
   commitmentsection: sec['commitmentSection']?.variants?.['Legacy_commitmentSection'],
-  articlesSection: sec['articlesSection']?.variants?.['Legacy_articlesSection'],
-  articlessection: sec['articlesSection']?.variants?.['Legacy_articlesSection'],
+  articlesSection: (sec as any)['articlesSection']?.variants?.['Legacy_articlesSection'],
+  articlessection: (sec as any)['articlesSection']?.variants?.['Legacy_articlesSection'],
   contactSection: sec['contactSection']?.variants?.['Legacy_contactSection'],
   portfolioSection: sec['portfolioSection']?.variants?.['Legacy_portfolioSection'],
   portfoliosection: sec['portfolioSection']?.variants?.['Legacy_portfolioSection'],
@@ -350,8 +350,8 @@ export type NgoPrivacyPolicySection = NonNullable<NGOprivacyPolicySectionData>;
 export type NgoCookiePolicySection = NonNullable<NGOcookiePolicySectionData>;
 export type NgoRefundPolicySection = NonNullable<NGOrefundPolicySectionData>;
 
-export type NgoArticlesSection = NonNullable<NGOarticlesSectionData>;
-export type NgoArticleCard = NgoArticlesSection['cards'][number];
+export type NgoArticlesSection = any;
+export type NgoArticleCard = any;
 
 export type NgoHelpCard = NonNullable<NGOhelpSectionData>['cards'][number];
 
@@ -530,6 +530,7 @@ export interface NgoContactSection {
   title: string;
   subtitle: string;
   description: string;
+  image?: string;
   contactMethods: NgoSupportContactMethod[];
   form: NgoSupportContactForm;
 }

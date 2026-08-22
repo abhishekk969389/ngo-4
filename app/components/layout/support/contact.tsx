@@ -1,4 +1,5 @@
 import { site, SectionProps, SiteData } from "@/app/data";
+import Image from "next/image";
 import {
   Clock3,
   Mail,
@@ -17,8 +18,6 @@ import type {
   NgoSupportContactField,
   NgoSupportContactMethod,
 } from "@/app/data";
-
-
 
 const iconMap = {
   mail: Mail,
@@ -45,73 +44,21 @@ export default function Contact({ data: propData, className }: SectionProps<Site
   const formHeadingPart2 = formHeadingWords.slice(2).join(" ");
 
   return (
-    <section className="bg-white mt-6 sm:mt-8 md:mt-10 lg:mt-14">
+    <section className="bg-white ">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mb-12">
         <div className="overflow-hidden rounded-3xl border border-[#edf1eb] bg-white shadow-[0_4px_25px_rgba(0,0,0,0.02)]">
           <div className="grid lg:grid-cols-[1fr_1.5fr]">
-            {/* Left Sidebar: Contact Details */}
-            <aside className="bg-[#f8faf7] p-8 sm:p-10 lg:p-12 border-b border-[#edf1eb] lg:border-b-0 lg:border-r">
-              {/* Top Support Icon Box */}
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e3eae1] text-[#1c3a27]">
-                <Headphones className="h-6 w-6 stroke-[1.8]" />
-              </div>
-
-              <div className="mt-6">
-                <h2 className="font-serif text-2xl font-bold leading-tight text-[#0d3319] sm:text-3xl">
-                  {contactData.title && <span>{contactData.title}</span>}
-                  {contactData.subtitle && (
-                    <span className="block text-[#2c7a3f] mt-1">
-                      {contactData.subtitle}
-                    </span>
-                  )}
-                </h2>
-                <div className="mt-3 h-[2.5px] w-10 rounded-full bg-[#2c7a3f]" />
-              </div>
-
-              {contactData.description && (
-                <p className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 font-sans">
-                  {contactData.description}
-                </p>
-              )}
-
-              <div className="mt-8 divide-y divide-[#e5ece3]">
-                {contactData.contactMethods.map(
-                  (item: NgoSupportContactMethod) => {
-                    const Icon =
-                      iconMap[item.icon as keyof typeof iconMap] ?? Mail;
-
-                    return (
-                      <div
-                        key={item.id}
-                        className="flex items-start gap-4 py-4 first:pt-0 last:pb-0"
-                      >
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#e3eae1] text-[#1c3a27]">
-                          <Icon className="h-5 w-5 stroke-[1.8]" />
-                        </div>
-
-                        <div className="min-w-0">
-                          <p className="font-serif text-sm font-bold text-[#16351d]">
-                            {item.label}
-                          </p>
-                          {item.href ? (
-                            <a
-                              href={item.href}
-                              className="mt-0.5 block text-xs text-[#59665b] transition hover:text-[#234b2c]"
-                            >
-                              {item.value}
-                            </a>
-                          ) : (
-                            <p className="mt-0.5 text-xs text-[#59665b]">
-                              {item.value}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  },
-                )}
-              </div>
-            </aside>
+            {/* Left Column: Image */}
+            <div className="relative min-h-[350px] sm:min-h-[420px] lg:min-h-full w-full overflow-hidden bg-gray-100 border-b border-[#edf1eb] lg:border-b-0 lg:border-r">
+              <Image
+                src={contactData.image || "/about_main.png"}
+                alt={contactData.title || "Contact Us"}
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
 
             {/* Right Side: Message Form */}
             <div className="p-8 sm:p-10 lg:p-12">

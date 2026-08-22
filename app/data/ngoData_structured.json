@@ -5225,62 +5225,6 @@
           }
         }
       },
-      "articlesSection": {
-        "variants": {
-          "Legacy_articlesSection": {
-            "heading": "Popular Articles",
-            "description": "Browse our most common topics and find the information you need.",
-            "button": {
-              "label": "View all articles",
-              "href": "/support/articles"
-            },
-            "cards": [
-              {
-                "id": 1,
-                "title": "Getting started with our platform",
-                "description": "A step-by-step guide for new users to help you get started quickly.",
-                "icon": "rocket",
-                "href": "/support/articles/getting-started"
-              },
-              {
-                "id": 2,
-                "title": "How to reset your password",
-                "description": "Reset your password in a few easy steps.",
-                "icon": "lock",
-                "href": "/support/articles/reset-password"
-              },
-              {
-                "id": 3,
-                "title": "How to update your account details",
-                "description": "Learn how to update your personal information and account settings.",
-                "icon": "user",
-                "href": "/support/articles/update-account"
-              },
-              {
-                "id": 4,
-                "title": "Billing and payment FAQ",
-                "description": "All about payments, invoices and refunds.",
-                "icon": "card",
-                "href": "/support/articles/billing-payment"
-              },
-              {
-                "id": 5,
-                "title": "Understanding your dashboard",
-                "description": "A quick overview of the dashboard and its key features.",
-                "icon": "dashboard",
-                "href": "/support/articles/dashboard"
-              },
-              {
-                "id": 6,
-                "title": "Troubleshooting common issues",
-                "description": "Find solutions to frequently encountered problems.",
-                "icon": "wrench",
-                "href": "/support/articles/troubleshooting"
-              }
-            ]
-          }
-        }
-      },
       "contactSection": {
         "variants": {
           "Legacy_contactSection": {
@@ -5366,7 +5310,8 @@
                   "icon": "message"
                 }
               ]
-            }
+            },
+            "image": "/about_main.png"
           }
         }
       },

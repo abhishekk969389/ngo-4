@@ -46,7 +46,7 @@ export default function Help({ data, className }: SectionProps<NGOhelpSectionDat
         </div>
 
         {/* 4-Column Cards Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {helpData.cards.map((card: NgoHelpCard) => (
             <div
               key={card.id}
@@ -74,7 +74,7 @@ export default function Help({ data, className }: SectionProps<NGOhelpSectionDat
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ export default function EventSidebar({ data }: EventSidebarProps) {
   return (
     <aside className="space-y-6 font-sans">
       {/* Card 1: Organizer */}
-      {organizer && (
+      {/* {organizer && (
         <div className="bg-white border border-[#eef2eb] rounded-2xl p-6 sm:p-7 shadow-xs">
           <div>
             <h3 className="text-xl font-bold font-serif text-[#16351d]">
@@ -64,10 +64,10 @@ export default function EventSidebar({ data }: EventSidebarProps) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Card 2: Share this Event */}
-      {data.shareCard && (
+      {/* {data.shareCard && (
         <div className="bg-white border border-[#eef2eb] rounded-2xl p-6 sm:p-7 shadow-xs">
           <div>
             <h3 className="text-xl font-bold font-serif text-[#16351d]">
@@ -161,7 +161,7 @@ export default function EventSidebar({ data }: EventSidebarProps) {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Card 3: Need Help? */}
       {support && (
