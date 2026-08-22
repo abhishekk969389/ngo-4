@@ -44,12 +44,12 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
 
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="mx-auto flex max-w-[1350px] items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+      <div className="mx-auto flex max-w-[1350px] items-center justify-between px-4 sm:px-6 lg:px-6 xl:px-8 py-2.5 sm:py-3">
         <Link
           href="/"
           className="flex items-center gap-2 xl:gap-3 flex-shrink-0"
         >
-          <div className="relative h-12 w-[140px] sm:h-14 sm:w-[160px] lg:h-20 lg:w-[220px] flex-shrink-0">
+          <div className="relative h-12 w-[140px] sm:h-14 sm:w-[160px] lg:h-14 lg:w-[170px] xl:h-20 xl:w-[220px] flex-shrink-0 transition-all">
             <Image
               src={brand.logo}
               alt={`${brand.name} logo`}
@@ -59,7 +59,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-3 lg:gap-5 xl:gap-7">
+        <nav className="hidden lg:flex items-center gap-2.5 lg:gap-3.5 xl:gap-6 2xl:gap-7">
           {header.menu.map((link: any) => {
             const hasChildren = link.children && link.children.length > 0;
             const isActive =
@@ -71,7 +71,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
               <div key={link.label} className="relative group py-2">
                 {hasChildren ? (
                   <div
-                    className={`flex items-center gap-0.5 text-sm lg:text-[15px] xl:text-base font-semibold whitespace-nowrap transition-colors py-1 cursor-pointer select-none border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
+                    className={`flex items-center gap-0.5 text-xs lg:text-[13px] xl:text-[15px] 2xl:text-base font-semibold whitespace-nowrap transition-colors py-1 cursor-pointer select-none border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
                   >
                     <span>{link.label}</span>
                     <ChevronDown
@@ -81,14 +81,14 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
                 ) : (
                   <Link
                     href={link.href}
-                    className={`flex items-center gap-0.5 text-sm lg:text-[15px] xl:text-base font-semibold whitespace-nowrap transition-colors py-1 border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
+                    className={`flex items-center gap-0.5 text-xs lg:text-[13px] xl:text-[15px] 2xl:text-base font-semibold whitespace-nowrap transition-colors py-1 border-b-2 ${isActive ? "text-[#0c4d1e] border-[#0c4d1e]" : "text-gray-800 border-transparent hover:text-[#0c4d1e]"}`}
                   >
                     <span>{link.label}</span>
                   </Link>
                 )}
 
                 {hasChildren && (
-                  <div className="absolute left-0 top-full pt-2 opacity-0    invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto min-w-[220px]">
+                  <div className="absolute left-0 top-full pt-2 opacity-0    invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto min-w-[200px] xl:min-w-[220px]">
                     <div className="bg-white text-gray-800 rounded-xl p-2 shadow-xl border border-gray-100">
                       <ul className="flex flex-col gap-0.5">
                         {link.children?.map((child: any) => {
@@ -97,7 +97,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
                             <li key={child.label}>
                               <Link
                                 href={child.href}
-                                className={`block py-2 px-4 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${isChildActive ? "text-[#0c4d1e] bg-[#0c4d1e]/10 font-bold" : "text-gray-700 hover:text-[#0c4d1e] hover:bg-[#0c4d1e]/5"}`}
+                                className={`block py-2 px-3 xl:px-4 rounded-lg text-xs xl:text-sm font-medium transition-all whitespace-nowrap ${isChildActive ? "text-[#0c4d1e] bg-[#0c4d1e]/10 font-bold" : "text-gray-700 hover:text-[#0c4d1e] hover:bg-[#0c4d1e]/5"}`}
                               >
                                 {child.label}
                               </Link>
@@ -113,20 +113,20 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
           })}
         </nav>
 
-        <div className="flex items-center gap-1.5 xl:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-1.5 lg:gap-2 xl:gap-3 flex-shrink-0">
           <Link
             href={header.cta.href || "/donate"}
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-[#2c7a3f] px-4 py-1.5 text-sm font-semibold text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white whitespace-nowrap transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-[#2c7a3f] px-3 lg:px-3.5 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white whitespace-nowrap transition-all"
           >
-            <Heart className="h-4 w-4 fill-current" />
+            <Heart className="h-3.5 w-3.5 xl:h-4 xl:w-4 fill-current" />
             <span>{header.cta.label || "Donate"}</span>
           </Link>
 
           <Link
             href={(header as any).volunteerCta?.href || (site.actions as any)?.volunteer?.href || "/careers"}
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#0c4d1e] px-4 py-1.5 text-sm font-semibold text-white hover:bg-[#083815] whitespace-nowrap transition-all"
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#0c4d1e] px-3 lg:px-3.5 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-white hover:bg-[#083815] whitespace-nowrap transition-all"
           >
-            <Users className="h-4 w-4" />
+            <Users className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
             <span>{(header as any).volunteerCta?.label || (site.actions as any)?.volunteer?.label || "Join as Volunteer"}</span>
           </Link>
 
