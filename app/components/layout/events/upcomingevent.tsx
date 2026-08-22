@@ -45,13 +45,13 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
 
         {/* Events List (Horizontal Row Layout) */}
         <div className="space-y-4">
-          {visibleCards.map((card: NgoUpcomingEventCard) => (
+          {visibleCards.map((card: NgoUpcomingEventCard, idx: number) => (
             <article
-              key={card.id}
-              className="flex flex-col gap-4 rounded-2xl border border-[#edf1ea] bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md lg:flex-row lg:items-center lg:justify-between lg:p-5"
+              key={`upcoming-${card.id || idx}-${idx}`}
+              className="no-animate flex flex-col gap-4 rounded-2xl border border-[#edf1ea] bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md lg:flex-row lg:items-center lg:justify-between lg:p-5"
             >
               {/* Left Group: Date + Image + Title & Description */}
-              <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="no-animate flex flex-1 flex-col gap-4 sm:flex-row sm:items-center">
                 <div className="flex h-20 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-[#f2f6f1] text-center sm:h-22 sm:w-20">
                   <span className=" text-xl font-bold text-[#16351d] sm:text-2xl">
                     {card.date.day}
@@ -61,21 +61,21 @@ export default function UpcomingEvent({ data: propData, className }: SectionProp
                   </span>
                 </div>
 
-                <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-xl sm:h-22 sm:w-36">
+                <div className="no-animate relative h-28 w-full shrink-0 overflow-hidden rounded-xl sm:h-22 sm:w-36">
                   <Image
                     src={card.image || "/banner_bg.png"}
                     alt={card.title}
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center no-animate"
                     sizes="(max-width: 640px) 100vw, 150px"
                   />
                 </div>
 
-                <div className="min-w-0 flex-1">
-                  <h3 className=" text-base font-bold text-[#16351d] sm:text-lg">
+                <div className="no-animate min-w-0 flex-1">
+                  <h3 className="no-animate text-base font-bold text-[#16351d] sm:text-lg">
                     {card.title}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#59665b] sm:text-sm">
+                  <p className="no-animate mt-1 line-clamp-2 text-xs leading-relaxed text-[#59665b] sm:text-sm">
                     {card.description}
                   </p>
                 </div>
