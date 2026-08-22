@@ -42,7 +42,7 @@ function GlobalScrollEffects() {
 
     elements.forEach((el, index) => {
       const rect = el.getBoundingClientRect();
-      
+
       // Add stagger delay based on DOM order loosely, for elements close together
       const staggerIndex = index % 5;
       if (staggerIndex === 1) el.classList.add("delay-100");

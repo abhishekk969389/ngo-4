@@ -15,8 +15,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
@@ -38,14 +38,14 @@ body {
 
 
 /* Global Animation Base Styles */
-section h1:not(.no-animate), 
-section h2:not(.no-animate), 
-section h3:not(.no-animate), 
-section h4:not(.no-animate), 
-section p:not(.no-animate), 
-section .group:not(.no-animate), 
-section button:not(.no-animate), 
-.scroll-reveal:not(.no-animate), 
+section h1:not(.no-animate),
+section h2:not(.no-animate),
+section h3:not(.no-animate),
+section h4:not(.no-animate),
+section p:not(.no-animate),
+section .group:not(.no-animate),
+section button:not(.no-animate),
+.scroll-reveal:not(.no-animate),
 .animate-section:not(.no-animate) {
   opacity: 0;
   transform: translateY(30px);
@@ -61,28 +61,65 @@ section img:not(.no-animate) {
 }
 
 /* Visibility State */
-section h1.is-visible, 
-section h2.is-visible, 
-section h3.is-visible, 
-section h4.is-visible, 
-section p.is-visible, 
-section .group.is-visible, 
-section button.is-visible, 
-.scroll-reveal.is-visible, 
+section h1.is-visible,
+section h2.is-visible,
+section h3.is-visible,
+section h4.is-visible,
+section p.is-visible,
+section .group.is-visible,
+section button.is-visible,
+.scroll-reveal.is-visible,
 .animate-section.is-visible,
 section img.is-visible {
   opacity: 1;
   transform: translate(0, 0) scale(1);
 }
 
+/* Explicit no-animate override for dynamically mounted components */
+.no-animate,
+.no-animate h1,
+.no-animate h2,
+.no-animate h3,
+.no-animate h4,
+.no-animate p,
+.no-animate img,
+.no-animate button,
+.no-animate div,
+.no-animate span {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* Custom Modifiers if explicitly added */
-.reveal-left { transform: translateX(-30px); }
-.reveal-right { transform: translateX(30px); }
-.reveal-scale { transform: scale(0.92); }
+.reveal-left {
+  transform: translateX(-30px);
+}
+
+.reveal-right {
+  transform: translateX(30px);
+}
+
+.reveal-scale {
+  transform: scale(0.92);
+}
 
 /* Base stagger delays */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
