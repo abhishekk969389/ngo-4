@@ -218,8 +218,8 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
                     "sm:hidden border-[#2c7a3f] text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white",
                 },
                 {
-                  label: "Join as Volunteer",
-                  href: "/volunteer",
+                  label: (header as any).volunteerCta?.label || (site.actions as any)?.volunteer?.label || "Join as Volunteer",
+                  href: (header as any).volunteerCta?.href || (site.actions as any)?.volunteer?.href || "/careers",
                   icon: Users,
                   style: "md:hidden bg-[#0c4d1e] text-white hover:bg-[#083815]",
                 },
