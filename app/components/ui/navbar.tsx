@@ -1,7 +1,7 @@
 "use client";
 import { site, SectionProps, SiteData } from "@/app/data";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,6 +24,23 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
   const toggleMobileDropdown = (label: string) => {
     setActiveMobileDropdown((prev) => (prev === label ? null : label));
   };
+
+  // Close mobile menu on pathname change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -125,8 +142,11 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
       </div>
 
       {isOpen && (
-        <div className="lg:hidden border-t border-gray-100 bg-white py-4 px-4 sm:px-6 shadow-lg">
-          <nav className="flex flex-col gap-2">
+        <div 
+          data-lenis-prevent
+          className="lg:hidden border-t border-gray-100 bg-white py-4 px-4 sm:px-6 shadow-xl max-h-[calc(100dvh-75px)] overflow-y-auto overscroll-contain touch-pan-y transition-all"
+        >
+          <nav className="flex flex-col gap-2 pb-8">
             {header.menu.map((link: any) => {
               const hasChildren = link.children && link.children.length > 0;
               const isMobileOpen = activeMobileDropdown === link.label;
@@ -189,7 +209,6 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
             })}
 
             <div className="flex flex-col gap-3 mt-2">
-
               {[
                 {
                   label: header.cta.label || "Donate",
