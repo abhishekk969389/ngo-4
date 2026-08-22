@@ -27,7 +27,7 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
     <section className="overflow-hidden bg-white">
       <div className="mx-auto max-w-[1350px] px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 md:mt-10 lg:mt-14">
         <div className="rounded-[2rem] mb-6">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
+          <div className="grid items-center gap-6 sm:gap-8 lg:grid-cols-[1fr_0.9fr] lg:gap-10">
             {/* Left Content Column */}
             <div className="relative z-10">
               <div className="mb-4 flex items-center gap-2">
@@ -99,14 +99,14 @@ export default function OurImpact({ data, className }: SectionProps<NGOimpactSec
             </div>
 
             {/* Right Showcase Column */}
-            <div className="relative mx-auto w-full max-w-[580px] flex items-center justify-center">
-              <div className="relative w-full h-[320px] sm:h-[400px] md:h-[450px] lg:h-[480px]">
+            <div className="relative mx-auto w-full max-w-[580px] flex items-center justify-center mt-1 sm:mt-0">
+              <div className="relative w-full h-[270px] xs:h-[310px] sm:h-[380px] md:h-[450px] lg:h-[480px]">
                 <Image
                   src={impactData?.showcase?.mainImage || "/ourimpact.svg"}
                   alt="Our Impact"
                   fill
                   priority
-                  className="object-contain scale-100 sm:scale-110 md:scale-115 lg:scale-125"
+                  className="object-contain scale-125 xs:scale-125 sm:scale-115 md:scale-120 lg:scale-125"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 />
               </div>
