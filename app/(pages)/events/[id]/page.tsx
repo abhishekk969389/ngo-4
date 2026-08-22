@@ -45,6 +45,7 @@ export async function generateStaticParams() {
     if (card?.slug) keys.add(card.slug.toLowerCase());
     if (card?.id) keys.add(String(card.id).toLowerCase());
     if (card?.title) keys.add(slugify(card.title).toLowerCase());
+    if (card?.href) keys.add(card.href.replace("/events/", "").toLowerCase());
   });
 
   return Array.from(keys).map((id) => ({ id }));
@@ -55,7 +56,46 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
   const idKey = (id || "").toLowerCase().trim();
 
   const eventMap = getEventMap();
-  const detailItem = eventMap.get(idKey);
+  let detailItem = eventMap.get(idKey);
+
+  // Fallback 1: Match against cards in eventSection if direct lookup didn't find details
+  if (!detailItem) {
+    const allCards = [
+      ...(site.eventSection?.cards || []),
+      ...(site.eventSection?.upcomingCards || []),
+    ];
+
+    const matchedCard: any = allCards.find((c: any) => {
+      const cardKeys = [
+        String(c.id || "").toLowerCase(),
+        slugify(c.title || "").toLowerCase(),
+        c.slug ? c.slug.toLowerCase() : "",
+        c.href ? c.href.replace("/events/", "").toLowerCase() : "",
+      ];
+      return cardKeys.includes(idKey);
+    });
+
+    const defaultDetail = (site.eventDetails as any)?.['1'] || (site.eventDetails as any)?.['community-cleanup'];
+
+    if (matchedCard && defaultDetail) {
+      detailItem = {
+        ...defaultDetail,
+        id: matchedCard.slug || slugify(matchedCard.title) || String(matchedCard.id),
+        title: matchedCard.title || defaultDetail.title,
+        description: matchedCard.description || defaultDetail.description,
+        image: matchedCard.image || defaultDetail.image,
+        location: matchedCard.location || defaultDetail.location,
+        time: matchedCard.time || defaultDetail.time,
+        date: matchedCard.date ? {
+          day: matchedCard.date.day,
+          month: matchedCard.date.month,
+          fullDate: `${matchedCard.date.month} ${matchedCard.date.day}, 2025`
+        } : defaultDetail.date,
+      };
+    } else {
+      detailItem = defaultDetail;
+    }
+  }
 
   if (!detailItem) {
     notFound();

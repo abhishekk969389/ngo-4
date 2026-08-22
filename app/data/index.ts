@@ -336,7 +336,7 @@ export type NgoGalleryCategory = NgoGallerySection['categories'][number];
 export type NgoGalleryImageItem = NgoGallerySection['images'][number];
 
 export type NgoVideoGallerySection = NonNullable<NGOvideoGallerySectionData>;
-export type NgoVideoCategory = NonNullable<any>; // Need fallback?
+export type NgoVideoCategory = NonNullable<NgoVideoGallerySection['categories']>[number];
 export type NgoVideoItem = NgoVideoGallerySection['videos'][number];
 
 export type NgoMediaSection = NonNullable<NGOmediaSectionData>;
@@ -363,247 +363,32 @@ export type BannerProps = {
 };
 
 export type NgoData = NonNullable<RawSiteData>['NGO'];
+export type NgoBranchItem = NonNullable<NGObranchesSectionData>['branches'][number];
+export type NgoBrochureItem = NonNullable<NGObrochureSectionData>['items'][number];
+export type NgoCareerFormField = NonNullable<NgoCareerApplyForm['applicantInfo']['fields']>[number];
+export type NgoCareerOfferItem = NonNullable<NgoCareersSection['whatWeOffer']>['items'][number];
+export type NgoCareerJobDetailItem = NonNullable<NgoCareersSection['sidebar']>['jobDetails'][number];
+export type NgoCareerShareLink = NonNullable<NgoCareersSection['sidebar']['share']['links']>[number];
+export type NgoContactInfoDetailItem = NonNullable<NgoContactUsSection['info']>['items'][number];
+export type NgoDonateTier = NonNullable<NGOdonateSectionData>['form']['step1']['tiers'][number];
+export type NgoDonateImpactItem = NonNullable<NGOdonateSectionData>['impactSidebar']['items'][number];
+export type NgoTogetherDonateStat = NonNullable<NGOtogetherDonateSectionData>['stats'][number];
+export type NgoEnquiryFeature = NonNullable<NGOenquirySectionData>['features'][number];
+export type NgoUpcomingEventCard = NonNullable<NGOeventSectionData>['upcomingCards'][number];
+export type NgoFaqSidebarItem = NonNullable<NGOfaqSectionData>['sidebar']['items'][number];
 
-// Static types required for components
-export interface NgoBranchItem {
-  id: number;
-  title: string;
-  city: string;
-  address: string;
-  phone: string;
-  email: string;
-  hours: string;
-}
+export type EventDetailItem = NonNullable<NGOeventDetailsData>[keyof NonNullable<NGOeventDetailsData>];
+export type NgoContactSection = NonNullable<NGOcontactSectionData>;
+export type NgoSupportContactField = NonNullable<NgoContactSection['form']['fields']>[number];
+export type NgoSupportContactMethod = NonNullable<NgoContactSection['contactMethods']>[number];
 
-export interface NgoBrochureItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-  fileType: string;
-  fileSize: string;
-  downloadUrl: string;
-  buttonLabel?: string;
-}
+export type EventExpectation = NonNullable<EventDetailItem['expectations']>[number];
+export type EventDetailRow = NonNullable<EventDetailItem['detailsRows']>[number];
+export type EventBringItem = NonNullable<EventDetailItem['bringItems']>[number];
+export type EventGalleryImage = NonNullable<EventDetailItem['gallery']>[number];
+export type EventOrganizer = NonNullable<EventDetailItem['organizer']>;
+export type EventSupport = NonNullable<EventDetailItem['support']>;
+export type NgoSupportContactForm = NonNullable<NgoContactSection['form']>;
+export type NgoSupportContactFieldOption = NonNullable<NgoSupportContactField['options']>[number];
 
-export interface NgoCareerFormField {
-  id: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  type: "text" | "email" | "tel" | "select";
-  required?: boolean;
-  options?: string[];
-  colSpan?: "full" | "half";
-}
-
-export interface NgoCareerOfferItem {
-  id: number;
-  title: string;
-  icon: string;
-}
-
-export interface NgoCareerJobDetailItem {
-  id: number;
-  label: string;
-  value: string;
-  icon: string;
-}
-
-export interface NgoCareerShareLink {
-  platform: string;
-  href: string;
-  icon: string;
-}
-
-export interface NgoContactInfoDetailItem {
-  id: number;
-  label: string;
-  value: string;
-  subtext: string;
-  icon: string;
-}
-
-export interface NgoDonateTier {
-  id: number;
-  title: string;
-  subtext: string;
-  amount: number;
-  isDefault?: boolean;
-}
-
-export interface NgoDonateImpactItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface NgoTogetherDonateStat {
-  id: number;
-  value: string;
-  label: string;
-  icon: string;
-}
-
-export interface NgoEnquiryFeature {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface NgoUpcomingEventCard {
-  id: number;
-  title: string;
-  date: {
-    day: number;
-    month: string;
-  };
-  location: string;
-  time: string;
-  description: string;
-  image: string;
-  buttonLabel: string;
-  href: string;
-}
-
-export interface NgoFaqSidebarItem {
-  id: number;
-  label: string;
-  value: string;
-  icon: string;
-  href?: string;
-}
-
-
-// Extra Static types required for components
-export interface EventDetailItem {
-  id: string;
-  numericId?: number;
-  title: string;
-  categoryTag?: string;
-  description: string;
-  image: string;
-  date: {
-    day: number | string;
-    month: string;
-    fullDate: string;
-  };
-  time: string;
-  location: string;
-  locationMapUrl?: string;
-  viewOnMapLabel?: string;
-  shareEventLabel?: string;
-  volunteersRegistered?: string;
-  aboutTitle?: string;
-  aboutContent: string;
-  expectationsTitle?: string;
-  expectations: EventExpectation[];
-  detailsTitle?: string;
-  detailsRows: EventDetailRow[];
-  bringTitle?: string;
-  bringItems: EventBringItem[];
-  galleryTitle?: string;
-  gallery: EventGalleryImage[];
-  impactCallout?: {
-    title: string;
-    subtitle: string;
-  };
-  registrationCard?: {
-    title: string;
-    description: string;
-    buttonLabel: string;
-    buttonHref: string;
-    loginText?: string;
-    loginHref?: string;
-  };
-  organizer?: EventOrganizer;
-  shareCard?: {
-    title: string;
-    description: string;
-  };
-  support?: EventSupport;
-}
-
-export interface NgoContactSection {
-  title: string;
-  subtitle: string;
-  description: string;
-  image?: string;
-  contactMethods: NgoSupportContactMethod[];
-  form: NgoSupportContactForm;
-}
-
-export interface NgoSupportContactField {
-  id: number;
-  name: string;
-  type: "text" | "email" | "select" | "textarea";
-  placeholder: string;
-  icon?: string;
-  options?: NgoSupportContactFieldOption[];
-}
-
-export interface NgoSupportContactMethod {
-  id: number;
-  label: string;
-  value: string;
-  href?: string;
-  icon: string;
-}
-
-
-// Nested Static types required for components
-export interface EventExpectation {
-  id: number;
-  text: string;
-}
-
-export interface EventDetailRow {
-  id: number;
-  label: string;
-  value: string;
-  icon?: string;
-  linkText?: string;
-  linkHref?: string;
-}
-
-export interface EventBringItem {
-  id: number;
-  icon: string;
-  label: string;
-}
-
-export interface EventGalleryImage {
-  id: number;
-  image: string;
-  alt?: string;
-}
-
-export interface EventOrganizer {
-  cardTitle?: string;
-  name: string;
-  description: string;
-  icon?: string;
-  profileLink?: string;
-  profileText?: string;
-}
-
-export interface EventSupport {
-  title: string;
-  description: string;
-  phone: string;
-  email: string;
-}
-
-export interface NgoSupportContactForm {
-  heading: string;
-  fields: NgoSupportContactField[];
-  buttonLabel: string;
-}
-
-export interface NgoSupportContactFieldOption {
-  value: string;
-  label: string;
-}
 
