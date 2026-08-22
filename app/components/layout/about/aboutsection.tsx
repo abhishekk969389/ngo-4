@@ -49,7 +49,7 @@ export default function AboutSection({ data, className }: SectionProps<NGOaboutS
             </div>
 
             <div className="relative z-10">
-              <div className="relative w-[280px] h-[330px] xs:w-[320px] xs:h-[360px] sm:w-[420px] sm:h-[460px] md:w-[440px] md:h-[480px] lg:w-[380px] lg:h-[420px] xl:w-[460px] xl:h-[490px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xs">
+              <div className="relative mt-1.5 md:mt-0 w-[280px] h-[330px] xs:w-[320px] xs:h-[360px] sm:w-[420px] sm:h-[460px] md:w-[440px] md:h-[480px] lg:w-[380px] lg:h-[420px] xl:w-[460px] xl:h-[490px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xs">
                 <Image
                   src={storyData.images.main}
                   alt="Smiling child - Our Story"
