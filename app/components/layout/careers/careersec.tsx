@@ -19,7 +19,7 @@ import {
 import {
   IconBrandLinkedin,
   IconBrandFacebook,
-  IconBrandTwitter,
+   IconBrandX,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
 import type {
@@ -61,7 +61,7 @@ const shareIconMap: Record<
 > = {
   linkedin: IconBrandLinkedin,
   facebook: IconBrandFacebook,
-  twitter: IconBrandTwitter,
+  twitter: IconBrandX,
   whatsapp: IconBrandWhatsapp,
 };
 

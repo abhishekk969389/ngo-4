@@ -3429,13 +3429,8 @@
                   },
                   {
                     "id": 3,
-                    "label": "Impact Highlights",
-                    "href": "/impact"
-                  },
-                  {
-                    "id": 4,
-                    "label": "Latest Updates",
-                    "href": "/blog"
+                    "label": "Our Vision",
+                    "href": "/vision"
                   }
                 ]
               },
@@ -3455,11 +3450,6 @@
                     "href": "/ourteam"
                   },
                   {
-                    "id": 3,
-                    "label": "Our Values",
-                    "href": "/about"
-                  },
-                  {
                     "id": 4,
                     "label": "Careers",
                     "href": "/careers"
@@ -3474,27 +3464,17 @@
                   {
                     "id": 1,
                     "label": "Education",
-                    "href": "/programs/education"
+                    "href": "/servicedetails?id=education"
                   },
                   {
                     "id": 2,
                     "label": "Environment",
-                    "href": "/programs/environment"
+                    "href": "/servicedetails?id=environment"
                   },
                   {
                     "id": 3,
                     "label": "Community",
-                    "href": "/programs/community"
-                  },
-                  {
-                    "id": 4,
-                    "label": "Health",
-                    "href": "/programs/health"
-                  },
-                  {
-                    "id": 5,
-                    "label": "Sustainability",
-                    "href": "/programs/sustainability"
+                    "href": "/servicedetails?id=community"
                   }
                 ]
               },
@@ -3505,21 +3485,16 @@
                 "links": [
                   {
                     "id": 1,
-                    "label": "Newsroom",
-                    "href": "/newsroom"
+                    "label": "Events",
+                    "href": "/events"
                   },
                   {
                     "id": 2,
-                    "label": "Press Releases",
-                    "href": "/press"
-                  },
-                  {
-                    "id": 3,
-                    "label": "Media Coverage",
+                    "label": "Media",
                     "href": "/media"
                   },
                   {
-                    "id": 4,
+                    "id": 3,
                     "label": "Blog",
                     "href": "/blog"
                   }
@@ -3538,7 +3513,7 @@
                   {
                     "id": 2,
                     "label": "Videos",
-                    "href": "/videos"
+                    "href": "/gallery"
                   },
                   {
                     "id": 3,
@@ -3555,7 +3530,7 @@
                   {
                     "id": 1,
                     "label": "Volunteer",
-                    "href": "/volunteer"
+                    "href": "/contactus"
                   },
                   {
                     "id": 2,
@@ -3582,7 +3557,7 @@
                   {
                     "id": 2,
                     "label": "Contact Us",
-                    "href": "/contact"
+                    "href": "/contactus"
                   },
                   {
                     "id": 3,
@@ -3604,7 +3579,12 @@
                   {
                     "id": 2,
                     "label": "Send us a Message",
-                    "href": "/contact"
+                    "href": "/contactus"
+                  },
+                   {
+                    "id": 3,
+                    "label": "Enquiry Now",
+                    "href": "/enquiry"
                   }
                 ]
               }
@@ -6988,7 +6968,7 @@
             "getInTouch": {
               "title": "Get In Touch",
               "phone": "+91 98765 43210",
-              "email": "info@blessfoundation.org",
+              "email": "info@lestow.org",
               "address": "123, Dancols Street,\nNew Delhi, India"
             },
             "form": {
@@ -11521,7 +11501,7 @@
               "heroImage": "/causes_education_1.png",
               "overview": {
                 "title": "Overview",
-                "description": "In many rural areas, lack of access to quality education, infrastructure and learning resources prevents children from reaching their full potential. Through this initiative, we are creating safe learning spaces, providing essential resources and supporting holistic development for children. Our aim is to break the cycle of poverty through education and empower the next generation to build a better tomorrow.",
+                "description": "In many rural areas, lack of access to quality education, infrastructure and learning resources prevents children from reaching their full potential. Through this initiative, we are creating safe learning spaces, providing essential resources and supporting holistic development for children. Our aim is to break the cycle of poverty through education and empower the next generation to build a better tomorrow .",
                 "features": [
                   {
                     "id": 1,

@@ -119,7 +119,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                         setIsCountryOpen(false);
                         setIsDropdownOpen(false);
                       }}
-                      className="flex items-center gap-2 py-3.5 pl-4 pr-3 text-xs font-bold text-[#16351d] focus:outline-none cursor-pointer"
+                      className="no-animate flex items-center gap-2 py-3.5 pl-4 pr-3 text-xs font-bold text-[#16351d] focus:outline-none cursor-pointer"
                     >
                       <span>{currency}</span>
                       <ChevronDown
@@ -145,7 +145,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setCurrency(curr.label);
                                   setIsCurrencyOpen(false);
                                 }}
-                                className={`w-full text-left px-3 py-2 text-xs font-bold transition-colors cursor-pointer ${isSelected
+                                className={`no-animate w-full text-left px-3 py-2 text-xs font-bold transition-colors cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
                                   }`}
@@ -169,7 +169,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                         key={tier.id}
                         type="button"
                         onClick={() => handleTierSelect(tier)}
-                        className={`flex flex-col items-center justify-center rounded-lg border p-3.5 text-center transition-all duration-200 ${isSelected
+                        className={`no-animate flex flex-col items-center justify-center rounded-lg border p-3.5 text-center transition-all duration-200 ${isSelected
                             ? "border-[#1d5e2d] bg-[#1d5e2d] text-white shadow-sm"
                             : "border-[#e2e8e0] bg-white text-[#16351d] hover:border-[#1d5e2d]"
                           }`}
@@ -204,7 +204,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                       type="button"
                       disabled={!isRecurring}
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="flex items-center gap-2 rounded-lg border border-[#c5d4c3] bg-[#f4f7f4] py-2 px-3.5 text-xs font-bold text-[#1d5e2d] hover:border-[#1d5e2d] focus:outline-none focus:ring-1 focus:ring-[#1d5e2d] disabled:opacity-50 disabled:bg-gray-100 disabled:text-gray-400 cursor-pointer transition-all"
+                      className="no-animate flex items-center gap-2 rounded-lg border border-[#c5d4c3] bg-[#f4f7f4] py-2 px-3.5 text-xs font-bold text-[#1d5e2d] hover:border-[#1d5e2d] focus:outline-none focus:ring-1 focus:ring-[#1d5e2d] disabled:opacity-50 disabled:bg-gray-100 disabled:text-gray-400 cursor-pointer transition-all"
                     >
                       <span>{frequency}</span>
                       <ChevronDown
@@ -230,7 +230,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setFrequency(freq);
                                   setIsDropdownOpen(false);
                                 }}
-                                className={`w-full text-left px-3 py-2 text-xs font-semibold transition-colors flex items-center justify-between cursor-pointer ${isSelected
+                                className={`no-animate w-full text-left px-3 py-2 text-xs font-semibold transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
                                   }`}
@@ -298,7 +298,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                           setIsDropdownOpen(false);
                           setIsCurrencyOpen(false);
                         }}
-                        className="w-full flex items-center justify-between rounded-lg border border-[#e2e8e0] bg-white px-4 py-3 text-sm transition focus:border-[#1d5e2d] focus:outline-none cursor-pointer"
+                        className="no-animate w-full flex items-center justify-between rounded-lg border border-[#e2e8e0] bg-white px-4 py-3 text-sm transition focus:border-[#1d5e2d] focus:outline-none cursor-pointer"
                       >
                         <span
                           className={
@@ -332,7 +332,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                     setFormData({ ...formData, country: c });
                                     setIsCountryOpen(false);
                                   }}
-                                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
+                                  className={`no-animate w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                       ? "bg-[#1d5e2d] text-white font-semibold"
                                       : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
                                     }`}
@@ -356,7 +356,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                         setIsDropdownOpen(false);
                         setIsCurrencyOpen(false);
                       }}
-                      className="w-full flex items-center justify-between rounded-lg border border-[#e2e8e0] bg-white px-4 py-3 text-sm transition focus:border-[#1d5e2d] focus:outline-none cursor-pointer"
+                      className="no-animate w-full flex items-center justify-between rounded-lg border border-[#e2e8e0] bg-white px-4 py-3 text-sm transition focus:border-[#1d5e2d] focus:outline-none cursor-pointer"
                     >
                       <span
                         className={
@@ -390,7 +390,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
                                   setFormData({ ...formData, supportCause: cause });
                                   setIsCauseOpen(false);
                                 }}
-                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
+                                className={`no-animate w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between cursor-pointer ${isSelected
                                     ? "bg-[#1d5e2d] text-white font-semibold"
                                     : "text-[#16351d] hover:bg-[#f4f7f4] hover:text-[#1d5e2d]"
                                   }`}
@@ -449,7 +449,7 @@ export default function DonateSec({ data: propData, className }: SectionProps<Si
 
                   <button
                     type="submit"
-                    className="w-full rounded-lg bg-[#1d5e2d] py-4 px-6 text-base font-bold text-white shadow-sm transition hover:bg-[#164722] flex items-center justify-center gap-2 mt-6"
+                    className="no-animate w-full rounded-lg bg-[#1d5e2d] py-4 px-6 text-base font-bold text-white shadow-sm transition hover:bg-[#164722] flex items-center justify-center gap-2 mt-6"
                   >
                     <Lock className="h-4 w-4 text-white" />
                     <span>{step2.submitButton.label}</span>
