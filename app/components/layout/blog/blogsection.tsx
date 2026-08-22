@@ -59,7 +59,7 @@ export default function BlogSection({ data: propData, className }: SectionProps<
             return (
               <article
                 key={blog.id}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-[#e8eee7] bg-white shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#d7e5d5]"
+                className="no-animate group flex flex-col overflow-hidden rounded-2xl border border-[#e8eee7] bg-white shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#d7e5d5]"
               >
                 <Link
                   href={blogLink}
