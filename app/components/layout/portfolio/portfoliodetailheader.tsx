@@ -118,44 +118,43 @@ export default function PortfolioDetailHeader({
 
         {/* Right Column - Main Image with Floating Overlapping Quote Card */}
         <div className="relative lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end mt-6 lg:mt-0 z-10">
-          {/* Faint Decorative Background Watermark Leaf (Middle) */}
           <div className="absolute -left-10 top-1/3 pointer-events-none opacity-20 hidden xl:block text-[#2c7a3f] z-0">
             <svg className="w-36 h-36" viewBox="0 0 100 100" fill="currentColor">
               <path d="M50 10 C65 30 85 45 85 70 C85 85 70 95 50 90 C30 85 15 70 15 50 C15 30 35 10 50 10 Z" />
             </svg>
           </div>
 
-       <div className="relative w-full max-w-[580px] pb-16 sm:pb-14">
-  {/* Hero Main Image Box */}
-  <div className="relative w-full aspect-[4/3] sm:aspect-[1.3/1] rounded-[24px] sm:rounded-[36px] overflow-hidden shadow-xl border border-gray-100 bg-gray-100">
-    <Image
-      src={data.heroImage || "/about_main.png"}
-      alt={data.heroAlt || data.title}
-      fill
-      className="object-cover object-center"
-      priority
-      sizes="(max-width: 1024px) 100vw, 580px"
-    />
-  </div>
+          <div className="relative w-full max-w-[580px]">
 
-  {/* Overlapping Floating Quote Card */}
-  {data.heroQuote && (
-    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-4 z-20 w-[90%] max-w-[340px] sm:w-[390px] sm:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#f7f9f6] shadow-xl border border-[#e2ebd9] flex flex-col justify-between">
-      <div className="flex items-start gap-2 sm:gap-2.5">
-        <div className="text-3xl sm:text-5xl font-serif font-black text-[#88cb39] leading-none shrink-0 -mt-1 pl-1 select-none">
-          “
-        </div>
-        <p className="text-[11.5px] sm:text-[13.5px] text-gray-700 font-sans italic leading-relaxed pt-0.5 font-medium">
-          {data.heroQuote.quote}
-        </p>
-      </div>
-      <p className="mt-2 sm:mt-3 text-[11px] sm:text-sm font-bold text-[#2c7a3f] font-sans pl-5 sm:pl-7">
-        &mdash; {data.heroQuote.author}
-        {data.heroQuote.role ? `, ${data.heroQuote.role}` : ""}
-      </p>
-    </div>
-  )}
-</div>
+            <div className="relative w-full aspect-[4/3] sm:aspect-[1.3/1] rounded-[24px] sm:rounded-[36px] overflow-hidden border border-gray-100 bg-gray-100">
+              <Image
+                src={data.heroImage || "/about_main.png"}
+                alt={data.heroAlt || data.title}
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 1024px) 100vw, 580px"
+              />
+            </div>
+
+
+            {data.heroQuote && (
+              <div className="relative -mt-12 sm:-mt-20 md:-mt-24 sm:ml-4 z-20 w-[92%] sm:w-[390px] mx-auto sm:mx-0 p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#f7f9f6] border border-[#e2ebd9] flex flex-col justify-between">
+                <div className="flex items-start gap-2.5">
+                  <div className="text-3xl sm:text-5xl font-serif font-black text-[#88cb39] leading-none shrink-0 -mt-1 pl-1 select-none">
+                    “
+                  </div>
+                  <p className="text-xs sm:text-[13.5px] text-gray-700 font-sans italic leading-relaxed pt-0.5 font-medium">
+                    {data.heroQuote.quote}
+                  </p>
+                </div>
+                <p className="mt-3 text-xs sm:text-sm font-bold text-[#2c7a3f] font-sans pl-6 sm:pl-7">
+                  &mdash; {data.heroQuote.author}
+                  {data.heroQuote.role ? `, ${data.heroQuote.role}` : ""}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
