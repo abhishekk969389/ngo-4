@@ -52,13 +52,13 @@ export default function CaseStudyGallerySection({
           </div>
         </div>
 
-        <div className="relative mt-10 ">
-          {/* Navigation Arrows */}
+        <div className="relative mt-10">
+          {/* Navigation Arrows (Hidden on mobile < sm, visible on sm and above) */}
           <button
             type="button"
             onClick={handlePrev}
             aria-label="Previous images"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200 cursor-pointer"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -67,16 +67,17 @@ export default function CaseStudyGallerySection({
             type="button"
             onClick={handleNext}
             aria-label="Next images"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md flex items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#e2ebd9] text-[#1b4d25] shadow-md items-center justify-center hover:bg-[#1b4d25] hover:text-white transition-all duration-200 cursor-pointer"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-12 sm:px-14">
+          {/* Gallery Grid: 1 column on mobile (< sm) without side arrow padding, 2 cols on sm, 4 cols on lg */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-0 sm:px-14">
             {items.slice(startIndex, startIndex + 4).map((item) => (
               <div
                 key={item.id}
-                className="group relative h-56 sm:h-64 rounded-2xl overflow-hidden border border-[#e2ebd9] shadow-xs bg-white"
+                className="group relative h-60 xs:h-64 sm:h-64 rounded-2xl overflow-hidden border border-[#e2ebd9] shadow-xs bg-white"
               >
                 <Image
                   src={item.image}

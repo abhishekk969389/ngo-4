@@ -125,37 +125,37 @@ export default function PortfolioDetailHeader({
             </svg>
           </div>
 
-          <div className="relative w-full max-w-[580px] pb-10 sm:pb-14">
-            {/* Hero Main Image Box */}
-            <div className="relative w-full aspect-[4/3] sm:aspect-[1.3/1] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-xl border border-gray-100 bg-gray-100">
-              <Image
-                src={data.heroImage || "/about_main.png"}
-                alt={data.heroAlt || data.title}
-                fill
-                className="object-cover object-center"
-                priority
-                sizes="(max-width: 1024px) 100vw, 580px"
-              />
-            </div>
+       <div className="relative w-full max-w-[580px] pb-16 sm:pb-14">
+  {/* Hero Main Image Box */}
+  <div className="relative w-full aspect-[4/3] sm:aspect-[1.3/1] rounded-[24px] sm:rounded-[36px] overflow-hidden shadow-xl border border-gray-100 bg-gray-100">
+    <Image
+      src={data.heroImage || "/about_main.png"}
+      alt={data.heroAlt || data.title}
+      fill
+      className="object-cover object-center"
+      priority
+      sizes="(max-width: 1024px) 100vw, 580px"
+    />
+  </div>
 
-            {/* Overlapping Floating Quote Card (Bottom Left) */}
-            {data.heroQuote && (
-              <div className="absolute -bottom-4 left-2 sm:-bottom-6 sm:left-4 z-20 w-[280px] xs:w-[320px] sm:w-[390px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#f7f9f6] shadow-xl border border-[#e2ebd9] flex flex-col justify-between">
-                <div className="flex items-start gap-2.5">
-                  <div className="text-4xl sm:text-5xl font-serif font-black text-[#88cb39] leading-none shrink-0 -mt-1 pl-1 select-none">
-                    “
-                  </div>
-                  <p className="text-xs sm:text-[13.5px] text-gray-700 font-sans italic leading-relaxed pt-0.5 font-medium">
-                    {data.heroQuote.quote}
-                  </p>
-                </div>
-                <p className="mt-3 text-xs sm:text-sm font-bold text-[#2c7a3f] font-sans pl-7">
-                  &mdash; {data.heroQuote.author}
-                  {data.heroQuote.role ? `, ${data.heroQuote.role}` : ""}
-                </p>
-              </div>
-            )}
-          </div>
+  {/* Overlapping Floating Quote Card */}
+  {data.heroQuote && (
+    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-4 z-20 w-[90%] max-w-[340px] sm:w-[390px] sm:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#f7f9f6] shadow-xl border border-[#e2ebd9] flex flex-col justify-between">
+      <div className="flex items-start gap-2 sm:gap-2.5">
+        <div className="text-3xl sm:text-5xl font-serif font-black text-[#88cb39] leading-none shrink-0 -mt-1 pl-1 select-none">
+          “
+        </div>
+        <p className="text-[11.5px] sm:text-[13.5px] text-gray-700 font-sans italic leading-relaxed pt-0.5 font-medium">
+          {data.heroQuote.quote}
+        </p>
+      </div>
+      <p className="mt-2 sm:mt-3 text-[11px] sm:text-sm font-bold text-[#2c7a3f] font-sans pl-5 sm:pl-7">
+        &mdash; {data.heroQuote.author}
+        {data.heroQuote.role ? `, ${data.heroQuote.role}` : ""}
+      </p>
+    </div>
+  )}
+</div>
         </div>
       </div>
     </section>
