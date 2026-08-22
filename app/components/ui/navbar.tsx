@@ -118,7 +118,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
             href={header.cta.href || "/donate"}
             className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-[#2c7a3f] px-4 py-1.5 text-sm font-semibold text-[#2c7a3f] hover:bg-[#2c7a3f] hover:text-white whitespace-nowrap transition-all"
           >
-            <Heart className="h-4 w-4" />
+            <Heart className="h-4 w-4 fill-current" />
             <span>{header.cta.label || "Donate"}</span>
           </Link>
 
@@ -232,7 +232,7 @@ export default function Navbar({ data: propData, className }: SectionProps<SiteD
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center justify-center gap-2 rounded-full border-[1.5px] py-2.5 text-sm font-bold transition-all ${btn.style}`}
                   >
-                    <BtnIcon className="h-4 w-4" />
+                    <BtnIcon className="h-4 w-4 fill-current" />
                     <span>{btn.label}</span>
                   </Link>
                 );
