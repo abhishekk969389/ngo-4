@@ -6374,91 +6374,91 @@
               {
                 "id": 1,
                 "name": "PUBLIC CHRONICLE",
-                "icon": "feather",
+                "icon": "/media-icons/feather.svg",
                 "href": "#"
               },
               {
                 "id": 2,
                 "name": "NATIONAL LEDGER",
-                "icon": "landmark",
+                "icon": "/media-icons/landmark.svg",
                 "href": "#"
               },
               {
                 "id": 3,
                 "name": "MORNING POST",
-                "icon": "sunrise",
+                "icon": "/media-icons/sunrise.svg",
                 "href": "#"
               },
               {
                 "id": 4,
                 "name": "CIVIC VOICE",
-                "icon": "message-square",
+                "icon": "/media-icons/message-square.svg",
                 "href": "#"
               },
               {
                 "id": 5,
                 "name": "IMPACT REVIEW",
-                "icon": "tree",
+                "icon": "/media-icons/tree.svg",
                 "href": "#"
               },
               {
                 "id": 6,
                 "name": "CITY BULLETIN",
-                "icon": "building-2",
+                "icon": "/media-icons/building-2.svg",
                 "href": "#"
               },
               {
                 "id": 7,
                 "name": "INSIGHT DAILY",
-                "icon": "chart",
+                "icon": "/media-icons/chart.svg",
                 "href": "#"
               },
               {
                 "id": 8,
                 "name": "GLOBAL HERALD",
-                "icon": "globe",
+                "icon": "/media-icons/globe.svg",
                 "href": "#"
               },
               {
                 "id": 9,
                 "name": "PEOPLE'S JOURNAL",
-                "icon": "users",
+                "icon": "/media-icons/users.svg",
                 "href": "#"
               },
               {
                 "id": 10,
                 "name": "METRO REPORT",
-                "icon": "metro",
+                "icon": "/media-icons/metro.svg",
                 "href": "#"
               },
               {
                 "id": 11,
                 "name": "VIEWPOINT NEWS",
-                "icon": "viewpoint",
+                "icon": "/media-icons/viewpoint.svg",
                 "href": "#"
               },
               {
                 "id": 12,
                 "name": "COMMUNITY TIMES",
-                "icon": "columns",
+                "icon": "/media-icons/columns.svg",
                 "href": "#"
               },
               {
                 "id": 13,
                 "name": "HORIZON MEDIA",
-                "icon": "mountain",
+                "icon": "/media-icons/mountain.svg",
                 "href": "#"
               },
               {
                 "id": 14,
                 "name": "PRESS FORUM",
-                "icon": "pen-nib",
+                "icon": "/media-icons/pen-nib.svg",
                 "href": "#"
               },
               {
                 "id": 15,
                 "name": "THE DAILY STANDARD",
-                "icon": "newspaper",
+                "icon": "/media-icons/newspaper.svg",
                 "href": "#"
               }
             ]
