@@ -6085,7 +6085,7 @@
               "ctaTitle": "Want to join our mission?",
               "button": {
                 "label": "Join Our Team",
-                "href": "/volunteer"
+                "href": "/contactus"
               }
             }
           }
@@ -6952,7 +6952,7 @@
             "description": "Join hands with us to create lasting impact\nand build a better tomorrow.",
             "button": {
               "label": "Partner With Us",
-              "href": "/contact",
+              "href": "/contactus",
               "icon": "users"
             },
             "backgroundImage": "/banner_bg.png"
@@ -7131,21 +7131,21 @@
                 {
                   "id": 1,
                   "label": "Phone Number",
-                  "value": "+44 204 577 0077",
+                  "value": "+91 204 577 0077",
                   "subtext": "Mon - Fri: 9:00 AM - 6:00 PM",
                   "icon": "phone"
                 },
                 {
                   "id": 2,
                   "label": "Email Address",
-                  "value": "fandi@gmail.com",
+                  "value": "info@lestow.org",
                   "subtext": "We'll reply as soon as possible",
                   "icon": "mail"
                 },
                 {
                   "id": 3,
                   "label": "Office Address",
-                  "value": "Washington Ave, NY",
+                  "value": "Noida One Tower, Noida",
                   "subtext": "New York, USA",
                   "icon": "map-pin"
                 }
@@ -7601,8 +7601,8 @@
               "description": "Thank you for being a part of our journey\nand helping us build a better, brighter future for all.",
               "icon": "hand-heart",
               "button": {
-                "label": "Other Ways to Give",
-                "href": "/get-involved",
+                "label": "Enquiry Now",
+                "href": "/enquiry",
                 "icon": "arrow-right"
               }
             },

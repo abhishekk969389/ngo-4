@@ -88,7 +88,7 @@ export default function Pagination({
           onClick={() => onPageChange(1)}
           disabled={currentPage === 1}
           aria-label="Go to first page"
-          className="flex h-9 w-9 items-center justify-center rounded-xl text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
+          className="no-animate flex h-9 w-9 items-center justify-center rounded-xl text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
         >
           <ChevronsLeft className="h-4 w-4 stroke-[2.2]" />
         </button>
@@ -99,7 +99,7 @@ export default function Pagination({
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
           aria-label="Go to previous page"
-          className="flex h-9 items-center gap-1 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
+          className="no-animate flex h-9 items-center gap-1 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
         >
           <ChevronLeft className="h-4 w-4 stroke-[2.2]" />
           <span className="hidden xs:inline">Prev</span>
@@ -128,7 +128,7 @@ export default function Pagination({
                 onClick={() => onPageChange(page)}
                 aria-current={isCurrent ? "page" : undefined}
                 aria-label={`Page ${page}`}
-                className={`flex h-9 min-w-9 items-center justify-center rounded-xl px-3 text-xs font-bold transition-all duration-200 cursor-pointer ${
+                className={`no-animate flex h-9 min-w-9 items-center justify-center rounded-xl px-3 text-xs font-bold transition-all duration-200 cursor-pointer ${
                   isCurrent
                     ? "bg-[#2c7a3f] text-white shadow-md shadow-[#2c7a3f]/20 scale-105"
                     : "text-[#16351d] hover:bg-[#f0f4ef] hover:text-[#2c7a3f] hover:border-[#d7e5d5]"
@@ -145,7 +145,7 @@ export default function Pagination({
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           aria-label="Go to next page"
-          className="flex h-9 items-center gap-1 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
+          className="no-animate flex h-9 items-center gap-1 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
         >
           <span className="hidden xs:inline">Next</span>
           <ChevronRight className="h-4 w-4 stroke-[2.2]" />
@@ -156,7 +156,7 @@ export default function Pagination({
           onClick={() => onPageChange(totalPages)}
           disabled={currentPage === totalPages}
           aria-label="Go to last page"
-          className="flex h-9 w-9 items-center justify-center rounded-xl text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
+          className="no-animate flex h-9 w-9 items-center justify-center rounded-xl text-[#16351d] transition-all duration-200 hover:bg-[#f0f4ef] hover:text-[#2c7a3f] disabled:pointer-events-none disabled:opacity-35 cursor-pointer"
         >
           <ChevronsRight className="h-4 w-4 stroke-[2.2]" />
         </button>

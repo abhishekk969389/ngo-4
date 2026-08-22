@@ -29,6 +29,19 @@ export default function CookiePolicySec({ data: propData, className }: SectionPr
             </div>
           ))}
         </div>
+             <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl border border-[#e2ece0] bg-[#f2f7f1] p-5 sm:p-6 shadow-sm">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#e2ede0] text-[#1d5e2d]">
+                    <FileCheck className="h-6 w-6 stroke-[1.75]" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-base font-bold text-[#16351d] sm:text-lg">
+                      {callout.title}
+                    </h4>
+                    <p className="mt-0.5 text-xs text-[#59665b] sm:text-sm">
+                      {callout.subtitle}
+                    </p>
+                  </div>
+                </div>
       </div>
     </section>
   );
