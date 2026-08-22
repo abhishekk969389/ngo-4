@@ -61,7 +61,7 @@ export default function EventSection({ data: propData, className }: SectionProps
           </h2>
 
           {/* Slider Arrow Buttons */}
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <button
               type="button"
               aria-label={eventData.arrowButtons?.prev || "Previous"}
@@ -76,7 +76,7 @@ export default function EventSection({ data: propData, className }: SectionProps
             >
               <ArrowRight className="h-3.5 w-3.5" />
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* 3-Column Event Cards Grid */}
